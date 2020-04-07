@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Mon Apr 06 2020 12:45:38 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Tue Apr 07 2020 07:46:50 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5e8ae3b2acdbb56d58427c5b" data-wf-site="5e89e56bbebe7d2e8604de36">
 <head>
   <meta charset="utf-8">
@@ -35,6 +35,9 @@
                 <a href="index.html" class="link-block-2 w-inline-block">
                   <div class="text-block-2">Login Page</div>
                 </a>
+                <a href="status-form.html" class="link-block-2 w-inline-block">
+                  <div class="text-block-2">Status Form</div>
+                </a>
               </div>
             </div>
           </div>
@@ -59,28 +62,35 @@
                   <div class="div-block-25">
                     <div class="form-block w-form">
                       <form id="email-form" name="email-form" data-name="Email Form" class="signup-form-column">
-                        <div class="login-formfield-div"><label for="Username" class="field-label">Type of Facility</label>
-                          <div class="div-block-23"><label class="radio-button-field w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div><input type="radio" data-name="Radio" id="radio" name="Radio" value="Radio" style="opacity:0;position:absolute;z-index:-1"><span class="radio-button-label w-form-label">Hospital</span></label><label class="radio-button-field w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div><input type="radio" data-name="Radio" id="radio" name="Radio" value="Radio" style="opacity:0;position:absolute;z-index:-1"><span class="radio-button-label w-form-label">Clinic</span></label><label class="radio-button-field w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div><input type="radio" data-name="Radio 2" id="radio-2" name="Radio" value="Radio" style="opacity:0;position:absolute;z-index:-1"><span class="radio-button-label w-form-label">Quarantine Center</span></label></div>
+                        <div class="form-title-div">
+                          <div class="form-title">1. Login Details</div>
+                        </div>
+                        <div class="div-block-22">
+                          <div class="login-formfield-div big"><label for="Username" class="field-label">Email (Username)</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Username" data-name="Username" placeholder="Username" id="Username" required=""></div>
+                          <div class="login-formfield-div"><label for="User-s-Name" class="field-label">Full Name</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="User-s-Name" data-name="User&#x27;s Name" placeholder="Your Name" id="User-s-Name" required=""></div>
+                        </div>
+                        <div class="div-block-22">
+                          <div class="login-formfield-div big"><label for="Password-3" class="field-label">Enter Password</label><input type="password" class="login-text-field plain w-input" maxlength="256" name="Password-1" data-name="Password 1" placeholder="Password" id="Password-3" required=""></div>
+                          <div class="login-formfield-div"><label for="Password-2" class="field-label">Confirm Password</label><input type="password" class="login-text-field plain w-input" maxlength="256" name="Password-2" data-name="Password 2" placeholder="Confirm Password" id="Password-2" required=""></div>
                         </div>
                         <div class="form-title-div">
-                          <div class="form-title">1. General Info</div>
+                          <div class="form-title">2. General Information</div>
+                        </div>
+                        <div class="login-formfield-div"><label for="Username" class="field-label">Type of your Facility</label>
+                          <div class="div-block-23"><label class="radio-button-field w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div><input type="radio" data-name="Radio" id="radio" name="Radio" value="Radio" style="opacity:0;position:absolute;z-index:-1"><span class="radio-button-label w-form-label">Hospital</span></label><label class="radio-button-field w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div><input type="radio" data-name="Radio" id="radio" name="Radio" value="Radio" style="opacity:0;position:absolute;z-index:-1"><span class="radio-button-label w-form-label">Clinic</span></label><label class="radio-button-field w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div><input type="radio" data-name="Radio 2" id="radio-2" name="Radio" value="Radio" style="opacity:0;position:absolute;z-index:-1"><span class="radio-button-label w-form-label">Quarantine Center</span></label></div>
                         </div>
                         <div class="form-section-div">
                           <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Facility" class="field-label">Name of the Facility</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Facility" data-name="Facility" placeholder="Name of Facility " id="Facility" required=""></div>
-                            <div class="login-formfield-div"><label for="Area" class="field-label">Area</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Area" data-name="Area" placeholder="Area" id="Area" required=""></div>
+                            <div class="login-formfield-div big"><label for="Facility" class="field-label">Name of your Facility</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Facility" data-name="Facility" placeholder="Name of Facility " id="Facility" required=""></div>
+                            <div class="login-formfield-div"><label for="Area" class="field-label">Your Area</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Area" data-name="Area" placeholder="Area" id="Area" required=""></div>
                           </div>
                           <div class="div-block-22">
                             <div class="login-formfield-div big"><label for="Jurisdiction" class="field-label">Jurisdiction</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Jurisdiction" data-name="Jurisdiction" placeholder="Jurisdiction" id="Jurisdiction" required=""></div>
-                            <div class="login-formfield-div"><label for="Area" class="field-label">Government Facility?</label><select id="field" name="field" data-name="Field" class="login-text-field plain w-select"><option value="">Select one...</option><option value="Yes">Yes</option><option value="No">No</option></select></div>
+                            <div class="login-formfield-div"><label for="Area" class="field-label">Are you a Government Facility?</label><select id="field" name="field" data-name="Field" class="login-text-field plain w-select"><option value="">Select one...</option><option value="Yes">Yes</option><option value="No">No</option></select></div>
                           </div>
                           <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Telephone" class="field-label">Telephone</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Telephone" data-name="Telephone" placeholder="Telephone" id="Telephone" required=""></div>
-                            <div class="login-formfield-div"><label for="Email" class="field-label">Email</label><input type="email" class="login-text-field plain w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email" id="Email" required=""></div>
-                          </div>
-                          <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Additional-FIeld" class="field-label">Additional Field 1</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Additional-FIeld-1" data-name="Additional FIeld 1" placeholder="Additional Field 1" id="Additional-FIeld" required=""></div>
-                            <div class="login-formfield-div"><label for="Additional-FIeld-2" class="field-label">Additional Field 2</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Additional-FIeld-2" data-name="Additional FIeld 2" placeholder="Additional Field 2" id="Additional-FIeld-2" required=""></div>
+                            <div class="login-formfield-div big"><label for="Telephone" class="field-label">Organisation&#x27;s Telephone</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Telephone" data-name="Telephone" placeholder="Telephone" id="Telephone" required=""></div>
+                            <div class="login-formfield-div"><label for="Email" class="field-label">Organisation&#x27;s Email</label><input type="email" class="login-text-field plain w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email" id="Email" required=""></div>
                           </div>
                         </div>
                       </form>
@@ -98,14 +108,14 @@
                     <div class="form-block w-form">
                       <form id="email-form" name="email-form" data-name="Email Form" class="signup-form-column">
                         <div class="form-title-div">
-                          <div class="form-title">2. Contact Person Details</div>
+                          <div class="form-title">3. Primary Contact Person Details</div>
                         </div>
                         <div class="div-block-22">
                           <div class="login-formfield-div big"><label for="Name-of-Contact-3" class="field-label">Name</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Name-of-Contact-2" data-name="Name Of Contact 2" placeholder="First Name" id="Name-of-Contact-2" required=""></div>
                           <div class="login-formfield-div"><label for="Contact-Person-2-Mobile-3" class="field-label">Mobile</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Contact-Person-2-Mobile-3" data-name="Contact Person 2 Mobile 3" placeholder="+91" id="Contact-Person-2-Mobile-3" required=""></div>
                         </div>
                         <div class="form-title-div">
-                          <div class="form-title">3. Ambulance Details</div>
+                          <div class="form-title">4. Ambulance Incharge Details</div>
                         </div>
                         <div class="form-section-div">
                           <div class="div-block-22">
@@ -114,7 +124,7 @@
                           </div>
                         </div>
                         <div class="form-title-div">
-                          <div class="form-title">4. Health Checkup Person</div>
+                          <div class="form-title">5. Health Checkup Incharge</div>
                         </div>
                         <div class="form-section-div">
                           <div class="div-block-22">
@@ -123,7 +133,13 @@
                           </div>
                         </div>
                         <div class="form-title-div">
-                          <div class="form-title">5. Premise Disinfection Person</div>
+                          <div class="form-title">6. Premise Disinfection &amp; Cleaning Incharge</div>
+                        </div>
+                        <div class="form-section-div">
+                          <div class="div-block-22">
+                            <div class="login-formfield-div big"><label for="Name-of-Contact-3" class="field-label">Name</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Name-of-Contact-2" data-name="Name Of Contact 2" placeholder="First Name" id="Name-of-Contact-2" required=""></div>
+                            <div class="login-formfield-div"><label for="Contact-Person-2-Mobile-4" class="field-label">Mobile</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Contact-Person-2-Mobile-2" data-name="Contact Person 2 Mobile 2" placeholder="+91" id="Contact-Person-2-Mobile-2" required=""></div>
+                          </div>
                         </div>
                         <div class="form-section-div">
                           <div class="div-block-22">
@@ -143,7 +159,7 @@
                 </div>
               </div>
               <div class="form-block w-form">
-                <form id="email-form" name="email-form" data-name="Email Form" class="div"><label class="w-checkbox checkbox-field"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Consent statement &amp; Disclaimer for data sharing</span></label><input type="submit" value="Submit" data-wait="Please wait..." class="signup-button w-button"></form>
+                <form id="email-form" name="email-form" data-name="Email Form" class="div"><label class="w-checkbox checkbox-field"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Consent statement &amp; Disclaimer for data sharing</span></label><input type="submit" value="Submit &amp; SIgnup" data-wait="Please wait..." class="signup-button w-button"></form>
                 <div class="w-form-done">
                   <div>Thank you! Your submission has been received!</div>
                 </div>
