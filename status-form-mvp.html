@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
 <!--  Last Published: Wed Apr 08 2020 10:00:10 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="5e8bd2a0eda4ea34d03a3a78" data-wf-site="5e89e56bbebe7d2e8604de36">
+<html data-wf-page="5e8d5e29f838021ea6564c2e" data-wf-site="5e89e56bbebe7d2e8604de36">
 <head>
   <meta charset="utf-8">
-  <title>Status Form</title>
-  <meta content="Status Form" property="og:title">
+  <title>Status Form MVP</title>
+  <meta content="Status Form MVP" property="og:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
@@ -35,6 +35,9 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
   .SCROLLABLE-Section-4 {
     overflow-x: hidden;
     }
+      .SCROLLABLE-Section-6 {
+    overflow-x: hidden;
+    }
 </style>
 </head>
 <body class="body">
@@ -42,15 +45,13 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
     <div class="div-block status-form">
       <div class="columns-4 w-row">
         <div class="w-col w-col-1">
-          <div class="div-block-2 status-form">
+          <div class="div-block-2">
             <div class="section">
               <div class="div-block-26"><a href="index.html" class="logo-div w-inline-block"></a></div>
             </div>
           </div>
-          <div class="section">
-            <a href="#" class="logout-button w-inline-block">
-              <div>Logout</div>
-            </a>
+          <div class="div-block-2">
+            <div class="section"><a href="#" class="w-inline-block"></a></div>
           </div>
         </div>
         <div class="column w-col w-col-11">
@@ -62,13 +63,19 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                     <div class="hospital-profile-header-div">
                       <h1 class="heading-2">Aditya Birla Memorial</h1>
                       <div class="text-block-6">Non-Government Hospital - Chinchwad - PMC</div>
-                    </div><a href="signup-form.html" class="button w-button">Edit Profile</a></div>
+                    </div>
+                    <div class="text-block-5">Contact Person Name</div>
+                    <div class="text-block-5">Ambulance Incharge</div>
+                  </div>
                 </div>
                 <div class="section-6">
                   <div data-duration-in="300" data-duration-out="100" class="w-tabs">
                     <div class="tabs-menu w-tab-menu">
                       <a data-w-tab="Tab 1" class="tab-menu w-inline-block w-tab-link w--current">
                         <div>quick stats</div>
+                      </a>
+                      <a data-w-tab="Tab 2" class="tab-menu w-inline-block w-tab-link">
+                        <div>additional</div>
                       </a>
                       <a data-w-tab="Tab 3" class="tab-menu w-inline-block w-tab-link">
                         <div>profile</div>
@@ -154,9 +161,10 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                           </div>
                         </div>
                       </div>
+                      <div data-w-tab="Tab 2" class="w-tab-pane"></div>
                       <div data-w-tab="Tab 3" class="w-tab-pane">
                         <div class="div-block-38">
-                          <div class="stats-heading status-form">Hospital Contact Details</div>
+                          <div class="stats-heading">Hospital Contact Details</div>
                           <div class="div-block-37">
                             <div>
                               <div class="details bold">Telephone:</div>
@@ -173,7 +181,7 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                           </div>
                         </div>
                         <div class="div-block-38">
-                          <div class="stats-heading status-form">Contact Person</div>
+                          <div class="stats-heading">Contact Person</div>
                           <div class="div-block-37">
                             <div>
                               <div class="details bold">Name:</div>
@@ -190,7 +198,7 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                           </div>
                         </div>
                         <div class="div-block-38">
-                          <div class="stats-heading status-form">Ambulance Incharge</div>
+                          <div class="stats-heading">Ambulance Incharge</div>
                           <div class="div-block-37">
                             <div>
                               <div class="details bold">Name:</div>
@@ -207,7 +215,7 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                           </div>
                         </div>
                         <div class="div-block-38">
-                          <div class="stats-heading status-form">Disinfection Incharge</div>
+                          <div class="stats-heading">Disinfection Incharge</div>
                           <div class="div-block-37">
                             <div>
                               <div class="details bold">Name:</div>
@@ -224,7 +232,7 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                           </div>
                         </div>
                         <div class="div-block-38">
-                          <div class="stats-heading status-form">Health Checkup Incharge</div>
+                          <div class="stats-heading">Health Checkup Incharge</div>
                           <div class="div-block-37">
                             <div>
                               <div class="details bold">Name:</div>
@@ -246,9 +254,9 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                 </div>
               </div>
               <div class="column-4 w-col w-col-6">
-                <h1 class="status-heading-3">Update Hospital Resources</h1>
                 <div class="section-4">
-                  <div data-delay="0" data-w-id="a92ec5b3-e4c0-1dc0-bd40-7f167c63613d" style="height:50PX" class="accordian-form-container w-dropdown">
+                  <h1 class="status-heading-3">Update Hospital Resources</h1>
+                  <div data-delay="0" data-w-id="c19d1baf-7893-05c3-56b5-808fda146c5b" style="height:50PX" class="accordian-form-container w-dropdown">
                     <div class="faq w-dropdown-toggle">
                       <div class="accordian-form">A. Hospital Assets</div>
                     </div>
@@ -262,7 +270,7 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                                 <div class="div-block-8">
                                   <div class="status-form-2-col-div"><label for="name" class="field-label">Total Beds</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
                                   <div class="status-form-2-col-div"><label for="name" class="field-label">Max capacity</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Total Available</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Total Available</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
                                 </div>
                               </div>
                               <div class="form-section-div">
@@ -299,7 +307,7 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                       </div>
                     </nav>
                   </div>
-                  <div data-delay="0" data-w-id="a92ec5b3-e4c0-1dc0-bd40-7f167c636183" style="height:50PX" class="accordian-form-container w-dropdown">
+                  <div data-delay="0" data-w-id="4c1067e9-691b-2d82-3873-1051e1871025" style="height:50PX" class="accordian-form-container w-dropdown">
                     <div class="faq w-dropdown-toggle">
                       <div class="accordian-form">B. Medical Staff Details</div>
                     </div>
@@ -311,22 +319,22 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                               <div class="form-section-div">
                                 <div class="subheading">DOctors</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Total Doctors</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Total Doctors</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Chest Physicians</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Chest Physicians</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
                                 </div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Anesthesiologists</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Anesthesiologists</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Nurses</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Nurses</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
                                 </div>
                               </div>
                               <div class="form-section-div">
                                 <div class="subheading">Additional DOctor FIeld</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional Field</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Additional Field</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional Field</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Additional Field</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
                                 </div>
                               </div>
                               <div class="button-div"><input type="submit" value="Clear" data-wait="Please wait..." class="signup-button status-form clear-form w-button"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form w-button"></div>
@@ -342,7 +350,7 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                       </div>
                     </nav>
                   </div>
-                  <div data-delay="0" data-w-id="a92ec5b3-e4c0-1dc0-bd40-7f167c6361b9" style="height:50PX" class="accordian-form-container w-dropdown">
+                  <div data-delay="0" data-w-id="71af613d-4634-b6eb-91aa-e90e2a7c5b83" style="height:50PX" class="accordian-form-container w-dropdown">
                     <div class="faq w-dropdown-toggle">
                       <div class="accordian-form">C. Inventory Details</div>
                     </div>
@@ -354,86 +362,34 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                               <div class="form-section-div">
                                 <div class="subheading">masks</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">N-95 Masks</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">N-95 Masks</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Surgical Masks</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Surgical Masks</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
                                 </div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">TPE Masks</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">TPE Masks</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Other Masks</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Other Masks</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
                                 </div>
                               </div>
                               <div class="form-section-div">
                                 <div class="subheading">ppe kits</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Hazmat Suits</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Hazmat Suits</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Face Shield</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Face Shield</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
                                 </div>
                               </div>
                               <div class="form-section-div">
                                 <div class="subheading">Additional Inventory</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional field</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Additional field</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional field</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
+                                  <div class="status-form-2-col-div"><label for="name-8" class="field-label">Additional field</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
                                 </div>
                               </div>
                               <div class="form-section-div"></div>
                               <div class="button-div"><input type="submit" value="Clear" data-wait="Please wait..." class="signup-button status-form clear-form w-button"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form w-button"></div>
-                            </form>
-                            <div class="w-form-done">
-                              <div>Thank you! Your submission has been received!</div>
-                            </div>
-                            <div class="w-form-fail">
-                              <div>Oops! Something went wrong while submitting the form.</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </nav>
-                  </div>
-                  <div data-delay="0" data-w-id="5fa1b382-d6bf-62ca-8423-b3b4a8b4e27f" style="height:50PX" class="accordian-form-container w-dropdown">
-                    <div class="faq w-dropdown-toggle">
-                      <div class="accordian-form">C. Compliance Checklist</div>
-                    </div>
-                    <nav class="faq-body w-dropdown-list">
-                      <div class="faq-body-cont">
-                        <div class="div-block-6">
-                          <div class="form-block-3 w-form">
-                            <form id="email-form" name="email-form" data-name="Email Form">
-                              <div class="form-section-div">
-                                <div class="div-block-41">
-                                  <div class="subheading _1">1. Are Sufficient Bed-Covers available ?</div><select id="Yes-No" name="Yes-No" data-name="Yes / No" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" class="text-field-design dropdown w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
-                              </div>
-                              <div class="form-section-div">
-                                <div class="div-block-41">
-                                  <div class="subheading _1">2. Are sufficient Mattresses available?</div><select id="Yes-No-4" name="Yes-No-4" data-name="Yes No 4" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" class="text-field-design dropdown w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
-                              </div>
-                              <div class="form-section-div">
-                                <div class="div-block-41">
-                                  <div class="subheading _1">3. Other equipments for isolation wards available?</div><select id="Yes-No-3" name="Yes-No-3" data-name="Yes No 3" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" class="text-field-design dropdown w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
-                              </div>
-                              <div class="form-section-div">
-                                <div class="div-block-41">
-                                  <div class="subheading _1">4. Is Drinking Water Facility Available</div><select id="Yes-No-2" name="Yes-No-2" data-name="Yes No 2" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" class="text-field-design dropdown w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
-                              </div>
-                              <div class="form-section-div">
-                                <div class="div-block-41">
-                                  <div class="subheading _1">5. Are sufficient number of Washrooms / Toilets available?</div><select id="Yes-No-2" name="Yes-No-2" data-name="Yes No 2" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" class="text-field-design dropdown w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
-                              </div>
-                              <div class="form-section-div">
-                                <div class="div-block-41">
-                                  <div class="subheading _1">6. Are cleaning services available?</div><select id="Yes-No-2" name="Yes-No-2" data-name="Yes No 2" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" class="text-field-design dropdown w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
-                              </div>
-                              <div class="button-div"><input type="submit" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form w-button"></div>
                             </form>
                             <div class="w-form-done">
                               <div>Thank you! Your submission has been received!</div>
