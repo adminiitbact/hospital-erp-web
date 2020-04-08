@@ -2,179 +2,436 @@
 <!--  This site was created in Webflow. http://www.webflow.com  -->
 <!--  Last Published: Wed Apr 08 2020 10:00:10 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5e8ae3b2acdbb56d58427c5b" data-wf-site="5e89e56bbebe7d2e8604de36">
+
 <head>
-  <meta charset="utf-8">
-  <title>Signup Form</title>
-  <meta content="Signup Form" property="og:title">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
-  <meta content="Webflow" name="generator">
-  <link href="css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="css/safeco.webflow.css" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-  <script type="text/javascript">WebFont.load({  google: {    families: ["Inter:100,200,300,regular,500,600,700,800,900","Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic","Muli:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic"]  }});</script>
-  <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
-  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-  <link href="images/webclip.png" rel="apple-touch-icon">
+    <meta charset="utf-8">
+    <title>Signup Form</title>
+    <meta content="Signup Form" property="og:title">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Webflow" name="generator">
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="css/webflow.css" rel="stylesheet" type="text/css">
+    <link href="css/safeco.webflow.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({
+            google: {
+                families: ["Inter:100,200,300,regular,500,600,700,800,900", "Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic", "Muli:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic"]
+            }
+        });
+    </script>
+    <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+    <script type="text/javascript">
+        ! function(o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }(window, document);
+    </script>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="images/webclip.png" rel="apple-touch-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
 <body class="body">
-  <div class="div-block-4">
-    <div class="div-block">
-      <div class="w-row">
-        <div class="w-col w-col-2 w-col-stack">
-          <div class="div-block-2">
-            <div class="section">
-              <div class="div-block-26"><a href="index.html" class="logo-div w-inline-block"></a></div>
-            </div>
-            <div>
-              <div class="div-block-28">
-                <a href="signup-form.html" aria-current="page" class="link-block-2 w-inline-block w--current">
-                  <div class="text-block-2">Signup Page</div>
-                </a>
-                <a href="index.html" class="link-block-2 w-inline-block">
-                  <div class="text-block-2">Login Page</div>
-                </a>
-                <a href="status-form.html" class="link-block-2 w-inline-block">
-                  <div class="text-block-2">Status Form</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column w-col w-col-10 w-col-stack">
-          <div class="form-div">
-            <div class="section-2">
-              <div>
-                <div class="columns-2 w-row">
-                  <div class="w-col w-col-4">
-                    <div class="heading">Signup form</div>
-                  </div>
-                  <div class="w-col w-col-8">
-                    <p class="paragraph">Relevant description, answers to key queries or pre-requisite declarations.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="section-3">
-              <div class="columns w-row">
-                <div class="column-2 w-col w-col-6 w-col-stack">
-                  <div class="div-block-25">
-                    <div class="form-block w-form">
-                      <form id="email-form" name="email-form" data-name="Email Form" class="signup-form-column">
-                        <div class="form-title-div">
-                          <div class="form-title">1. Login Details</div>
+    <div class="div-block-4">
+        <div class="div-block">
+            <div class="w-row">
+                <div class="w-col w-col-2 w-col-stack">
+                    <div class="div-block-2">
+                        <div class="section">
+                            <div class="div-block-26">
+                                <a href="index.html" class="logo-div w-inline-block"></a>
+                            </div>
                         </div>
-                        <div class="div-block-22">
-                          <div class="login-formfield-div big"><label for="Username" class="field-label">Email (Username)</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Username" data-name="Username" placeholder="Username" id="Username" required=""></div>
-                          <div class="login-formfield-div"><label for="User-s-Name" class="field-label">Full Name</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="User-s-Name" data-name="User&#x27;s Name" placeholder="Your Name" id="User-s-Name" required=""></div>
+                        <div>
+                            <div class="div-block-28">
+                                <a href="signup-form.html" aria-current="page" class="link-block-2 w-inline-block w--current">
+                                    <div class="text-block-2">Signup Page</div>
+                                </a>
+                                <a href="index.html" class="link-block-2 w-inline-block">
+                                    <div class="text-block-2">Login Page</div>
+                                </a>
+                                <a href="status-form.html" class="link-block-2 w-inline-block">
+                                    <div class="text-block-2">Status Form</div>
+                                </a>
+                            </div>
                         </div>
-                        <div class="div-block-22">
-                          <div class="login-formfield-div big"><label for="Password-3" class="field-label">Enter Password</label><input type="password" class="login-text-field plain w-input" maxlength="256" name="Password-1" data-name="Password 1" placeholder="Password" id="Password-3" required=""></div>
-                          <div class="login-formfield-div"><label for="Password-2" class="field-label">Confirm Password</label><input type="password" class="login-text-field plain w-input" maxlength="256" name="Password-2" data-name="Password 2" placeholder="Confirm Password" id="Password-2" required=""></div>
-                        </div>
-                        <div class="form-title-div">
-                          <div class="form-title">2. General Information</div>
-                        </div>
-                        <div class="login-formfield-div"><label for="Username" class="field-label">Type of your Facility</label>
-                          <div class="div-block-23"><label class="radio-button-field w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div><input type="radio" data-name="Radio" id="radio" name="Radio" value="Radio" style="opacity:0;position:absolute;z-index:-1"><span class="radio-button-label w-form-label">Hospital</span></label><label class="radio-button-field w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div><input type="radio" data-name="Radio" id="radio" name="Radio" value="Radio" style="opacity:0;position:absolute;z-index:-1"><span class="radio-button-label w-form-label">Clinic</span></label><label class="radio-button-field w-radio"><div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div><input type="radio" data-name="Radio 2" id="radio-2" name="Radio" value="Radio" style="opacity:0;position:absolute;z-index:-1"><span class="radio-button-label w-form-label">Quarantine Center</span></label></div>
-                        </div>
-                        <div class="form-section-div">
-                          <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Facility" class="field-label">Name of your Facility</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Facility" data-name="Facility" placeholder="Name of Facility " id="Facility" required=""></div>
-                            <div class="login-formfield-div"><label for="Area" class="field-label">Your Area</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Area" data-name="Area" placeholder="Area" id="Area" required=""></div>
-                          </div>
-                          <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Jurisdiction" class="field-label">Jurisdiction</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Jurisdiction" data-name="Jurisdiction" placeholder="Jurisdiction" id="Jurisdiction" required=""></div>
-                            <div class="login-formfield-div"><label for="Area" class="field-label">Are you a Government Facility?</label><select id="field" name="field" data-name="Field" class="login-text-field plain w-select"><option value="">Select one...</option><option value="Yes">Yes</option><option value="No">No</option></select></div>
-                          </div>
-                          <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Telephone" class="field-label">Organisation&#x27;s Telephone</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Telephone" data-name="Telephone" placeholder="Telephone" id="Telephone" required=""></div>
-                            <div class="login-formfield-div"><label for="Email" class="field-label">Organisation&#x27;s Email</label><input type="email" class="login-text-field plain w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email" id="Email" required=""></div>
-                          </div>
-                        </div>
-                      </form>
-                      <div class="w-form-done">
-                        <div>Thank you! Your submission has been received!</div>
-                      </div>
-                      <div class="w-form-fail">
-                        <div>Oops! Something went wrong while submitting the form.</div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-                <div class="column-3 w-col w-col-6 w-col-stack">
-                  <div class="div-block-25 rhs">
-                    <div class="form-block w-form">
-                      <form id="email-form" name="email-form" data-name="Email Form" class="signup-form-column">
-                        <div class="form-title-div">
-                          <div class="form-title">3. Primary Contact Person Details</div>
+                <div class="column w-col w-col-10 w-col-stack">
+                    <div class="form-div">
+                        <div class="section-2">
+                            <div>
+                                <div class="columns-2 w-row">
+                                    <div class="w-col w-col-4">
+                                        <div class="heading">Signup form</div>
+                                    </div>
+                                    <div class="w-col w-col-8">
+                                        <p class="paragraph">Relevant description, answers to key queries or pre-requisite declarations.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="div-block-22">
-                          <div class="login-formfield-div big"><label for="Name-of-Contact-3" class="field-label">Name</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Name-of-Contact-2" data-name="Name Of Contact 2" placeholder="First Name" id="Name-of-Contact-2" required=""></div>
-                          <div class="login-formfield-div"><label for="Contact-Person-2-Mobile-3" class="field-label">Mobile</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Contact-Person-2-Mobile-3" data-name="Contact Person 2 Mobile 3" placeholder="+91" id="Contact-Person-2-Mobile-3" required=""></div>
+                        <div class="section-3">
+                            <form id="signup-form"  name="signup-form" data-name="SignUp Form" class="signup-form-column">
+                                <div class="columns w-row">
+                                    <div class="column-2 w-col w-col-6 w-col-stack">
+                                        <div class="div-block-25">
+                                            <div class="form-block w-form">
+                                                <div class="form-title-div">
+                                                    <div class="form-title">1. Login Details</div>
+                                                </div>
+                                                <div class="div-block-22">
+                                                    <div class="login-formfield-div big">
+                                                        <label for="username" class="field-label">Email (Username)</label>
+                                                        <input type="email" class="login-text-field plain w-input" maxlength="256" name="username" data-name="username" placeholder="username" id="username" required="" value="sapantanted99@gmail.com">
+                                                    </div>
+                                                    <div class="login-formfield-div">
+                                                        <label for="user-s-name" class="field-label">Full Name</label>
+                                                        <input type="text" class="login-text-field plain w-input" maxlength="256" name="user-s-name" data-name="User&#x27;s Name" placeholder="Your Name" id="user-s-name" required="" value="9039833963">
+                                                    </div>
+                                                </div>
+                                                <div class="div-block-22">
+                                                    <div class="login-formfield-div big">
+                                                        <label for="password-1" class="field-label">Enter Password</label>
+                                                        <input type="password" class="login-text-field plain w-input" maxlength="256" name="password-1" data-name="Password 1" placeholder="Password" id="password-1" required="" value="9039833963">
+                                                    </div>
+                                                    <div class="login-formfield-div">
+                                                        <label for="password-2" class="field-label">Confirm Password</label>
+                                                        <input type="password" class="login-text-field plain w-input" maxlength="256" name="password-2" data-name="Password 2" placeholder="Confirm Password" id="password-2" required="" value="9039833963">
+                                                    </div>
+                                                </div>
+                                                <!-- TODO make the message look better -->
+                                                <div class="div-block-22" style="color:red;display:none" id="password-message">Password does not match</div>
+                                                <div class="form-title-div">
+                                                    <div class="form-title">2. General Information</div>
+                                                </div>
+                                                <div class="login-formfield-div">
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div">
+                                                            <label for="type-of-facility" class="field-label">Type of your Facility</label>
+                                                            <select id="type-of-facility" name="type-of-facility" data-name="type-of-facility" class="login-text-field plain w-select" required="" >
+                                                                <option value="">Select one...</option>
+                                                                <option value="Hospital">Hospital</option>
+                                                                <option value="Clinic">Clinic</option>
+                                                                <option value="Quarantine">Quarantine</option>
+                                                            </select>
+                                                        </div>
+                                                        <!-- <label class="radio-button-field w-radio">
+                                                          <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div>
+                                                          <input type="radio" data-name="type-of-facility" id="type-of-facility-1" name="type-of-facility" value="Hospital" style="opacity:100;position:absolute;z-index:0" required=""><span class="radio-button-label w-form-label">Hospital</span></label>
+                                                      <label class="radio-button-field w-radio">
+                                                          <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div>
+                                                          <input type="radio" data-name="type-of-facility" id="type-of-facility-2" name="type-of-facility" value="Clinic" style="opacity:100;position:absolute;z-index:0" required=""><span class="radio-button-label w-form-label">Clinic</span></label>
+                                                      <label class="radio-button-field w-radio">
+                                                          <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div>
+                                                          <input type="radio" data-name="type-of-facility" id="type-of-facility-3" name="type-of-facility" value="Quarantine Center" style="opacity:100;position:absolute;z-index:0" required=""><span class="radio-button-label w-form-label">Quarantine Center</span></label> -->
+                                                  </div>
+                                                </div>
+                                                <div class="form-section-div">
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div big">
+                                                            <label for="facility-name" class="field-label">Name of your Facility</label>
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="facility-name" data-name="facility-name" placeholder="Name of Facility " id="facility-name" required="" value="9039833963">
+                                                        </div>
+                                                        <div class="login-formfield-div">
+                                                            <label for="area" class="field-label">Your Area</label>
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="area" data-name="area" placeholder="area" id="area" required="" value="9039833963">
+                                                        </div>
+                                                    </div>
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div big">
+                                                            <label for="jurisdiction" class="field-label">Jurisdiction</label>
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="jurisdiction" data-name="jurisdiction" placeholder="jurisdiction" id="jurisdiction" required="" value="9039833963">
+                                                        </div>
+                                                        <div class="login-formfield-div">
+                                                            <label for="is-government-facility" class="field-label">Are you a Government Facility?</label>
+                                                            <select id="is-government-facility" name="is-government-facility" data-name="is-government-facility" class="login-text-field plain w-select" required="" >
+                                                                <option value="">Select one...</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div big">
+                                                            <label for="organisation-telephone" class="field-label">Organisation&#x27;s Telephone</label>
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" max=9999999999 min=999999999 class="login-text-field plain w-input" maxlength="256" name="organisation-telephone" data-name="organisation-telephone" placeholder="organisation-telephone" id="organisation-telephone" required="" value="9039833963">
+                                                        </div>
+                                                        <div class="login-formfield-div">
+                                                            <label for="organisation-email" class="field-label">Organisation&#x27;s Email</label>
+                                                            <input type="email" class="login-text-field plain w-input" maxlength="256" name="organisation-email" data-name="organisation-email" placeholder="Telephone" id="organisation-email" required="" value="vvvv@gmal.com">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-form-done">
+                                                    <div>Thank you! Your submission has been received!</div>
+                                                </div>
+                                                <div class="w-form-fail">
+                                                    <div>Oops! Something went wrong while submitting the form.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column-3 w-col w-col-6 w-col-stack">
+                                        <div class="div-block-25 rhs">
+                                            <div class="form-block w-form">
+                                                <div class="form-title-div">
+                                                    <div class="form-title">3. Primary Contact Person Details</div>
+                                                </div>
+                                                <div class="div-block-22">
+                                                    <div class="login-formfield-div big">
+                                                        <label for="primary-contact-person-name" class="field-label">Name</label>
+                                                        <input type="text" class="login-text-field plain w-input" maxlength="256" name="primary-contact-person-name" data-name="primary-contact-person-name" placeholder="First Name" id="primary-contact-person-name" required="" value="9039833963">
+                                                    </div>
+                                                    <div class="login-formfield-div">
+                                                        <label for="primary-contact-person-mobile" class="field-label">Mobile</label>
+                                                        <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="primary-contact-person-mobile" data-name="primary-contact-person-mobile" placeholder="+91" id="primary-contact-person-mobile" required="" value="9039833963">
+                                                    </div>
+                                                </div>
+                                                <div class="form-title-div">
+                                                    <div class="form-title">4. Ambulance Incharge Details</div>
+                                                </div>
+                                                <div class="form-section-div">
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div big">
+                                                            <label for="ambulance-incharge-name" class="field-label">Name</label>
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="ambulance-incharge-name" data-name="ambulance-incharge-name" placeholder="First Name" id="ambulance-incharge-name"  value="9039833963">
+                                                        </div>
+                                                        <div class="login-formfield-div">
+                                                            <label for="ambulance-incharge-mobile" class="field-label">Mobile</label>
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="ambulance-incharge-mobile" data-name="ambulance-incharge-mobile" placeholder="+91" id="ambulance-incharge-mobile"  value="9039833963">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-title-div">
+                                                    <div class="form-title">5. Health Checkup Incharge</div>
+                                                </div>
+                                                <div class="form-section-div">
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div big">
+                                                            <label for="health-checkup-incharge-name" class="field-label">Name</label>
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="health-checkup-incharge-name" data-name="health-checkup-incharge-name" placeholder="First Name" id="health-checkup-incharge-name"  value="9039833963">
+                                                        </div>
+                                                        <div class="login-formfield-div">
+                                                            <label for="health-checkup-incharge-mobile" class="field-label">Mobile</label>
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="health-checkup-incharge-mobile" data-name="health-checkup-incharge-mobile" placeholder="+91" id="health-checkup-incharge-mobile"  value="9039833963">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-title-div">
+                                                    <div class="form-title">6. Premise Disinfection &amp; Cleaning Incharge</div>
+                                                </div>
+                                                <div class="form-section-div">
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div big">
+                                                            <label for="cleaning-incharge-name-1" class="field-label">Name</label>
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="cleaning-incharge-name-1" data-name="cleaning-incharge-name-1" placeholder="First Name" id="cleaning-incharge-name-1"  value="9039833963">
+                                                        </div>
+                                                        <div class="login-formfield-div">
+                                                            <label for="cleaning-incharge-mobile-1" class="field-label">Mobile</label>
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="cleaning-incharge-mobile-1" data-name="cleaning-incharge-mobile-1" placeholder="+91" id="cleaning-incharge-mobile-1"  value="9039833963">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-section-div">
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div big">
+                                                            <label for="cleaning-incharge-name-2" class="field-label">Name</label>
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="cleaning-incharge-name-2" data-name="cleaning-incharge-name-2" placeholder="First Name" id="cleaning-incharge-name-2"  value="9039833963">
+                                                        </div>
+                                                        <div class="login-formfield-div">
+                                                            <label for="cleaning-incharge-mobile-2" class="field-label">Mobile</label>
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="cleaning-incharge-mobile-2" data-name="cleaning-incharge-mobile-2" placeholder="+91" id="cleaning-incharge-mobile-2"  value="9039833963">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="w-form-done">
+                                                    <div>Thank you! Your submission has been received!</div>
+                                                </div>
+                                                <div class="w-form-fail">
+                                                    <div>Oops! Something went wrong while submitting the form.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-block w-form">
+                                    <div class="div">
+                                        <label class="w-checkbox checkbox-field">
+                                            <input type="checkbox" id="consent-checkbox" name="consent-checkbox" data-name="consent-checkbox" class="w-checkbox-input checkbox" checked required><span class="checkbox-label w-form-label">Consent statement &amp; Disclaimer for data sharing</span></label>
+                                        <input type="submit" value="Submit &amp; Signup" data-wait="Please wait..." class="signup-button w-button">
+                                    </div>
+                                    <div class="w-form-done">
+                                        <div>Thank you! Your submission has been received!</div>
+                                    </div>
+                                    <div class="w-form-fail">
+                                        <div>Oops! Something went wrong while submitting the form.</div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-title-div">
-                          <div class="form-title">4. Ambulance Incharge Details</div>
-                        </div>
-                        <div class="form-section-div">
-                          <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Name-of-Contact-2" class="field-label">Name</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Name-of-Contact-2" data-name="Name Of Contact 2" placeholder="First Name" id="Name-of-Contact-2" required=""></div>
-                            <div class="login-formfield-div"><label for="Contact-Person-2-Mobile" class="field-label">Mobile</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Contact-Person-2-Mobile" data-name="Contact Person 2 Mobile" placeholder="+91" id="Contact-Person-2-Mobile" required=""></div>
-                          </div>
-                        </div>
-                        <div class="form-title-div">
-                          <div class="form-title">5. Health Checkup Incharge</div>
-                        </div>
-                        <div class="form-section-div">
-                          <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Name-of-Contact-3" class="field-label">Name</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Name-of-Contact-2" data-name="Name Of Contact 2" placeholder="First Name" id="Name-of-Contact-2" required=""></div>
-                            <div class="login-formfield-div"><label for="Contact-Person-2-Mobile-2" class="field-label">Mobile</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Contact-Person-2-Mobile-2" data-name="Contact Person 2 Mobile 2" placeholder="+91" id="Contact-Person-2-Mobile-2" required=""></div>
-                          </div>
-                        </div>
-                        <div class="form-title-div">
-                          <div class="form-title">6. Premise Disinfection &amp; Cleaning Incharge</div>
-                        </div>
-                        <div class="form-section-div">
-                          <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Name-of-Contact-3" class="field-label">Name</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Name-of-Contact-2" data-name="Name Of Contact 2" placeholder="First Name" id="Name-of-Contact-2" required=""></div>
-                            <div class="login-formfield-div"><label for="Contact-Person-2-Mobile-4" class="field-label">Mobile</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Contact-Person-2-Mobile-2" data-name="Contact Person 2 Mobile 2" placeholder="+91" id="Contact-Person-2-Mobile-2" required=""></div>
-                          </div>
-                        </div>
-                        <div class="form-section-div">
-                          <div class="div-block-22">
-                            <div class="login-formfield-div big"><label for="Name-of-Contact-3" class="field-label">Name</label><input type="text" class="login-text-field plain w-input" maxlength="256" name="Name-of-Contact-2" data-name="Name Of Contact 2" placeholder="First Name" id="Name-of-Contact-2" required=""></div>
-                            <div class="login-formfield-div"><label for="Contact-Person-2-Mobile-4" class="field-label">Mobile</label><input type="tel" class="login-text-field plain w-input" maxlength="256" name="Contact-Person-2-Mobile-2" data-name="Contact Person 2 Mobile 2" placeholder="+91" id="Contact-Person-2-Mobile-2" required=""></div>
-                          </div>
-                        </div>
-                      </form>
-                      <div class="w-form-done">
-                        <div>Thank you! Your submission has been received!</div>
-                      </div>
-                      <div class="w-form-fail">
-                        <div>Oops! Something went wrong while submitting the form.</div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="form-block w-form">
-                <form id="email-form" name="email-form" data-name="Email Form" class="div"><label class="w-checkbox checkbox-field"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Consent statement &amp; Disclaimer for data sharing</span></label><input type="submit" value="Submit &amp; SIgnup" data-wait="Please wait..." class="signup-button w-button"></form>
-                <div class="w-form-done">
-                  <div>Thank you! Your submission has been received!</div>
-                </div>
-                <div class="w-form-fail">
-                  <div>Oops! Something went wrong while submitting the form.</div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89e56bbebe7d2e8604de36" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="js/webflow.js" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89e56bbebe7d2e8604de36" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/webflow.js" type="text/javascript"></script>
+    <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+    <script>  
+      // Your web app's Firebase configuration
+          var firebaseConfig = {
+          apiKey: "AIzaSyAtDZfhftwpIpN9rZ5I4GHYijGuCbZbib0",
+          authDomain: "hospital-erp-prod.firebaseapp.com",
+          databaseURL: "https://hospital-erp-prod.firebaseio.com",
+          projectId: "hospital-erp-prod",
+          storageBucket: "hospital-erp-prod.appspot.com",
+          messagingSenderId: "374895034375",
+          appId: "1:374895034375:web:68dac98f0009c12906aaa2",
+          measurementId: "G-FMK8FK9CQ1"
+          };
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+    </script>
+    <script>
+        $("#password-2").keyup(function(e){
+          if($("#password-1").val()!=$("#password-2").val()){
+            $("#password-message").show();
+          }else{
+            $("#password-message").hide();
+          }
+        });
+        
+        $("#signup-form").submit(function(event){
+          var message="";
+          var username = $("#username").val();
+          var user_s_name = $("#user-s-name").val();
+          var password_1 = $("#password-1").val();
+          var password_2 = $("#password-2").val();
+          var type_of_facility = $("#type-of-facility").val();
+          var facility_name = $("#facility-name").val();
+          var area = $("#area").val();
+          var jurisdiction = $("#jurisdiction").val();
+          var is_government_facility = $("#is-government-facility").val();
+          var organisation_telephone = $("#organisation-telephone").val();
+          var organisation_email = $("#organisation-email").val();
+          var primary_contact_person_name = $("#primary-contact-person-name").val();
+          var primary_contact_person_mobile = $("#primary-contact-person-mobile").val();
+          var ambulance_incharge_name = $("#ambulance-incharge-name").val();
+          var ambulance_incharge_mobile = $("#ambulance-incharge-mobile").val();
+          var health_checkup_incharge_name = $("#health-checkup-incharge-name").val();
+          var health_checkup_incharge_mobile = $("#health-checkup-incharge-mobile").val();
+          var cleaning_incharge_name_1 = $("#cleaning-incharge-name-1").val();
+          var cleaning_incharge_mobile_1 = $("#cleaning-incharge-mobile-1").val();
+          var cleaning_incharge_name_2 = $("#cleaning-incharge-name-2").val();
+          var cleaning_incharge_mobile_2 = $("#cleaning-incharge-mobile-2").val();
+          var consent_checkbox = $("#consent-checkbox").val();
+          var password=password_1;
+
+          if(password_1!=password_2){
+            $("#password_message").show();
+            alert("Password does not match");
+            event.preventDefault();
+            return ;
+          }
+
+        //   $('#signup-form input').each(function(index){  
+        //       var input = $(this);
+        //       if($(this).is(':checked')) { 
+        //         if(input.attr("name")=="type-of-facility"){
+        //           type_of_facility=input.val();
+        //         }
+        //       }
+        //   });
+          
+        firebase.auth().signInWithEmailAndPassword(username, password)
+        .then(function(res){
+          var user = res.user;
+          alert(JSON.stringify(user));
+          user.getIdToken().then(function(authToken) {
+            // Send token to your backend via HTTPS
+            window.localStorage.setItem("authToken",authToken);
+            var url ="http://staging.iitbact.org:8080/hospitalerp/api/add/facility/profile/1";
+            var data={
+                "authToken":authToken,
+                "data": {
+                  "contact_data":{ "primary_contact_person_name":primary_contact_person_name,
+                                  "primary_contact_person_mobile":primary_contact_person_mobile,
+                                  "ambulance_incharge_name":ambulance_incharge_name,
+                                  "ambulance_incharge_mobile":ambulance_incharge_mobile,
+                                  "health_checkup_incharge_name":health_checkup_incharge_name,
+                                  "health_checkup_incharge_mobile":health_checkup_incharge_mobile,
+                                  "cleaning_incharge_name_1":cleaning_incharge_name_1,
+                                  "cleaning_incharge_mobile_1":cleaning_incharge_mobile_1
+                  },
+                  "facility_data":{"type_of_facility":type_of_facility,
+                                    "facility_name":facility_name,
+                                    "area":area,
+                                    "jurisdiction":jurisdiction,
+                                    "is_government_facility":is_government_facility,
+                                    "organisation_telephone":organisation_telephone,
+                                    "organisation_email":organisation_email
+                  },
+                  // "username":username,
+                  // "user_s_name":user_s_name,
+                  // "password":password,
+                  // "type_of_facility":type_of_facility,
+                  // "facility_name":facility_name,
+                  // "area":area,
+                  // "jurisdiction":jurisdiction,
+                  // "is_government_facility":is_government_facility,
+                  // "organisation_telephone":organisation_telephone,
+                  // "organisation_email":organisation_email,
+                  // "primary_contact_person_name":primary_contact_person_name,
+                  // "primary_contact_person_mobile":primary_contact_person_mobile,
+                  // "ambulance_incharge_name":ambulance_incharge_name,
+                  // "ambulance_incharge_mobile":ambulance_incharge_mobile,
+                  // "health_checkup_incharge_name":health_checkup_incharge_name,
+                  // "health_checkup_incharge_mobile":health_checkup_incharge_mobile,
+                  // "cleaning_incharge_name_1":cleaning_incharge_name_1,
+                  // "cleaning_incharge_mobile_1":cleaning_incharge_mobile_1,
+                  // "cleaning_incharge_name_2":cleaning_incharge_name_2,
+                  // "cleaning_incharge_mobile_2":cleaning_incharge_mobile_2,
+                  // "consent_checkbox":consent_checkbox,
+                }
+              };
+            alert(JSON.stringify(data));
+            $.ajax({
+              type: "POST",
+              url: url,
+              data: JSON.stringify(data),
+              headers: {"Content-Type":"application/json"},
+              success: function(jqXHR, textStatus, data1){
+                alert("Data: " + data1 );
+              },
+              // error: function(jqXHR, textStatus, error){
+              //   user.delete().then(function() {
+              //     // User deleted.
+              //     alert("user deleted");
+              //   }).catch(function(error) {
+              //     // An error happened.
+              //   });
+              // },
+              dataType: 'text/json'
+            });
+          }).catch(function(error) {
+            // Handle error
+            alert("Error: "+error);
+          });
+        }).catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert(errorMessage);
+        });
+        event.preventDefault();
+        });
+    </script>
 </body>
+
 </html>
