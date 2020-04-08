@@ -108,9 +108,17 @@
                                                     <div class="form-title">2. General Information</div>
                                                 </div>
                                                 <div class="login-formfield-div">
-                                                    <label for="type-of-facility" class="field-label">Type of your Facility</label>
-                                                    <div class="div-block-23">
-                                                      <label class="radio-button-field w-radio">
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div">
+                                                            <label for="type-of-facility" class="field-label">Type of your Facility</label>
+                                                            <select id="type-of-facility" name="type-of-facility" data-name="type-of-facility" class="login-text-field plain w-select" required="" >
+                                                                <option value="">Select one...</option>
+                                                                <option value="Hospital">Hospital</option>
+                                                                <option value="Clinic">Clinic</option>
+                                                                <option value="Quarantine">Quarantine</option>
+                                                            </select>
+                                                        </div>
+                                                        <!-- <label class="radio-button-field w-radio">
                                                           <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div>
                                                           <input type="radio" data-name="type-of-facility" id="type-of-facility-1" name="type-of-facility" value="Hospital" style="opacity:100;position:absolute;z-index:0" required=""><span class="radio-button-label w-form-label">Hospital</span></label>
                                                       <label class="radio-button-field w-radio">
@@ -118,7 +126,7 @@
                                                           <input type="radio" data-name="type-of-facility" id="type-of-facility-2" name="type-of-facility" value="Clinic" style="opacity:100;position:absolute;z-index:0" required=""><span class="radio-button-label w-form-label">Clinic</span></label>
                                                       <label class="radio-button-field w-radio">
                                                           <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div>
-                                                          <input type="radio" data-name="type-of-facility" id="type-of-facility-3" name="type-of-facility" value="Quarantine Center" style="opacity:100;position:absolute;z-index:0" required=""><span class="radio-button-label w-form-label">Quarantine Center</span></label>
+                                                          <input type="radio" data-name="type-of-facility" id="type-of-facility-3" name="type-of-facility" value="Quarantine Center" style="opacity:100;position:absolute;z-index:0" required=""><span class="radio-button-label w-form-label">Quarantine Center</span></label> -->
                                                   </div>
                                                 </div>
                                                 <div class="form-section-div">
@@ -272,30 +280,24 @@
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89e56bbebe7d2e8604de36" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="js/webflow.js" type="text/javascript"></script>
     <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
-    <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyCH5YVPcxW3xRj0mkCAwUFGww1F9bV2I2A",
-            authDomain: "hospital-erp-iitbact.firebaseapp.com",
-            databaseURL: "https://hospital-erp-iitbact.firebaseio.com",
-            projectId: "hospital-erp-iitbact",
-            storageBucket: "hospital-erp-iitbact.appspot.com",
-            messagingSenderId: "45869083694",
-            appId: "1:45869083694:web:a56cb0121b8cff0fc583bf",
-            measurementId: "G-X61VRRK271"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
+    <script>  
+      // Your web app's Firebase configuration
+          var firebaseConfig = {
+          apiKey: "AIzaSyAtDZfhftwpIpN9rZ5I4GHYijGuCbZbib0",
+          authDomain: "hospital-erp-prod.firebaseapp.com",
+          databaseURL: "https://hospital-erp-prod.firebaseio.com",
+          projectId: "hospital-erp-prod",
+          storageBucket: "hospital-erp-prod.appspot.com",
+          messagingSenderId: "374895034375",
+          appId: "1:374895034375:web:68dac98f0009c12906aaa2",
+          measurementId: "G-FMK8FK9CQ1"
+          };
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
     </script>
     <script>
         $("#password-2").keyup(function(e){
@@ -312,7 +314,7 @@
           var user_s_name = $("#user-s-name").val();
           var password_1 = $("#password-1").val();
           var password_2 = $("#password-2").val();
-          var type_of_facility = null;
+          var type_of_facility = $("#type-of-facility").val();
           var facility_name = $("#facility-name").val();
           var area = $("#area").val();
           var jurisdiction = $("#jurisdiction").val();
@@ -339,23 +341,23 @@
             return ;
           }
 
-          $('#signup-form input').each(function(index){  
-              var input = $(this);
-              if($(this).is(':checked')) { 
-                if(input.attr("name")=="type-of-facility"){
-                  type_of_facility=input.val();
-                }
-              }
-          });
+        //   $('#signup-form input').each(function(index){  
+        //       var input = $(this);
+        //       if($(this).is(':checked')) { 
+        //         if(input.attr("name")=="type-of-facility"){
+        //           type_of_facility=input.val();
+        //         }
+        //       }
+        //   });
           
-        firebase.auth().createUserWithEmailAndPassword(username, password)
+        firebase.auth().signInWithEmailAndPassword(username, password)
         .then(function(res){
           var user = res.user;
           alert(JSON.stringify(user));
           user.getIdToken().then(function(authToken) {
             // Send token to your backend via HTTPS
             window.localStorage.setItem("authToken",authToken);
-            var url ="http://staging.iitbact.org:8080/hospitalerp/api/register/facility";
+            var url ="http://staging.iitbact.org:8080/hospitalerp/api/add/facility/profile/1";
             var data={
                 "authToken":authToken,
                 "data": {
@@ -405,16 +407,17 @@
               url: url,
               data: JSON.stringify(data),
               headers: {"Content-Type":"application/json"},
-              success: function(data){
-                alert("Data: " + data );
+              success: function(jqXHR, textStatus, data1){
+                alert("Data: " + data1 );
               },
-              error: function(jqXHR, textStatus, error){
-                user.delete().then(function() {
-                  // User deleted.
-                }).catch(function(error) {
-                  // An error happened.
-                });
-              },
+              // error: function(jqXHR, textStatus, error){
+              //   user.delete().then(function() {
+              //     // User deleted.
+              //     alert("user deleted");
+              //   }).catch(function(error) {
+              //     // An error happened.
+              //   });
+              // },
               dataType: 'text/json'
             });
           }).catch(function(error) {
