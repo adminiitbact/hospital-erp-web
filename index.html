@@ -29,19 +29,19 @@
               <div class="div-block-27">
                 <div class="logo-div"></div>
                 <div class="heading-white side-panel">Welcome to </div>
-                <div class="heading-white side-panel bold">safeco web portal</div>
+                <div class="heading-white side-panel bold">cov2 web portal</div>
               </div>
               <div class="div-block-29">
                 <div class="div-block-28">
-                  <!-- <a href="signup-form.html" class="link-block-2 w-inline-block">
+                  <!-- <a href="profile-form.html" class="link-block-2 w-inline-block">
                     <div class="text-block-2">Signup Page</div>
                   </a> -->
                   <a href="index.html" aria-current="page" class="link-block-2 w-inline-block w--current">
                     <div class="text-block-2">Login Page</div>
                   </a>
-                  <a href="status-form.html" class="link-block-2 w-inline-block">
+                  <!-- <a href="status-form.html" class="link-block-2 w-inline-block">
                     <div class="text-block-2">Status Form</div>
-                  </a>
+                  </a> -->
                 </div>
               </div>
             </div>
@@ -61,9 +61,9 @@
                       <div class="login-formfield-div"><label for="Username" class="field-label">Username</label><input type="text" class="login-text-field w-input" maxlength="256" name="Username" data-name="Username" placeholder="Username" id="Username" required=""></div>
                       <div class="login-formfield-div"><label for="Password" class="field-label">Password</label><input type="password" class="login-text-field password w-input" maxlength="256" name="Password" data-name="Password" placeholder="Password" id="Password" required=""></div>
                     </div><input type="submit" value="Login" data-wait="Please wait..." class="login-button w-button">
-                    <div class="div-block-9"><a href="#" class="field-label links">Forgot Password?</a>
-                      <!-- <div class="field-label centered">Not a member? <a href="signup-form.html"><strong>Signup</strong></a></div> -->
-                    </div>
+                    <!-- <div class="div-block-9"><a href="#" class="field-label links">Forgot Password?</a>
+                      <div class="field-label centered">Not a member? <a href="profile-form.html"><strong>Signup</strong></a></div> 
+                    </div>-->
                   </form>
                   <div class="w-form-done">
                     <div>Thank you! Your submission has been received!</div>
@@ -81,6 +81,7 @@
     </div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89e56bbebe7d2e8604de36" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="js/config.js" type="text/javascript"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
@@ -89,16 +90,6 @@
   <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
   <script>  
     // Your web app's Firebase configuration
-        var firebaseConfig = {
-        apiKey: "AIzaSyAtDZfhftwpIpN9rZ5I4GHYijGuCbZbib0",
-        authDomain: "hospital-erp-prod.firebaseapp.com",
-        databaseURL: "https://hospital-erp-prod.firebaseio.com",
-        projectId: "hospital-erp-prod",
-        storageBucket: "hospital-erp-prod.appspot.com",
-        messagingSenderId: "374895034375",
-        appId: "1:374895034375:web:68dac98f0009c12906aaa2",
-        measurementId: "G-FMK8FK9CQ1"
-        };
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
   </script>
