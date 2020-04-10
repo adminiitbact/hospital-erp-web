@@ -44,7 +44,7 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
         <div class="w-col w-col-1">
           <div class="div-block-2 status-form">
             <div class="section">
-              <div class="div-block-26"><a href="index.html" class="logo-div w-inline-block"></a></div>
+              <div class="div-block-26"><a href="#" class="logo-div w-inline-block"></a></div>
             </div>
           </div>
           <div class="section">
@@ -61,7 +61,7 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                   <div class="div-block-36">
                     <div class="hospital-profile-header-div">
                       <h1 class="heading-2" id="facility_name">Facility Name</h1>
-                      <div class="text-block-6" id="area">Facility Address</div>
+                      <div class="text-block-6"><span id="area"> Facility Address</span>-<span id="jurisdiction"></span></div>
                     </div><a href="profile-form.html" class="button w-button">Edit Profile</a></div>
                 </div>
                 <div class="section-6">
@@ -260,30 +260,30 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                               <div class="form-section-div">
                                 <div class="subheading">A1. Isolation Facilities</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="isolation_facilities_total_beds" class="field-label">Total Beds</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="isolation_facilities_total_beds" data-name="isolation_facilities_total_beds" placeholder="" id="isolation_facilities_total_beds"></div>
-                                  <div class="status-form-2-col-div"><label for="isolation_facilities_max_capacity" class="field-label">Max capacity</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="isolation_facilities_max_capacity" data-name="isolation_facilities_max_capacity" placeholder="" id="isolation_facilities_max_capacity"></div>
-                                  <div class="status-form-2-col-div"><label for="isolation_facilities_total_available" class="field-label">Total Available</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="isolation_facilities_total_available" data-name="isolation_facilities_total_available" placeholder="" id="isolation_facilities_total_available"></div>
+                                  <div class="status-form-2-col-div"><label for="isolation_facilities_total_beds" class="field-label">Total Beds</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="isolation_facilities_total_beds" data-name="isolation_facilities_total_beds" id="isolation_facilities_total_beds"></div>
+                                  <div class="status-form-2-col-div"><label for="isolation_facilities_max_capacity" class="field-label">Max capacity</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="isolation_facilities_max_capacity" data-name="isolation_facilities_max_capacity" id="isolation_facilities_max_capacity"></div>
+                                  <div class="status-form-2-col-div"><label for="isolation_facilities_total_available" class="field-label">Total Available</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="isolation_facilities_total_available" data-name="isolation_facilities_total_available" id="isolation_facilities_total_available"></div>
                                 </div>
                               </div>
                               <div class="form-section-div">
                                 <div class="subheading">A2. ICU Facilities</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="icu_facilities_total_beds_available" class="field-label">Total Beds Available</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="icu_facilities_total_beds_available" data-name="icu_facilities_total_beds_available" placeholder="" id="icu_facilities_total_beds_available"></div>
-                                  <div class="status-form-2-col-div"><label for="icu_facilities_currently_occupied" class="field-label">Currently Occupied</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="icu_facilities_currently_occupied" data-name="icu_facilities_currently_occupied" placeholder="" id="icu_facilities_currently_occupied"></div>
+                                  <div class="status-form-2-col-div"><label for="icu_facilities_total_beds_available" class="field-label">Total Beds Available</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="icu_facilities_total_beds_available" data-name="icu_facilities_total_beds_available" id="icu_facilities_total_beds_available"></div>
+                                  <div class="status-form-2-col-div"><label for="icu_facilities_currently_occupied" class="field-label">Currently Occupied</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="icu_facilities_currently_occupied" data-name="icu_facilities_currently_occupied" id="icu_facilities_currently_occupied"></div>
                                 </div>
                               </div>
                               <div class="form-section-div">
                                 <div class="subheading">A3. Ventilators</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="ventilators_available" class="field-label">Available (Total)</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="ventilators_available" data-name="ventilators_available" placeholder="" id="ventilators_available"></div>
-                                  <div class="status-form-2-col-div"><label for="ventilators_allocated_covid" class="field-label">Allocated for Covid-19</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="ventilators_allocated_covid" data-name="ventilators_allocated_covid" placeholder="" id="ventilators_allocated_covid"></div>
+                                  <div class="status-form-2-col-div"><label for="ventilators_available" class="field-label">Available (Total)</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="ventilators_available" data-name="ventilators_available" id="ventilators_available"></div>
+                                  <div class="status-form-2-col-div"><label for="ventilators_allocated_covid" class="field-label">Allocated for Covid-19</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="ventilators_allocated_covid" data-name="ventilators_allocated_covid" id="ventilators_allocated_covid"></div>
                                 </div>
                               </div>
                               <div class="form-section-div">
                                 <div class="subheading">A4. Ambulance</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="ambulance_total" class="field-label">Available (Total)</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="ambulance_total" data-name="ambulance_total" placeholder="" id="ambulance_total"></div>
-                                  <div class="status-form-2-col-div"><label for="ambulance_allocated_covid" class="field-label">Allocated for Covid-19</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="ambulance_allocated_covid" data-name="ambulance_allocated_covid" placeholder="" id="ambulance_allocated_covid"></div>
+                                  <div class="status-form-2-col-div"><label for="ambulance_total" class="field-label">Available (Total)</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="ambulance_total" data-name="ambulance_total" id="ambulance_total"></div>
+                                  <div class="status-form-2-col-div"><label for="ambulance_allocated_covid" class="field-label">Allocated for Covid-19</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="ambulance_allocated_covid" data-name="ambulance_allocated_covid" id="ambulance_allocated_covid"></div>
                                 </div>
                               </div>
                               <div class="button-div"><input type="reset" id="cancel_hospital_assets" value="Cancel" data-wait="Please wait..." class="signup-button status-form clear-form w-button"><input type="submit" id="update_hospital_assets" value="update" data-wait="Please wait..." class="signup-button status-form w-button"></div>
@@ -311,22 +311,22 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                               <div class="form-section-div">
                                 <div class="subheading">DOctors</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="total_doctors" class="field-label">Total Doctors</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="total_doctors" data-name="total_doctors" placeholder="" id="total_doctors"></div>
+                                  <div class="status-form-2-col-div"><label for="total_doctors" class="field-label">Total Doctors</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="total_doctors" data-name="total_doctors" id="total_doctors"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="check_physicians" class="field-label">Chest Physicians</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="check_physicians" data-name="check_physicians" placeholder="" id="check_physicians"></div>
+                                  <div class="status-form-2-col-div"><label for="check_physicians" class="field-label">Chest Physicians</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="check_physicians" data-name="check_physicians" id="check_physicians"></div>
                                 </div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="anesthesiologists" class="field-label">Anesthesiologists</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="anesthesiologists" data-name="anesthesiologists" placeholder="" id="anesthesiologists"></div>
+                                  <div class="status-form-2-col-div"><label for="anesthesiologists" class="field-label">Anesthesiologists</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="anesthesiologists" data-name="anesthesiologists" id="anesthesiologists"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="nurses" class="field-label">Nurses</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="nurses" data-name="nurses" placeholder="" id="nurses"></div>
+                                  <div class="status-form-2-col-div"><label for="nurses" class="field-label">Nurses</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="nurses" data-name="nurses" id="nurses"></div>
                                 </div>
                               </div>
                               <!-- <div class="form-section-div">
                                 <div class="subheading">Additional DOctor FIeld</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional Field</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional Field</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" id="name-7"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional Field</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
+                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional Field</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" id="name-2"></div>
                                 </div>
                               </div> -->
                               <div class="button-div"><input type="submit" id="cancel_medical_staff_details" value="Cancel" data-wait="Please wait..." class="signup-button status-form clear-form w-button"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form w-button" id="update_medical_staff_details"></div>
@@ -354,30 +354,30 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                               <div class="form-section-div">
                                 <div class="subheading">masks</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="n_95_masks" class="field-label">N-95 Masks</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="n_95_masks" data-name="n_95_masks" placeholder="" id="n_95_masks"></div>
+                                  <div class="status-form-2-col-div"><label for="n_95_masks" class="field-label">N-95 Masks</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="n_95_masks" data-name="n_95_masks" id="n_95_masks"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="surgical_mask" class="field-label">Surgical Masks</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="surgical_mask" data-name="surgical_mask" placeholder="" id="surgical_mask"></div>
+                                  <div class="status-form-2-col-div"><label for="surgical_mask" class="field-label">Surgical Masks</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="surgical_mask" data-name="surgical_mask" id="surgical_mask"></div>
                                 </div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="tpe_masks" class="field-label">TPE Masks</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="tpe_masks" data-name="tpe_masks" placeholder="" id="tpe_masks"></div>
+                                  <div class="status-form-2-col-div"><label for="tpe_masks" class="field-label">TPE Masks</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="tpe_masks" data-name="tpe_masks" id="tpe_masks"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="other_masks" class="field-label">Other Masks</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="other_masks" data-name="other_masks" placeholder="" id="other_masks"></div>
+                                  <div class="status-form-2-col-div"><label for="other_masks" class="field-label">Other Masks</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="other_masks" data-name="other_masks" id="other_masks"></div>
                                 </div>
                               </div>
                               <div class="form-section-div">
                                 <div class="subheading">ppe kits</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="hazmat_suits" class="field-label">Hazmat Suits</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="hazmat_suits" data-name="hazmat_suits" placeholder="" id="hazmat_suits"></div>
+                                  <div class="status-form-2-col-div"><label for="hazmat_suits" class="field-label">Hazmat Suits</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="hazmat_suits" data-name="hazmat_suits" id="hazmat_suits"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="face_shield" class="field-label">Face Shield</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="face_shield" data-name="face_shield" placeholder="" id="face_shield"></div>
+                                  <div class="status-form-2-col-div"><label for="face_shield" class="field-label">Face Shield</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="face_shield" data-name="face_shield" id="face_shield"></div>
                                 </div>
                               </div>
                               <!-- <div class="form-section-div">
                                 <div class="subheading">Additional Inventory</div>
                                 <div class="div-block-8">
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional field</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"></div>
+                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional field</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" id="name-7"></div>
                                   <div class="div-block-31"></div>
-                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional field</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
+                                  <div class="status-form-2-col-div"><label for="name" class="field-label">Additional field</label><input type="number" min=0 placeholder = "0" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" id="name-2"></div>
                                 </div>
                               </div> -->
                               <div class="form-section-div"></div>
@@ -405,33 +405,33 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                             <form id="compliance_checklist_form" name="compliance_checklist_form" data-name="Email Form">
                               <div class="form-section-div">
                                 <div class="div-block-41">
-                                  <div class="subheading _1">1. Are Sufficient Bed-Covers available ?</div><!--<select id="Yes-No" name="Yes-No" data-name="Yes / No" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select>--></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="bed_covers_required" data-name="bed_covers_required" placeholder="" id="bed_covers_required" ></div>
+                                  <div class="subheading _1">1. Are Sufficient Bed-Covers available ?</div><select name="bed_covers_available_yes_no" data-name="bed_covers_available_yes_no" id="bed_covers_available_yes_no"  class="text-field-design dropdown w-select"><option value="true">Yes</option><option value="false">No</option></select></div>
+                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 value = "0" class="text-field-design dropdown w-input" maxlength="256" name="bed_covers_available" data-name="bed_covers_available" id="bed_covers_available" ></div>
                               </div>
                               <div class="form-section-div">
                                 <div class="div-block-41">
-                                  <div class="subheading _1">2. Are sufficient Mattresses available?</div><!--<select id="Yes-No-4" name="Yes-No-4" data-name="Yes No 4" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select>--></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="mattresses_required" data-name="mattresses_required" placeholder="" id="mattresses_required" ></div>
+                                  <div class="subheading _1">2. Are sufficient Mattresses available?</div><select  name="mattresses_available_yes_no" data-name="mattresses_available_yes_no"  id="mattresses_available_yes_no" class="text-field-design dropdown w-select"><option value="true">Yes</option><option value="false">No</option></select></div>
+                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="mattresses_available" data-name="mattresses_available" id="mattresses_available" ></div>
                               </div>
                               <div class="form-section-div">
                                 <div class="div-block-41">
-                                  <div class="subheading _1">3. Other equipments for isolation wards available?</div><!--<select id="Yes-No-3" name="Yes-No-3" data-name="Yes No 3" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select>--></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="other_equipments_isolation_wards_required" data-name="other_equipments_isolation_wards_required" placeholder="" id="other_equipments_isolation_wards_required" ></div>
+                                  <div class="subheading _1">3. Other equipments for isolation wards available?</div><select  name="other_equipments_isolation_wards_available_yes_no" data-name="other_equipments_isolation_wards_available_yes_no"  id="other_equipments_isolation_wards_available_yes_no" class="text-field-design dropdown w-select"><option value="true">Yes</option><option value="false">No</option></select></div>
+                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="other_equipments_isolation_wards_available" data-name="other_equipments_isolation_wards_available" id="other_equipments_isolation_wards_available" ></div>
                               </div>
                               <div class="form-section-div">
                                 <div class="div-block-41">
-                                  <div class="subheading _1">4. Is Drinking Water Facility Available</div><!--<select id="Yes-No-2" name="Yes-No-2" data-name="Yes No 2" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select>--></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="drinking_water_facility_required" data-name="drinking_water_facility_required" placeholder="" id="drinking_water_facility_required" ></div>
+                                  <div class="subheading _1">4. Is Drinking Water Facility Available</div><select  name="drinking_water_facility_available_yes_no" data-name="drinking_water_facility_available_yes_no"  id="drinking_water_facility_available_yes_no" class="text-field-design dropdown w-select"><option value="true">Yes</option><option value="false">No</option></select></div>
+                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="drinking_water_facility_available" data-name="drinking_water_facility_available" id="drinking_water_facility_available" ></div>
                               </div>
                               <div class="form-section-div">
                                 <div class="div-block-41">
-                                  <div class="subheading _1">5. Are sufficient number of Washrooms / Toilets available?</div><!--<select id="Yes-No-2" name="Yes-No-2" data-name="Yes No 2" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select>--></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="washrooms_required" data-name="washrooms_required" placeholder="" id="washrooms_required" ></div>
+                                  <div class="subheading _1">5. Are sufficient number of Washrooms / Toilets available?</div><select  name="washrooms_available_yes_no" data-name="washrooms_available_yes_no"  id="washrooms_available_yes_no" class="text-field-design dropdown w-select"><option value="true">Yes</option><option value="false">No</option></select></div>
+                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="washrooms_available" data-name="washrooms_available" id="washrooms_available" ></div>
                               </div>
                               <div class="form-section-div">
                                 <div class="div-block-41">
-                                  <div class="subheading _1">6. Are cleaning services available?</div><!--<select id="Yes-No-2" name="Yes-No-2" data-name="Yes No 2" class="text-field-design dropdown w-select"><option value="Yes">Yes</option><option value="No">No</option></select>--></div>
-                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="cleaning_services_required" data-name="cleaning_services_required" placeholder="" id="cleaning_services_required" ></div>
+                                  <div class="subheading _1">6. Are cleaning services available?</div><select  name="cleaning_services_available_yes_no" data-name="cleaning_services_available_yes_no"  id="cleaning_services_available_yes_no" class="text-field-design dropdown w-select"><option value="true">Yes</option><option value="false">No</option></select></div>
+                                <div class="checklist-dropdown-div"><label for="name-8" class="field-label dropdown">If <strong>NOT</strong> <strong>AVAILABLE</strong>, How many are required ?</label><input type="number" min=0 placeholder = "0" class="text-field-design dropdown w-input" maxlength="256" name="cleaning_services_available" data-name="cleaning_services_available" id="cleaning_services_available" ></div>
                               </div>
                               <div class="button-div"><input type="submit" id="cancel_compliance_checklist" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form w-button"></div>
                             </form>
@@ -508,15 +508,15 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
           {
             "authToken":window.localStorage.getItem("authToken"),
             "data":{ 
-                "isolation_facilities_total_beds":$("#isolation_facilities_total_beds").val(),
-                "isolation_facilities_max_capacity":$("#isolation_facilities_max_capacity").val(),
-                "isolation_facilities_total_available":$("#isolation_facilities_total_available").val(),
-                "icu_facilities_total_beds_available":$("#icu_facilities_total_beds_available").val(),
-                "icu_facilities_currently_occupied":$("#icu_facilities_currently_occupied").val(),
-                "ventilators_available":$("#ventilators_available").val(),
-                "ventilators_allocated_covid":$("#ventilators_allocated_covid").val(),
-                "ambulance_total":$("#ambulance_total").val(),
-                "ambulance_allocated_covid":$("#ambulance_allocated_covid").val(),
+                "isolation_facilities_total_beds":parseInt($("#isolation_facilities_total_beds").val()),
+                "isolation_facilities_max_capacity":parseInt($("#isolation_facilities_max_capacity").val()),
+                "isolation_facilities_total_available":parseInt($("#isolation_facilities_total_available").val()),
+                "icu_facilities_total_beds_available":parseInt($("#icu_facilities_total_beds_available").val()),
+                "icu_facilities_currently_occupied":parseInt($("#icu_facilities_currently_occupied").val()),
+                "ventilators_available":parseInt($("#ventilators_available").val()),
+                "ventilators_allocated_covid":parseInt($("#ventilators_allocated_covid").val()),
+                "ambulance_total":parseInt($("#ambulance_total").val()),
+                "ambulance_allocated_covid":parseInt($("#ambulance_allocated_covid").val()),
             }
           };
           assetsUpdateURL = apiURL+"facility/"+facilityData.facilityId+"/assets";
@@ -545,10 +545,10 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
           {
             "authToken":window.localStorage.getItem("authToken"),
             "data":{ 
-              "total_doctors":$("#total_doctors").val(),
-              "check_physicians":$("#check_physicians").val(),
-              "anesthesiologists":$("#anesthesiologists").val(),
-              "nurses":$("#nurses").val(),
+              "total_doctors":parseInt($("#total_doctors").val()),
+              "check_physicians":parseInt($("#check_physicians").val()),
+              "anesthesiologists":parseInt($("#anesthesiologists").val()),
+              "nurses":parseInt($("#nurses").val()),
             }
           };
           medstaffUpdateURL = apiURL+"facility/"+facilityData.facilityId+"/medstaff";
@@ -577,12 +577,12 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
           {
             "authToken":window.localStorage.getItem("authToken"),
             "data":{ 
-              "n_95_masks":$("#n_95_masks").val(),
-              "surgical_mask":$("#surgical_mask").val(),
-              "tpe_masks":$("#tpe_masks").val(),
-              "other_masks":$("#other_masks").val(),
-              "hazmat_suits":$("#hazmat_suits").val(),
-              "face_shield":$("#face_shield").val(),
+              "n_95_masks":parseInt($("#n_95_masks").val()),
+              "surgical_mask":parseInt($("#surgical_mask").val()),
+              "tpe_masks":parseInt($("#tpe_masks").val()),
+              "other_masks":parseInt($("#other_masks").val()),
+              "hazmat_suits":parseInt($("#hazmat_suits").val()),
+              "face_shield":parseInt($("#face_shield").val()),
             }
           };
           inventoryUpdateURL = apiURL+"facility/"+facilityData.facilityId+"/inventory";
@@ -610,12 +610,18 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
           {
             "authToken":window.localStorage.getItem("authToken"),
             "data":{ 
-              "bed_covers_required":$("#bed_covers_required").val(),
-              "mattresses_required":$("#mattresses_required").val(),
-              "other_equipments_isolation_wards_required":$("#other_equipments_isolation_wards_required").val(),
-              "drinking_water_facility_required":$("#drinking_water_facility_required").val(),
-              "washrooms_required":$("#washrooms_required").val(),
-              "cleaning_services_required":$("#cleaning_services_required").val(),
+              "bed_covers_available":parseInt($("#bed_covers_available").val()),
+              "bed_covers_available_yes_no":$("#bed_covers_available_yes_no").val()=="true"?true:false,
+              "mattresses_available":parseInt($("#mattresses_available").val()),
+              "mattresses_available_yes_no":$("#mattresses_available_yes_no").val()=="true"?true:false,
+              "other_equipments_isolation_wards_available":parseInt($("#other_equipments_isolation_wards_available").val()),
+              "other_equipments_isolation_wards_available_yes_no":$("#other_equipments_isolation_wards_available_yes_no").val()=="true"?true:false,
+              "drinking_water_facility_available":parseInt($("#drinking_water_facility_available").val()),
+              "drinking_water_facility_available_yes_no":$("#drinking_water_facility_available_yes_no").val()=="true"?true:false,
+              "washrooms_available":parseInt($("#washrooms_available").val()),
+              "washrooms_available_yes_no":$("#washrooms_available_yes_no").val()=="true"?true:false,
+              "cleaning_services_available":parseInt($("#cleaning_services_available").val()),
+              "cleaning_services_available_yes_no":$("#cleaning_services_available_yes_no").val()=="true"?true:false,
             }
           };
           checklistUpdateURL = apiURL+"facility/"+facilityData.facilityId+"/checklist";
@@ -698,16 +704,59 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
           $("#qs_face_shield").html(facilityData.facilityInventory.data.face_shield);
         }
         function setComplianceChecklist(){
-          $("#bed_covers_required").val(facilityData.facilityChecklist.data.bed_covers_required);
-          $("#mattresses_required").val(facilityData.facilityChecklist.data.mattresses_required);
-          $("#other_equipments_isolation_wards_required").val(facilityData.facilityChecklist.data.other_equipments_isolation_wards_required);
-          $("#drinking_water_facility_required").val(facilityData.facilityChecklist.data.drinking_water_facility_required);
-          $("#washrooms_required").val(facilityData.facilityChecklist.data.washrooms_required);
-          $("#cleaning_services_required").val(facilityData.facilityChecklist.data.cleaning_services_required);
+          $("#bed_covers_available_yes_no").val(facilityData.facilityChecklist.data.bed_covers_available_yes_no?"true":"false");
+          $("#mattresses_available_yes_no").val(facilityData.facilityChecklist.data.mattresses_available_yes_no?"true":"false");
+          $("#other_equipments_isolation_wards_available_yes_no").val(facilityData.facilityChecklist.data.other_equipments_isolation_wards_available_yes_no?"true":"false");
+          $("#drinking_water_facility_available_yes_no").val(facilityData.facilityChecklist.data.drinking_water_facility_available_yes_no?"true":"false");
+          $("#washrooms_available_yes_no").val(facilityData.facilityChecklist.data.washrooms_available_yes_no?"true":"false");
+          $("#cleaning_services_available_yes_no").val(facilityData.facilityChecklist.data.cleaning_services_available_yes_no?"true":"false");
+          if(facilityData.facilityChecklist.data.bed_covers_available_yes_no){
+            $("#bed_covers_available").prop("disabled",true);
+            $("#bed_covers_available").val(0);
+          }else{
+            $("#bed_covers_available").prop("disabled",false);
+            $("#bed_covers_available").val(facilityData.facilityChecklist.data.bed_covers_available);
+          }
+          if(facilityData.facilityChecklist.data.mattresses_available_yes_no){
+            $("#mattresses_available").prop("disabled",true);
+            $("#mattresses_available").val(0);
+          }else{
+            $("#mattresses_available").prop("disabled",false);
+            $("#mattresses_available").val(facilityData.facilityChecklist.data.mattresses_available);
+          }
+          if(facilityData.facilityChecklist.data.other_equipments_isolation_wards_available_yes_no){
+            $("#other_equipments_isolation_wards_available").prop("disabled",true);
+            $("#other_equipments_isolation_wards_available").val(0);
+          }else{
+            $("#other_equipments_isolation_wards_available").prop("disabled",false);
+            $("#other_equipments_isolation_wards_available").val(facilityData.facilityChecklist.data.other_equipments_isolation_wards_available);
+          }
+          if(facilityData.facilityChecklist.data.drinking_water_facility_available_yes_no){
+            $("#drinking_water_facility_available").prop("disabled",true);
+            $("#drinking_water_facility_available").val(0);
+          }else{
+            $("#drinking_water_facility_available").prop("disabled",false);
+            $("#drinking_water_facility_available").val(facilityData.facilityChecklist.data.drinking_water_facility_available);
+          }
+          if(facilityData.facilityChecklist.data.washrooms_available_yes_no){
+            $("#washrooms_available").prop("disabled",true);
+            $("#washrooms_available").val(0);
+          }else{
+            $("#washrooms_available").prop("disabled",false);
+            $("#washrooms_available").val(facilityData.facilityChecklist.data.washrooms_available);
+          }
+          if(facilityData.facilityChecklist.data.cleaning_services_available_yes_no){
+            $("#cleaning_services_available").prop("disabled",true);
+            $("#cleaning_services_available").val(0);
+          }else{
+            $("#cleaning_services_available").prop("disabled",false);
+            $("#cleaning_services_available").val(facilityData.facilityChecklist.data.cleaning_services_available);
+          }
         }
         function setFacilityData(){
           $("#facility_name").html(facilityData.name);
           $("#area").html(facilityData.area);
+          $("#jurisdiction").html(facilityData.jurisdiction);
           $("#organisation_email").html(facilityData.email);
           $("#organisation_telephone").html(facilityData.telephone);
         }
@@ -754,7 +803,32 @@ padding: 2.5px; /* Controls the padding of the Scrollbar */
                 }//error facility
               });//facility ajax end
         }//refresh Facility function
-         
+      
+        $("#bed_covers_available_yes_no").change(function(e){
+            $("#bed_covers_available").prop("disabled",$("#bed_covers_available_yes_no").val()=="true"?true:false);
+            $("#bed_covers_available").val(0);
+        });
+        $("#mattresses_available_yes_no").change(function(e){
+            $("#mattresses_available").prop("disabled",$("#mattresses_available_yes_no").val()=="true"?true:false);
+            $("#mattresses_available").val(0);
+        });
+        $("#other_equipments_isolation_wards_available_yes_no").change(function(e){
+            $("#other_equipments_isolation_wards_available").prop("disabled",$("#other_equipments_isolation_wards_available_yes_no").val()=="true"?true:false);
+            $("#other_equipments_isolation_wards_available").val(0);
+        });
+        $("#drinking_water_facility_available_yes_no").change(function(e){
+            $("#drinking_water_facility_available").prop("disabled",$("#drinking_water_facility_available_yes_no").val()=="true"?true:false);
+            $("#drinking_water_facility_available").val(0);
+        });
+        $("#washrooms_available_yes_no").change(function(e){
+            $("#washrooms_available").prop("disabled",$("#washrooms_available_yes_no").val()=="true"?true:false);
+            $("#washrooms_available").val(0);
+        });
+        $("#cleaning_services_available_yes_no").change(function(e){
+            $("#cleaning_services_available").prop("disabled",$("#cleaning_services_available_yes_no").val()=="true"?true:false);
+            $("#cleaning_services_available").val(0);
+        });
+        
     });//document ready
     
   </script>
