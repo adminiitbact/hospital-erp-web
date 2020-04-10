@@ -34,7 +34,7 @@ jobs:
         aws_access_key: ${{ secrets.aws_access_key }}
         aws_secret_key: ${{ secrets.aws_secret_key }}
         region: ap-south-1
-        application_name: php-mode
-        environment_name: PhpMode-env
+        application_name: iitb-act-frontend-app
+        environment_name: iitbactfrontend-env
         version_label: ${{ github.sha }}
         deployment_package: release.zip
