@@ -3,7 +3,7 @@ var prod = true;
 if(prod){
     protocol="https";
     hostname="cov2.in";
-    port="80";
+    port="443";
 }else{
     protocol="http"
     hostname="staging.iitbact.org";
