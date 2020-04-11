@@ -1,7 +1,7 @@
 var prod = true;
 
 if(prod){
-    protocol="http";
+    protocol="https";
     hostname="cov2.in";
     port="80";
 }else{
