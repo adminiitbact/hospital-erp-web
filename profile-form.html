@@ -30,7 +30,6 @@
     </script>
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="images/webclip.png" rel="apple-touch-icon">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body class="body">
@@ -51,7 +50,7 @@
                                 </a> -->
                                 <a href="#" id="logout" class="logout-button w-inline-block">
                                     <div>Logout</div>
-                                  </a>
+                                </a>
                                 <a href="profile-form.html" aria-current="page" class="link-block-2 w-inline-block w--current">
                                     <div class="text-block-2">Profile Page</div>
                                 </a>
@@ -77,7 +76,7 @@
                             </div>
                         </div>
                         <div class="section-3">
-                            <form id="profile-form"  name="profile-form" data-name="Profile Form" class="signup-form-column">
+                            <form id="profile-form" name="profile-form" data-name="Profile Form" class="signup-form-column">
                                 <div class="columns w-row">
                                     <div class="column-2 w-col w-col-6 w-col-stack">
                                         <div class="div-block-25">
@@ -114,7 +113,7 @@
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div">
                                                             <label for="type_of_facility" class="field-label">Type of your Facility</label>
-                                                            <select id="type_of_facility" name="type_of_facility" data-name="type_of_facility" class="login-text-field plain w-select" required="" >
+                                                            <select id="type_of_facility" name="type_of_facility" data-name="type_of_facility" class="login-text-field plain w-select" required="">
                                                                 <option value="">Select one...</option>
                                                                 <option value="Facility">Facility</option>
                                                                 <option value="Clinic">Clinic</option>
@@ -130,27 +129,27 @@
                                                       <label class="radio-button-field w-radio">
                                                           <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div>
                                                           <input type="radio" data-name="type_of_facility" id="type_of_facility-3" name="type_of_facility" value="Quarantine Center" style="opacity:100;position:absolute;z-index:0" required=""><span class="radio-button-label w-form-label">Quarantine Center</span></label> -->
-                                                  </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-section-div">
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
                                                             <label for="facility_name" class="field-label">Name of your Facility</label>
-                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="facility_name" data-name="facility_name" placeholder="Name of Facility " id="facility_name" required="" >
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="facility_name" data-name="facility_name" placeholder="Name of Facility " id="facility_name" required="">
                                                         </div>
                                                         <div class="login-formfield-div">
                                                             <label for="area" class="field-label">Your Area</label>
-                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="area" data-name="area" placeholder="Area" id="area" required="" >
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="area" data-name="area" placeholder="Area" id="area" required="">
                                                         </div>
                                                     </div>
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
                                                             <label for="jurisdiction" class="field-label">Jurisdiction</label>
-                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="jurisdiction" data-name="jurisdiction" placeholder="Jurisdiction" id="jurisdiction" required="" >
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="jurisdiction" data-name="jurisdiction" placeholder="Jurisdiction" id="jurisdiction" required="">
                                                         </div>
                                                         <div class="login-formfield-div">
                                                             <label for="is_government_facility" class="field-label">Are you a Government Facility?</label>
-                                                            <select id="is_government_facility" name="is_government_facility" data-name="is_government_facility" class="login-text-field plain w-select" required="" >
+                                                            <select id="is_government_facility" name="is_government_facility" data-name="is_government_facility" class="login-text-field plain w-select" required="">
                                                                 <option value="">Select one...</option>
                                                                 <option value="true">Yes</option>
                                                                 <option value="false">No</option>
@@ -160,11 +159,12 @@
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
                                                             <label for="organisation_telephone" class="field-label">Organisation&#x27;s Telephone</label>
-                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" max=9999999999 min=999999999 class="login-text-field plain w-input" maxlength="256" name="organisation_telephone" data-name="organisation_telephone" placeholder="Telephone" id="organisation_telephone" required="" >
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" max=9999999999 min=999999999 class="login-text-field plain w-input" maxlength="256" name="organisation_telephone" data-name="organisation_telephone" placeholder="Telephone" id="organisation_telephone"
+                                                                required="">
                                                         </div>
                                                         <div class="login-formfield-div">
                                                             <label for="organisation_email" class="field-label">Organisation&#x27;s Email</label>
-                                                            <input type="email" class="login-text-field plain w-input" maxlength="256" name="organisation_email" data-name="organisation_email" placeholder="Email" id="organisation_email" required="" >
+                                                            <input type="email" class="login-text-field plain w-input" maxlength="256" name="organisation_email" data-name="organisation_email" placeholder="Email" id="organisation_email" required="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -175,7 +175,7 @@
                                                     <div>Oops! Something went wrong while submitting the form.</div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="column-3 w-col w-col-6 w-col-stack">
@@ -187,11 +187,12 @@
                                                 <div class="div-block-22">
                                                     <div class="login-formfield-div big">
                                                         <label for="primary_contact_person_name" class="field-label">Name</label>
-                                                        <input type="text" class="login-text-field plain w-input" maxlength="256" name="primary_contact_person_name" data-name="primary_contact_person_name" placeholder="First Name" id="primary_contact_person_name" required="" >
+                                                        <input type="text" class="login-text-field plain w-input" maxlength="256" name="primary_contact_person_name" data-name="primary_contact_person_name" placeholder="First Name" id="primary_contact_person_name" required="">
                                                     </div>
                                                     <div class="login-formfield-div">
                                                         <label for="primary_contact_person_mobile" class="field-label">Mobile</label>
-                                                        <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="primary_contact_person_mobile" data-name="primary_contact_person_mobile" placeholder="+91" id="primary_contact_person_mobile" required="" >
+                                                        <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="login-text-field plain w-input" maxlength="256" name="primary_contact_person_mobile" data-name="primary_contact_person_mobile" placeholder="+91" id="primary_contact_person_mobile"
+                                                            required="">
                                                     </div>
                                                 </div>
                                                 <div class="form-title-div">
@@ -201,11 +202,11 @@
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
                                                             <label for="ambulance_incharge_name" class="field-label">Name</label>
-                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="ambulance_incharge_name" data-name="ambulance_incharge_name" placeholder="First Name" id="ambulance_incharge_name"  >
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="ambulance_incharge_name" data-name="ambulance_incharge_name" placeholder="First Name" id="ambulance_incharge_name">
                                                         </div>
                                                         <div class="login-formfield-div">
                                                             <label for="ambulance_incharge_mobile" class="field-label">Mobile</label>
-                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="ambulance_incharge_mobile" data-name="ambulance_incharge_mobile" placeholder="+91" id="ambulance_incharge_mobile"  >
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="login-text-field plain w-input" maxlength="256" name="ambulance_incharge_mobile" data-name="ambulance_incharge_mobile" placeholder="+91" id="ambulance_incharge_mobile">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -216,11 +217,11 @@
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
                                                             <label for="health_checkup_incharge_name" class="field-label">Name</label>
-                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="health_checkup_incharge_name" data-name="health_checkup_incharge_name" placeholder="First Name" id="health_checkup_incharge_name"  >
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="health_checkup_incharge_name" data-name="health_checkup_incharge_name" placeholder="First Name" id="health_checkup_incharge_name">
                                                         </div>
                                                         <div class="login-formfield-div">
                                                             <label for="health_checkup_incharge_mobile" class="field-label">Mobile</label>
-                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="health_checkup_incharge_mobile" data-name="health_checkup_incharge_mobile" placeholder="+91" id="health_checkup_incharge_mobile"  >
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="login-text-field plain w-input" maxlength="256" name="health_checkup_incharge_mobile" data-name="health_checkup_incharge_mobile" placeholder="+91" id="health_checkup_incharge_mobile">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -231,11 +232,11 @@
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
                                                             <label for="cleaning_incharge_name_1" class="field-label">Name</label>
-                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_name_1" data-name="cleaning_incharge_name_1" placeholder="First Name" id="cleaning_incharge_name_1"  >
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_name_1" data-name="cleaning_incharge_name_1" placeholder="First Name" id="cleaning_incharge_name_1">
                                                         </div>
                                                         <div class="login-formfield-div">
                                                             <label for="cleaning_incharge_mobile_1" class="field-label">Mobile</label>
-                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_mobile_1" data-name="cleaning_incharge_mobile_1" placeholder="+91" id="cleaning_incharge_mobile_1"  >
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_mobile_1" data-name="cleaning_incharge_mobile_1" placeholder="+91" id="cleaning_incharge_mobile_1">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -247,7 +248,7 @@
                                                         </div>
                                                         <div class="login-formfield-div">
                                                             <label for="cleaning_incharge_mobile_2" class="field-label">Mobile</label>
-                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength-10 class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_mobile_2" data-name="cleaning_incharge_mobile_2" placeholder="+91" id="cleaning_incharge_mobile_2"  >
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_mobile_2" data-name="cleaning_incharge_mobile_2" placeholder="+91" id="cleaning_incharge_mobile_2"  >
                                                         </div>
                                                     </div>
                                                 </div> -->
@@ -289,8 +290,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
-    <script>  
-      // Your web app's Firebase configuration
+    <script>
+        // Your web app's Firebase configuration
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
     </script>
@@ -302,72 +303,80 @@
         //     $("#password-message").hide();
         //   }
         // });
-        $(document).ready(function(){
-            $("#logout").click(function(){
+        $(document).ready(function() {
+            $("#logout").click(function() {
                 firebase.auth().signOut().then(function() {
                     // Sign-out successful.
                     window.localStorage.removeItem("authToken");
-                    window.location.href="index.html";
+                    window.location.href = "index.html";
                 }).catch(function(error) {
-                    alert("Error in Sign-out."+error);
+                    alert("Error in Sign-out." + error);
                 });
             });
-            if(window.localStorage.getItem("authToken")==null){
-                $("#logout").click();//logout if authToken is not available
+            if (window.localStorage.getItem("authToken") == null) {
+                $("#logout").click(); //logout if authToken is not available
                 return;
             }
             var facilityData = null;
-            var userProfileURL =apiURL+"hospital/user/profile";
+            var userProfileURL = apiURL + "hospital/user/profile";
             var dataAuthToken = {
-                "authToken":window.localStorage.getItem("authToken")
+                "authToken": window.localStorage.getItem("authToken")
             };
-            var headers = {"Content-Type":"application/json"};
+            var headers = {
+                "Content-Type": "application/json"
+            };
             $.ajax({
                 type: "POST",
                 url: userProfileURL,
                 data: JSON.stringify(dataAuthToken),
                 headers: headers,
-                success: function(res){
+                success: function(res) {
                     var userData = res.data;
                     var userProfile = userData.profile;
                     var facilityId = userProfile.facilityId;
                     refreshFacility(facilityId);
-                },//userProfile success function ends
-                error: function(jqXHR, textStatus, error){
-                alert("user profile error: "+error);
+                }, //userProfile success function ends
+                error: function(jqXHR, textStatus, error) {
+                    alert("user profile error: " + error);
                 },
-            });//ajax userProfile 
-            function refreshFacility(facilityId){
-                var facilityURL = apiURL+"facility/"+facilityId;
+            }); //ajax userProfile 
+            function refreshFacility(facilityId) {
+                var facilityURL = apiURL + "facility/" + facilityId;
                 $.ajax({
-                    type:"POST",
+                    type: "POST",
                     url: facilityURL,
                     data: JSON.stringify(dataAuthToken),
                     headers: headers,
-                    success: function(res){
+                    success: function(res) {
                         facilityData = res.data;
-                        try{
+                        try {
                             setFacilityData();
-                        }catch(e){console.error(e);}
-                        try{
+                        } catch (e) {
+                            console.error(e);
+                        }
+                        try {
                             setFacilityContactDetails();
-                        }catch(e){console.error(e);}
-                    },//success facility
-                    error: function (jqXHR,textStatus, error){
-                       alert("facility error: "+error);
-                    }//error facility
-                });//facility ajax end
+                        } catch (e) {
+                            console.error(e);
+                        }
+                    }, //success facility
+                    error: function(jqXHR, textStatus, error) {
+                            alert("facility error: " + error);
+                        } //error facility
+                }); //facility ajax end
             }
-            function setFacilityData(){
+
+            function setFacilityData() {
                 $("#type_of_facility").val(facilityData.facilityType);
                 $("#facility_name").val(facilityData.name);
                 $("#area").val(facilityData.area);
                 $("#organisation_email").val(facilityData.email);
                 $("#organisation_telephone").val(facilityData.telephone);
                 $("#jurisdiction").val(facilityData.jurisdiction);
-                $("#is_government_facility").val(facilityData.governmentHospital?"true":"false");
+                $("#is_government_facility").val(facilityData.governmentHospital ? "true" : "false");
             }
-            function setFacilityContactDetails(){
+
+            function setFacilityContactDetails() {
                 $("#primary_contact_person_name").val(facilityData.facilityContact.data.primary_contact_person_name);
                 $("#primary_contact_person_mobile").val(facilityData.facilityContact.data.primary_contact_person_mobile);
                 $("#ambulance_incharge_name").val(facilityData.facilityContact.data.ambulance_incharge_name);
@@ -377,10 +386,10 @@
                 $("#cleaning_incharge_name_1").val(facilityData.facilityContact.data.cleaning_incharge_name_1);
                 $("#cleaning_incharge_mobile_1").val(facilityData.facilityContact.data.cleaning_incharge_mobile_1);
             }
-            
 
-            $("#profile-form").submit(function(event){
-                var message="";
+
+            $("#profile-form").submit(function(event) {
+                var message = "";
                 //   var username = $("#username").val();
                 //   var user_s_name = $("#user-s-name").val();
                 //   var password_1 = $("#password-1").val();
@@ -420,29 +429,31 @@
                 //         }
                 //       }
                 //   });
-                
+
                 // Send token to your backend via HTTPS
                 var authToken = window.localStorage.getItem("authToken");
-                var facilityProfileURL = apiURL+"add/facility/profile/"+facilityData.facilityId;
-                var data={
-                    "authToken":authToken,
+                var facilityProfileURL = apiURL + "add/facility/profile/" + facilityData.facilityId;
+                var data = {
+                    "authToken": authToken,
                     "data": {
-                        "contact_data":{ "primary_contact_person_name":primary_contact_person_name,
-                                        "primary_contact_person_mobile":primary_contact_person_mobile,
-                                        "ambulance_incharge_name":ambulance_incharge_name,
-                                        "ambulance_incharge_mobile":ambulance_incharge_mobile,
-                                        "health_checkup_incharge_name":health_checkup_incharge_name,
-                                        "health_checkup_incharge_mobile":health_checkup_incharge_mobile,
-                                        "cleaning_incharge_name_1":cleaning_incharge_name_1,
-                                        "cleaning_incharge_mobile_1":cleaning_incharge_mobile_1
+                        "contact_data": {
+                            "primary_contact_person_name": primary_contact_person_name,
+                            "primary_contact_person_mobile": primary_contact_person_mobile,
+                            "ambulance_incharge_name": ambulance_incharge_name,
+                            "ambulance_incharge_mobile": ambulance_incharge_mobile,
+                            "health_checkup_incharge_name": health_checkup_incharge_name,
+                            "health_checkup_incharge_mobile": health_checkup_incharge_mobile,
+                            "cleaning_incharge_name_1": cleaning_incharge_name_1,
+                            "cleaning_incharge_mobile_1": cleaning_incharge_mobile_1
                         },
-                        "facility_data":{"type_of_facility":type_of_facility,
-                                        "facility_name":facility_name,
-                                        "area":area,
-                                        "jurisdiction":jurisdiction,
-                                        "is_government_facility":is_government_facility,
-                                        "organisation_telephone":organisation_telephone,
-                                        "organisation_email":organisation_email
+                        "facility_data": {
+                            "type_of_facility": type_of_facility,
+                            "facility_name": facility_name,
+                            "area": area,
+                            "jurisdiction": jurisdiction,
+                            "is_government_facility": is_government_facility,
+                            "organisation_telephone": organisation_telephone,
+                            "organisation_email": organisation_email
                         },
                         // "username":username,
                         // "user_s_name":user_s_name,
@@ -466,26 +477,28 @@
                         // "cleaning_incharge_mobile_2":cleaning_incharge_mobile_2,
                         // "consent_checkbox":consent_checkbox,
                     }
-                    };
+                };
                 $.ajax({
                     type: "POST",
                     url: facilityProfileURL,
                     data: JSON.stringify(data),
-                    headers: {"Content-Type":"application/json"},
-                    success: function(res){
-                        if(res.data.success){
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    success: function(res) {
+                        if (res.data.success) {
                             alert("Details updated successfully");
-                        }else{
-                            alert("Error: "+res.error)
+                        } else {
+                            alert("Error: " + res.error)
                         }
                     },
-                    error: function(jqXHR, textStatus, error){
-                        alert("Error in updating details: "+error)
+                    error: function(jqXHR, textStatus, error) {
+                        alert("Error in updating details: " + error)
                     },
                 });
                 event.preventDefault();
             });
-    
+
         });
     </script>
 </body>
