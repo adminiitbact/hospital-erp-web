@@ -7,7 +7,7 @@ if (prod) {
 } else {
     protocol = "http"
     hostname = "staging.iitbact.org";
-    port = "8080";
+    port = "80";
 }
 
 apiURL = protocol + "://" + hostname + ":" + port + "/hospitalerp/api/";
