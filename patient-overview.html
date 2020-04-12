@@ -725,10 +725,10 @@
                     "severity": $("#severity").val(),
                     "testStatus": $("#test_status").val(),
                     "wardId": selectedWardId,
-                    "patientId": $.urlParam("patient_id"),
+                    // "patientId": $.urlParam("patient_id"),
                 };
-                // updatePatientStatusURL = apiURL + "patients/" + $.urlParam("patient_id") + "/status/post";
-                updatePatientStatusURL = apiURL + "patient/status/update";
+                updatePatientStatusURL = apiURL + "patients/" + $.urlParam("patient_id") + "/status/post";
+                // updatePatientStatusURL = apiURL + "patient/status/update";
                 $.ajax({
                     type: "POST",
                     url: updatePatientStatusURL,
