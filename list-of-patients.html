@@ -71,16 +71,16 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" id="logout" class="logout-button w-inline-block">
-                        <div>Logout</div>
-                    </a>
                     <div class="section">
+                        <a href="#" id="logout" class="logout-button w-inline-block">
+                            <div>Logout</div>
+                        </a>
                         <a href="patient-overview.html" class="logout-button  w-inline-block">
                             <div class="text-block-2">Add New Patient +</div>
                         </a>
-                        <!-- <a href="list-of-patients.html"  class="logout-button  w-inline-block">
-              <div  class="text-block-2">Patients LIST</div>
-            </a> -->
+                        <a href="list-of-patients.html" class="logout-button  w-inline-block">
+                            <div class="text-block-2">Patients LIST</div>
+                        </a>
                         <a href="status-form.html" class="logout-button  w-inline-block">
                             <div class="text-block-2">Status Form</div>
                         </a>
@@ -91,7 +91,7 @@
                         <div class="hospital-profile-header-div _1">
                             <h1 class="heading-2 _3">Patient List</h1>
                             <div class="div-block-53">
-                                <form action="/search" class="search w-form"><input type="search" class="search-input w-input" autofocus="true" maxlength="256" name="query" placeholder="Search Patient Name" id="search" required=""><input type="submit" value="Search" class="button-2 search w-button"></form>
+                                <form id='search_form' class="search w-form"><input type="text" class="search-input w-input" autofocus="true" maxlength="256" name="search_query" placeholder="Search Patient Name" id="search_query"><input type="submit" value="Search" class="button-2 search w-button"></form>
                             </div>
                         </div>
                         <div class="div-block-36 _1 _2">
@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                                 <div id="patient_list" class="patient-list-div">
-                                    <div class="columns-7 w-row">
+                                    <!-- <div class="columns-7 w-row">
                                         <div class="w-col w-col-1">
                                             <div class="pd-list">1</div>
                                         </div>
@@ -434,7 +434,7 @@
                                             <div class="pd-list">Negative</div>
                                         </div>
                                         <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -458,6 +458,7 @@
     </script>
     <script>
         $(document).ready(function() {
+            patients = null;
             var dataAuthToken = {
                 "authToken": window.localStorage.getItem("authToken")
             };
@@ -503,7 +504,8 @@
                     headers: headers,
                     success: function(res) {
                         log("Patient Fetch Response: ", res)
-                        populatePatientList(res.data.list);
+                        patients = res.data.list;
+                        populatePatientList(patients);
                     }, //success function ends
                     error: function(jqXHR, textStatus, error) {
                         alert("fetch patient error: " + error);
@@ -528,6 +530,20 @@
                             test_status_class = "negative";
                             break;
                     }
+                    switch (patient.testStatus) {
+                        case "POSITIVE":
+                            test_status = "POSITIVE";
+                            break;
+                        case "NEGATIVE":
+                            test_status = "NEGATIVE";
+                            break;
+                        case "PENDING_TEST":
+                            test_status = "TEST PENDING";
+                            break;
+                        case "PENDING_RESULT":
+                            test_status = "TEST RESULT PENDING";
+                            break;
+                    }
                     row = '<div class="columns-7 w-row">\
                             <div class="w-col w-col-1">\
                                 <div class="pd-list">' + (index + 1) + '</div>\
@@ -550,6 +566,18 @@
                 }); //foreach
                 $("#patient_list").html(listHTML);
             } //populatePatient
+            $("#search_form").submit(function(e) {
+                search_query = $("#search_query").val();
+                newPatientList = [];
+                patients.forEach(function(patient, index) {
+                    if (patient.patientName.toLowerCase().includes(search_query.toLowerCase())) {
+                        newPatientList.push(patient);
+                    }
+                }); //forEach
+                populatePatientList(newPatientList);
+                e.preventDefault();
+            }); //search_form submit
+
         });
     </script>
 </body>

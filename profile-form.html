@@ -44,17 +44,17 @@
                             </div>
                         </div>
                         <div>
-                            <div class="div-block-28">
-                                <!-- <a href="index.html" class="link-block-2 w-inline-block">
-                                    <div class="text-block-2">Login Page</div>
-                                </a> -->
+                            <div class="section">
                                 <a href="#" id="logout" class="logout-button w-inline-block">
                                     <div>Logout</div>
                                 </a>
-                                <a href="profile-form.html" aria-current="page" class="link-block-2 w-inline-block w--current">
-                                    <div class="text-block-2">Profile Page</div>
+                                <a href="patient-overview.html" class="logout-button  w-inline-block">
+                                    <div class="text-block-2">Add New Patient +</div>
                                 </a>
-                                <a href="status-form.html" class="link-block-2 w-inline-block">
+                                <a href="list-of-patients.html" class="logout-button  w-inline-block">
+                                    <div class="text-block-2">Patients LIST</div>
+                                </a>
+                                <a href="status-form.html" class="logout-button  w-inline-block">
                                     <div class="text-block-2">Status Form</div>
                                 </a>
                             </div>
@@ -111,13 +111,28 @@
                                                 </div>
                                                 <div class="login-formfield-div">
                                                     <div class="div-block-22">
-                                                        <div class="login-formfield-div">
+                                                        <div class="login-formfield-div big">
                                                             <label for="type_of_facility" class="field-label">Type of your Facility</label>
                                                             <select id="type_of_facility" name="type_of_facility" data-name="type_of_facility" class="login-text-field plain w-select" required="">
                                                                 <option value="">Select one...</option>
-                                                                <option value="Facility">Facility</option>
-                                                                <option value="Clinic">Clinic</option>
-                                                                <option value="Quarantine">Quarantine</option>
+                                                                <option value="Hotel">Hotel</option>
+                                                                <option value="Lodge">Lodge</option>
+                                                                <option value="Hostel">Hostel</option>
+                                                                <option value="Stadium">Stadium</option>
+                                                                <option value="Private Hospital">Private Hospital</option>
+                                                                <option value="Government Hospital">Government Hospital</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="login-formfield-div big">
+                                                            <label for="covid_facility_type" class="field-label">Covid Facility Type</label>
+                                                            <select id="covid_facility_type" name="covid_facility_type" data-name="covid_facility_type" class="login-text-field plain w-select" required="" style="font-size:12px">
+                                                                <option value="">Select one...</option>
+                                                                <option value="Fever Clinic">Fever Clinic</option>
+                                                                <option value="Covid Care Centre">Covid Care Centre</option>
+                                                                <option value="Dedicated Covid Health Centre">Dedicated Covid Health Centre</option>
+                                                                <option value="Dedicated Covid Hospital">Dedicated Covid Hospital</option>
+                                                                <option value="Non Covid">Non Covid</option>
                                                             </select>
                                                         </div>
                                                         <!-- <label class="radio-button-field w-radio">
@@ -368,6 +383,7 @@
 
             function setFacilityData() {
                 $("#type_of_facility").val(facilityData.facilityType);
+                $("#covid_facility_type").val(facilityData.covidFacilityType);
                 $("#facility_name").val(facilityData.name);
                 $("#area").val(facilityData.area);
                 $("#organisation_email").val(facilityData.email);
@@ -395,6 +411,7 @@
                 //   var password_1 = $("#password-1").val();
                 //   var password_2 = $("#password-2").val();
                 var type_of_facility = $("#type_of_facility").val();
+                var covid_facility_type = $("#covid_facility_type").val();
                 var facility_name = $("#facility_name").val();
                 var area = $("#area").val();
                 var jurisdiction = $("#jurisdiction").val();
@@ -448,6 +465,7 @@
                         },
                         "facility_data": {
                             "type_of_facility": type_of_facility,
+                            "covid_facility_type": covid_facility_type,
                             "facility_name": facility_name,
                             "area": area,
                             "jurisdiction": jurisdiction,
