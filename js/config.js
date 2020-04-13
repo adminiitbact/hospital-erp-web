@@ -28,3 +28,17 @@ function log(key, value) {
         console.log(value);
     }
 }
+
+severityMap = {
+    "NO_SYMPTOMS": "Asymptomatic",
+    "MILD": "Mild or Very Mild",
+    "MODERATE": "Moderate",
+    "SEVERE": "Severe",
+};
+
+testStatusMap = {
+    "PENDING_TEST": "Test Pending",
+    "PENDING_RESULT": "Test Result Pending",
+    "POSITIVE": "Positive",
+    "NEGATIVE": "Negative",
+};
