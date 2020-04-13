@@ -75,9 +75,9 @@
                         <a href="#" id="logout" class="logout-button w-inline-block">
                             <div>Logout</div>
                         </a>
-                        <!-- <a href="patient-overview.html" aria-current="page" class="logout-button w-inline-block w--current">
-              <div class="text-block-2">Add New Patient +</div>
-            </a> -->
+                        <a href="patient-overview.html" aria-current="page" class="logout-button w-inline-block w--current">
+                            <div class="text-block-2">Add New Patient +</div>
+                        </a>
                         <a href="list-of-patients.html" class="logout-button w-inline-block">
                             <div class="text-block-2">Patients LIST</div>
                         </a>
@@ -100,6 +100,10 @@
                                                 <div class="form-section-div _23">
                                                     <div class="div-block-8-copy">
                                                         <div class="patient-db-form">
+                                                            <label for="patient_hospital_id" class="field-label patient">Patient ID:</label>
+                                                            <input type="text" class="patient-db-text-field w-input" name="patient_hospital_id" data-name="Patient hospital Id" placeholder="Patient ID" id="patient_hospital_id" required>
+                                                        </div>
+                                                        <div class="patient-db-form">
                                                             <label for="name" class="field-label patient">Name:</label>
                                                             <input type="text" class="patient-db-text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Name" id="name" required>
                                                         </div>
@@ -120,10 +124,6 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="patient-db-form">
-                                                            <label for="mobile_number" class="field-label patient">Mobile:</label>
-                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="patient-db-text-field w-input" name="mobile_number" data-name="Mobile No" placeholder="+91" id="mobile_number" required>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="w-form-done">
@@ -138,7 +138,10 @@
                                             <div class="form-block-3 w-form">
                                                 <div class="form-section-div _2">
                                                     <div class="div-block-8-copy">
-
+                                                        <div class="patient-db-form">
+                                                            <label for="mobile_number" class="field-label patient">Mobile:</label>
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="patient-db-text-field w-input" name="mobile_number" data-name="Mobile No" placeholder="+91" id="mobile_number" required>
+                                                        </div>
                                                         <div class="patient-db-form">
                                                             <label for="address" class="field-label patient">Address:</label>
                                                             <input type="text" class="patient-db-text-field w-input" maxlength="256" name="address" data-name="address" placeholder="address" id="address">
@@ -227,22 +230,22 @@
                                     <div class="text-block-7">List of ALL Available Facilities</div>
                                     <div class="section-8">
                                         <div class="columns-6 w-row">
-                                            <div class="w-col w-col-1">
+                                            <!-- <div class="w-col w-col-1">
                                                 <a href="#" class="link-block-3 _1 w-inline-block">
                                                     <div class="legends">Sr No</div>
                                                 </a>
-                                            </div>
-                                            <div class="w-col w-col-2">
+                                            </div> -->
+                                            <div class="w-col w-col-3">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Facility</div>
                                                 </a>
                                             </div>
-                                            <div class="w-col w-col-2">
+                                            <!-- <div class="w-col w-col-2">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Telephone</div>
                                                 </a>
-                                            </div>
-                                            <div class="w-col w-col-2">
+                                            </div> -->
+                                            <div class="w-col w-col-3">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Location</div>
                                                 </a>
@@ -257,7 +260,7 @@
                                                     <div class="legends">Availability</div>
                                                 </a>
                                             </div>
-                                            <div class="w-col w-col-2">
+                                            <div class="w-col w-col-3">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Covid Facility Type</div>
                                                 </a>
@@ -274,7 +277,7 @@
                                             </div>
                                         </div>
                                         <div id="facility_list" class="div-block-42">
-                                            <div class="columns-7 w-row">
+                                            <!-- <div class="columns-7 w-row">
                                                 <div class="w-col w-col-1">
                                                     <div class="pd-list">1</div>
                                                 </div>
@@ -384,16 +387,16 @@
                                                     <div class="pd-list">availability</div>
                                                 </div>
                                                 <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="section-8 ward">
                                         <div class="columns-6 w-row">
-                                            <div class="w-col w-col-1">
+                                            <!-- <div class="w-col w-col-1">
                                                 <a href="#" class="link-block-3 _1 w-inline-block">
                                                     <div class="legends">Sr No</div>
                                                 </a>
-                                            </div>
+                                            </div> -->
                                             <div class="w-col w-col-2">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Ward</div>
@@ -414,7 +417,7 @@
                                                     <div class="legends">Severity</div>
                                                 </a>
                                             </div>
-                                            <div class="w-col w-col-2">
+                                            <div class="w-col w-col-3">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Covid Ward Type</div>
                                                 </a>
@@ -426,7 +429,7 @@
                                             </div>
                                         </div>
                                         <div id="ward_list" class="div-block-42 ward">
-                                            <div class="columns-7 w-row">
+                                            <!-- <div class="columns-7 w-row">
                                                 <div class="w-col w-col-1">
                                                     <div class="pd-list">1</div>
                                                 </div>
@@ -536,7 +539,7 @@
                                                     <div class="pd-list">availability</div>
                                                 </div>
                                                 <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -639,8 +642,10 @@
             }
 
             function refreshPatientProfile() {
+                $("#patient_hospital_id").val(patientProfileData.patientHospitalId);
                 $("#name").val(patientProfileData.name);
                 $("#mobile_number").val(patientProfileData.contactNumber);
+                $("#emergency_contact").val(patientProfileData.emergencyContact);
                 $("#gender").val(patientProfileData.gender);
                 $("#age").val(patientProfileData.age);
                 $("#address").val(patientProfileData.address);
@@ -660,6 +665,8 @@
                         "contactNumber": $("#mobile_number").val(),
                         "gender": $("#gender").val(),
                         "name": $("#name").val(),
+                        "patientHospitalId": $("#patient_hospital_id").val(),
+                        "emergencyContact": $("#emergency_contact").val(),
                         "facilityId": selectedFacilityId,
                         "severity": $("#severity").val(),
                         "testStatus": $("#test_status").val(),
@@ -696,8 +703,10 @@
                     "address": $("#address").val(),
                     "age": $("#age").val(),
                     "contactNumber": $("#mobile_number").val(),
+                    "emergencyContact": $("#emergency_contact").val(),
                     "gender": $("#gender").val(),
                     "name": $("#name").val(),
+                    "patientHospitalId": $("#patient_hospital_id").val(),
                 };
                 updatePatientProfileURL = apiURL + "patients/" + $.urlParam("patient_id") + "/profile/post";
                 $.ajax({
@@ -759,6 +768,7 @@
                     "authToken": window.localStorage.getItem("authToken"),
                     "severity": $("#severity").val(),
                     "testStatus": $("#test_status").val(),
+                    // "facilityId": userFacility.facilityId,
                 }
                 fetchFacilityURL = apiURL + "facilities";
                 $.ajax({
@@ -826,6 +836,11 @@
                         headers: headers,
                         success: function(res) {
                             patientStatusData = res.data.patientStatus;
+                            log("Patient Status Data: ", patientStatusData);
+                            log("User Facility: ", userFacility);
+                            if (patientStatusData.facilityId != userFacility.facilityId) {
+                                $("#logout").click();
+                            }
                             log("patient status data: ", res);
                             refreshPatientStatus();
                         }, //success function ends
@@ -847,6 +862,7 @@
                 $("#facility_" + facilityId).html("Selected");
                 $("#facility_" + facilityId).css("background-color", "green");
                 selectedFacilityId = facilityId;
+                selectedWardId = 0;
                 fetchWards();
             }
 
@@ -854,7 +870,7 @@
                 log("Facilities to show: ", facilities);
                 facilityListHTML = "";
                 userFacilityListItem = "";
-                userFacilityRowShown = false;
+                // userFacilityRowShown = false;
                 facilities.forEach(function(facility, index) {
                     facilityName = facility.name;
                     telephone = facility.telephone;
@@ -863,36 +879,30 @@
                     covidFacilityType = facility.covidFacilityType;
                     facilityId = facility.facilityId;
                     row = '<div class="columns-7 w-row">\
-                                <div class="w-col w-col-1">\
-                                    <div class="pd-list">' + (index + 1) + '</div>\
-                                </div>\
-                                <div class="w-col w-col-2">\
+                                <div class="w-col w-col-3">\
                                     <div class="pd-list">' + facilityName + '</div>\
                                 </div>\
-                                <div class="w-col w-col-2">\
-                                    <div class="pd-list">' + telephone + '</div>\
-                                </div>\
-                                <div class="w-col w-col-2">\
+                                <div class="w-col w-col-3">\
                                     <div class="pd-list">' + area + '</div>\
                                 </div>\
                                 <div class="w-col w-col-2">\
                                     <div class="pd-list">' + availability + '</div>\
                                 </div>\
-                                <div class="w-col w-col-2">\
+                                <div class="w-col w-col-3">\
                                     <div class="pd-list">' + covidFacilityType + '</div>\
                                 </div>\
                                 <div class="w-col w-col-1"><a href="#" id="facility_' + facilityId + '" onClick="$.selectFacility(' + facilityId + ')" class="button-2 w-button">select</a></div>\
                             </div>';
                     if (facilityId == userFacility.facilityId) {
                         facilityListHTML = row + facilityListHTML;
-                        userFacilityRowShown = true;
+                        // userFacilityRowShown = true;
                     } else {
                         facilityListHTML += row;
                     }
                 }); //forEach facilities
-                if (!userFacilityRowShown) {
-                    showFacility([userFacility]);
-                }
+                // if (!userFacilityRowShown) {
+                //     showFacility([userFacility]);
+                // }
                 $("#facility_list").html(facilityListHTML);
                 $.selectFacility(selectedFacilityId);
             } //showFacility
@@ -900,6 +910,8 @@
             function fetchWards() {
                 if (selectedFacilityId == userFacility.facilityId) {
                     wardsURL = apiURL + "facilities/" + userFacility.facilityId + "/wards";
+                    if (updatePatient)
+                        selectedWardId = patientStatusData.wardId;
                     $.ajax({
                         type: "POST",
                         url: wardsURL,
@@ -907,8 +919,6 @@
                         headers: headers,
                         success: function(res) {
                             log("Wards response", res);
-                            if (updatePatient)
-                                selectedWardId = patientStatusData.wardId;
                             showWards(res.data.list);
                         }, //success function ends
                         error: function(jqXHR, textStatus, error) {
@@ -934,9 +944,6 @@
                 wardListHTML = "";
                 wards.forEach(function(ward, index) {
                     row = '<div class="columns-7 w-row">\
-                                <div class="w-col w-col-1">\
-                                    <div class="pd-list">' + (index + 1) + '</div>\
-                                </div>\
                                 <div class="w-col w-col-2">\
                                     <div class="pd-list">' + ward.name + '</div>\
                                 </div>\
@@ -949,7 +956,7 @@
                                 <div class="w-col w-col-2">\
                                     <div class="pd-list">' + ward.severity + '</div>\
                                 </div>\
-                                <div class="w-col w-col-2">\
+                                <div class="w-col w-col-3">\
                                     <div class="pd-list">' + ward.covidStatus + '</div>\
                                 </div>\
                                 <div class="w-col w-col-1"><a href="#" id="ward_' + ward.id + '" onClick="$.selectWard(' + ward.id + ')" class="button-2 w-button">select</a></div>\
