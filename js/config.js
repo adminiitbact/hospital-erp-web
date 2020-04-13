@@ -6,6 +6,7 @@ if (prod) {
     port = "443";
 } else {
     protocol = "http"
+
     hostname = "staging.cov2.in";
     port = "80";
 }
