@@ -72,17 +72,20 @@
                         </div>
                     </div>
                     <div class="section">
+                        <a href="status-form.html" class="logout-button  w-inline-block">
+                            <div class="">Home</div>
+                        </a>
+                        <a href="patient-overview.html" class="logout-button  w-inline-block">
+                            <div class="">Add New Patient +</div>
+                        </a>
+                        <a href="list-of-patients.html" class="logout-button  w-inline-block">
+                            <div class="">Patients LIST</div>
+                        </a>
+                        <a href="profile-form.html" class="logout-button  w-inline-block">
+                            <div class="">Edit Profile</div>
+                        </a>
                         <a href="#" id="logout" class="logout-button w-inline-block">
                             <div>Logout</div>
-                        </a>
-                        <a href="patient-overview.html" aria-current="page" class="logout-button w-inline-block w--current">
-                            <div class="text-block-2">Add New Patient +</div>
-                        </a>
-                        <a href="list-of-patients.html" class="logout-button w-inline-block">
-                            <div class="text-block-2">Patients LIST</div>
-                        </a>
-                        <a href="status-form.html" class="logout-button  w-inline-block">
-                            <div class="text-block-2">Status Form</div>
                         </a>
                     </div>
                 </div>
@@ -184,8 +187,8 @@
                                                         <div class="patient-db-form">
                                                             <label for="severity" class="field-label patient white">Severity:</label>
                                                             <select id="severity" name="severity" data-name="Field 4" class="patient-db-text-field w-select">
-                                                                <option value="NO_SYMPTOMS">No Symptoms</option>
-                                                                <option value="MILD">Mild</option>
+                                                                <option value="NO_SYMPTOMS">Asymptomatic</option>
+                                                                <option value="MILD">Mild or Very Mild</option>
                                                                 <option value="MODERATE">Moderate</option>
                                                                 <option value="SEVERE">Severe</option>
                                                             </select>
@@ -205,13 +208,12 @@
                                                 <div class="form-section-div _23 _1">
                                                     <div class="div-block-8-copy _1">
                                                         <div class="patient-db-form">
-                                                            <label for="test_status" class="field-label patient white">Test:</label>
+                                                            <label for="test_status" class="field-label patient white">COVID-19 Test:</label>
                                                             <select id="test_status" name="test_status" data-name="Field 4" class="patient-db-text-field w-select">
                                                                 <option value="PENDING_TEST">Test Pending</option>
                                                                 <option value="PENDING_RESULT">Test Result Pending</option>
                                                                 <option value="POSITIVE">Positive</option>
                                                                 <option value="NEGATIVE">Negative</option>
-                                                                
                                                             </select>
                                                         </div>
                                                     </div>
@@ -652,12 +654,12 @@
             }
 
             $("#patient_form").submit(function(e) {
+                if (selectedFacilityId == 0) {
+                    alert("Please select a facility");
+                    e.preventDefault();
+                    return;
+                }
                 if (!updatePatient) {
-                    if (selectedFacilityId == 0) {
-                        alert("Please select a facility");
-                        e.preventDefault();
-                        return;
-                    }
                     data = {
                         "authToken": window.localStorage.getItem("authToken"),
                         "address": $("#address").val(),
@@ -870,7 +872,7 @@
                 log("Facilities to show: ", facilities);
                 facilityListHTML = "";
                 userFacilityListItem = "";
-                // userFacilityRowShown = false;
+                userFacilityRowShown = false;
                 facilities.forEach(function(facility, index) {
                     facilityName = facility.name;
                     telephone = facility.telephone;
@@ -895,14 +897,15 @@
                             </div>';
                     if (facilityId == userFacility.facilityId) {
                         facilityListHTML = row + facilityListHTML;
-                        // userFacilityRowShown = true;
+                        userFacilityRowShown = true;
                     } else {
                         facilityListHTML += row;
                     }
                 }); //forEach facilities
-                // if (!userFacilityRowShown) {
-                //     showFacility([userFacility]);
-                // }
+                if (!userFacilityRowShown) {
+                    // showFacility([userFacility]);
+                    selectedFacilityId = 0;
+                }
                 $("#facility_list").html(facilityListHTML);
                 $.selectFacility(selectedFacilityId);
             } //showFacility
@@ -954,14 +957,18 @@
                                     <div class="pd-list">' + ward.totalBeds + '</div>\
                                 </div>\
                                 <div class="w-col w-col-2">\
-                                    <div class="pd-list">' + ward.severity + '</div>\
+                                    <div class="pd-list">' + severityMap[ward.severity] + '</div>\
                                 </div>\
                                 <div class="w-col w-col-3">\
                                     <div class="pd-list">' + ward.covidStatus + '</div>\
                                 </div>\
                                 <div class="w-col w-col-1"><a href="#" id="ward_' + ward.id + '" onClick="$.selectWard(' + ward.id + ')" class="button-2 w-button">select</a></div>\
                             </div>';
-                    wardListHTML += row;
+                    if (patientStatusData != null && ward.id == patientStatusData.wardId) {
+                        wardListHTML = row + wardListHTML;
+                    } else {
+                        wardListHTML += row;
+                    }
                 }); //forEach
                 $("#ward_list").html(wardListHTML);
                 $.selectWard(selectedWardId);
