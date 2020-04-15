@@ -1,16 +1,16 @@
-var prod = true;
+var prod = false;
 
 if (prod) {
     protocol = "https";
     hostname = "cov2.in";
     port = "443";
     subdomain = "/hospitalerp/api/";
-}
-else {
+} else {
     protocol = "http"
-    hostname = "iitbactbackend-dev.ap-south-1.elasticbeanstalk.com";
+        // hostname = "iitbactbackend-dev.ap-south-1.elasticbeanstalk.com";
+    hostname = "staging.cov2.in";
     port = "80";
-    subdomain = "/api/";
+    subdomain = "/hospitalerp/api/";
 }
 
 apiURL = protocol + "://" + hostname + ":" + port + subdomain;
@@ -32,8 +32,16 @@ function log(key, value) {
     }
 }
 
+function getUrlParam(name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+        return null;
+    }
+    return decodeURI(results[1]) || 0;
+}
+
+
 severityMap = {
-    "NO_SYMPTOMS": "Asymptomatic",
     "MILD": "Mild or Very Mild",
     "MODERATE": "Moderate",
     "SEVERE": "Severe",

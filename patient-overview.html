@@ -28,7 +28,7 @@
             n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
         }(window, document);
     </script>
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="images/cov2_favicon.png" rel="shortcut icon" type="image/x-icon">
     <link href="images/webclip.png" rel="apple-touch-icon">
     <style>
          ::-webkit-scrollbar {
@@ -78,6 +78,9 @@
                         <a href="patient-overview.html" class="logout-button  w-inline-block">
                             <div class="">Add New Patient +</div>
                         </a>
+                        <a href="list-of-referred-patients.html" class="logout-button  w-inline-block">
+                            <div class="">referred patients</div>
+                        </a>
                         <a href="list-of-patients.html" class="logout-button  w-inline-block">
                             <div class="">Patients LIST</div>
                         </a>
@@ -116,7 +119,7 @@
                                                         </div> -->
                                                         <div class="patient-db-form">
                                                             <label for="age" class="field-label patient">Age:</label>
-                                                            <input type="number" min=0 class="patient-db-text-field _1 w-input" maxlength="256" name="age" data-name="age" placeholder="age" id="age" required>
+                                                            <input type="number" min=1 class="patient-db-text-field _1 w-input" maxlength="256" name="age" data-name="age" placeholder="age" id="age" required>
                                                             <div class="patient-db-form">
                                                                 <label for="gender" class="field-label patient">Gender:</label>
                                                                 <select id="gender" name="gender" data-name="gender" class="patient-db-text-field w-select" required>
@@ -187,7 +190,6 @@
                                                         <div class="patient-db-form">
                                                             <label for="severity" class="field-label patient white">Severity:</label>
                                                             <select id="severity" name="severity" data-name="Field 4" class="patient-db-text-field w-select">
-                                                                <option value="NO_SYMPTOMS">Asymptomatic</option>
                                                                 <option value="MILD">Mild or Very Mild</option>
                                                                 <option value="MODERATE">Moderate</option>
                                                                 <option value="SEVERE">Severe</option>
@@ -228,35 +230,348 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="div-block-45">
+                                <div>
+                                    <div data-duration-in="500" data-duration-out="200" data-easing="ease-in" class="w-tabs">
+                                        <div class="tabs-menu-4 w-tab-menu">
+                                            <a id="allocate_your_facility" data-w-tab="Tab 1" class="allocate-tab-link w-inline-block w-tab-link w--current">
+                                                <div>Allocate IN your Facility</div>
+                                            </a>
+                                            <a id="allocate_other_facility" data-w-tab="Tab 2" class="allocate-tab-link w-inline-block w-tab-link">
+                                                <div>Allocate to other Facility</div>
+                                            </a>
+                                        </div>
+                                        <div class="w-tab-content">
+                                            <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+                                                <div class="div-block-45">
+                                                    <div class="text-block-7">Available Wards in your facility</div>
+                                                    <div class="div-block-64">
+                                                        <div class="columns-6 w-row">
+                                                            <!-- <div class="w-col w-col-1">
+                                                                <a href="#" class="link-block-3 _1 w-inline-block">
+                                                                    <div class="legends">Sr No</div>
+                                                                </a>
+                                                            </div> -->
+                                                            <div class="w-col w-col-2">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Ward</div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="w-col w-col-2">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Available Beds</div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="w-col w-col-2">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Total Beds</div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="w-col w-col-2">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Severity</div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="w-col w-col-3">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Covid Ward Type</div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="w-col w-col-1">
+                                                                <a href="#" class="link-block-3 _1 w-inline-block">
+                                                                    <div class="legends">ACtion</div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="div-block-42 ward" id="ward_list">
+                                                            <!-- <div class="columns-7 recomended w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-w-tab="Tab 2" class="w-tab-pane">
+                                                <div class="div-block-45 facilities">
+                                                    <div class="text-block-7">Available Institutional Facilities</div>
+                                                    <div class="div-block-64">
+                                                        <div class="columns-6 w-row">
+                                                            <!-- <div class="w-col w-col-1">
+                                                                <a href="#" class="link-block-3 _1 w-inline-block">
+                                                                    <div class="legends">Sr No</div>
+                                                                </a>
+                                                            </div> -->
+                                                            <div class="w-col w-col-3">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Facility</div>
+                                                                </a>
+                                                            </div>
+                                                            <!-- <div class="w-col w-col-2">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Telephone</div>
+                                                                </a>
+                                                            </div> -->
+                                                            <div class="w-col w-col-3">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Location</div>
+                                                                </a>
+                                                            </div>
+                                                            <!-- <div class="w-col w-col-2">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Jurisdiction</div>
+                                                                </a>
+                                                            </div> -->
+                                                            <div class="w-col w-col-2">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Availability</div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="w-col w-col-3">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Covid Facility Type</div>
+                                                                </a>
+                                                            </div>
+                                                            <!-- <div class="w-col w-col-1">
+                                                                <a href="#" class="link-block-3 w-inline-block">
+                                                                    <div class="legends">Facility Type</div>
+                                                                </a>
+                                                            </div> -->
+                                                            <div class="w-col w-col-1">
+                                                                <a href="#" class="link-block-3 _1 w-inline-block">
+                                                                    <div class="legends">ACtion</div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="div-block-42" id="facility_list">
+                                                            <!-- <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div>
+                                                            <div class="columns-7 w-row">
+                                                                <div class="w-col w-col-1">
+                                                                    <div class="pd-list">1</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">Facility</div>
+                                                                </div>
+                                                                <div class="w-col w-col-4">
+                                                                    <div class="pd-list">location</div>
+                                                                </div>
+                                                                <div class="w-col w-col-2">
+                                                                    <div class="pd-list">availability</div>
+                                                                </div>
+                                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- old facility List -->
+                                <!-- <div class="div-block-45">
                                     <div class="text-block-7">List of ALL Available Facilities</div>
                                     <div class="section-8">
                                         <div class="columns-6 w-row">
-                                            <!-- <div class="w-col w-col-1">
-                                                <a href="#" class="link-block-3 _1 w-inline-block">
-                                                    <div class="legends">Sr No</div>
-                                                </a>
-                                            </div> -->
                                             <div class="w-col w-col-3">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Facility</div>
                                                 </a>
                                             </div>
-                                            <!-- <div class="w-col w-col-2">
-                                                <a href="#" class="link-block-3 w-inline-block">
-                                                    <div class="legends">Telephone</div>
-                                                </a>
-                                            </div> -->
                                             <div class="w-col w-col-3">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Location</div>
                                                 </a>
                                             </div>
-                                            <!-- <div class="w-col w-col-2">
-                                                <a href="#" class="link-block-3 w-inline-block">
-                                                    <div class="legends">Jurisdiction</div>
-                                                </a>
-                                            </div> -->
                                             <div class="w-col w-col-2">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Availability</div>
@@ -267,11 +582,6 @@
                                                     <div class="legends">Covid Facility Type</div>
                                                 </a>
                                             </div>
-                                            <!-- <div class="w-col w-col-1">
-                                                <a href="#" class="link-block-3 w-inline-block">
-                                                    <div class="legends">Facility Type</div>
-                                                </a>
-                                            </div> -->
                                             <div class="w-col w-col-1">
                                                 <a href="#" class="link-block-3 _1 w-inline-block">
                                                     <div class="legends">ACtion</div>
@@ -279,126 +589,10 @@
                                             </div>
                                         </div>
                                         <div id="facility_list" class="div-block-42">
-                                            <!-- <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="section-8 ward">
                                         <div class="columns-6 w-row">
-                                            <!-- <div class="w-col w-col-1">
-                                                <a href="#" class="link-block-3 _1 w-inline-block">
-                                                    <div class="legends">Sr No</div>
-                                                </a>
-                                            </div> -->
                                             <div class="w-col w-col-2">
                                                 <a href="#" class="link-block-3 w-inline-block">
                                                     <div class="legends">Ward</div>
@@ -431,120 +625,9 @@
                                             </div>
                                         </div>
                                         <div id="ward_list" class="div-block-42 ward">
-                                            <!-- <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div>
-                                            <div class="columns-7 w-row">
-                                                <div class="w-col w-col-1">
-                                                    <div class="pd-list">1</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">Facility</div>
-                                                </div>
-                                                <div class="w-col w-col-4">
-                                                    <div class="pd-list">location</div>
-                                                </div>
-                                                <div class="w-col w-col-2">
-                                                    <div class="pd-list">availability</div>
-                                                </div>
-                                                <div class="w-col w-col-1"><a href="#" class="button-2 w-button">select</a></div>
-                                            </div> -->
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="div-block-43"><input type='reset' id="cancel_button" class="signup-button status-form _2 cancel w-button" value="CANCEL" /><input type="submit" class="signup-button status-form _2 _1 w-button" value="Save" /></div>
                             </div>
                         </form>
@@ -568,42 +651,120 @@
     </script>
     <script>
         $(document).ready(function() {
-            var dataAuthToken = {
+            currentUser = null;
+            currentFacility = null;
+            updatePatient = false;
+            patientProfileData = null;
+            patientStatusData = null;
+            selectedFacilityId = 0;
+            selectedWardId = 0;
+            wardOrFacility = true;
+            dataAuthToken = {
                 "authToken": window.localStorage.getItem("authToken")
             };
-            var headers = {
+            headers = {
                 "Content-Type": "application/json"
             };
-            $("#logout").click(function() {
-                firebase.auth().signOut().then(function() {
-                    // Sign-out successful.
-                    window.localStorage.removeItem("authToken");
-                    window.location.href = "index.html";
-                }).catch(function(error) {
-                    alert("Error in Sign-out." + error);
-                });
-            });
             if (window.localStorage.getItem("authToken") == null) {
                 $("#logout").click(); //logout if authToken is not available
                 return;
             }
-            $.urlParam = function(name) {
-                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-                if (results == null) {
-                    return null;
+
+            //first fetch current user and facility
+            fetchUserAndFacility();
+
+            // if (getUrlParam("patient_id") != null) {
+            //     updatePatient = true;
+            // }
+            // if (updatePatient) {
+            //refresh patient data and update the fields
+            // fetchPatientData();
+
+            //assume current facility is selected
+            // fetchWards();
+
+            //fetch wards on the basis of severity and testStatus
+            //wards are not necessary
+
+            // } else {
+            //assume current facility is selected
+            //fetch wards on the basis of severity and testStatus
+            //wards are not necessary
+            // }
+
+            function fetchPatientData() { //exec_5
+                if (getUrlParam("patient_id") != null) {
+                    //get patient details
+                    updatePatient = true;
+                    patientId = getUrlParam("patient_id");
+                    patientProfileURL = apiURL + "patients/" + patientId + "/profile/get";
+                    $.ajax({
+                        type: "POST",
+                        url: patientProfileURL,
+                        data: JSON.stringify(dataAuthToken),
+                        headers: headers,
+                        success: function(res) {
+                            patientProfileData = res.data.profile;
+                            log("Patient profile response", res)
+                            refreshPatientProfile();
+                        }, //success function ends
+                        error: function(jqXHR, textStatus, error) {
+                            alert("error: " + error);
+                        },
+                    }); //get patient profile
+                    patientStatusURL = apiURL + "patients/" + patientId + "/status/get";
+                    $.ajax({
+                        type: "POST",
+                        url: patientStatusURL,
+                        data: JSON.stringify(dataAuthToken),
+                        headers: headers,
+                        success: function(res) {
+                            patientStatusData = res.data.patientStatus;
+                            log("Patient Status Data: ", patientStatusData);
+                            log("User Facility: ", currentFacility);
+                            if (patientStatusData.facilityId != currentFacility.facilityId) {
+                                $("#logout").click();
+                            }
+                            log("patient status data: ", res);
+                            refreshPatientStatus();
+                            fetchWards();
+                        }, //success function ends
+                        error: function(jqXHR, textStatus, error) {
+                            alert("error: " + error);
+                        },
+                    }); //get patient profile
+                } else {
+                    //no patient 
                 }
-                return decodeURI(results[1]) || 0;
+                selectedFacilityId = currentFacility.facilityId;
             }
-            updatePatient = false;
-            patientProfileData = null;
-            patientStatusData = null;
-            userFacility = null;
-            selectedFacilityId = 0;
-            selectedWardId = 0;
 
-            fetchUser();
+            function fetchFacilityUsingId(facilityId) { // exec_2
+                data = {
+                    "authToken": window.localStorage.getItem("authToken"),
+                    "severity": $("#severity").val(),
+                    "testStatus": $("#test_status").val(),
+                }
+                fetchFacilityURL = apiURL + "facility/" + facilityId;
+                $.ajax({
+                    type: "POST",
+                    url: fetchFacilityURL,
+                    data: JSON.stringify(data),
+                    headers: headers,
+                    success: function(res) {
+                        log("User Facility Response:", res);
+                        currentFacility = res.data;
+                        fetchPatientData();
+                        // fetchFacility();
+                        fetchWards();
+                    }, //success function ends
+                    error: function(jqXHR, textStatus, error) {
+                        alert("error: " + error);
+                    },
+                }); //fetch Facility ajax
+            } //fetchFacility
 
-            function fetchUser() {
+            function fetchUserAndFacility() { // exec_1
                 var userProfileURL = apiURL + "hospital/user/profile";
                 $.ajax({
                     type: "POST",
@@ -621,6 +782,17 @@
                 }); //ajax userProfile 
 
             }
+
+            $("#logout").click(function() {
+                firebase.auth().signOut().then(function() {
+                    // Sign-out successful.
+                    window.localStorage.removeItem("authToken");
+                    window.location.href = "index.html";
+                }).catch(function(error) {
+                    alert("Error in Sign-out." + error);
+                });
+            });
+
             $("#cancel_button").click(function(e) {
                 if (updatePatient) {
                     try {
@@ -636,24 +808,11 @@
                     e.preventDefault();
                 }
             });
-
-            function refreshPatientStatus() {
-                $("#severity").val(patientStatusData.severity);
-                $("#test_status").val(patientStatusData.testStatus);
-                fetchFacility();
-            }
-
-            function refreshPatientProfile() {
-                $("#patient_hospital_id").val(patientProfileData.patientHospitalId);
-                $("#name").val(patientProfileData.name);
-                $("#mobile_number").val(patientProfileData.contactNumber);
-                $("#emergency_contact").val(patientProfileData.emergencyContact);
-                $("#gender").val(patientProfileData.gender);
-                $("#age").val(patientProfileData.age);
-                $("#address").val(patientProfileData.address);
-            }
-
             $("#patient_form").submit(function(e) {
+                log("ward and facility on submit: ", {
+                    "ward": selectedWardId,
+                    "facility": selectedFacilityId
+                });
                 if (selectedFacilityId == 0) {
                     alert("Please select a facility");
                     e.preventDefault();
@@ -699,6 +858,24 @@
                 e.preventDefault();
 
             }); // patient form submit
+
+
+            function refreshPatientStatus() {
+                $("#severity").val(patientStatusData.severity);
+                $("#test_status").val(patientStatusData.testStatus);
+                $.selectWard(patientStatusData.wardId);
+            }
+
+            function refreshPatientProfile() {
+                $("#patient_hospital_id").val(patientProfileData.patientHospitalId);
+                $("#name").val(patientProfileData.name);
+                $("#mobile_number").val(patientProfileData.contactNumber);
+                $("#emergency_contact").val(patientProfileData.emergencyContact);
+                $("#gender").val(patientProfileData.gender);
+                $("#age").val(patientProfileData.age);
+                $("#address").val(patientProfileData.address);
+            }
+
             function updatePatientProfile() {
                 data = {
                     "authToken": window.localStorage.getItem("authToken"),
@@ -710,7 +887,7 @@
                     "name": $("#name").val(),
                     "patientHospitalId": $("#patient_hospital_id").val(),
                 };
-                updatePatientProfileURL = apiURL + "patients/" + $.urlParam("patient_id") + "/profile/post";
+                updatePatientProfileURL = apiURL + "patients/" + getUrlParam("patient_id") + "/profile/post";
                 $.ajax({
                     type: "POST",
                     url: updatePatientProfileURL,
@@ -736,9 +913,9 @@
                     "severity": $("#severity").val(),
                     "testStatus": $("#test_status").val(),
                     "wardId": selectedWardId,
-                    // "patientId": $.urlParam("patient_id"),
+                    // "patientId": getUrlParam("patient_id"),
                 };
-                updatePatientStatusURL = apiURL + "patients/" + $.urlParam("patient_id") + "/status/post";
+                updatePatientStatusURL = apiURL + "patients/" + getUrlParam("patient_id") + "/status/post";
                 // updatePatientStatusURL = apiURL + "patient/status/update";
                 $.ajax({
                     type: "POST",
@@ -758,29 +935,23 @@
                 });
             } //updatePatientStatus
 
-            $("#severity").change(function(e) {
-                fetchFacility();
-            }); //severity change
-            $("#test_status").change(function(e) {
-                fetchFacility();
-            }); //test_status change
-
             function fetchFacility() {
                 data = {
                     "authToken": window.localStorage.getItem("authToken"),
                     "severity": $("#severity").val(),
                     "testStatus": $("#test_status").val(),
-                    // "facilityId": userFacility.facilityId,
+                    // "facilityId": currentFacility.facilityId,
                 }
-                fetchFacilityURL = apiURL + "facilities";
+                log("fetching facility data:", data);
+                fetchFacilityURL = apiURL + "facilities/" + currentFacility.facilityId;
                 $.ajax({
                     type: "POST",
                     url: fetchFacilityURL,
                     data: JSON.stringify(data),
                     headers: headers,
                     success: function(res) {
-                        if (updatePatient)
-                            selectedFacilityId = patientStatusData.facilityId;
+                        // if (updatePatient)
+                        //     selectedFacilityId = currentFacility.facilityId;
                         showFacility(res.data.list);
                     }, //success function ends
                     error: function(jqXHR, textStatus, error) {
@@ -788,75 +959,6 @@
                     },
                 }); //fetch Facility ajax
             } //fetchFacility
-            function fetchFacilityUsingId(facilityId) {
-                data = {
-                    "authToken": window.localStorage.getItem("authToken"),
-                    "severity": $("#severity").val(),
-                    "testStatus": $("#test_status").val(),
-                }
-                fetchFacilityURL = apiURL + "facility/" + facilityId;
-                $.ajax({
-                    type: "POST",
-                    url: fetchFacilityURL,
-                    data: JSON.stringify(data),
-                    headers: headers,
-                    success: function(res) {
-                        log("User Facility Response:", res);
-                        userFacility = res.data;
-                        fetchUserData();
-                    }, //success function ends
-                    error: function(jqXHR, textStatus, error) {
-                        alert("error: " + error);
-                    },
-                }); //fetch Facility ajax
-            } //fetchFacility
-            function fetchUserData() {
-                if ($.urlParam("patient_id") != null) {
-                    //get patient details
-                    updatePatient = true;
-                    patientId = $.urlParam("patient_id");
-                    patientProfileURL = apiURL + "patients/" + patientId + "/profile/get";
-                    $.ajax({
-                        type: "POST",
-                        url: patientProfileURL,
-                        data: JSON.stringify(dataAuthToken),
-                        headers: headers,
-                        success: function(res) {
-                            patientProfileData = res.data.profile;
-                            log("Patient profile response", res)
-                            refreshPatientProfile();
-                        }, //success function ends
-                        error: function(jqXHR, textStatus, error) {
-                            alert("error: " + error);
-                        },
-                    }); //get patient profile
-                    patientStatusURL = apiURL + "patients/" + patientId + "/status/get";
-                    $.ajax({
-                        type: "POST",
-                        url: patientStatusURL,
-                        data: JSON.stringify(dataAuthToken),
-                        headers: headers,
-                        success: function(res) {
-                            patientStatusData = res.data.patientStatus;
-                            log("Patient Status Data: ", patientStatusData);
-                            log("User Facility: ", userFacility);
-                            if (patientStatusData.facilityId != userFacility.facilityId) {
-                                $("#logout").click();
-                            }
-                            log("patient status data: ", res);
-                            refreshPatientStatus();
-                        }, //success function ends
-                        error: function(jqXHR, textStatus, error) {
-                            alert("error: " + error);
-                        },
-                    }); //get patient profile
-                } else {
-                    //no patient
-                    // alert("no patient");
-                    fetchFacility();
-                    fetchWards();
-                }
-            }
 
             $.selectFacility = function(facilityId) {
                 $("#facility_" + selectedFacilityId).html("Select");
@@ -864,15 +966,21 @@
                 $("#facility_" + facilityId).html("Selected");
                 $("#facility_" + facilityId).css("background-color", "green");
                 selectedFacilityId = facilityId;
+                // $.selectWard(0);
                 selectedWardId = 0;
-                fetchWards();
+                // fetchWards();
+                log("selecting facility: ", {
+                    "facility": selectedFacilityId,
+                    "ward": selectedWardId,
+                });
             }
 
             function showFacility(facilities) {
                 log("Facilities to show: ", facilities);
                 facilityListHTML = "";
-                userFacilityListItem = "";
-                userFacilityRowShown = false;
+                currentFacilityListItem = "";
+                mappedFacility = ""
+                    // currentFacilityRowShown = false;
                 facilities.forEach(function(facility, index) {
                     facilityName = facility.name;
                     telephone = facility.telephone;
@@ -880,7 +988,8 @@
                     availability = facility.availability;
                     covidFacilityType = facility.covidFacilityType;
                     facilityId = facility.facilityId;
-                    row = '<div class="columns-7 w-row">\
+                    isMapped = facility.mapped;
+                    row = '<div class="columns-7 w-row ' + (isMapped ? "recommended" : "") + '">\
                                 <div class="w-col w-col-3">\
                                     <div class="pd-list">' + facilityName + '</div>\
                                 </div>\
@@ -895,43 +1004,37 @@
                                 </div>\
                                 <div class="w-col w-col-1"><a href="#" id="facility_' + facilityId + '" onClick="$.selectFacility(' + facilityId + ')" class="button-2 w-button">select</a></div>\
                             </div>';
-                    if (facilityId == userFacility.facilityId) {
-                        facilityListHTML = row + facilityListHTML;
-                        userFacilityRowShown = true;
-                    } else {
-                        facilityListHTML += row;
-                    }
+                    if (isMapped)
+                        mappedFacility += row;
+                    else
+                        facilityListHTML += row
                 }); //forEach facilities
-                if (!userFacilityRowShown) {
-                    // showFacility([userFacility]);
-                    selectedFacilityId = 0;
-                }
+                facilityListHTML = mappedFacility + facilityListHTML;
                 $("#facility_list").html(facilityListHTML);
-                $.selectFacility(selectedFacilityId);
+                $.selectFacility(0);
             } //showFacility
 
-            function fetchWards() {
-                if (selectedFacilityId == userFacility.facilityId) {
-                    wardsURL = apiURL + "facilities/" + userFacility.facilityId + "/wards";
-                    if (updatePatient)
-                        selectedWardId = patientStatusData.wardId;
-                    $.ajax({
-                        type: "POST",
-                        url: wardsURL,
-                        data: JSON.stringify(dataAuthToken),
-                        headers: headers,
-                        success: function(res) {
-                            log("Wards response", res);
-                            showWards(res.data.list);
-                        }, //success function ends
-                        error: function(jqXHR, textStatus, error) {
-                            alert("error: " + error);
-                        },
-                    }); //fetch wards ajax
-                } else {
-                    selectedWardId = 0;
-                    showWards([]);
+            function fetchWards() { //exec_3
+                wardsURL = apiURL + "facilities/" + currentFacility.facilityId + "/wards";
+                data = {
+                    "authToken": window.localStorage.getItem("authToken"),
+                    "severity": $("#severity").val(),
+                    "testStatus": $("#test_status").val(),
                 }
+                log("Fetching wards data:", data);
+                $.ajax({
+                    type: "POST",
+                    url: wardsURL,
+                    data: JSON.stringify(data),
+                    headers: headers,
+                    success: function(res) {
+                        log("Wards response", res);
+                        showWards(res.data.list);
+                    }, //success function ends
+                    error: function(jqXHR, textStatus, error) {
+                        alert("error: " + error);
+                    },
+                }); //fetch wards ajax
             }
 
             $.selectWard = function(wardId) {
@@ -940,10 +1043,15 @@
                 $("#ward_" + wardId).html("Selected");
                 $("#ward_" + wardId).css("background-color", "green");
                 selectedWardId = wardId;
+                selectedFacilityId = currentFacility.facilityId;
+                log("selecting ward: ", {
+                    "ward": selectedWardId,
+                    "facility": selectedFacilityId
+                });
             }
 
-            function showWards(wards) {
-                log("Wards:", wards);
+            function showWards(wards) { // exec_4
+                log("Showing Wards:", wards);
                 wardListHTML = "";
                 wards.forEach(function(ward, index) {
                     row = '<div class="columns-7 w-row">\
@@ -964,15 +1072,47 @@
                                 </div>\
                                 <div class="w-col w-col-1"><a href="#" id="ward_' + ward.id + '" onClick="$.selectWard(' + ward.id + ')" class="button-2 w-button">select</a></div>\
                             </div>';
-                    if (patientStatusData != null && ward.id == patientStatusData.wardId) {
-                        wardListHTML = row + wardListHTML;
-                    } else {
-                        wardListHTML += row;
-                    }
+                    // if (patientStatusData != null && ward.id == patientStatusData.wardId) {
+                    //     wardListHTML = row + wardListHTML;
+                    // } else {
+                    wardListHTML += row;
+                    // }
                 }); //forEach
                 $("#ward_list").html(wardListHTML);
-                $.selectWard(selectedWardId);
+                try {
+                    if (patientStatusData != null)
+                        $.selectWard(patientStatusData.wardId);
+                } catch (e) {
+                    console.error(e);
+                }
             }
+            $("#allocate_your_facility").click(function(e) {
+                fetchWards();
+                selectedFacilityId = currentFacility.facilityId;
+                wardOrFacility = true;
+                // e.preventDefault();
+            });
+
+            $("#allocate_other_facility").click(function(e) {
+                fetchFacility();
+                wardOrFacility = false;
+                // e.preventDefault();
+            });
+            $("#severity").change(function(e) {
+                // selectedFacilityId = currentFacility.facilityId;
+                if (!wardOrFacility)
+                    fetchFacility();
+                else
+                    fetchWards();
+            }); //severity change
+            $("#test_status").change(function(e) {
+                // selectedFacilityId = currentFacility.facilityId;
+                if (!wardOrFacility)
+                    fetchFacility();
+                else
+                    fetchWards();
+            }); //test_status change
+
         }); //document ready
     </script>
 </body>
