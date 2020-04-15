@@ -5,7 +5,8 @@ if (prod) {
     hostname = "cov2.in";
     port = "443";
     subdomain = "/hospitalerp/api/";
-} else {
+}
+else {
     protocol = "http"
     hostname = "iitbactbackend-dev.ap-south-1.elasticbeanstalk.com";
     port = "80";
@@ -30,3 +31,17 @@ function log(key, value) {
         console.log(value);
     }
 }
+
+severityMap = {
+    "NO_SYMPTOMS": "Asymptomatic",
+    "MILD": "Mild or Very Mild",
+    "MODERATE": "Moderate",
+    "SEVERE": "Severe",
+};
+
+testStatusMap = {
+    "PENDING_TEST": "Test Pending",
+    "PENDING_RESULT": "Test Result Pending",
+    "POSITIVE": "Positive",
+    "NEGATIVE": "Negative",
+};

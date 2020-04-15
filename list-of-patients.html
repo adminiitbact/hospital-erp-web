@@ -71,18 +71,21 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" id="logout" class="logout-button w-inline-block">
-                        <div>Logout</div>
-                    </a>
                     <div class="section">
-                        <a href="patient-overview.html" class="logout-button  w-inline-block">
-                            <div class="text-block-2">Add New Patient +</div>
-                        </a>
-                        <!-- <a href="list-of-patients.html"  class="logout-button  w-inline-block">
-              <div  class="text-block-2">Patients LIST</div>
-            </a> -->
                         <a href="status-form.html" class="logout-button  w-inline-block">
-                            <div class="text-block-2">Status Form</div>
+                            <div class="">Home</div>
+                        </a>
+                        <a href="patient-overview.html" class="logout-button  w-inline-block">
+                            <div class="">Add New Patient +</div>
+                        </a>
+                        <a href="list-of-patients.html" class="logout-button  w-inline-block">
+                            <div class="">Patients LIST</div>
+                        </a>
+                        <a href="profile-form.html" class="logout-button  w-inline-block">
+                            <div class="">Edit Profile</div>
+                        </a>
+                        <a href="#" id="logout" class="logout-button w-inline-block">
+                            <div>Logout</div>
                         </a>
                     </div>
                 </div>
@@ -91,7 +94,11 @@
                         <div class="hospital-profile-header-div _1">
                             <h1 class="heading-2 _3">Patient List</h1>
                             <div class="div-block-53">
-                                <form action="/search" class="search w-form"><input type="search" class="search-input w-input" autofocus="true" maxlength="256" name="query" placeholder="Search Patient Name" id="search" required=""><input type="submit" value="Search" class="button-2 search w-button"></form>
+                                <form id='search_form' class="search w-form">
+                                    <input type="text" class="search-input w-input" autofocus="true" maxlength="256" name="search_query" placeholder="Search Patient Name" id="search_query">
+                                    <input type="submit" value="Search" class="button-2 search w-button">
+                                    <a href="#" class="button-3 w-button">CLEAR</a>
+                                </form>
                             </div>
                         </div>
                         <div class="div-block-36 _1 _2">
@@ -119,7 +126,7 @@
                                     </div>
                                     <div class="w-col w-col-2">
                                         <a href="#" class="link-block-3 w-inline-block">
-                                            <div class="legends">Test</div>
+                                            <div class="legends">Covid-19 Test</div>
                                         </a>
                                     </div>
                                     <div class="w-col w-col-1">
@@ -129,7 +136,7 @@
                                     </div>
                                 </div>
                                 <div id="patient_list" class="patient-list-div">
-                                    <div class="columns-7 w-row">
+                                    <!-- <div class="columns-7 w-row">
                                         <div class="w-col w-col-1">
                                             <div class="pd-list">1</div>
                                         </div>
@@ -434,7 +441,7 @@
                                             <div class="pd-list">Negative</div>
                                         </div>
                                         <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -458,6 +465,7 @@
     </script>
     <script>
         $(document).ready(function() {
+            patients = null;
             var dataAuthToken = {
                 "authToken": window.localStorage.getItem("authToken")
             };
@@ -503,7 +511,8 @@
                     headers: headers,
                     success: function(res) {
                         log("Patient Fetch Response: ", res)
-                        populatePatientList(res.data.list);
+                        patients = res.data.list;
+                        populatePatientList(patients);
                     }, //success function ends
                     error: function(jqXHR, textStatus, error) {
                         alert("fetch patient error: " + error);
@@ -516,16 +525,24 @@
                 patients.forEach(function(patient, index) {
                     name = patient.patientName;
                     ward = patient.wardName == null ? "not alloted" : patient.wardName;
-                    severity = patient.severity;
-                    test_status = patient.testStatus;
+                    severity = severityMap[patient.severity];
+                    test_status = testStatusMap[patient.testStatus];
                     patientId = patient.patientId;
                     test_status_class = "";
-                    switch (test_status) {
+                    switch (patient.testStatus) {
                         case "POSITIVE":
+                            test_status = "POSITIVE";
                             test_status_class = "positive";
                             break;
                         case "NEGATIVE":
+                            test_status = "NEGATIVE";
                             test_status_class = "negative";
+                            break;
+                        case "PENDING_TEST":
+                            test_status = "TEST PENDING";
+                            break;
+                        case "PENDING_RESULT":
+                            test_status = "TEST RESULT PENDING";
                             break;
                     }
                     row = '<div class="columns-7 w-row">\
@@ -550,6 +567,25 @@
                 }); //foreach
                 $("#patient_list").html(listHTML);
             } //populatePatient
+            $("#search_form").submit(function(e) {
+                searchAndUpdatePatientList();
+                e.preventDefault();
+            }); //search_form submit
+            $("#search_query").keyup(function(e) {
+                searchAndUpdatePatientList();
+            });
+
+            function searchAndUpdatePatientList() {
+                search_query = $("#search_query").val();
+                newPatientList = [];
+                patients.forEach(function(patient, index) {
+                    if (patient.patientName.toLowerCase().includes(search_query.toLowerCase())) {
+                        newPatientList.push(patient);
+                    }
+                }); //forEach
+                populatePatientList(newPatientList);
+            }
+
         });
     </script>
 </body>
