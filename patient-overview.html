@@ -758,6 +758,8 @@
             function showWards(wards) { // exec_4
                 log("Showing Wards:", wards);
                 wardListHTML = "";
+                if (patientStatusData != null)
+                    $("#severity_1").html(severityMap[patientStatusData.severity] + " Severity");
                 wards.forEach(function(ward, index) {
                     row = '<div class="columns-7 w-row">\
                                 <div class="w-col w-col-3">\
