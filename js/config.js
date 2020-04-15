@@ -4,13 +4,16 @@ if (prod) {
     protocol = "https";
     hostname = "cov2.in";
     port = "443";
-} else {
+    subdomain = "/hospitalerp/api/";
+}
+else {
     protocol = "http"
-    hostname = "staging.cov2.in";
+    hostname = "iitbactbackend-dev.ap-south-1.elasticbeanstalk.com";
     port = "80";
+    subdomain = "/api/";
 }
 
-apiURL = protocol + "://" + hostname + ":" + port + "/hospitalerp/api/";
+apiURL = protocol + "://" + hostname + ":" + port + subdomain;
 firebaseConfig = {
     apiKey: "AIzaSyAtDZfhftwpIpN9rZ5I4GHYijGuCbZbib0",
     authDomain: "hospital-erp-prod.firebaseapp.com",
