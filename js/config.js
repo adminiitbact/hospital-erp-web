@@ -1,4 +1,4 @@
-var prod = true;
+var prod = false;
 
 if (prod) {
     protocol = "https";
@@ -29,8 +29,16 @@ function log(key, value) {
     }
 }
 
+function getUrlParam(name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+        return null;
+    }
+    return decodeURI(results[1]) || 0;
+}
+
+
 severityMap = {
-    "NO_SYMPTOMS": "Asymptomatic",
     "MILD": "Mild or Very Mild",
     "MODERATE": "Moderate",
     "SEVERE": "Severe",

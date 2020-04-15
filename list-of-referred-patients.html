@@ -5,8 +5,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>List of Patients</title>
-    <meta content="List of Patients" property="og:title">
+    <title>List of Referred Patients</title>
+    <meta content="List of Referred Patients" property="og:title">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
     <link href="css/normalize.css" rel="stylesheet" type="text/css">
@@ -95,7 +95,7 @@
                 <div class="column w-col w-col-10">
                     <div class="div-block-44">
                         <div class="hospital-profile-header-div _1">
-                            <h1 class="heading-2 _3">Patient List</h1>
+                            <h1 class="heading-2 _3">Referred Patient List</h1>
                             <div class="div-block-53">
                                 <form id='search_form' class="search w-form">
                                     <input type="text" class="search-input w-input" autofocus="true" maxlength="256" name="search_query" placeholder="Search Patient Name" id="search_query">
@@ -509,7 +509,7 @@
                 fetchPatientsURL = apiURL + "facilities/" + facilityId + "/patients/get";
                 data = {
                     "authToken": window.localStorage.getItem("authToken"),
-                    "wardAlloted": true,
+                    "wardAlloted": false,
                 }
                 $.ajax({
                     type: "POST",
