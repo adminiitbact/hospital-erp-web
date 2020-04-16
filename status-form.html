@@ -401,11 +401,6 @@
                                                                                         id="total_beds"/>
                                                                                 </div>
                                                                                 <div class="status-form-2-col-div">
-                                                                                    <label for="name-8" class="field-label">COVID Beds</label>
-                                                                                    <input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
-                                                                                        id="total_covid_beds"/>
-                                                                                </div>
-                                                                                <div class="status-form-2-col-div">
                                                                                     <label for="name-8" class="field-label">Total ICU Beds</label>
                                                                                     <input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
                                                                                         id="total_icu_beds"/>
@@ -415,6 +410,8 @@
                                                                                     <input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
                                                                                         id="covid_icu_beds"/>
                                                                                 </div>
+                                                                                <div class="status-form-2-col-div"><label for="non_covid_occupancy" class="field-label">Total Non COVID Occupancy</label><input type="number" min=0 placeholder="0" class="text-field-design w-input"
+                                                                                    maxlength="256" name="non_covid_occupancy" data-name="non_covid_occupancy" id="non_covid_occupancy"></div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -432,19 +429,17 @@
                                                                                         name="ventilators_allocated_covid" data-name="ventilators_allocated_covid" id="ventilators_allocated_covid"></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="div-block-57"><input type="submit" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57">
+                                                                        <input type="submit" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button">
                                                                     </div>
                                                                 </div>
                                                                 <div class="w-col w-col-6">
-                                                                    <div class="form-block-3 w-form">
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading"><strong>A3. NON-COVID</strong><br></div>
-                                                                            <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="non_covid_occupancy" class="field-label">Total Non COVID Occupancy</label><input type="number" min=0 placeholder="0" class="text-field-design w-input"
-                                                                                        maxlength="256" name="non_covid_occupancy" data-name="non_covid_occupancy" id="non_covid_occupancy"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button"></div>
+                                                                    <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -697,9 +692,11 @@
     <script>
         $(document).ready(function() {
             var facilityData = null;
+            var wardList = null;
             var dataAuthToken = {
                 "authToken": window.localStorage.getItem("authToken")
             };
+            console.log(dataAuthToken);
             var headers = {
                 "Content-Type": "application/json"
             };
@@ -716,6 +713,7 @@
                 $("#logout").click(); //logout if authToken is not available
                 return;
             }
+
             var userProfileURL = apiURL + "hospital/user/profile";
             $.ajax({
                 type: "POST",
@@ -888,7 +886,6 @@
 
             function setFacilityAssets() {
                 $("#total_beds").val(facilityData.facilityAsset.data.total_beds);
-                $("#total_covid_beds").val(facilityData.facilityAsset.data.total_covid_beds);
                 $("#total_icu_beds").val(facilityData.facilityAsset.data.total_icu_beds);
                 $("#covid_icu_beds").val(facilityData.facilityAsset.data.covid_icu_beds);
                 $("#non_covid_occupancy").val(facilityData.facilityAsset.data.non_covid_occupancy);
@@ -999,6 +996,56 @@
                 $("#cleaning_incharge_mobile_1").html(facilityData.facilityContact.data.cleaning_incharge_mobile_1);
             }
 
+            function showData() {
+                try {
+                    setFacilityData();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setFacilityContactDetails();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setFacilityAssets();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setMedicalStaffDetails();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setInventoryDetails();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setComplianceChecklist();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+
+            function fetchWards() { //exec_3
+                var wardsURL = apiURL + "facilities/" + facilityData.facilityId + "/wards";
+                $.ajax({
+                    type: "POST",
+                    url: wardsURL,
+                    data: JSON.stringify(dataAuthToken),
+                    headers: headers,
+                    success: function(res) {
+                        wardList = res.data.list;
+                        showData();
+                    }, //success function ends
+                    error: function(jqXHR, textStatus, error) {
+                        alert("error: " + error);
+                    },
+                }); //fetch wards ajax
+            }
+
             function refreshFacility(facilityId) {
                 var facilityURL = apiURL + "facility/" + facilityId;
                 $.ajax({
@@ -1008,37 +1055,8 @@
                     headers: headers,
                     success: function(res) {
                         facilityData = res.data;
-                        console.log(facilityData);
-                        try {
-                            setFacilityData();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setFacilityContactDetails();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setFacilityAssets();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setMedicalStaffDetails();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setInventoryDetails();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setComplianceChecklist();
-                        } catch (e) {
-                            console.error(e);
-                        }
+                        showData()
+                        // fetchWards();
                     }, //success facility
                     error: function(jqXHR, textStatus, error) {
                             alert("facility error: " + error);
