@@ -118,23 +118,31 @@
                                             <div class="column-7 w-col w-col-8">
                                                 <div>
                                                     <div class="div-block-35 profile">
-                                                        <div class="stats-heading">Facility Assets</div>
+                                                        <div class="stats-heading">Hospital Assets</div>
                                                         <div class="div-block-34">
                                                             <div>
-                                                                <div class="text-block-3" id="qs_icu_facilities_total_beds_available"></div>
-                                                                <div class="text-block-4">ICU Beds</div>
+                                                                <div class="text-block-3" id="qs_total_beds"></div>
+                                                                <div class="text-block-4">Total Beds</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_isolation_facilities_total_beds"></div>
-                                                                <div class="text-block-4">Isolation Beds</div>
+                                                                <div class="text-block-3" id="qs_total_covid_beds"></div>
+                                                                <div class="text-block-4">Total COVID Beds</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_ventilators_available"></div>
+                                                                <div class="text-block-3" id="qs_total_icu_beds"></div>
+                                                                <div class="text-block-4">Total ICU Beds</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="qs_covid_icu_beds"></div>
+                                                                <div class="text-block-4">COVID ICU Beds</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="qs_total_ventilators"></div>
                                                                 <div class="text-block-4">Ventilators</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_ambulance_total"></div>
-                                                                <div class="text-block-4">Ambulance</div>
+                                                                <div class="text-block-3" id="qs_ventilators_allocated_covid"></div>
+                                                                <div class="text-block-4">COVID Ventilators</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -382,22 +390,44 @@
                                                     <form id="hospital_assets_form" action="">
                                                         <div class="div-block-6 profile">
                                                             <div class="w-row">
+                                                                <div class="w-col">
+                                                                    <div class="form-block-3 w-form">
+                                                                        <div class="profile-page-status-update-div">
+                                                                            <div class="subheading">A1. Beds</div>
+                                                                            <div class="div-block-8">
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="name-8" class="field-label">Total Beds</label>
+                                                                                    <input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder=""
+                                                                                        id="total_beds"/>
+                                                                                </div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="name-8" class="field-label">COVID Beds</label>
+                                                                                    <input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
+                                                                                        id="total_covid_beds"/>
+                                                                                </div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="name-8" class="field-label">Total ICU Beds</label>
+                                                                                    <input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
+                                                                                        id="total_icu_beds"/>
+                                                                                </div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="name-8" class="field-label">COVID ICU Beds</label>
+                                                                                    <input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
+                                                                                        id="covid_icu_beds"/>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
                                                                 <div class="w-col w-col-6">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
-                                                                            <div class="subheading">A1. Isolation Facilities</div>
+                                                                            <div class="subheading"><strong>A2. VENTILATORS</strong><br></div>
                                                                             <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="name-8" class="field-label">Total Beds</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder=""
-                                                                                        id="isolation_facilities_total_beds"></div>
-                                                                                <div class="status-form-2-col-div"><label for="name-8" class="field-label">Max capacity</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
-                                                                                        id="isolation_facilities_max_capacity"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading"><strong>A3. VENTILATORS</strong><br></div>
-                                                                            <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="ventilators_available" class="field-label">Available (Total)</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
-                                                                                        name="ventilators_available" data-name="ventilators_available" id="ventilators_available"></div>
+                                                                                <div class="status-form-2-col-div"><label for="total_ventilators" class="field-label">Total Ventilators</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
+                                                                                        name="total_ventilators" data-name="total_ventilators" id="total_ventilators"></div>
                                                                                 <div class="status-form-2-col-div"><label for="ventilators_allocated_covid" class="field-label">Allocated for Covid-19</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
                                                                                         name="ventilators_allocated_covid" data-name="ventilators_allocated_covid" id="ventilators_allocated_covid"></div>
                                                                             </div>
@@ -408,21 +438,10 @@
                                                                 <div class="w-col w-col-6">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
-                                                                            <div class="subheading"><strong>A2. ICU FACILITIES</strong><br></div>
+                                                                            <div class="subheading"><strong>A3. NON-COVID</strong><br></div>
                                                                             <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="icu_facilities_total_beds_available" class="field-label">Total Beds Available</label><input type="number" min=0 placeholder="0" class="text-field-design w-input"
-                                                                                        maxlength="256" name="icu_facilities_total_beds_available" data-name="icu_facilities_total_beds_available" id="icu_facilities_total_beds_available"></div>
-                                                                                <div class="status-form-2-col-div"><label for="icu_facilities_currently_occupied" class="field-label">Currently Occupied</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
-                                                                                        name="icu_facilities_currently_occupied" data-name="icu_facilities_currently_occupied" id="icu_facilities_currently_occupied"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading"><strong>A4. AMBULANCe</strong><br></div>
-                                                                            <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="ambulance_total" class="field-label">Available (Total)</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="ambulance_total"
-                                                                                        data-name="ambulance_total" id="ambulance_total"></div>
-                                                                                <div class="status-form-2-col-div"><label for="ambulance_allocated_covid" class="field-label">Allocated for Covid-19</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
-                                                                                        name="ambulance_allocated_covid" data-name="ambulance_allocated_covid" id="ambulance_allocated_covid"></div>
+                                                                                <div class="status-form-2-col-div"><label for="non_covid_occupancy" class="field-label">Total Non COVID Occupancy</label><input type="number" min=0 placeholder="0" class="text-field-design w-input"
+                                                                                        maxlength="256" name="non_covid_occupancy" data-name="non_covid_occupancy" id="non_covid_occupancy"></div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button"></div>
@@ -717,15 +736,14 @@
                 data = {
                     "authToken": window.localStorage.getItem("authToken"),
                     "data": {
-                        "isolation_facilities_total_beds": parseInt($("#isolation_facilities_total_beds").val()),
-                        "isolation_facilities_max_capacity": parseInt($("#isolation_facilities_max_capacity").val()),
-                        "isolation_facilities_total_available": parseInt($("#isolation_facilities_total_available").val()),
-                        "icu_facilities_total_beds_available": parseInt($("#icu_facilities_total_beds_available").val()),
+                        "total_beds": parseInt($("#total_beds").val()),
+                        "total_covid_beds": parseInt($("#total_covid_beds").val()),
+                        "total_icu_beds": parseInt($("#total_icu_beds").val()),
+                        "covid_icu_beds": parseInt($("#covid_icu_beds").val()),
                         "icu_facilities_currently_occupied": parseInt($("#icu_facilities_currently_occupied").val()),
-                        "ventilators_available": parseInt($("#ventilators_available").val()),
+                        "total_ventilators": parseInt($("#total_ventilators").val()),
                         "ventilators_allocated_covid": parseInt($("#ventilators_allocated_covid").val()),
-                        "ambulance_total": parseInt($("#ambulance_total").val()),
-                        "ambulance_allocated_covid": parseInt($("#ambulance_allocated_covid").val()),
+                        "non_covid_occupancy": parseInt($("#non_covid_occupancy").val()),
                     }
                 };
                 assetsUpdateURL = apiURL + "facility/" + facilityData.facilityId + "/assets";
@@ -869,19 +887,19 @@
             });
 
             function setFacilityAssets() {
-                $("#isolation_facilities_total_beds").val(facilityData.facilityAsset.data.isolation_facilities_total_beds);
-                $("#isolation_facilities_max_capacity").val(facilityData.facilityAsset.data.isolation_facilities_max_capacity);
-                $("#isolation_facilities_total_available").val(facilityData.facilityAsset.data.isolation_facilities_total_available);
-                $("#icu_facilities_total_beds_available").val(facilityData.facilityAsset.data.icu_facilities_total_beds_available);
-                $("#icu_facilities_currently_occupied").val(facilityData.facilityAsset.data.icu_facilities_currently_occupied);
-                $("#ventilators_available").val(facilityData.facilityAsset.data.ventilators_available);
+                $("#total_beds").val(facilityData.facilityAsset.data.total_beds);
+                $("#total_covid_beds").val(facilityData.facilityAsset.data.total_covid_beds);
+                $("#total_icu_beds").val(facilityData.facilityAsset.data.total_icu_beds);
+                $("#covid_icu_beds").val(facilityData.facilityAsset.data.covid_icu_beds);
+                $("#non_covid_occupancy").val(facilityData.facilityAsset.data.non_covid_occupancy);
+                $("#total_ventilators").val(facilityData.facilityAsset.data.total_ventilators);
                 $("#ventilators_allocated_covid").val(facilityData.facilityAsset.data.ventilators_allocated_covid);
-                $("#ambulance_total").val(facilityData.facilityAsset.data.ambulance_total);
-                $("#ambulance_allocated_covid").val(facilityData.facilityAsset.data.ambulance_allocated_covid);
-                $("#qs_isolation_facilities_total_beds").html(facilityData.facilityAsset.data.isolation_facilities_total_beds);
-                $("#qs_icu_facilities_total_beds_available").html(facilityData.facilityAsset.data.icu_facilities_total_beds_available);
-                $("#qs_ventilators_available").html(facilityData.facilityAsset.data.ventilators_available);
-                $("#qs_ambulance_total").html(facilityData.facilityAsset.data.ambulance_total);
+                $("#qs_total_beds").html(facilityData.facilityAsset.data.total_beds);
+                $("#qs_covid_icu_beds").html(facilityData.facilityAsset.data.covid_icu_beds);
+                $("#qs_total_covid_beds").html(facilityData.facilityAsset.data.total_covid_beds);
+                $("#qs_total_icu_beds").html(facilityData.facilityAsset.data.total_icu_beds);
+                $("#qs_total_ventilators").html(facilityData.facilityAsset.data.total_ventilators);
+                $("#qs_ventilators_allocated_covid").html(facilityData.facilityAsset.data.ventilators_allocated_covid);
             }
 
             function setMedicalStaffDetails() {
@@ -990,6 +1008,7 @@
                     headers: headers,
                     success: function(res) {
                         facilityData = res.data;
+                        console.log(facilityData);
                         try {
                             setFacilityData();
                         } catch (e) {
