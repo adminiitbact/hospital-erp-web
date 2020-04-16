@@ -330,7 +330,7 @@
 }
 
 .text-field-design {
-  width: 90px;
+  max-width: 120px;
   height: 35px;
   margin-right: 10px;
   margin-bottom: 5px;
@@ -341,7 +341,7 @@
 }
 
 .text-field-design.dropdown {
-  width: 60px;
+  min-width: 60px;
   margin-right: 0px;
   margin-bottom: 0px;
   margin-left: 5px;
@@ -1342,6 +1342,7 @@
   font-size: 28px;
   line-height: 40px;
   font-weight: 300;
+  text-transform: capitalize;
 }
 
 .text-block-4 {
