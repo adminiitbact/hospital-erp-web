@@ -118,23 +118,31 @@
                                             <div class="column-7 w-col w-col-8">
                                                 <div>
                                                     <div class="div-block-35 profile">
-                                                        <div class="stats-heading">Facility Assets</div>
+                                                        <div class="stats-heading">Hospital Assets</div>
                                                         <div class="div-block-34">
                                                             <div>
-                                                                <div class="text-block-3" id="qs_icu_facilities_total_beds_available"></div>
-                                                                <div class="text-block-4">ICU Beds</div>
+                                                                <div class="text-block-3" id="qs_total_beds"></div>
+                                                                <div class="text-block-4">Total Beds</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_isolation_facilities_total_beds"></div>
-                                                                <div class="text-block-4">Isolation Beds</div>
+                                                                <div class="text-block-3" id="qs_total_covid_beds"></div>
+                                                                <div class="text-block-4">Total COVID Beds</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_ventilators_available"></div>
+                                                                <div class="text-block-3" id="qs_total_icu_beds"></div>
+                                                                <div class="text-block-4">Total ICU Beds</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="qs_covid_icu_beds"></div>
+                                                                <div class="text-block-4">COVID ICU Beds</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="qs_total_ventilators"></div>
                                                                 <div class="text-block-4">Ventilators</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_ambulance_total"></div>
-                                                                <div class="text-block-4">Ambulance</div>
+                                                                <div class="text-block-3" id="qs_ventilators_allocated_covid"></div>
+                                                                <div class="text-block-4">COVID Ventilators</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -146,8 +154,16 @@
                                                                 <div class="text-block-4">Doctors</div>
                                                             </div>
                                                             <div>
+                                                                <div class="text-block-3" id="qs_ayush_doctors"></div>
+                                                                <div class="text-block-4">AYUSH Doctors</div>
+                                                            </div>
+                                                            <div>
                                                                 <div class="text-block-3" id="qs_check_physicians"></div>
                                                                 <div class="text-block-4">Chest Physicians</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="qs_pulmonary"></div>
+                                                                <div class="text-block-4">Pulmonary</div>
                                                             </div>
                                                             <div>
                                                                 <div class="text-block-3" id="qs_anesthesiologists"></div>
@@ -163,12 +179,12 @@
                                                         <div class="stats-heading">Inventory</div>
                                                         <div class="div-block-34">
                                                             <div>
-                                                                <div class="text-block-3" id="qs_n_95_masks"></div>
-                                                                <div class="text-block-4">N-95 Masks</div>
+                                                                <div class="text-block-3" id="qs_ppe_kits"></div>
+                                                                <div class="text-block-4">PPE Kits</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_surgical_mask"></div>
-                                                                <div class="text-block-4">Surgical Masks</div>
+                                                                <div class="text-block-3" id="qs_n_95_masks"></div>
+                                                                <div class="text-block-4">N-95 Masks</div>
                                                             </div>
                                                             <div>
                                                                 <div class="text-block-3" id="qs_tpe_masks"></div>
@@ -179,38 +195,12 @@
                                                                 <div class="text-block-4">Other Masks</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_hazmat_suits"></div>
-                                                                <div class="text-block-4">PPE Kits</div>
+                                                                <div class="text-block-3" id="qs_gloves"></div>
+                                                                <div class="text-block-4">Gloves</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_face_shield"></div>
-                                                                <div class="text-block-4">Face Shields</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="div-block-34">
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">N-95 Masks</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">Surgical Masks</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">TPE Masks</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">Nurses</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">Nurses</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">Nurses</div>
+                                                                <div class="text-block-3" id="qs_hydroxychloroquine"></div>
+                                                                <div class="text-block-4">Hydroxycloroquine</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -382,50 +372,56 @@
                                                     <form id="hospital_assets_form" action="">
                                                         <div class="div-block-6 profile">
                                                             <div class="w-row">
+                                                                <div class="w-col">
+                                                                    <div class="form-block-3 w-form">
+                                                                        <div class="profile-page-status-update-div">
+                                                                            <div class="subheading">A1. Beds</div>
+                                                                            <div class="div-block-8">
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="name-8" class="field-label">Total Beds</label>
+                                                                                    <input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder=""
+                                                                                        id="total_beds"/>
+                                                                                </div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="name-8" class="field-label">Total ICU Beds</label>
+                                                                                    <input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
+                                                                                        id="total_icu_beds"/>
+                                                                                </div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="name-8" class="field-label">COVID ICU Beds</label>
+                                                                                    <input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
+                                                                                        id="covid_icu_beds"/>
+                                                                                </div>
+                                                                                <div class="status-form-2-col-div"><label for="non_covid_occupancy" class="field-label">Total Non COVID Occupancy</label><input type="number" min=0 placeholder="0" class="text-field-design w-input"
+                                                                                    maxlength="256" name="non_covid_occupancy" data-name="non_covid_occupancy" id="non_covid_occupancy"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
                                                                 <div class="w-col w-col-6">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
-                                                                            <div class="subheading">A1. Isolation Facilities</div>
+                                                                            <div class="subheading"><strong>A2. VENTILATORS</strong><br></div>
                                                                             <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="name-8" class="field-label">Total Beds</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder=""
-                                                                                        id="isolation_facilities_total_beds"></div>
-                                                                                <div class="status-form-2-col-div"><label for="name-8" class="field-label">Max capacity</label><input type="number" class="text-field-design w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder=""
-                                                                                        id="isolation_facilities_max_capacity"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading"><strong>A3. VENTILATORS</strong><br></div>
-                                                                            <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="ventilators_available" class="field-label">Available (Total)</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
-                                                                                        name="ventilators_available" data-name="ventilators_available" id="ventilators_available"></div>
+                                                                                <div class="status-form-2-col-div"><label for="total_ventilators" class="field-label">Total Ventilators</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
+                                                                                        name="total_ventilators" data-name="total_ventilators" id="total_ventilators"></div>
                                                                                 <div class="status-form-2-col-div"><label for="ventilators_allocated_covid" class="field-label">Allocated for Covid-19</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
                                                                                         name="ventilators_allocated_covid" data-name="ventilators_allocated_covid" id="ventilators_allocated_covid"></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="div-block-57"><input type="submit" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57">
+                                                                        <input type="submit" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button">
                                                                     </div>
                                                                 </div>
                                                                 <div class="w-col w-col-6">
-                                                                    <div class="form-block-3 w-form">
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading"><strong>A2. ICU FACILITIES</strong><br></div>
-                                                                            <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="icu_facilities_total_beds_available" class="field-label">Total Beds Available</label><input type="number" min=0 placeholder="0" class="text-field-design w-input"
-                                                                                        maxlength="256" name="icu_facilities_total_beds_available" data-name="icu_facilities_total_beds_available" id="icu_facilities_total_beds_available"></div>
-                                                                                <div class="status-form-2-col-div"><label for="icu_facilities_currently_occupied" class="field-label">Currently Occupied</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
-                                                                                        name="icu_facilities_currently_occupied" data-name="icu_facilities_currently_occupied" id="icu_facilities_currently_occupied"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading"><strong>A4. AMBULANCe</strong><br></div>
-                                                                            <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="ambulance_total" class="field-label">Available (Total)</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="ambulance_total"
-                                                                                        data-name="ambulance_total" id="ambulance_total"></div>
-                                                                                <div class="status-form-2-col-div"><label for="ambulance_allocated_covid" class="field-label">Allocated for Covid-19</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256"
-                                                                                        name="ambulance_allocated_covid" data-name="ambulance_allocated_covid" id="ambulance_allocated_covid"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button"></div>
+                                                                    <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -436,22 +432,33 @@
                                                     <form id="medical_staff_details_form">
                                                         <div class="div-block-6 profile">
                                                             <div class="w-row">
-                                                                <div class="w-col w-col-6">
+                                                                <div class="w-col">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
                                                                             <div class="subheading"><strong>B1. DOCTORS</strong></div>
                                                                             <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="total_doctors" class="field-label">Total Doctors</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="total_doctors"
-                                                                                        data-name="total_doctors" id="total_doctors"></div>
-                                                                                <div class="div-block-31"></div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="total_doctors" class="field-label">Total Doctors</label>
+                                                                                    <input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="total_doctors" data-name="total_doctors" id="total_doctors">
+                                                                                </div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="ayush_doctors" class="field-label">AYUSH Doctors</label>
+                                                                                    <input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="ayush_doctors"
+                                                                                    data-name="ayush_doctors" id="ayush_doctors">
+                                                                                </div>
                                                                                 <div class="status-form-2-col-div"><label for="check_physicians" class="field-label">Chest Physicians</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="check_physicians"
                                                                                         data-name="check_physicians" id="check_physicians"></div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="pulmonary" class="field-label">Pulmonary</label>
+                                                                                    <input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="pulmonary"
+                                                                                    data-name="pulmonary" id="pulmonary">
+                                                                                </div>
                                                                             </div>
-
                                                                         </div>
-                                                                        <div class="div-block-57"><input type="reset" id="cancel_medical_staff_details" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"></div>
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                            <div class="w-row">
                                                                 <div class="w-col w-col-6">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
@@ -464,8 +471,15 @@
                                                                                         id="nurses"></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button"></div>
                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57"><input type="reset" id="cancel_medical_staff_details" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"></div>
+                                                                </div>
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -475,53 +489,68 @@
                                                     <form id="inventory_details_form">
                                                         <div class="div-block-6 profile">
                                                             <div class="w-row">
-                                                                <div class="w-col w-col-6">
+                                                                <div class="w-col">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
                                                                             <div class="subheading">C1. Masks</div>
                                                                             <div class="div-block-8">
                                                                                 <div class="status-form-2-col-div"><label for="n_95_masks" class="field-label">N-95 Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="n_95_masks"
                                                                                         data-name="n_95_masks" id="n_95_masks"></div>
-                                                                                <div class="div-block-31"></div>
                                                                                 <div class="status-form-2-col-div"><label for="surgical_mask" class="field-label">Surgical Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="surgical_mask"
                                                                                         data-name="surgical_mask" id="surgical_mask"></div>
+                                                                                <div class="status-form-2-col-div"><label for="tpe_masks" class="field-label">TPE Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="tpe_masks" data-name="tpe_masks"
+                                                                                            id="tpe_masks"></div>
+                                                                                    <div class="status-form-2-col-div"><label for="other_masks" class="field-label">Other Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="other_masks"
+                                                                                            data-name="other_masks" id="other_masks"></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading">C2. <strong>PPE KITS</strong><br></div>
-                                                                            <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="hazmat_suits" class="field-label">Hazmat Suits</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="hazmat_suits"
-                                                                                        data-name="hazmat_suits" id="hazmat_suits"></div>
-                                                                                <div class="div-block-31"></div>
-                                                                                <div class="status-form-2-col-div"><label for="face_shield" class="field-label">Face Shield</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="face_shield"
-                                                                                        data-name="face_shield" id="face_shield"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="div-block-57"><input type="reset" id="cancel_inventory_details" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="w-col w-col-6">
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
-                                                                            <div class="subheading">.</div>
+                                                                            <div class="subheading">C2. <strong>Protective equipments</strong><br></div>
                                                                             <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="tpe_masks" class="field-label">TPE Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="tpe_masks" data-name="tpe_masks"
-                                                                                        id="tpe_masks"></div>
-                                                                                <div class="div-block-31"></div>
-                                                                                <div class="status-form-2-col-div"><label for="other_masks" class="field-label">Other Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="other_masks"
-                                                                                        data-name="other_masks" id="other_masks"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading">.</div>
-                                                                            <div class="div-block-8">
+                                                                                <div class="status-form-2-col-div"><label for="face_shield" class="field-label">Face Shield</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="face_shield"
+                                                                                    data-name="face_shield" id="face_shield"></div>
+                                                                                <div class="status-form-2-col-div"><label for="hazmat_suits" class="field-label">Hazmat Suits</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="hazmat_suits"
+                                                                                        data-name="hazmat_suits" id="hazmat_suits"></div>
+                                                                                <div class="status-form-2-col-div"><label for="ppe_kits" class="field-label">PPE Kits</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="ppe_kits"
+                                                                                        data-name="ppe_kits" id="ppe_kits"></div>
                                                                                 <div class="status-form-2-col-div">
-                                                                                    <label for="name-8" class="field-label">.</label><input disabled type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder=""
-                                                                                        id="name-7">
+                                                                                    <label for="gloves" class="field-label">Gloves</label>
+                                                                                    <input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="gloves"
+                                                                                    data-name="gloves" id="gloves">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="form-block-3 w-form">
+                                                                        <div class="profile-page-status-update-div">
+                                                                            <div class="subheading">C3. <strong>Medicines</strong><br></div>
+                                                                            <div class="div-block-8">
+                                                                                <div class="status-form-2-col-div"><label for="hydroxychloroquine" class="field-label">Hydroxycholroquine</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="hydroxychloroquine"
+                                                                                    data-name="hydroxychloroquine" id="hydroxychloroquine"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57">
+                                                                        <input type="reset" id="cancel_inventory_details" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57">
+                                                                        <input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -678,6 +707,7 @@
     <script>
         $(document).ready(function() {
             var facilityData = null;
+            var wardList = null;
             var dataAuthToken = {
                 "authToken": window.localStorage.getItem("authToken")
             };
@@ -697,6 +727,7 @@
                 $("#logout").click(); //logout if authToken is not available
                 return;
             }
+
             var userProfileURL = apiURL + "hospital/user/profile";
             $.ajax({
                 type: "POST",
@@ -717,15 +748,12 @@
                 data = {
                     "authToken": window.localStorage.getItem("authToken"),
                     "data": {
-                        "isolation_facilities_total_beds": parseInt($("#isolation_facilities_total_beds").val()),
-                        "isolation_facilities_max_capacity": parseInt($("#isolation_facilities_max_capacity").val()),
-                        "isolation_facilities_total_available": parseInt($("#isolation_facilities_total_available").val()),
-                        "icu_facilities_total_beds_available": parseInt($("#icu_facilities_total_beds_available").val()),
-                        "icu_facilities_currently_occupied": parseInt($("#icu_facilities_currently_occupied").val()),
-                        "ventilators_available": parseInt($("#ventilators_available").val()),
+                        "total_beds": parseInt($("#total_beds").val()),
+                        "total_icu_beds": parseInt($("#total_icu_beds").val()),
+                        "covid_icu_beds": parseInt($("#covid_icu_beds").val()),
+                        "total_ventilators": parseInt($("#total_ventilators").val()),
                         "ventilators_allocated_covid": parseInt($("#ventilators_allocated_covid").val()),
-                        "ambulance_total": parseInt($("#ambulance_total").val()),
-                        "ambulance_allocated_covid": parseInt($("#ambulance_allocated_covid").val()),
+                        "non_covid_occupancy": parseInt($("#non_covid_occupancy").val()),
                     }
                 };
                 assetsUpdateURL = apiURL + "facility/" + facilityData.facilityId + "/assets";
@@ -757,6 +785,8 @@
                         "check_physicians": parseInt($("#check_physicians").val()),
                         "anesthesiologists": parseInt($("#anesthesiologists").val()),
                         "nurses": parseInt($("#nurses").val()),
+                        "pulmonary": parseInt($("#pulmonary").val()),
+                        "ayush_doctors": parseInt($("#ayush_doctors").val()),
                     }
                 };
                 medstaffUpdateURL = apiURL + "facility/" + facilityData.facilityId + "/medstaff";
@@ -790,6 +820,9 @@
                         "other_masks": parseInt($("#other_masks").val()),
                         "hazmat_suits": parseInt($("#hazmat_suits").val()),
                         "face_shield": parseInt($("#face_shield").val()),
+                        "gloves": parseInt($("#gloves").val()),
+                        "ppe_kits": parseInt($("#ppe_kits").val()),
+                        "hydroxychloroquine": parseInt($("#hydroxychloroquine").val()),
                     }
                 };
                 inventoryUpdateURL = apiURL + "facility/" + facilityData.facilityId + "/inventory";
@@ -869,19 +902,18 @@
             });
 
             function setFacilityAssets() {
-                $("#isolation_facilities_total_beds").val(facilityData.facilityAsset.data.isolation_facilities_total_beds);
-                $("#isolation_facilities_max_capacity").val(facilityData.facilityAsset.data.isolation_facilities_max_capacity);
-                $("#isolation_facilities_total_available").val(facilityData.facilityAsset.data.isolation_facilities_total_available);
-                $("#icu_facilities_total_beds_available").val(facilityData.facilityAsset.data.icu_facilities_total_beds_available);
-                $("#icu_facilities_currently_occupied").val(facilityData.facilityAsset.data.icu_facilities_currently_occupied);
-                $("#ventilators_available").val(facilityData.facilityAsset.data.ventilators_available);
+                $("#total_beds").val(facilityData.facilityAsset.data.total_beds);
+                $("#total_icu_beds").val(facilityData.facilityAsset.data.total_icu_beds);
+                $("#covid_icu_beds").val(facilityData.facilityAsset.data.covid_icu_beds);
+                $("#non_covid_occupancy").val(facilityData.facilityAsset.data.non_covid_occupancy);
+                $("#total_ventilators").val(facilityData.facilityAsset.data.total_ventilators);
                 $("#ventilators_allocated_covid").val(facilityData.facilityAsset.data.ventilators_allocated_covid);
-                $("#ambulance_total").val(facilityData.facilityAsset.data.ambulance_total);
-                $("#ambulance_allocated_covid").val(facilityData.facilityAsset.data.ambulance_allocated_covid);
-                $("#qs_isolation_facilities_total_beds").html(facilityData.facilityAsset.data.isolation_facilities_total_beds);
-                $("#qs_icu_facilities_total_beds_available").html(facilityData.facilityAsset.data.icu_facilities_total_beds_available);
-                $("#qs_ventilators_available").html(facilityData.facilityAsset.data.ventilators_available);
-                $("#qs_ambulance_total").html(facilityData.facilityAsset.data.ambulance_total);
+                $("#qs_total_beds").html(facilityData.facilityAsset.data.total_beds);
+                $("#qs_covid_icu_beds").html(facilityData.facilityAsset.data.covid_icu_beds);
+                $("#qs_total_covid_beds").html(facilityData.facilityAsset.data.total_covid_beds);
+                $("#qs_total_icu_beds").html(facilityData.facilityAsset.data.total_icu_beds);
+                $("#qs_total_ventilators").html(facilityData.facilityAsset.data.total_ventilators);
+                $("#qs_ventilators_allocated_covid").html(facilityData.facilityAsset.data.ventilators_allocated_covid);
             }
 
             function setMedicalStaffDetails() {
@@ -889,10 +921,14 @@
                 $("#check_physicians").val(facilityData.facilityMedstaff.data.check_physicians);
                 $("#anesthesiologists").val(facilityData.facilityMedstaff.data.anesthesiologists);
                 $("#nurses").val(facilityData.facilityMedstaff.data.nurses);
+                $("#ayush_doctors").val(facilityData.facilityMedstaff.data.ayush_doctors);
+                $("#pulmonary").val(facilityData.facilityMedstaff.data.pulmonary);
                 $("#qs_total_doctors").html(facilityData.facilityMedstaff.data.total_doctors);
                 $("#qs_check_physicians").html(facilityData.facilityMedstaff.data.check_physicians);
                 $("#qs_anesthesiologists").html(facilityData.facilityMedstaff.data.anesthesiologists);
                 $("#qs_nurses").html(facilityData.facilityMedstaff.data.nurses);
+                $("#qs_pulmonary").html(facilityData.facilityMedstaff.data.pulmonary);
+                $("#qs_ayush_doctors").html(facilityData.facilityMedstaff.data.ayush_doctors);
             }
 
             function setInventoryDetails() {
@@ -902,12 +938,18 @@
                 $("#other_masks").val(facilityData.facilityInventory.data.other_masks);
                 $("#hazmat_suits").val(facilityData.facilityInventory.data.hazmat_suits);
                 $("#face_shield").val(facilityData.facilityInventory.data.face_shield);
+                $("#gloves").val(facilityData.facilityInventory.data.gloves);
+                $("#ppe_kits").val(facilityData.facilityInventory.data.ppe_kits);
+                $("#hydroxychloroquine").val(facilityData.facilityInventory.data.hydroxychloroquine);
                 $("#qs_n_95_masks").html(facilityData.facilityInventory.data.n_95_masks);
-                $("#qs_surgical_mask").html(facilityData.facilityInventory.data.surgical_mask);
+                // $("#qs_surgical_mask").html(facilityData.facilityInventory.data.surgical_mask);
                 $("#qs_tpe_masks").html(facilityData.facilityInventory.data.tpe_masks);
                 $("#qs_other_masks").html(facilityData.facilityInventory.data.other_masks);
-                $("#qs_hazmat_suits").html(facilityData.facilityInventory.data.hazmat_suits);
-                $("#qs_face_shield").html(facilityData.facilityInventory.data.face_shield);
+                // $("#qs_hazmat_suits").html(facilityData.facilityInventory.data.hazmat_suits);
+                // $("#qs_face_shield").html(facilityData.facilityInventory.data.face_shield);
+                $("#qs_gloves").html(facilityData.facilityInventory.data.gloves);
+                $("#qs_ppe_kits").html(facilityData.facilityInventory.data.ppe_kits);
+                $("#qs_hydroxychloroquine").html(facilityData.facilityInventory.data.hydroxychloroquine);
             }
 
             function setComplianceChecklist() {
@@ -981,6 +1023,56 @@
                 $("#cleaning_incharge_mobile_1").html(facilityData.facilityContact.data.cleaning_incharge_mobile_1);
             }
 
+            function showData() {
+                try {
+                    setFacilityData();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setFacilityContactDetails();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setFacilityAssets();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setMedicalStaffDetails();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setInventoryDetails();
+                } catch (e) {
+                    console.error(e);
+                }
+                try {
+                    setComplianceChecklist();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+
+            function fetchWards() { //exec_3
+                var wardsURL = apiURL + "facilities/" + facilityData.facilityId + "/wards";
+                $.ajax({
+                    type: "POST",
+                    url: wardsURL,
+                    data: JSON.stringify(dataAuthToken),
+                    headers: headers,
+                    success: function(res) {
+                        wardList = res.data.list;
+                        showData();
+                    }, //success function ends
+                    error: function(jqXHR, textStatus, error) {
+                        alert("error: " + error);
+                    },
+                }); //fetch wards ajax
+            }
+
             function refreshFacility(facilityId) {
                 var facilityURL = apiURL + "facility/" + facilityId;
                 $.ajax({
@@ -990,36 +1082,9 @@
                     headers: headers,
                     success: function(res) {
                         facilityData = res.data;
-                        try {
-                            setFacilityData();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setFacilityContactDetails();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setFacilityAssets();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setMedicalStaffDetails();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setInventoryDetails();
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        try {
-                            setComplianceChecklist();
-                        } catch (e) {
-                            console.error(e);
-                        }
+                        console.log(facilityData);
+                        showData()
+                        // fetchWards();
                     }, //success facility
                     error: function(jqXHR, textStatus, error) {
                             alert("facility error: " + error);
