@@ -375,6 +375,7 @@
                     headers: headers,
                     success: function(res) {
                         facilityData = res.data;
+                        console.log(facilityData);
                         try {
                             setFacilityData();
                         } catch (e) {
