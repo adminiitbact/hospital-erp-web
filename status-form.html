@@ -687,69 +687,7 @@
                                 </div>
                                 <div data-w-tab="Tab 3" class="w-tab-pane"></div>
                                 <div data-w-tab="Ward Details" class="tab-pane-tab-4 w-tab-pane w--tab-active">
-                                    <div class="div-block-66">
-                                        <div class="div-block-67">
-                                            <h4>0002A - Building Name / Number - Floor Number</h4>
-                                            <div class="div-block-65">
-                                                <div class="text-block-12">Patient Severity</div>
-                                                <div>Patient Status</div>
-                                            </div>
-                                            <div class="div-block-65">
-                                                <div>48 Beds</div>
-                                                <div>Patient Severity</div>
-                                            </div>
-                                            <div class="div-block-65">
-                                                <div>ICU Beds: <strong>4000</strong></div>
-                                                <div>Ventilators: <strong>2000</strong></div>
-                                            </div>
-                                        </div>
-                                        <div class="div-block-67">
-                                            <h4>0002A - Building Name / Number - Floor Number</h4>
-                                            <div class="div-block-65">
-                                                <div class="text-block-12">Patient Severity</div>
-                                                <div>Patient Status</div>
-                                            </div>
-                                            <div class="div-block-65">
-                                                <div>48 Beds</div>
-                                                <div>Patient Severity</div>
-                                            </div>
-                                            <div class="div-block-65">
-                                                <div>ICU Beds: <strong>4000</strong></div>
-                                                <div>Ventilators: <strong>2000</strong></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="div-block-66">
-                                        <div class="div-block-67">
-                                            <h4>0002A - Building Name / Number - Floor Number</h4>
-                                            <div class="div-block-65">
-                                                <div class="text-block-12">Patient Severity</div>
-                                                <div>Patient Status</div>
-                                            </div>
-                                            <div class="div-block-65">
-                                                <div>48 Beds</div>
-                                                <div>Patient Severity</div>
-                                            </div>
-                                            <div class="div-block-65">
-                                                <div>ICU Beds: <strong>4000</strong></div>
-                                                <div>Ventilators: <strong>2000</strong></div>
-                                            </div>
-                                        </div>
-                                        <div class="div-block-67">
-                                            <h4>0002A - Building Name / Number - Floor Number</h4>
-                                            <div class="div-block-65">
-                                                <div class="text-block-12">Patient Severity</div>
-                                                <div>Patient Status</div>
-                                            </div>
-                                            <div class="div-block-65">
-                                                <div>48 Beds</div>
-                                                <div>Patient Severity</div>
-                                            </div>
-                                            <div class="div-block-65">
-                                                <div>ICU Beds: <strong>4000</strong></div>
-                                                <div>Ventilators: <strong>2000</strong></div>
-                                            </div>
-                                        </div>
+                                    <div class="w-row" id="ward_details">
                                     </div>
                                 </div>
                             </div>
@@ -1148,8 +1086,32 @@
                 $('#qs_total_covid_beds').html(totalCovidBeds);
             }
 
+            function addWardDetail(ward) {
+                console.log(ward);
+                $('#ward_details').append(
+                    `<div class="w-col w-col-6">
+                        <div class="div-block-67">
+                            <h4>${ward.name}</h4>
+                            <div class="div-block-65">
+                                <div class="text-block-12">Patients severity: ${ward.severity}</div>
+                                <div>Patients status: ${ward.covidStatus}</div>
+                            </div>
+                            <div class="div-block-65">
+                                <div>Available beds: ${ward.availableBeds}</div>
+                                <div>Total beds: ${ward.totalBeds}</div>
+                            </div>
+                            <div class="div-block-65">
+                                <div>ICU Beds: <strong>${ward.icuBeds}</strong></div>
+                                <div>Ventilators: <strong>${ward.ventilators}</strong></div>
+                            </div>
+                        </div>
+                    </div>`
+                )
+            }
+
             function fetchWards() { //exec_3
                 wardList = {}
+                $('#ward_details').empty();
                 $.each(severityMap, function(severity, _) {
                     $.each(["POSITIVE", "NEGATIVE"], function(_, testStatus) {
                         var wardsURL = apiURL + "facilities/" + facilityData.facilityId + "/wards";
@@ -1163,6 +1125,9 @@
                             headers: headers,
                             success: function(res) {
                                 wardList[severity.toLocaleLowerCase() + "_" + testStatus.toLocaleLowerCase()] = res.data.list;
+                                $.each(res.data.list, function (index, ward) {
+                                    addWardDetail(ward);
+                                })
                                 aggregateAndShowWardLevelData();
                             }, //success function ends
                             error: function(jqXHR, textStatus, error) {
