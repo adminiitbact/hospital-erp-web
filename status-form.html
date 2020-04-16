@@ -154,8 +154,16 @@
                                                                 <div class="text-block-4">Doctors</div>
                                                             </div>
                                                             <div>
+                                                                <div class="text-block-3" id="qs_ayush_doctors"></div>
+                                                                <div class="text-block-4">AYUSH Doctors</div>
+                                                            </div>
+                                                            <div>
                                                                 <div class="text-block-3" id="qs_check_physicians"></div>
                                                                 <div class="text-block-4">Chest Physicians</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="qs_pulmonary"></div>
+                                                                <div class="text-block-4">Pulmonary</div>
                                                             </div>
                                                             <div>
                                                                 <div class="text-block-3" id="qs_anesthesiologists"></div>
@@ -450,22 +458,33 @@
                                                     <form id="medical_staff_details_form">
                                                         <div class="div-block-6 profile">
                                                             <div class="w-row">
-                                                                <div class="w-col w-col-6">
+                                                                <div class="w-col">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
                                                                             <div class="subheading"><strong>B1. DOCTORS</strong></div>
                                                                             <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="total_doctors" class="field-label">Total Doctors</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="total_doctors"
-                                                                                        data-name="total_doctors" id="total_doctors"></div>
-                                                                                <div class="div-block-31"></div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="total_doctors" class="field-label">Total Doctors</label>
+                                                                                    <input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="total_doctors" data-name="total_doctors" id="total_doctors">
+                                                                                </div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="ayush_doctors" class="field-label">AYUSH Doctors</label>
+                                                                                    <input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="ayush_doctors"
+                                                                                    data-name="ayush_doctors" id="ayush_doctors">
+                                                                                </div>
                                                                                 <div class="status-form-2-col-div"><label for="check_physicians" class="field-label">Chest Physicians</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="check_physicians"
                                                                                         data-name="check_physicians" id="check_physicians"></div>
+                                                                                <div class="status-form-2-col-div">
+                                                                                    <label for="pulmonary" class="field-label">Pulmonary</label>
+                                                                                    <input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="pulmonary"
+                                                                                    data-name="pulmonary" id="pulmonary">
+                                                                                </div>
                                                                             </div>
-
                                                                         </div>
-                                                                        <div class="div-block-57"><input type="reset" id="cancel_medical_staff_details" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"></div>
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                            <div class="w-row">
                                                                 <div class="w-col w-col-6">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
@@ -478,8 +497,15 @@
                                                                                         id="nurses"></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button"></div>
                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57"><input type="reset" id="cancel_medical_staff_details" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"></div>
+                                                                </div>
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -735,10 +761,8 @@
                     "authToken": window.localStorage.getItem("authToken"),
                     "data": {
                         "total_beds": parseInt($("#total_beds").val()),
-                        "total_covid_beds": parseInt($("#total_covid_beds").val()),
                         "total_icu_beds": parseInt($("#total_icu_beds").val()),
                         "covid_icu_beds": parseInt($("#covid_icu_beds").val()),
-                        "icu_facilities_currently_occupied": parseInt($("#icu_facilities_currently_occupied").val()),
                         "total_ventilators": parseInt($("#total_ventilators").val()),
                         "ventilators_allocated_covid": parseInt($("#ventilators_allocated_covid").val()),
                         "non_covid_occupancy": parseInt($("#non_covid_occupancy").val()),
@@ -773,6 +797,8 @@
                         "check_physicians": parseInt($("#check_physicians").val()),
                         "anesthesiologists": parseInt($("#anesthesiologists").val()),
                         "nurses": parseInt($("#nurses").val()),
+                        "pulmonary": parseInt($("#pulmonary").val()),
+                        "ayush_doctors": parseInt($("#ayush_doctors").val()),
                     }
                 };
                 medstaffUpdateURL = apiURL + "facility/" + facilityData.facilityId + "/medstaff";
@@ -904,10 +930,14 @@
                 $("#check_physicians").val(facilityData.facilityMedstaff.data.check_physicians);
                 $("#anesthesiologists").val(facilityData.facilityMedstaff.data.anesthesiologists);
                 $("#nurses").val(facilityData.facilityMedstaff.data.nurses);
+                $("#ayush_doctors").val(facilityData.facilityMedstaff.data.ayush_doctors);
+                $("#pulmonary").val(facilityData.facilityMedstaff.data.pulmonary);
                 $("#qs_total_doctors").html(facilityData.facilityMedstaff.data.total_doctors);
                 $("#qs_check_physicians").html(facilityData.facilityMedstaff.data.check_physicians);
                 $("#qs_anesthesiologists").html(facilityData.facilityMedstaff.data.anesthesiologists);
                 $("#qs_nurses").html(facilityData.facilityMedstaff.data.nurses);
+                $("#qs_pulmonary").html(facilityData.facilityMedstaff.data.pulmonary);
+                $("#qs_ayush_doctors").html(facilityData.facilityMedstaff.data.ayush_doctors);
             }
 
             function setInventoryDetails() {
