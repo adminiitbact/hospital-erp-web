@@ -200,7 +200,7 @@
                                                             </div>
                                                             <div>
                                                                 <div class="text-block-3" id="qs_hydroxychloroquine"></div>
-                                                                <div class="text-block-4">Hydroxycloroquine</div>
+                                                                <div class="text-block-4">Hydroxychloroquine</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1056,25 +1056,44 @@
                 }
             }
 
+            function aggregateAndShowWardLevelData() {
+                var totalCovidBeds = 0;
+                $.each(wardList, function (key, value) {
+                    $.each(value, function (index, ward) {
+                        totalCovidBeds += ward.totalBeds;
+                    })
+                });
+                $('#qs_total_covid_beds').html(totalCovidBeds);
+            }
+
             function fetchWards() { //exec_3
-                var wardsURL = apiURL + "facilities/" + facilityData.facilityId + "/wards";
-                $.ajax({
-                    type: "POST",
-                    url: wardsURL,
-                    data: JSON.stringify(dataAuthToken),
-                    headers: headers,
-                    success: function(res) {
-                        wardList = res.data.list;
-                        showData();
-                    }, //success function ends
-                    error: function(jqXHR, textStatus, error) {
-                        alert("error: " + error);
-                    },
-                }); //fetch wards ajax
+                wardList = {}
+                $.each(severityMap, function(severity, _) {
+                    $.each(["POSITIVE", "NEGATIVE"], function(_, testStatus) {
+                        var wardsURL = apiURL + "facilities/" + facilityData.facilityId + "/wards";
+                        var data = dataAuthToken;
+                        data["testStatus"] = testStatus;
+                        data["severity"] = severity;
+                        $.ajax({
+                            type: "POST",
+                            url: wardsURL,
+                            data: JSON.stringify(dataAuthToken),
+                            headers: headers,
+                            success: function(res) {
+                                wardList[severity + "." + testStatus] = res.data.list;
+                                aggregateAndShowWardLevelData();
+                            }, //success function ends
+                            error: function(jqXHR, textStatus, error) {
+                                alert("error: " + error);
+                            },
+                        }); //fetch wards ajax
+                    })
+                })
             }
 
             function refreshFacility(facilityId) {
                 var facilityURL = apiURL + "facility/" + facilityId;
+                console.log(dataAuthToken);
                 $.ajax({
                     type: "POST",
                     url: facilityURL,
@@ -1083,8 +1102,8 @@
                     success: function(res) {
                         facilityData = res.data;
                         console.log(facilityData);
-                        showData()
-                        // fetchWards();
+                        showData();
+                        fetchWards();
                     }, //success facility
                     error: function(jqXHR, textStatus, error) {
                             alert("facility error: " + error);
