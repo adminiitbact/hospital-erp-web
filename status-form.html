@@ -179,12 +179,12 @@
                                                         <div class="stats-heading">Inventory</div>
                                                         <div class="div-block-34">
                                                             <div>
-                                                                <div class="text-block-3" id="qs_n_95_masks"></div>
-                                                                <div class="text-block-4">N-95 Masks</div>
+                                                                <div class="text-block-3" id="qs_ppe_kits"></div>
+                                                                <div class="text-block-4">PPE Kits</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_surgical_mask"></div>
-                                                                <div class="text-block-4">Surgical Masks</div>
+                                                                <div class="text-block-3" id="qs_n_95_masks"></div>
+                                                                <div class="text-block-4">N-95 Masks</div>
                                                             </div>
                                                             <div>
                                                                 <div class="text-block-3" id="qs_tpe_masks"></div>
@@ -195,38 +195,12 @@
                                                                 <div class="text-block-4">Other Masks</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_hazmat_suits"></div>
-                                                                <div class="text-block-4">PPE Kits</div>
+                                                                <div class="text-block-3" id="qs_gloves"></div>
+                                                                <div class="text-block-4">Gloves</div>
                                                             </div>
                                                             <div>
-                                                                <div class="text-block-3" id="qs_face_shield"></div>
-                                                                <div class="text-block-4">Face Shields</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="div-block-34">
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">N-95 Masks</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">Surgical Masks</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">TPE Masks</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">Nurses</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">Nurses</div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="text-block-3">35</div>
-                                                                <div class="text-block-4">Nurses</div>
+                                                                <div class="text-block-3" id="qs_hydroxychloroquine"></div>
+                                                                <div class="text-block-4">Hydroxycloroquine</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -515,53 +489,68 @@
                                                     <form id="inventory_details_form">
                                                         <div class="div-block-6 profile">
                                                             <div class="w-row">
-                                                                <div class="w-col w-col-6">
+                                                                <div class="w-col">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
                                                                             <div class="subheading">C1. Masks</div>
                                                                             <div class="div-block-8">
                                                                                 <div class="status-form-2-col-div"><label for="n_95_masks" class="field-label">N-95 Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="n_95_masks"
                                                                                         data-name="n_95_masks" id="n_95_masks"></div>
-                                                                                <div class="div-block-31"></div>
                                                                                 <div class="status-form-2-col-div"><label for="surgical_mask" class="field-label">Surgical Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="surgical_mask"
                                                                                         data-name="surgical_mask" id="surgical_mask"></div>
+                                                                                <div class="status-form-2-col-div"><label for="tpe_masks" class="field-label">TPE Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="tpe_masks" data-name="tpe_masks"
+                                                                                            id="tpe_masks"></div>
+                                                                                    <div class="status-form-2-col-div"><label for="other_masks" class="field-label">Other Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="other_masks"
+                                                                                            data-name="other_masks" id="other_masks"></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading">C2. <strong>PPE KITS</strong><br></div>
-                                                                            <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="hazmat_suits" class="field-label">Hazmat Suits</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="hazmat_suits"
-                                                                                        data-name="hazmat_suits" id="hazmat_suits"></div>
-                                                                                <div class="div-block-31"></div>
-                                                                                <div class="status-form-2-col-div"><label for="face_shield" class="field-label">Face Shield</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="face_shield"
-                                                                                        data-name="face_shield" id="face_shield"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="div-block-57"><input type="reset" id="cancel_inventory_details" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="w-col w-col-6">
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col">
                                                                     <div class="form-block-3 w-form">
                                                                         <div class="profile-page-status-update-div">
-                                                                            <div class="subheading">.</div>
+                                                                            <div class="subheading">C2. <strong>Protective equipments</strong><br></div>
                                                                             <div class="div-block-8">
-                                                                                <div class="status-form-2-col-div"><label for="tpe_masks" class="field-label">TPE Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="tpe_masks" data-name="tpe_masks"
-                                                                                        id="tpe_masks"></div>
-                                                                                <div class="div-block-31"></div>
-                                                                                <div class="status-form-2-col-div"><label for="other_masks" class="field-label">Other Masks</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="other_masks"
-                                                                                        data-name="other_masks" id="other_masks"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="profile-page-status-update-div">
-                                                                            <div class="subheading">.</div>
-                                                                            <div class="div-block-8">
+                                                                                <div class="status-form-2-col-div"><label for="face_shield" class="field-label">Face Shield</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="face_shield"
+                                                                                    data-name="face_shield" id="face_shield"></div>
+                                                                                <div class="status-form-2-col-div"><label for="hazmat_suits" class="field-label">Hazmat Suits</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="hazmat_suits"
+                                                                                        data-name="hazmat_suits" id="hazmat_suits"></div>
+                                                                                <div class="status-form-2-col-div"><label for="ppe_kits" class="field-label">PPE Kits</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="ppe_kits"
+                                                                                        data-name="ppe_kits" id="ppe_kits"></div>
                                                                                 <div class="status-form-2-col-div">
-                                                                                    <label for="name-8" class="field-label">.</label><input disabled type="number" class="text-field-design w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder=""
-                                                                                        id="name-7">
+                                                                                    <label for="gloves" class="field-label">Gloves</label>
+                                                                                    <input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="gloves"
+                                                                                    data-name="gloves" id="gloves">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="div-block-57"><input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="form-block-3 w-form">
+                                                                        <div class="profile-page-status-update-div">
+                                                                            <div class="subheading">C3. <strong>Medicines</strong><br></div>
+                                                                            <div class="div-block-8">
+                                                                                <div class="status-form-2-col-div"><label for="hydroxychloroquine" class="field-label">Hydroxycholroquine</label><input type="number" min=0 placeholder="0" class="text-field-design w-input" maxlength="256" name="hydroxychloroquine"
+                                                                                    data-name="hydroxychloroquine" id="hydroxychloroquine"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="w-row">
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57">
+                                                                        <input type="reset" id="cancel_inventory_details" value="Cancel " data-wait="Please wait..." class="signup-button status-form clear-form w-button">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="w-col w-col-6">
+                                                                    <div class="div-block-57">
+                                                                        <input type="submit" value="update" data-wait="Please wait..." class="signup-button status-form profile-pahe w-button">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -722,7 +711,6 @@
             var dataAuthToken = {
                 "authToken": window.localStorage.getItem("authToken")
             };
-            console.log(dataAuthToken);
             var headers = {
                 "Content-Type": "application/json"
             };
@@ -832,6 +820,9 @@
                         "other_masks": parseInt($("#other_masks").val()),
                         "hazmat_suits": parseInt($("#hazmat_suits").val()),
                         "face_shield": parseInt($("#face_shield").val()),
+                        "gloves": parseInt($("#gloves").val()),
+                        "ppe_kits": parseInt($("#ppe_kits").val()),
+                        "hydroxychloroquine": parseInt($("#hydroxychloroquine").val()),
                     }
                 };
                 inventoryUpdateURL = apiURL + "facility/" + facilityData.facilityId + "/inventory";
@@ -947,12 +938,18 @@
                 $("#other_masks").val(facilityData.facilityInventory.data.other_masks);
                 $("#hazmat_suits").val(facilityData.facilityInventory.data.hazmat_suits);
                 $("#face_shield").val(facilityData.facilityInventory.data.face_shield);
+                $("#gloves").val(facilityData.facilityInventory.data.gloves);
+                $("#ppe_kits").val(facilityData.facilityInventory.data.ppe_kits);
+                $("#hydroxychloroquine").val(facilityData.facilityInventory.data.hydroxychloroquine);
                 $("#qs_n_95_masks").html(facilityData.facilityInventory.data.n_95_masks);
-                $("#qs_surgical_mask").html(facilityData.facilityInventory.data.surgical_mask);
+                // $("#qs_surgical_mask").html(facilityData.facilityInventory.data.surgical_mask);
                 $("#qs_tpe_masks").html(facilityData.facilityInventory.data.tpe_masks);
                 $("#qs_other_masks").html(facilityData.facilityInventory.data.other_masks);
-                $("#qs_hazmat_suits").html(facilityData.facilityInventory.data.hazmat_suits);
-                $("#qs_face_shield").html(facilityData.facilityInventory.data.face_shield);
+                // $("#qs_hazmat_suits").html(facilityData.facilityInventory.data.hazmat_suits);
+                // $("#qs_face_shield").html(facilityData.facilityInventory.data.face_shield);
+                $("#qs_gloves").html(facilityData.facilityInventory.data.gloves);
+                $("#qs_ppe_kits").html(facilityData.facilityInventory.data.ppe_kits);
+                $("#qs_hydroxychloroquine").html(facilityData.facilityInventory.data.hydroxychloroquine);
             }
 
             function setComplianceChecklist() {
@@ -1085,6 +1082,7 @@
                     headers: headers,
                     success: function(res) {
                         facilityData = res.data;
+                        console.log(facilityData);
                         showData()
                         // fetchWards();
                     }, //success facility
