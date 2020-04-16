@@ -1,4 +1,4 @@
-var prod = false;
+var prod = true;
 
 if (prod) {
     protocol = "https";
