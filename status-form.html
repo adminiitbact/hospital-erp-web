@@ -147,6 +147,35 @@
                                                         </div>
                                                     </div>
                                                     <div class="div-block-35 profile">
+                                                        <div class="stats-heading">COVID Beds</div>
+                                                        <div class="div-block-34">
+                                                            <div>
+                                                                <div class="text-block-3" id="mild_negative"></div>
+                                                                <div class="text-block-4">Mild Symptoms, Suspected</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="moderate_negative"></div>
+                                                                <div class="text-block-4">Moderate Symptoms, Suspected</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="severe_negative"></div>
+                                                                <div class="text-block-4">Severe Symptoms, Suspected</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="mild_positive"></div>
+                                                                <div class="text-block-4">Mild Symptoms, Confirmed</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="moderate_positive"></div>
+                                                                <div class="text-block-4">Moderate Symptoms, Confirmed</div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-block-3" id="severe_positive"></div>
+                                                                <div class="text-block-4">Severe Symptoms, Confirmed</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="div-block-35 profile">
                                                         <div class="stats-heading">Medical Staff</div>
                                                         <div class="div-block-34">
                                                             <div>
@@ -1058,10 +1087,14 @@
 
             function aggregateAndShowWardLevelData() {
                 var totalCovidBeds = 0;
+                var keyBasedBeds = {}
                 $.each(wardList, function (key, value) {
+                    keyBasedBeds[key] = 0;
                     $.each(value, function (index, ward) {
                         totalCovidBeds += ward.totalBeds;
-                    })
+                        keyBasedBeds[key] += ward.totalBeds;
+                    });
+                    $('#' + key).html(keyBasedBeds[key]);
                 });
                 $('#qs_total_covid_beds').html(totalCovidBeds);
             }
@@ -1080,7 +1113,7 @@
                             data: JSON.stringify(dataAuthToken),
                             headers: headers,
                             success: function(res) {
-                                wardList[severity + "." + testStatus] = res.data.list;
+                                wardList[severity.toLocaleLowerCase() + "_" + testStatus.toLocaleLowerCase()] = res.data.list;
                                 aggregateAndShowWardLevelData();
                             }, //success function ends
                             error: function(jqXHR, textStatus, error) {
