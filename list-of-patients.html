@@ -28,7 +28,7 @@
             n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
         }(window, document);
     </script>
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="images/cov2_favicon.png" rel="shortcut icon" type="image/x-icon">
     <link href="images/webclip.png" rel="apple-touch-icon">
     <style>
          ::-webkit-scrollbar {
@@ -77,6 +77,9 @@
                         </a>
                         <a href="patient-overview.html" class="logout-button  w-inline-block">
                             <div class="">Add New Patient +</div>
+                        </a>
+                        <a href="list-of-referred-patients.html" class="logout-button  w-inline-block">
+                            <div class="">referred patients</div>
                         </a>
                         <a href="list-of-patients.html" class="logout-button  w-inline-block">
                             <div class="">Patients LIST</div>
@@ -136,312 +139,6 @@
                                     </div>
                                 </div>
                                 <div id="patient_list" class="patient-list-div">
-                                    <!-- <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list negative">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list positive">Positive</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Pending</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div>
-                                    <div class="columns-7 w-row">
-                                        <div class="w-col w-col-1">
-                                            <div class="pd-list">1</div>
-                                        </div>
-                                        <div class="w-col w-col-4">
-                                            <div class="pd-list">First Name Last Name</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Ward</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Mild</div>
-                                        </div>
-                                        <div class="w-col w-col-2">
-                                            <div class="pd-list">Negative</div>
-                                        </div>
-                                        <div class="w-col w-col-1"><a href="#" class="button-2 w-button">update</a></div>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -504,10 +201,14 @@
             }); //ajax userProfile 
             function fetchPatients(facilityId) {
                 fetchPatientsURL = apiURL + "facilities/" + facilityId + "/patients/get";
+                data = {
+                    "authToken": window.localStorage.getItem("authToken"),
+                    "wardAlloted": true,
+                }
                 $.ajax({
                     type: "POST",
                     url: fetchPatientsURL,
-                    data: JSON.stringify(dataAuthToken),
+                    data: JSON.stringify(data),
                     headers: headers,
                     success: function(res) {
                         log("Patient Fetch Response: ", res)
