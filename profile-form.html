@@ -115,8 +115,8 @@
                                                 <div class="login-formfield-div">
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
-                                                            <label for="type_of_facility" class="field-label">Type of your Facility</label>
-                                                            <select id="type_of_facility" name="type_of_facility" data-name="type_of_facility" class="login-text-field plain w-select" required="">
+                                                            <label for="type_of_institution" class="field-label">Type of your Facility</label>
+                                                            <select id="type_of_institution" name="type_of_institution" data-name="type_of_institution" class="login-text-field plain w-select" required="">
                                                                 <option value="">Select one...</option>
                                                                 <option value="Hotel">Hotel</option>
                                                                 <option value="Lodge">Lodge</option>
@@ -393,7 +393,7 @@
             }
 
             function setFacilityData() {
-                $("#type_of_facility").val(facilityData.facilityType);
+                $("#type_of_institution").val(facilityData.institutionType);
                 $("#covid_facility_type").val(facilityData.covidFacilityType);
                 $("#facility_name").val(facilityData.name);
                 $("#area").val(facilityData.area);
@@ -421,7 +421,7 @@
                 //   var user_s_name = $("#user-s-name").val();
                 //   var password_1 = $("#password-1").val();
                 //   var password_2 = $("#password-2").val();
-                var type_of_facility = $("#type_of_facility").val();
+                var type_of_institution = $("#type_of_institution").val();
                 var covid_facility_type = $("#covid_facility_type").val();
                 var facility_name = $("#facility_name").val();
                 var area = $("#area").val();
@@ -475,7 +475,7 @@
                             "cleaning_incharge_mobile_1": cleaning_incharge_mobile_1
                         },
                         "facility_data": {
-                            "type_of_facility": type_of_facility,
+                            "type_of_institution": type_of_institution,
                             "covid_facility_type": covid_facility_type,
                             "facility_name": facility_name,
                             "area": area,
