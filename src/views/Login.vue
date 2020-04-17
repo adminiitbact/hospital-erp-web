@@ -14,7 +14,6 @@
       </div>
       <div class="column w-col w-col-6 w-col-stack">
         <div class="form-div login">
-          <div class="section-2"></div>
           <div class="section-3">
             <div class="login-div">
               <div class="form-block-2 w-form">
@@ -104,7 +103,7 @@ export default @Component class Login extends Vue {
           (authToken) => {
             // Send token to your backend via HTTPS
             window.localStorage.setItem('authToken', authToken);
-            window.location.replace('status-form.html');
+            window.location = '/status-form.html';
           },
         );
       }
