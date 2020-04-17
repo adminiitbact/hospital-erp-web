@@ -25,6 +25,19 @@ firebaseConfig = {
     measurementId: "G-FMK8FK9CQ1"
 };
 
+severityMap = {
+    "MILD": "Mild or Very Mild",
+    "MODERATE": "Moderate",
+    "SEVERE": "Severe",
+};
+
+testStatusMap = {
+    "PENDING_TEST": "Test Pending",
+    "PENDING_RESULT": "Test Result Pending",
+    "POSITIVE": "Positive",
+    "NEGATIVE": "Negative",
+};
+
 function log(key, value) {
     if (!prod) {
         console.log(key);
@@ -39,17 +52,3 @@ function getUrlParam(name) {
     }
     return decodeURI(results[1]) || 0;
 }
-
-
-severityMap = {
-    "MILD": "Mild or Very Mild",
-    "MODERATE": "Moderate",
-    "SEVERE": "Severe",
-};
-
-testStatusMap = {
-    "PENDING_TEST": "Test Pending",
-    "PENDING_RESULT": "Test Result Pending",
-    "POSITIVE": "Positive",
-    "NEGATIVE": "Negative",
-};
