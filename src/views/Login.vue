@@ -49,13 +49,13 @@
                       />
                     </div>
                   </div>
-                  <input
-                    type="submit"
+                  <button
+                    type="button"
                     value="Login"
                     v-on:click="submit"
                     data-wait="Please wait..."
                     class="login-button w-button"
-                  />
+                  >Login</button>
                   <!-- <div class="div-block-9">
                       <a href="#" class="field-label links">Forgot Password?</a>
                       <div class="field-label centered">
@@ -94,20 +94,26 @@ export default @Component class Login extends Vue {
   submit() {
     auth.signInWithEmailAndPassword(
       this.username, this.password,
-    ).catch((error) => {
-      alert(`Error in login: ${error.message}`); // disable-no-alert
-    });
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        auth.currentUser.getIdToken(/* forceRefresh */).then(
-          (authToken) => {
-            // Send token to your backend via HTTPS
-            window.localStorage.setItem('authToken', authToken);
-            window.location = '/status-form.html';
-          },
-        );
-      }
-    });
+    ).then(
+      () => {
+        auth.onAuthStateChanged((user) => {
+          if (user) {
+            auth.currentUser.getIdToken(/* forceRefresh */).then(
+              (authToken) => {
+                // Send token to your backend via HTTPS
+                window.localStorage.setItem('authToken', authToken);
+                window.location.href = '/status-form.html';
+                // this.$router.push({ name: 'StatusForm' });
+              },
+            );
+          }
+        });
+      },
+      (error) => {
+        console.log(error.message);
+        alert(`Error in login: ${error.message}`); // disable-no-alert
+      },
+    );
   }
 }
 </script>
