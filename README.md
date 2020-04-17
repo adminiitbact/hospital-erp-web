@@ -1,3 +1,24 @@
-# hospital-erp-web
+# hospital-erp
 
-![CI](https://github.com/adminiitbact/hospital-erp-web/workflows/CI/badge.svg?branch=master&event=push)
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
