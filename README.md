@@ -14,3 +14,6 @@ $ export PORT=8081  # Port where the local frontend will be hosted
 ## Quick and dirty setup without nodejs
 - Edit a new file `web/js/globalconf.js` to point it to the desired backend URL (it points to PROD by default).
 - Host directory `web` as the root directory using static file hosting. You can use `python3 -m http.server` to achieve that.
+
+## Swagger
+You can find the backend APIs on Swagger http://staging.cov2.in/hospitalerp/swagger-ui.html
