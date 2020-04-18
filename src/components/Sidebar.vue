@@ -18,13 +18,29 @@
     <a href="profile-form.html" class="logout-button  w-inline-block">
       <div class="">Edit Profile</div>
     </a>
-    <a href="#" id="logout" class="logout-button w-inline-block">
+    <a v-on:click="logout" class="logout-button w-inline-block">
       <div>Logout</div>
     </a>
   </div>
 </template>
 
 <script>
-export default {
-};
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import auth from '../firebaseConfig';
+
+
+@Component
+export default class Sidebar extends Vue {
+  logout() {
+    const vm = this; // eslint-disable-line
+    auth.signOut().then(() => {
+      // Sign-out successful.
+      window.localStorage.removeItem('authToken');
+      window.location.href = '/';
+    }).catch((error) => {
+      alert(`Error in Sign-out.${error}`); // eslint-disable-line
+    });
+  }
+}
 </script>

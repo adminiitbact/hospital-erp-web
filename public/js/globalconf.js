@@ -1,1 +1,1 @@
-API_ENDPOINT = "http://staging.cov2.in/hospitalerp/api/";
+API_ENDPOINT = "https://cov2.in/hospitalerp/api/";

@@ -280,12 +280,12 @@
                                                 <div class="">
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
-                                                            <label for="cleaning_incharge_name_1" class="field-label">Name</label>
-                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_name_1" data-name="cleaning_incharge_name_1" placeholder="First Name" id="cleaning_incharge_name_1">
+                                                            <label for="cleaning_incharge_name" class="field-label">Name</label>
+                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_name" data-name="cleaning_incharge_name" placeholder="First Name" id="cleaning_incharge_name">
                                                         </div>
                                                         <div class="login-formfield-div">
-                                                            <label for="cleaning_incharge_mobile_1" class="field-label">Mobile</label>
-                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_mobile_1" data-name="cleaning_incharge_mobile_1" placeholder="+91" id="cleaning_incharge_mobile_1">
+                                                            <label for="cleaning_incharge_mobile" class="field-label">Mobile</label>
+                                                            <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="login-text-field plain w-input" maxlength="256" name="cleaning_incharge_mobile" data-name="cleaning_incharge_mobile" placeholder="+91" id="cleaning_incharge_mobile">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -445,8 +445,8 @@
                 $("#ambulance_incharge_mobile").val(facilityData.facilityContact.data.ambulance_incharge_mobile);
                 $("#health_checkup_incharge_name").val(facilityData.facilityContact.data.health_checkup_incharge_name);
                 $("#health_checkup_incharge_mobile").val(facilityData.facilityContact.data.health_checkup_incharge_mobile);
-                $("#cleaning_incharge_name_1").val(facilityData.facilityContact.data.cleaning_incharge_name_1);
-                $("#cleaning_incharge_mobile_1").val(facilityData.facilityContact.data.cleaning_incharge_mobile_1);
+                $("#cleaning_incharge_name").val(facilityData.facilityContact.data.cleaning_incharge_name);
+                $("#cleaning_incharge_mobile").val(facilityData.facilityContact.data.cleaning_incharge_mobile);
             }
 
 
@@ -468,8 +468,8 @@
                 var ambulance_incharge_mobile = $("#ambulance_incharge_mobile").val();
                 var health_checkup_incharge_name = $("#health_checkup_incharge_name").val();
                 var health_checkup_incharge_mobile = $("#health_checkup_incharge_mobile").val();
-                var cleaning_incharge_name_1 = $("#cleaning_incharge_name_1").val();
-                var cleaning_incharge_mobile_1 = $("#cleaning_incharge_mobile_1").val();
+                var cleaning_incharge_name = $("#cleaning_incharge_name").val();
+                var cleaning_incharge_mobile = $("#cleaning_incharge_mobile").val();
                 // var cleaning_incharge_name_2 = $("#cleaning_incharge_name_2").val();
                 // var cleaning_incharge_mobile_2 = $("#cleaning_incharge_mobile_2").val();
                 var consent_checkbox = $("#consent-checkbox").val();
@@ -487,8 +487,8 @@
                             "ambulance_incharge_mobile": ambulance_incharge_mobile,
                             "health_checkup_incharge_name": health_checkup_incharge_name,
                             "health_checkup_incharge_mobile": health_checkup_incharge_mobile,
-                            "cleaning_incharge_name_1": cleaning_incharge_name_1,
-                            "cleaning_incharge_mobile_1": cleaning_incharge_mobile_1
+                            "cleaning_incharge_name": cleaning_incharge_name,
+                            "cleaning_incharge_mobile": cleaning_incharge_mobile
                         },
                         "facility_data": {
                             "type_of_institution": type_of_institution,
