@@ -231,6 +231,7 @@
                     test_status = testStatusMap[patient.testStatus];
                     patientId = patient.patientId;
                     test_status_class = "";
+                    patient["index"] = index + 1;
                     switch (patient.testStatus) {
                         case "POSITIVE":
                             test_status = "POSITIVE";
@@ -287,6 +288,7 @@
                 }); //forEach
                 populatePatientList(newPatientList);
             }
+
 
         });
     </script>

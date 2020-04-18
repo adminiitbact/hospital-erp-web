@@ -107,7 +107,7 @@
                                                     <div class="div-block-8-copy">
                                                         <div class="patient-db-form">
                                                             <label for="patient_hospital_id" class="field-label patient">Patient ID:</label>
-                                                            <input type="text" class="patient-db-text-field w-input" name="patient_hospital_id" data-name="Patient hospital Id" placeholder="Patient ID" id="patient_hospital_id" required>
+                                                            <input type="text" class="patient-db-text-field w-input" name="patient_hospital_id" data-name="Patient hospital Id" placeholder="Patient ID" id="patient_hospital_id">
                                                         </div>
                                                         <div class="patient-db-form">
                                                             <label for="name" class="field-label patient">Name:</label>
@@ -428,6 +428,8 @@
                             }
                             log("patient status data: ", res);
                             refreshPatientStatus();
+                            fetchWards();
+                            fetchFacility();
                         }, //success function ends
                         error: function(jqXHR, textStatus, error) {
                             alert("error: " + error);
@@ -715,6 +717,9 @@
                         facilityListHTML += row
                 }); //forEach facilities
                 facilityListHTML = mappedFacility + facilityListHTML;
+                if (facilities.length == 0) {
+                    facilityListHTML = "<center>No Facilities Found</center>";
+                }
                 $("#facility_list").html(facilityListHTML);
                 $.selectFacility(0);
             } //showFacility
@@ -761,7 +766,14 @@
                 if (patientStatusData != null)
                     $("#severity_1").html(severityMap[patientStatusData.severity] + " Severity");
                 wards.forEach(function(ward, index) {
-                    row = '<div class="columns-7 w-row">\
+                    test_status = $("#test_status").val() == "POSITIVE" ? "CONFIRMED" : "SUSPECTED";
+                    log("Test_status: ", test_status);
+                    if (ward.severity.toLowerCase() == $("#severity").val().toLowerCase() && ward.covidStatus.toLowerCase() == test_status.toLowerCase()) {
+                        recommended = "recomended";
+                    } else {
+                        recommended = "";
+                    }
+                    row = '<div class="columns-7 ' + recommended + ' w-row">\
                                 <div class="w-col w-col-3">\
                                     <div class="pd-list">' + ward.name + '</div>\
                                 </div>\
@@ -782,6 +794,9 @@
                     wardListHTML += row;
                     // }
                 }); //forEach
+                if (wards.length == 0) {
+                    wardListHTML = "<center>No Wards Found</center>";
+                }
                 $("#ward_list").html(wardListHTML);
                 try {
                     if (patientStatusData != null)

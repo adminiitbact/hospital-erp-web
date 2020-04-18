@@ -43,24 +43,25 @@
                                 <div class="logo-div w-inline-block"></div>
                             </div>
                         </div>
-                        <div>
-                            <div class="section">
-                                <a href="status-form.html" class="logout-button  w-inline-block">
-                                    <div class="">Home</div>
-                                </a>
-                                <a href="patient-overview.html" class="logout-button  w-inline-block">
-                                    <div class="">Add New Patient +</div>
-                                </a>
-                                <a href="list-of-patients.html" class="logout-button  w-inline-block">
-                                    <div class="">Patients LIST</div>
-                                </a>
-                                <a href="profile-form.html" class="logout-button  w-inline-block">
-                                    <div class="">Edit Profile</div>
-                                </a>
-                                <a href="#" id="logout" class="logout-button w-inline-block">
-                                    <div>Logout</div>
-                                </a>
-                            </div>
+                        <div class="section">
+                            <a href="status-form.html" class="logout-button  w-inline-block">
+                                <div class="">Home</div>
+                            </a>
+                            <a href="patient-overview.html" class="logout-button  w-inline-block">
+                                <div class="">Add New Patient +</div>
+                            </a>
+                            <a href="list-of-referred-patients.html" class="logout-button  w-inline-block">
+                                <div class="">referred patients</div>
+                            </a>
+                            <a href="list-of-patients.html" class="logout-button  w-inline-block">
+                                <div class="">Patients LIST</div>
+                            </a>
+                            <a href="profile-form.html" class="logout-button  w-inline-block">
+                                <div class="">Edit Profile</div>
+                            </a>
+                            <a href="#" id="logout" class="logout-button w-inline-block">
+                                <div>Logout</div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -115,19 +116,24 @@
                                                 <div class="login-formfield-div">
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
-                                                            <label for="type_of_institution" class="field-label">Type of your Facility</label>
+                                                            <label for="type_of_institution" class="field-label">Institution Type</label>
                                                             <select id="type_of_institution" name="type_of_institution" data-name="type_of_institution" class="login-text-field plain w-select" required="">
                                                                 <option value="">Select one...</option>
+                                                                <option value="Hospital">Hospital</option>
+                                                                <option value="Medical College Hospital">Medical College Hospital</option>
+                                                                <option value="Hostel - Educational">Hostel - Educational</option>
+                                                                <option value="Hostel - Other">Hostel - Other</option>
                                                                 <option value="Hotel">Hotel</option>
                                                                 <option value="Lodge">Lodge</option>
-                                                                <option value="Hostel">Hostel</option>
-                                                                <option value="Stadium">Stadium</option>
-                                                                <option value="Private Hospital">Private Hospital</option>
-                                                                <option value="Government Hospital">Government Hospital</option>
+                                                                <option value="Community Hall">Community Hall</option>
+                                                                <option value="Marriage Hall">Marriage Hall</option>
+                                                                <option value="School">School</option>
+                                                                <option value="Temporary Structure / Tent">Temporary Structure / Tent</option>
+                                                                <option value="Sports Complex / Stadium">Sports Complex / Stadium</option>
                                                                 <option value="Other">Other</option>
                                                             </select>
                                                         </div>
-                                                        <div class="login-formfield-div">
+                                                        <!-- <div class="login-formfield-div">
                                                             <label for="covid_facility_type" class="field-label">Covid Facility Type</label>
                                                             <select id="covid_facility_type" name="covid_facility_type" data-name="covid_facility_type" class="login-text-field plain w-select" required="" style="font-size:12px">
                                                                 <option value="">Select one...</option>
@@ -137,7 +143,7 @@
                                                                 <option value="Dedicated Covid Hospital">Dedicated Covid Hospital</option>
                                                                 <option value="Non Covid">Non Covid</option>
                                                             </select>
-                                                        </div>
+                                                        </div> -->
                                                         <!-- <label class="radio-button-field w-radio">
                                                           <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-button w-radio-input"></div>
                                                           <input type="radio" data-name="type_of_institution" id="type_of_institution-1" name="type_of_institution" value="Facility" style="opacity:100;position:absolute;z-index:0" required=""><span class="radio-button-label w-form-label">Facility</span></label>
@@ -163,7 +169,14 @@
                                                     <div class="div-block-22">
                                                         <div class="login-formfield-div big">
                                                             <label for="jurisdiction" class="field-label">Jurisdiction</label>
-                                                            <input type="text" class="login-text-field plain w-input" maxlength="256" name="jurisdiction" data-name="jurisdiction" placeholder="Jurisdiction" id="jurisdiction" required="">
+                                                            <!-- <input type="text" class="login-text-field plain w-input" maxlength="256" name="jurisdiction" data-name="jurisdiction" placeholder="Jurisdiction" id="jurisdiction" required=""> -->
+                                                            <select id="jurisdiction" name="jurisdiction" data-name="jurisdiction" class="login-text-field plain w-select" required="">
+                                                                <option value="">Select one...</option>
+                                                                <option value="PMC">PMC</option>
+                                                                <option value="PCMC">PCMC</option>
+                                                                <option value="Civil Surgeon">Civil Surgeon</option>
+                                                                <option value="ZP (DHO)">ZP (DHO)</option>
+                                                            </select>
                                                         </div>
                                                         <div class="login-formfield-div">
                                                             <label for="is_government_facility" class="field-label">Are you a Government Facility?</label>
@@ -183,6 +196,24 @@
                                                         <div class="login-formfield-div">
                                                             <label for="organisation_email" class="field-label">Organisation&#x27;s Email</label>
                                                             <input type="email" class="login-text-field plain w-input" maxlength="256" name="organisation_email" data-name="organisation_email" placeholder="Email" id="organisation_email" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="div-block-22">
+                                                        <div class="login-formfield-div big">
+                                                            <label for="is_seperate_entry_exit_available" class="field-label">Separate entry/exit to the facility</label>
+                                                            <select id="is_seperate_entry_exit_available" name="is_seperate_entry_exit_available" data-name="is_seperate_entry_exit_available" class="login-text-field plain w-select" required="">
+                                                                <option value="">Select one...</option>
+                                                                <option value="true">Yes</option>
+                                                                <option value="false">No</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="login-formfield-div">
+                                                            <label for="is_fever_clinic_available" class="field-label">Is Fever Clinic Available?</label>
+                                                            <select id="is_fever_clinic_available" name="is_fever_clinic_available" data-name="is_fever_clinic_available" class="login-text-field plain w-select" required="">
+                                                                <option value="">Select one...</option>
+                                                                <option value="true">Yes</option>
+                                                                <option value="false">No</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -396,13 +427,15 @@
 
             function setFacilityData() {
                 $("#type_of_institution").val(facilityData.institutionType);
-                $("#covid_facility_type").val(facilityData.covidFacilityType);
+                // $("#covid_facility_type").val(facilityData.covidFacilityType);
                 $("#facility_name").val(facilityData.name);
                 $("#area").val(facilityData.area);
                 $("#organisation_email").val(facilityData.email);
                 $("#organisation_telephone").val(facilityData.telephone);
                 $("#jurisdiction").val(facilityData.jurisdiction);
                 $("#is_government_facility").val(facilityData.governmentHospital ? "true" : "false");
+                $("#is_seperate_entry_exit_available").val(facilityData.isSeperateEntryExitAvailable ? "true" : "false");
+                $("#is_fever_clinic_available").val(facilityData.isFeverClinicAvailable ? "true" : "false");
             }
 
             function setFacilityContactDetails() {
@@ -419,16 +452,14 @@
 
             $("#profile-form").submit(function(event) {
                 var message = "";
-                //   var username = $("#username").val();
-                //   var user_s_name = $("#user-s-name").val();
-                //   var password_1 = $("#password-1").val();
-                //   var password_2 = $("#password-2").val();
                 var type_of_institution = $("#type_of_institution").val();
-                var covid_facility_type = $("#covid_facility_type").val();
+                // var covid_facility_type = $("#covid_facility_type").val();
                 var facility_name = $("#facility_name").val();
                 var area = $("#area").val();
                 var jurisdiction = $("#jurisdiction").val();
                 var is_government_facility = $("#is_government_facility").val();
+                var is_seperate_entry_exit_available = $("#is_seperate_entry_exit_available").val();
+                var is_fever_clinic_available = $("#is_fever_clinic_available").val();
                 var organisation_telephone = $("#organisation_telephone").val();
                 var organisation_email = $("#organisation_email").val();
                 var primary_contact_person_name = $("#primary_contact_person_name").val();
@@ -442,23 +473,6 @@
                 // var cleaning_incharge_name_2 = $("#cleaning_incharge_name_2").val();
                 // var cleaning_incharge_mobile_2 = $("#cleaning_incharge_mobile_2").val();
                 var consent_checkbox = $("#consent-checkbox").val();
-                //   var password=password_1;
-
-                //   if(password_1!=password_2){
-                //     $("#password_message").show();
-                //     alert("Password does not match");
-                //     event.preventDefault();
-                //     return ;
-                //   }
-
-                //   $('#profile-form input').each(function(index){  
-                //       var input = $(this);
-                //       if($(this).is(':checked')) { 
-                //         if(input.attr("name")=="type_of_institution"){
-                //           type_of_institution=input.val();
-                //         }
-                //       }
-                //   });
 
                 // Send token to your backend via HTTPS
                 var authToken = window.localStorage.getItem("authToken");
@@ -478,11 +492,13 @@
                         },
                         "facility_data": {
                             "type_of_institution": type_of_institution,
-                            "covid_facility_type": covid_facility_type,
+                            // "covid_facility_type": covid_facility_type,
                             "facility_name": facility_name,
                             "area": area,
                             "jurisdiction": jurisdiction,
                             "is_government_facility": is_government_facility,
+                            "isSeperateEntryExitAvailable": is_seperate_entry_exit_available,
+                            "isFeverClinicAvailable": is_fever_clinic_available,
                             "organisation_telephone": organisation_telephone,
                             "organisation_email": organisation_email
                         },
