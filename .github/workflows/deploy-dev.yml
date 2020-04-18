@@ -28,6 +28,6 @@ jobs:
         aws_secret_key: ${{ secrets.aws_secret_key }}
         region: ap-south-1
         application_name: iitb-act-frontend-dev-app
-        environment_name: iitbactfrontenddev-env
+        environment_name: iitb-act-frontend-dev-env-v2
         version_label: ${{ github.sha }}
         deployment_package: release.zip

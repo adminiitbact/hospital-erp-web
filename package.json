@@ -1,13 +1,29 @@
 {
-  "name": "hospital-erp",
-  "version": "0.1.0",
-  "private": true,
+  "name": "hospital-erp-web",
+  "version": "1.0.0",
+  "description": "Frontend for cov2.in",
   "scripts": {
+    "start": "node app.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adminiitbact/hospital-erp-web.git"
+  },
+  "keywords": [
+    "covid-19"
+  ],
+  "author": "iitbact",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/adminiitbact/hospital-erp-web/issues"
+  },
+  "homepage": "https://github.com/adminiitbact/hospital-erp-web#readme",
   "dependencies": {
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "core-js": "^3.6.4",
     "eslint-config-airbnb": "^18.1.0",
     "firebase": "^7.14.1",

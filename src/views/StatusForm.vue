@@ -65,10 +65,14 @@ import Sidelogo from '../components/Sidelogo.vue';
   },
 })
 export default class StatusForm extends Vue {
+  user = {};
+
   mounted() {
 
   }
 
+  fetchUser() {
 
+  }
 }
 </script>
