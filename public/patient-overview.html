@@ -60,7 +60,35 @@
 </head>
 
 <body class="body">
-    <div class="div-block-4 status-form">
+    <div class="div-block-69" id="discharge_popup" style="display:none;">
+        <div class="form-block-5 w-form">
+            <form id="discharge_form">
+                <div class="patient-db-form status">
+                    <div class="text-block-13">Remove Patient from Facility</div>
+                    <!-- <div class="div-block-70"><label for="name" class="field-label patient white">Reason:</label>
+                        <input type="text" class="patient-db-text-field w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required="">
+                    </div> -->
+                    <div class="div-block-70"><label for="name" class="field-label patient white">Reason:</label>
+                        <select id="discharge_reason" name="discharge-reason" required data-name="Field 4" class="patient-db-text-field w-select">.val();
+                            <option value="">Select one...</option> 
+                            <option value="DISCHARGED">Discharged</option>
+                            <option value="DECEASED">Deceased </option>
+                        </select>
+                    </div>
+                    <div class="div-block-70" id="discharge_quarantine_type_block" style="display:none">
+                        <label for="name" class="field-label patient white">Quarantine Type:</label>
+                        <select id="discharge_quarantine_type" name="discharge_quarantine_type" data-name="Field 4" class="patient-db-text-field w-select" required>
+                            <option value="">Select one...</option>
+                            <option value="HOME_QUARANTINE">Home Quarantine</option>
+                            <option value="INSTITUTIONAL_QUARANTINE">Institutional Quarantine</option>
+                        </select>
+                    </div>
+                    <div class="div-block-71"><input type="reset" id="discharge_form_cancel" class="signup-button status-form _2 cancel w-button" value="CANCEL"><input type="submit" href="#" class="button-5 w-button" value="Remove Patient"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="div-block-4 status-form" id="patient_form">
         <div class="div-block status-form">
             <div class="columns-4 w-row">
                 <div class="w-col w-col-2">
@@ -74,28 +102,28 @@
                     <div class="section">
                         <a href="status-form.html" class="logout-button  w-inline-block">
                             <div class="">Home</div>
-                        </a>
-                        <a href="patient-overview.html" class="logout-button  w-inline-block">
-                            <div class="">Add New Patient +</div>
-                        </a>
-                        <a href="list-of-referred-patients.html" class="logout-button  w-inline-block">
-                            <div class="">referred patients</div>
-                        </a>
-                        <a href="list-of-patients.html" class="logout-button  w-inline-block">
-                            <div class="">Patients LIST</div>
-                        </a>
-                        <a href="profile-form.html" class="logout-button  w-inline-block">
-                            <div class="">Edit Profile</div>
-                        </a>
-                        <a href="#" id="logout" class="logout-button w-inline-block">
-                            <div>Logout</div>
-                        </a>
+                            </>
+                            <a href="patient-overview.html" class="logout-button  w-inline-block">
+                                <div class="">Add New Patient +</div>
+                            </a>
+                            <a href="list-of-referred-patients.html" class="logout-button  w-inline-block">
+                                <div class="">referred patients</div>
+                            </a>
+                            <a href="list-of-patients.html" class="logout-button  w-inline-block">
+                                <div class="">Patients LIST</div>
+                            </a>
+                            <a href="profile-form.html" class="logout-button  w-inline-block">
+                                <div class="">Edit Profile</div>
+                            </a>
+                            <a href="#" id="logout" class="logout-button w-inline-block">
+                                <div>Logout</div>
+                            </a>
                     </div>
                 </div>
                 <div class="column w-col w-col-10">
                     <div class="div-block-44">
                         <div class="hospital-profile-header-div _1">
-                            <h1 class="heading-2 _1">Patient Details</h1>
+                            <h1 class="heading-2 _1">Patient Details</h1><a href="#" id="remove_patient" class="button-3 ward remove w-button" style="display:none">- Remove Patient</a>
                         </div>
                         <form id="patient_form" name="patient_form" data-name="Patient Form">
                             <div class="div-block-36 _1">
@@ -396,6 +424,7 @@
             function fetchPatientData() { //exec_5
                 if (getUrlParam("patient_id") != null) {
                     //get patient details
+                    $("#remove_patient").show();
                     updatePatient = true;
                     patientId = getUrlParam("patient_id");
                     patientProfileURL = apiURL + "patients/" + patientId + "/profile/get";
@@ -437,6 +466,7 @@
                     }); //get patient profile
                 } else {
                     //no patient 
+                    $("#remove_patient").hide();
                 }
                 selectedFacilityId = currentFacility.facilityId;
             }
@@ -832,7 +862,55 @@
                 else
                     fetchWards();
             }); //test_status change
+            $("#remove_patient").click(function(e) {
+                $("#discharge_popup").show();
+                $("#patient_form").hide();
+                e.preventDefault();
+            });
+            $("#discharge_form_cancel").click(function(e) {
+                $("#discharge_popup").hide();
+                $("#patient_form").show();
+            });
+            $("#discharge_reason").change(function(e) {
+                if ($("#discharge_reason").val() == "DISCHARGED") {
+                    $("#discharge_quarantine_type_block").show();
+                } else {
+                    $("#discharge_quarantine_type_block").hide();
+                    $("#discharge_quarantine_type").val("HOME_QUARANTINE");
+                }
+            });
+            $("#discharge_form").submit(function(e) {
+                data = dataAuthToken;
+                data["patientHospitalId"] = patientProfileData.patientHospitalId == null ? "" : patientProfileData.patientHospitalId;
+                data["severity"] = patientStatusData.severity;
+                data["testStatus"] = patientStatusData.testStatus;
+                data["facilityId"] = patientStatusData.facilityId;
+                data["wardId"] = patientStatusData.wardId;
+                data["reason"] = $("#discharge_reason").val();
+                data["quarantineType"] = $("#discharge_quarantine_type").val();
 
+                dischargePatientURL = apiURL + "patients/" + getUrlParam("patient_id") + "/discharge/post";
+                log("Patient Discharge data:", data);
+                $.ajax({
+                    type: "POST",
+                    url: dischargePatientURL,
+                    data: JSON.stringify(data),
+                    headers: headers,
+                    success: function(res) {
+                        log("Patient Discharge response:", res);
+                        if (res.data.success) {
+                            alert("Removed Patient successfully");
+                            window.location.replace("list-of-patients.html");
+                        } else {
+                            alert("Could not remove patient.");
+                        }
+                    }, //success function ends
+                    error: function(jqXHR, textStatus, error) {
+                        alert("Patient Discharge error: " + error);
+                    },
+                }); //discharge patient ajax
+                e.preventDefault();
+            });
         }); //document ready
     </script>
 </body>
