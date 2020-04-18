@@ -716,7 +716,7 @@
                 firebase.auth().signOut().then(function() {
                     // Sign-out successful.
                     window.localStorage.removeItem("authToken");
-                    window.location.href = "index.html";
+                    window.location.href = "/";
                 }).catch(function(error) {
                     alert("Error in Sign-out." + error);
                 });

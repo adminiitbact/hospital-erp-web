@@ -102,8 +102,8 @@ export default @Component class Login extends Vue {
               (authToken) => {
                 // Send token to your backend via HTTPS
                 window.localStorage.setItem('authToken', authToken);
-                // window.location.href = '/status-form.html';
-                this.$router.push({ name: 'StatusForm' });
+                window.location.href = '/status-form.html';
+                // this.$router.push({ name: 'StatusForm' });
               },
             );
           }
