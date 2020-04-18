@@ -1,0 +1,1 @@
+API_ENDPOINT = "https://cov2.in/hospitalerp/api/";
