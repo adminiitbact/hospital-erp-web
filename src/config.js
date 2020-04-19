@@ -7,6 +7,15 @@ const config = {
   apiUrl,
   userProfileFetchUrl: urljoin(apiUrl, '/hospital/user/profile'),
   fetchFacilityUrl: urljoin(apiUrl, 'facility/'),
+  severityMap: [
+    'MILD',
+    'MODERATE',
+    'SEVERE',
+  ],
+  testStatusMap: [
+    'SUSPECTED',
+    'CONFIRMED',
+  ],
 };
 
 module.exports = config;

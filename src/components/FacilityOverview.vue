@@ -16,70 +16,22 @@
             <div class="div-block-35 profile">
               <div class="stats-heading">COVID Beds</div>
               <div class="div-block-34">
-                <div>
-                  <div class="text-block-3" id="mild_negative"></div>
-                  <div class="text-block-4">Mild, Suspected</div>
-                </div>
-                <div>
-                  <div class="text-block-3" id="moderate_negative"></div>
-                  <div class="text-block-4">Moderate, Suspected</div>
-                </div>
-                <div>
-                  <div class="text-block-3" id="severe_negative"></div>
-                  <div class="text-block-4">Severe, Suspected</div>
-                </div>
-                <div>
-                  <div class="text-block-3" id="mild_positive"></div>
-                  <div class="text-block-4">Mild, Confirmed</div>
-                </div>
-                <div>
-                  <div class="text-block-3" id="moderate_positive"></div>
-                  <div class="text-block-4">Moderate, Confirmed</div>
-                </div>
-                <div>
-                  <div class="text-block-3" id="severe_positive"></div>
-                  <div class="text-block-4">Severe, Confirmed</div>
+                <div
+                  v-for="(covidBeds, index) in getBeds('totalBeds')"
+                  :key="index">
+                  <div class="text-block-3">{{ covidBeds[2] }}</div>
+                  <div class="text-block-4">{{ covidBeds[1] }}</div>
                 </div>
               </div>
             </div>
             <div class="div-block-35 profile">
               <div class="stats-heading">Available COVID Beds</div>
               <div class="div-block-34">
-                <div>
-                  <div class="text-block-3" id="mild_negative_unoccupied"></div>
-                  <div class="text-block-4">Mild, Suspected</div>
-                </div>
-                <div>
-                  <div
-                    class="text-block-3"
-                    id="moderate_negative_unoccupied"
-                  ></div>
-                  <div class="text-block-4">Moderate, Suspected</div>
-                </div>
-                <div>
-                  <div
-                    class="text-block-3"
-                    id="severe_negative_unoccupied"
-                  ></div>
-                  <div class="text-block-4">Severe, Suspected</div>
-                </div>
-                <div>
-                  <div class="text-block-3" id="mild_positive_unoccupied"></div>
-                  <div class="text-block-4">Mild, Confirmed</div>
-                </div>
-                <div>
-                  <div
-                    class="text-block-3"
-                    id="moderate_positive_unoccupied"
-                  ></div>
-                  <div class="text-block-4">Moderate, Confirmed</div>
-                </div>
-                <div>
-                  <div
-                    class="text-block-3"
-                    id="severe_positive_unoccupied"
-                  ></div>
-                  <div class="text-block-4">Severe, Confirmed</div>
+                <div
+                  v-for="(covidBeds, index) in getBeds('availableBeds')"
+                  :key="index">
+                  <div class="text-block-3">{{ covidBeds[2] }}</div>
+                  <div class="text-block-4">{{ covidBeds[1] }}</div>
                 </div>
               </div>
             </div>
@@ -158,10 +110,16 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+const config = require('../config');
+const utils = require('../utils/utils');
+
 
 const FacilityOverviewProps = Vue.extend({
   props: {
     facility: {
+      required: true,
+    },
+    wards: {
       required: true,
     },
   },
@@ -227,6 +185,36 @@ export default class FacilityOverview extends FacilityOverviewProps {
       return this.facility.facilityContact.data;
     }
     return {};
+  }
+
+  getBeds(marker) {
+    const total = [];
+    const totalHelper = [];
+    for (let j = 0; j < config.testStatusMap.length; j += 1) {
+      const testStatus = config.testStatusMap[j];
+      for (let i = 0; i < config.severityMap.length; i += 1) {
+        const severity = config.severityMap[i];
+        const hashedVal = utils.hashedSeverityTestStatus(
+          severity, testStatus,
+        );
+        total.push(
+          [hashedVal,
+            `${utils.capitalizeOnlyFirst(severity)}, \
+            ${utils.capitalizeOnlyFirst(testStatus)}`],
+        );
+        totalHelper[hashedVal] = 0;
+      }
+    }
+    for (let i = 0; i < this.wards.length; i += 1) {
+      const ward = this.wards[i];
+      totalHelper[
+        utils.hashedSeverityTestStatus(ward.severity, ward.covidStatus)
+      ] += ward[marker];
+    }
+    for (let i = 0; i < total.length; i += 1) {
+      total[i].push(totalHelper[total[i][0]]);
+    }
+    return total;
   }
 }
 </script>

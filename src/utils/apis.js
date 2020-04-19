@@ -56,10 +56,23 @@ function fetchWards(facilityId, testStatus, severity) {
     testStatus,
     severity,
   };
-  console.log(JSON.stringify(data));
   return getPromisifiedRequest(
     'POST', urljoin(
       config.apiUrl, 'facilities', facilityId.toString(), 'wards',
+    ),
+    data, getHeaders(),
+  );
+}
+
+function saveWard(facilityId, ward) {
+  const data = {
+    authToken: getAuthToken(),
+    ...ward,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'facilities', facilityId.toString(), 'wards',
+      'post',
     ),
     data, getHeaders(),
   );
@@ -69,4 +82,5 @@ module.exports = {
   fetchUser,
   fetchFacilityData,
   fetchWards,
+  saveWard,
 };
