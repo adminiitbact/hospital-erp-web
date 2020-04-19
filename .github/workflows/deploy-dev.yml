@@ -2,7 +2,7 @@ name: Dev CI
 
 on:
   push:
-    branches: [ master, vue-framework ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -31,3 +31,4 @@ jobs:
         environment_name: iitb-act-frontend-dev-env-v2
         version_label: ${{ github.sha }}
         deployment_package: release.zip
+
