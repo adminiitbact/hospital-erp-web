@@ -272,28 +272,28 @@ export default class EditFacility extends EditFacilityProps {
 
   get asset() {
     if (this.facility.facilityAsset) {
-      return JSON.parse(JSON.stringify(this.facility.facilityAsset.data));
+      return this.facility.facilityAsset.data;
     }
     return {};
   }
 
   get staff() {
     if (this.facility.facilityMedstaff) {
-      return JSON.parse(JSON.stringify(this.facility.facilityMedstaff.data));
+      return this.facility.facilityMedstaff.data;
     }
     return {};
   }
 
   get inventory() {
     if (this.facility.facilityInventory) {
-      return JSON.parse(JSON.stringify(this.facility.facilityInventory.data));
+      return this.facility.facilityInventory.data;
     }
     return {};
   }
 
   get checklist() {
     if (this.facility.facilityChecklist) {
-      return JSON.parse(JSON.stringify(this.facility.facilityChecklist.data));
+      return this.facility.facilityChecklist.data;
     }
     return {};
   }

@@ -74,9 +74,9 @@ import WardDetails from '../components/WardDetails.vue';
   computed: {
     ...mapState([
       'user',
-      'facility',
     ]),
     ...mapGetters([
+      'facility',
       'wards',
     ]),
   },

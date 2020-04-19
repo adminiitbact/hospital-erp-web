@@ -77,7 +77,17 @@ const WardEditorProps = Vue.extend({
       required: false,
       default: () => ({
         name: '',
-        wardId: 0,
+        id: 0,
+        buildingName: '',
+        floor: '',
+        totalBeds: 0,
+        gender: 'UNISEX',
+        covidWard: 'true',
+        covidStatus: 'CONFIRMED',
+        severity: 'MILD',
+        ventilators: 0,
+        ventilatorsOccupied: 0,
+        extraFields: {},
       }),
     },
   },
@@ -125,13 +135,14 @@ export default class WardEditor extends WardEditorProps {
   submitChanges() {
     this.ward.wardId = this.ward.id;
     this.updateWardWithModelFields();
+    console.log(this.ward);
     API.saveWard(this.$store.state.user.facilityId, this.ward).then(
       () => {
         const action = this.ward.id === 0 ? 'added' : 'updated';
-        alert(`Ward details ${action}`);
+        alert(`Ward details ${action}`); // eslint-disable-line
         this.$store.dispatch('fetchWards');
       }, (error) => {
-        alert(`Error: ${error.message}`);
+        alert(`Error: ${error.message}`); // eslint-disable-line
       },
     );
     this.$emit('edit-done');

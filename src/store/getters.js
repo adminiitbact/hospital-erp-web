@@ -1,6 +1,9 @@
 const getters = {
   wards(state) {
-    return state.wards;
+    return JSON.parse(JSON.stringify(state.wards));
+  },
+  facility(state) {
+    return JSON.parse(JSON.stringify(state.facility));
   },
 };
 
