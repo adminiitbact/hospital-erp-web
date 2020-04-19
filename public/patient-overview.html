@@ -76,11 +76,13 @@
                         </select>
                     </div>
                     <div class="div-block-70" id="discharge_quarantine_type_block" style="display:none">
-                        <label for="name" class="field-label patient white">Quarantine Type:</label>
+                        <label for="name" class="field-label patient white">Reason for Discharge:</label>
                         <select id="discharge_quarantine_type" name="discharge_quarantine_type" data-name="Field 4" class="patient-db-text-field w-select" required>
                             <option value="">Select one...</option>
-                            <option value="HOME_QUARANTINE">Home Quarantine</option>
-                            <option value="INSTITUTIONAL_QUARANTINE">Institutional Quarantine</option>
+                            <option value="HOME_QUARANTINE">Patient Placed Under Home Quarantine</option>
+                            <option value="INSTITUTIONAL_QUARANTINE">Patient Placed Under Institutional Quarantine</option>
+                            <option value="INSTITUTIONAL_NON_COVID_TREATMENT">Patient Discharged from COVID ward for Non COVID Treatment</option>
+                            <option value="RECOVERED">Patient Discharged after COVID-19 Recovery</option>
                         </select>
                     </div>
                     <div class="div-block-71"><input type="reset" id="discharge_form_cancel" class="signup-button status-form _2 cancel w-button" value="CANCEL"><input type="submit" href="#" class="button-5 w-button" value="Remove Patient"></div>
@@ -136,6 +138,10 @@
                                                         <div class="patient-db-form">
                                                             <label for="patient_hospital_id" class="field-label patient">Patient ID:</label>
                                                             <input type="text" class="patient-db-text-field w-input" name="patient_hospital_id" data-name="Patient hospital Id" placeholder="Patient ID" id="patient_hospital_id">
+                                                        </div>
+                                                        <div class="patient-db-form">
+                                                            <label for="goi_covid_id" class="field-label patient">GOI Covid ID:</label>
+                                                            <input type="text" class="patient-db-text-field w-input" name="goi_covid_id" data-name="GOI Covid Id" placeholder="GOI Covid ID" id="goi_covid_id">
                                                         </div>
                                                         <div class="patient-db-form">
                                                             <label for="name" class="field-label patient">Name:</label>
@@ -439,7 +445,7 @@
                             refreshPatientProfile();
                         }, //success function ends
                         error: function(jqXHR, textStatus, error) {
-                            alert("error: " + error);
+                            alert("patient profile error: " + error);
                         },
                     }); //get patient profile
                     patientStatusURL = apiURL + "patients/" + patientId + "/status/get";
@@ -455,13 +461,12 @@
                             if (patientStatusData.facilityId != currentFacility.facilityId) {
                                 $("#logout").click();
                             }
-                            log("patient status data: ", res);
                             refreshPatientStatus();
                             fetchWards();
-                            fetchFacility();
+                            // fetchFacility();
                         }, //success function ends
                         error: function(jqXHR, textStatus, error) {
-                            alert("error: " + error);
+                            alert("patient status error: " + error);
                         },
                     }); //get patient profile
                 } else {
@@ -491,7 +496,7 @@
                         fetchWards();
                     }, //success function ends
                     error: function(jqXHR, textStatus, error) {
-                        alert("error: " + error);
+                        alert("fetch facility error: " + error);
                     },
                 }); //fetch Facility ajax
             } //fetchFacility
@@ -526,7 +531,6 @@
             });
 
             $("#cancel_button").click(function(e) {
-                $.selectFacility(currentFacility.facilityId);
                 if (updatePatient) {
                     try {
                         refreshPatientProfile();
@@ -539,7 +543,13 @@
                         log("refreshPatientStatus Error:", e);
                     }
                     e.preventDefault();
+                } else {
+                    $("#test_status").val("PENDING_TEST");
+                    $("#severity").val("MILD");
                 }
+                fetchWards();
+                fetchFacility();
+                $("#severity_1").html(severityMap[$("#severity").val()] + " Severity");
             });
             $("#patient_form").submit(function(e) {
                 log("ward and facility on submit: ", {
@@ -559,6 +569,7 @@
                         "contactNumber": $("#mobile_number").val(),
                         "gender": $("#gender").val(),
                         "name": $("#name").val(),
+                        "goiCovidId": $("#goi_covid_id").val(),
                         "patientHospitalId": $("#patient_hospital_id").val(),
                         "emergencyContact": $("#emergency_contact").val(),
                         "facilityId": selectedFacilityId,
@@ -581,7 +592,7 @@
                             }
                         }, //success function ends
                         error: function(jqXHR, textStatus, error) {
-                            alert("error: " + error);
+                            alert("add new patient error: " + error);
                         },
                     }); //register new patient 
                 } else {
@@ -596,11 +607,14 @@
             function refreshPatientStatus() {
                 $("#severity").val(patientStatusData.severity);
                 $("#test_status").val(patientStatusData.testStatus);
+                $("#patient_hospital_id").val(patientStatusData.patientHospitalId);
+                $("#severity_1").html(severityMap[patientStatusData.severity] + " Severity");
                 $.selectWard(patientStatusData.wardId);
+                $.selectFacility(patientStatusData.facilityId);
             }
 
             function refreshPatientProfile() {
-                $("#patient_hospital_id").val(patientProfileData.patientHospitalId);
+                $("#goi_covid_id").val(patientProfileData.goiCovidId);
                 $("#name").val(patientProfileData.name);
                 $("#mobile_number").val(patientProfileData.contactNumber);
                 $("#emergency_contact").val(patientProfileData.emergencyContact);
@@ -616,9 +630,9 @@
                     "age": $("#age").val(),
                     "contactNumber": $("#mobile_number").val(),
                     "emergencyContact": $("#emergency_contact").val(),
+                    "goiCovidId": $("#goi_covid_id").val(),
                     "gender": $("#gender").val(),
                     "name": $("#name").val(),
-                    "patientHospitalId": $("#patient_hospital_id").val(),
                 };
                 updatePatientProfileURL = apiURL + "patients/" + getUrlParam("patient_id") + "/profile/post";
                 $.ajax({
@@ -646,8 +660,10 @@
                     "severity": $("#severity").val(),
                     "testStatus": $("#test_status").val(),
                     "wardId": selectedWardId,
+                    "patientHospitalId": $("#patient_hospital_id").val(),
                     // "patientId": getUrlParam("patient_id"),
                 };
+                log("Update Patient Status data: ", data);
                 updatePatientStatusURL = apiURL + "patients/" + getUrlParam("patient_id") + "/status/post";
                 // updatePatientStatusURL = apiURL + "patient/status/update";
                 $.ajax({
@@ -688,7 +704,7 @@
                         showFacility(res.data.list);
                     }, //success function ends
                     error: function(jqXHR, textStatus, error) {
-                        alert("error: " + error);
+                        alert("facility details error: " + error);
                     },
                 }); //fetch Facility ajax
             } //fetchFacility
@@ -700,7 +716,7 @@
                 $("#facility_" + facilityId).css("background-color", "green");
                 selectedFacilityId = facilityId;
                 // $.selectWard(0);
-                selectedWardId = 0;
+                // selectedWardId = 0;
                 // fetchWards();
                 log("selecting facility: ", {
                     "facility": selectedFacilityId,
@@ -751,11 +767,22 @@
                     facilityListHTML = "<center>No Facilities Found</center>";
                 }
                 $("#facility_list").html(facilityListHTML);
-                $.selectFacility(0);
+                if (updatePatient) {
+                    if (wardOrFacility)
+                        $.selectFacility(patientStatusData.facilityId);
+                    else
+                        $.selectFacility(0);
+                } else {
+                    if (wardOrFacility) {
+                        $.selectFacility(currentFacility.facilityId);
+                    } else {
+                        $.selectFacility(0);
+                    }
+                }
             } //showFacility
 
             function fetchWards() { //exec_3
-                wardsURL = apiURL + "facilities/" + currentFacility.facilityId + "/wards";
+                wardsURL = apiURL + "facilities/" + currentFacility.facilityId + "/wards/get";
                 data = {
                     "authToken": window.localStorage.getItem("authToken"),
                     "severity": $("#severity").val(),
@@ -772,7 +799,7 @@
                         showWards(res.data.list);
                     }, //success function ends
                     error: function(jqXHR, textStatus, error) {
-                        alert("error: " + error);
+                        alert("fetching wards error: " + error);
                     },
                 }); //fetch wards ajax
             }
@@ -783,7 +810,7 @@
                 $("#ward_" + wardId).html("Selected");
                 $("#ward_" + wardId).css("background-color", "green");
                 selectedWardId = wardId;
-                selectedFacilityId = currentFacility.facilityId;
+                // selectedFacilityId = currentFacility.facilityId;
                 log("selecting ward: ", {
                     "ward": selectedWardId,
                     "facility": selectedFacilityId
@@ -793,11 +820,10 @@
             function showWards(wards) { // exec_4
                 log("Showing Wards:", wards);
                 wardListHTML = "";
-                if (patientStatusData != null)
-                    $("#severity_1").html(severityMap[patientStatusData.severity] + " Severity");
+                // if (patientStatusData != null)
+                //     $("#severity_1").html(severityMap[patientStatusData.severity] + " Severity");
                 wards.forEach(function(ward, index) {
                     test_status = $("#test_status").val() == "POSITIVE" ? "CONFIRMED" : "SUSPECTED";
-                    log("Test_status: ", test_status);
                     if (ward.severity.toLowerCase() == $("#severity").val().toLowerCase() && ward.covidStatus.toLowerCase() == test_status.toLowerCase()) {
                         recommended = "recomended";
                     } else {
@@ -818,49 +844,70 @@
                                 </div>\
                                 <div class="w-col w-col-1"><a href="#" id="ward_' + ward.id + '" onClick="$.selectWard(' + ward.id + ')" class="button-2 w-button">select</a></div>\
                             </div>';
-                    // if (patientStatusData != null && ward.id == patientStatusData.wardId) {
-                    //     wardListHTML = row + wardListHTML;
-                    // } else {
-                    wardListHTML += row;
-                    // }
+                    if (patientStatusData != null && ward.id == patientStatusData.wardId) {
+                        wardListHTML = row + wardListHTML;
+                    } else {
+                        wardListHTML += row;
+                    }
                 }); //forEach
                 if (wards.length == 0) {
                     wardListHTML = "<center>No Wards Found</center>";
                 }
                 $("#ward_list").html(wardListHTML);
                 try {
-                    if (patientStatusData != null)
-                        $.selectWard(patientStatusData.wardId);
+                    if (updatePatient) {
+                        if (wardOrFacility) {
+                            if (patientStatusData != null)
+                                $.selectWard(patientStatusData.wardId);
+                            else
+                                $.selectWard(0);
+                        } else {
+                            $.selectWard(0);
+                        }
+                    } else {
+                        $.selectWard(0);
+                    }
+                    // if (patientStatusData != null && updatePatient)
+                    //     $.selectWard(patientStatusData.wardId);
+                    // else
+                    //     $.selectWard(0);
                 } catch (e) {
                     console.error(e);
                 }
             }
             $("#allocate_your_facility").click(function(e) {
+                // $.selectFacility(currentFacility.facilityId);
+                // if (updatePatient) {
+                //     $.selectWard(patientStatusData.wardId);
+                // } else {
+                //     $.selectWard(0);
+                // }
                 fetchWards();
-                selectedFacilityId = currentFacility.facilityId;
+                fetchFacility();
                 wardOrFacility = true;
-                // e.preventDefault();
             });
 
             $("#allocate_other_facility").click(function(e) {
+                // $.selectFacility(0);
+                // $.selectWard(0);
+                fetchWards();
                 fetchFacility();
                 wardOrFacility = false;
-                // e.preventDefault();
             });
             $("#severity").change(function(e) {
-                // selectedFacilityId = currentFacility.facilityId;
-                if (!wardOrFacility)
-                    fetchFacility();
-                else
-                    fetchWards();
+                // if (!wardOrFacility) {
+                fetchFacility();
+                // } else {
+                fetchWards();
+                // }
                 $("#severity_1").html(severityMap[$("#severity").val()] + " Severity");
             }); //severity change
             $("#test_status").change(function(e) {
-                // selectedFacilityId = currentFacility.facilityId;
-                if (!wardOrFacility)
-                    fetchFacility();
-                else
-                    fetchWards();
+                // if (!wardOrFacility) {
+                fetchFacility();
+                // } else {
+                fetchWards();
+                // }
             }); //test_status change
             $("#remove_patient").click(function(e) {
                 $("#discharge_popup").show();
@@ -881,7 +928,7 @@
             });
             $("#discharge_form").submit(function(e) {
                 data = dataAuthToken;
-                data["patientHospitalId"] = patientProfileData.patientHospitalId == null ? "" : patientProfileData.patientHospitalId;
+                data["patientHospitalId"] = patientStatusData.patientHospitalId == null ? "" : patientStatusData.patientHospitalId;
                 data["severity"] = patientStatusData.severity;
                 data["testStatus"] = patientStatusData.testStatus;
                 data["facilityId"] = patientStatusData.facilityId;
