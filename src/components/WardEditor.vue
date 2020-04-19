@@ -12,7 +12,7 @@
               <strong>{{ wardField[0] }}</strong>
             </label>
             <template
-              v-if="wardField[2] == 'text' || wardField[2] == 'integer'">
+              v-if="wardField[2] == 'text' || wardField[2] == 'number'">
               <input
                 :type="wardField[2]" class="ward-text-field w-input"
                 v-model="ward[wardField[1]]" required
@@ -71,20 +71,25 @@ const WardEditorProps = Vue.extend({
 @Component
 export default class WardEditor extends WardEditorProps {
   wardForm = [
-    ['Name', 'name', 'text'],
+    ['Ward Name/Number', 'name', 'text'],
+    ['Building Name/Number', 'buildingName', 'text'],
+    ['Floor', 'floor', 'text'],
     ['Gender', 'gender', 'option', ['MALE', 'FEMALE', 'UNISEX']],
-    ['Number of ICU beds', 'icuBeds', 'integer'],
-    ['Number of ICU beds occupied', 'icuBedsOccupied', 'integer'],
+    // ['Is it COVID Ward?', 'covidWard', 'option', [
+    //   [true, 'Yes'],
+    //   [false, 'No'],
+    // ]],
+    // ['Number of ICU beds', 'icuBeds', 'number'],
     [
       'Patient COVID status',
-      'patientType',
+      'covidStatus',
       'option',
       ['CONFIRMED', 'SUSPECTED'],
     ],
     ['Patient severity', 'severity', 'option', ['MILD', 'MODERATE', 'SEVERE']],
-    ['Total beds', 'totalBeds', 'integer'],
-    ['Total ventilators available', 'ventilators', 'integer'],
-    ['Ventilators occupied', 'ventilatorsOccupied', 'integer'],
+    ['Total beds', 'totalBeds', 'number'],
+    ['Total ventilators available', 'ventilators', 'number'],
+    ['Ventilators occupied', 'ventilatorsOccupied', 'number'],
   ];
 
   submitChanges() {

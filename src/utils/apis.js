@@ -59,6 +59,7 @@ function fetchWards(facilityId, testStatus, severity) {
   return getPromisifiedRequest(
     'POST', urljoin(
       config.apiUrl, 'facilities', facilityId.toString(), 'wards',
+      'get',
     ),
     data, getHeaders(),
   );
