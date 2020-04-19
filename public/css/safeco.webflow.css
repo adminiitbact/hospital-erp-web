@@ -255,7 +255,7 @@
   -ms-flex-align: center;
   align-items: center;
   border-radius: 35px;
-  background-color: #2c49ac;
+  background-color: #9dac2c;
   background-image: url('../images/Pandemic-ERP-Bcg-image.png');
   background-position: 50% 50%;
   background-size: cover;
@@ -330,7 +330,7 @@
 }
 
 .text-field-design {
-  max-width: 120px;
+  width: 90px;
   height: 35px;
   margin-right: 10px;
   margin-bottom: 5px;
@@ -341,7 +341,7 @@
 }
 
 .text-field-design.dropdown {
-  min-width: 60px;
+  width: 60px;
   margin-right: 0px;
   margin-bottom: 0px;
   margin-left: 5px;
@@ -1063,7 +1063,7 @@
 }
 
 .signup-button.status-form.clear-form {
-  width: 60%;
+  width: 90%;
   margin-left: 0px;
   border-style: solid;
   border-width: 1px;
@@ -1316,7 +1316,7 @@
 .div-block-34 {
   display: -ms-grid;
   display: grid;
-  min-height: 75px;
+  height: 75px;
   margin-bottom: 10px;
   margin-left: 5px;
   grid-auto-columns: 1fr;
@@ -1342,7 +1342,6 @@
   font-size: 28px;
   line-height: 40px;
   font-weight: 300;
-  text-transform: capitalize;
 }
 
 .text-block-4 {
@@ -1449,8 +1448,10 @@
 }
 
 .div-block-36 {
+  width: 100%;
   height: 95%;
   margin-right: 20px;
+  margin-left: 20px;
   padding: 10px 20px 20px 30px;
   border-radius: 30px;
   background-color: #fffefd;
@@ -1569,9 +1570,21 @@
 }
 
 .hospital-profile-header-div._1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-right: 50px;
   margin-left: 30px;
   padding-bottom: 0px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .hospital-profile-header-div.inline {
@@ -1783,6 +1796,28 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.patient-db-form.status {
+  width: 560px;
+  height: 320px;
+  margin-top: 10px;
+  padding: 0px 0px 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  border-radius: 25px;
+  background-color: #fffefd;
 }
 
 .patient-db-text-field {
@@ -2307,6 +2342,31 @@
   background-color: #c30000;
 }
 
+.button-3.ward {
+  background-color: #3158df;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.button-3.ward:hover {
+  background-color: #2c49ac;
+}
+
+.button-3.ward.remove {
+  background-color: #df3131;
+}
+
+.button-3.ward.remove:hover {
+  background-color: #8d0000;
+}
+
+.button-3.ward.edit {
+  font-size: 12px;
+  line-height: 16px;
+}
+
 .div-block-54 {
   position: fixed;
   left: 0%;
@@ -2650,16 +2710,159 @@
 }
 
 .div-block-67 {
-  margin: 10px;
-  padding: 20px;
+  width: 49%;
+  padding: 10px 18px;
   border-radius: 10px;
   background-color: #f0f0f0;
+}
+
+.div-block-67.severe {
+  border-left: 5px solid red;
+  border-radius: 0px;
+  background-color: #ffdbdb;
+}
+
+.div-block-67.moderate {
+  border-left: 5px solid #ff9d00;
+  border-radius: 0px;
+  background-color: #ffe1c0;
+}
+
+.div-block-67.mild {
+  border-left: 5px solid #238300;
+  border-radius: 0px;
+  background-color: #e8ffcb;
+}
+
+.div-block-67.mild.normal {
+  background-color: #e7e7e7;
 }
 
 .text-block-12 {
   color: #df3131;
   font-size: 15px;
   font-weight: 500;
+}
+
+.div-block-68 {
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  text-align: right;
+}
+
+.div-block-69 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.body-2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(36, 36, 36, 0.63);
+  font-family: Inter, sans-serif;
+}
+
+.form-block-5 {
+  width: 80%;
+  height: 80%;
+}
+
+.div-block-70 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 40px;
+  margin-left: 40px;
+  padding-top: 10px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.button-5 {
+  width: 70%;
+  height: 45px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  background-color: #3158df;
+  line-height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.text-block-13 {
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 25px 25px 0px 0px;
+  background-color: #2c49ac;
+  color: #fffefd;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.div-block-71 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+  margin-right: 40px;
+  margin-left: 40px;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.div-block-72 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.ward-name {
+  font-size: 16px;
 }
 
 @media screen and (min-width: 1440px) {
@@ -2687,7 +2890,7 @@
     font-size: 14px;
   }
   .div-block-34 {
-    min-height: 80px;
+    height: 80px;
     margin-bottom: 10px;
     -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
