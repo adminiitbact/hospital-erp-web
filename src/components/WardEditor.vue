@@ -125,7 +125,6 @@ export default class WardEditor extends WardEditorProps {
   submitChanges() {
     this.ward.wardId = this.ward.id;
     this.updateWardWithModelFields();
-    console.log(this.ward);
     API.saveWard(this.$store.state.user.facilityId, this.ward).then(
       () => {
         const action = this.ward.id === 0 ? 'added' : 'updated';
