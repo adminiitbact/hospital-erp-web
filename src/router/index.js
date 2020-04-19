@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/status-form',
-    name: 'StatusForm',
+    name: 'status-form',
     component: () => import('../views/StatusForm.vue'),
   },
 ];

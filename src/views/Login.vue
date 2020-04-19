@@ -18,8 +18,7 @@
             <div class="login-div">
               <div class="form-block-2 w-form">
                 <form
-                  name="email-form"
-                  data-name="Email Form"
+                  v-on:submit.prevent="submit"
                   class="form"
                 >
                   <div class="form-section-div">
@@ -50,10 +49,8 @@
                     </div>
                   </div>
                   <button
-                    type="button"
+                    type="submit"
                     value="Login"
-                    v-on:click="submit"
-                    data-wait="Please wait..."
                     class="login-button w-button"
                   >Login</button>
                   <!-- <div class="div-block-9">
@@ -64,16 +61,9 @@
                         </div>
                     </div>-->
                 </form>
-                <div class="w-form-done">
-                  <div>Thank you! Your submission has been received!</div>
-                </div>
-                <div class="w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
-                  </div>
               </div>
             </div>
           </div>
-          <div class="section-2"></div>
         </div>
       </div>
     </div>
@@ -104,7 +94,7 @@ export default @Component class Login extends Vue {
                 window.localStorage.setItem('authToken', authToken);
                 // window.location.href = '/status-form.html';
                 this.$store.dispatch('setAuthToken');
-                this.$router.push({ name: 'StatusForm' });
+                this.$router.push({ name: 'status-form' });
               },
             );
           }

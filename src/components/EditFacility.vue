@@ -137,106 +137,24 @@
               </div>
             </div>
           </form>
-          <form v-else-if="currentTab == areasShort[3]">
+          <form v-else-if="currentTab == areasShort[3]"
+            v-on:submit.prevent="submitUpdates('checklist', 'checklist')">
             <div class="w-row">
               <div class="w-form">
-                <div class="form-section-div">
+                <div v-for="(group, index) in checklistResources"
+                  class="form-section-div" :key="index">
                   <div class="div-block-41">
                     <div class="subheading _1">
-                      1. Food and drinking water facility availability
+                      {{ index + 1 }}. {{ group[1]}}
                     </div>
                     <select
-                      name="food_and_drinking_water_availability"
-                      data-name="food_and_drinking_water_availability"
-                      id="food_and_drinking_water_availability"
-                      class="text-field-design dropdown w-select"
-                    >
-                      <option value="available">Available</option>
-                      <option value="unavailable">Not available</option>
-                      <option value="inadequate">Inadequate</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-section-div">
-                  <div class="div-block-41">
-                    <div class="subheading _1">
-                      2. Sanitation and disinfection services availability
-                    </div>
-                    <select
-                      name="sanitation_and_disinfection_services_availability"
-                      data-name="sanitation_and_disinfection_services_availability"
-                      id="sanitation_and_disinfection_services_availability"
-                      class="text-field-design dropdown w-select"
-                    >
-                      <option value="available">Available</option>
-                      <option value="unavailable">Not available</option>
-                      <option value="inadequate">Inadequate</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-section-div">
-                  <div class="div-block-41">
-                    <div class="subheading _1">
-                      3. Health screening protocol availability
-                    </div>
-                    <select
-                      name="health_screening_protocol_availability"
-                      data-name="health_screening_protocol_availability"
-                      id="health_screening_protocol_availability"
-                      class="text-field-design dropdown w-select"
-                    >
-                      <option value="available">Available</option>
-                      <option value="unavailable">Not available</option>
-                      <option value="inadequate">Inadequate</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-section-div">
-                  <div class="div-block-41">
-                    <div class="subheading _1">4. Ambulance availability</div>
-                    <select
-                      name="ambulance_availability"
-                      data-name="ambulance_availability"
-                      id="ambulance_availability"
-                      class="text-field-design dropdown w-select"
-                    >
-                      <option value="available">Available</option>
-                      <option value="unavailable">Not available</option>
-                      <option value="inadequate">Inadequate</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-section-div">
-                  <div class="div-block-41">
-                    <div class="subheading _1">
-                      5. Are sufficient number of washrooms / toilets
-                      available?
-                    </div>
-                    <select
-                      name="washrooms_availability"
-                      data-name="washrooms_availability"
-                      id="washrooms_availability"
-                      class="text-field-design dropdown w-select"
-                      ><option value="available">Available</option>
-                      <option value="unavailable">Not available</option>
-                      <option value="inadequate">Inadequate</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-section-div">
-                  <div class="div-block-41">
-                    <div class="subheading _1">
-                      6. Are beds, mattresses, covers available?
-                    </div>
-                    <select
-                      name="beds_mattresses_covers_availability"
-                      data-name="beds_mattresses_covers_availability"
-                      id="beds_mattresses_covers_availability"
-                      class="text-field-design dropdown w-select"
-                    >
-                      <option value="available">Available</option>
-                      <option value="unavailable">Not available</option>
-                      <option value="inadequate">Inadequate</option>
+                      class="ward-text-field dropdown w-select"
+                      v-model="checklist[group[0]]"
+                      required>
+                      <option v-for="(option, index) in checklistOptions"
+                        :key="index" :value="option[0]">
+                        {{ option[1] }}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -245,23 +163,14 @@
             <div class="w-row">
               <div class="w-col w-col-6">
                 <div class="div-block-57">
-                  <input
-                    type="reset"
-                    id="cancel_compliance_checklist"
-                    value="Cancel "
-                    data-wait="Please wait..."
-                    class="signup-button status-form clear-form w-button"
-                  />
+                  <input type="reset" value="Cancel"
+                    class="signup-button status-form clear-form w-button"/>
                 </div>
               </div>
               <div class="w-col w-col-6">
                 <div class="div-block-57">
-                  <input
-                    type="submit"
-                    value="update"
-                    data-wait="Please wait..."
-                    class="signup-button status-form profile-pahe w-button"
-                  />
+                  <input type="submit" value="update"
+                    class="signup-button status-form profile-pahe w-button"/>
                 </div>
               </div>
             </div>
@@ -342,6 +251,21 @@ export default class EditFacility extends EditFacilityProps {
     ]],
   ];
 
+  checklistResources = [
+    ['food_and_drinking_water_availability', 'Food and drinking water facility availability'],
+    ['sanitation_and_disinfection_services_availability', 'Sanitation and disinfection services availability'],
+    ['health_screening_protocol_availability', 'Health screening protocol availability'],
+    ['ambulance_availability', 'Ambulance availability'],
+    ['washrooms_availability', 'Are sufficient number of washrooms / toilets available?'],
+    ['beds_mattresses_covers_availability', 'Are beds, mattresses, covers available?'],
+  ];
+
+  checklistOptions = [
+    ['available', 'Available'],
+    ['unavailable', 'Not available'],
+    ['inadequate', 'Inadequate'],
+  ];
+
   changeCurrentTab(currentTab) {
     this.currentTab = currentTab;
   }
@@ -367,12 +291,20 @@ export default class EditFacility extends EditFacilityProps {
     return {};
   }
 
+  get checklist() {
+    if (this.facility.facilityChecklist) {
+      return JSON.parse(JSON.stringify(this.facility.facilityChecklist.data));
+    }
+    return {};
+  }
+
   submitUpdates(dataKey, urlKey) {
     this.dataChanged = true;
     API.updateFacilityDetails(this.facility.facilityId, urlKey, this[dataKey]).then(
       () => {
+        confirm('Update successful.'); // eslint-disable-line
       }, (error) => {
-        alert(`Error in update: ${error.message}`);
+        alert(`Error in update: ${error.message}`); // eslint-disable-line
       },
     );
   }

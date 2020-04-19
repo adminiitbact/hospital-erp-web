@@ -29,6 +29,7 @@
 }
   
 .ward-text-field.dropdown {
+    max-width: 120px;
     min-width: 60px;
     margin-right: 0px;
     margin-bottom: 0px;

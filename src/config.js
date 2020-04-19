@@ -1,7 +1,6 @@
 const urljoin = require('url-join');
 
 const apiUrl = process.env.VUE_APP_API_ENDPOINT;
-console.log(process.env);
 
 const config = {
   apiUrl,
