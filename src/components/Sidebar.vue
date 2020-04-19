@@ -1,8 +1,8 @@
 <template>
   <div class="section">
-    <a href="status-form.html" class="logout-button  w-inline-block">
+    <router-link :to="{ 'name': 'status-form' }" class="logout-button w-inline-block w--current">
       <div class="">Home</div>
-    </a>
+    </router-link>
     <a href="patient-overview.html" class="logout-button  w-inline-block">
       <div class="">Add New Patient +</div>
     </a>
@@ -30,8 +30,18 @@ import Component from 'vue-class-component';
 import auth from '../firebaseConfig';
 
 
+const SidebarProps = Vue.extend({
+  props: {
+    currentPage: {
+      required: false,
+      default: 'home',
+    },
+  },
+});
+
+
 @Component
-export default class Sidebar extends Vue {
+export default class Sidebar extends SidebarProps {
   logout() {
     const vm = this; // eslint-disable-line
     auth.signOut().then(() => {

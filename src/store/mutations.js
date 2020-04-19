@@ -11,6 +11,9 @@ const mutations = {
   setWards(state, wards) {
     state.wards = wards;
   },
+  updateFacilityDetails(state, key, data) {
+    state.facility[key].data = data;
+  },
 };
 
 export default mutations;

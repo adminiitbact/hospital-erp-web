@@ -38,7 +38,9 @@
             <facility-overview v-if="currentTab == tabsShort[0]"
               :facility="facility" :wards="wards">
             </facility-overview>
-            <edit-facility v-else-if="currentTab == tabsShort[1]"></edit-facility>
+            <edit-facility v-else-if="currentTab == tabsShort[1]"
+              :facility="facility">
+            </edit-facility>
             <ward-details v-else-if="currentTab == tabsShort[2]"
               :wards="wards">
             </ward-details>

@@ -78,9 +78,23 @@ function saveWard(facilityId, ward) {
   );
 }
 
+function updateFacilityDetails(facilityId, detailId, updateData) {
+  const data = {
+    authToken: getAuthToken(),
+    data: updateData,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'facility', facilityId.toString(), detailId,
+    ),
+    data, getHeaders(),
+  );
+}
+
 module.exports = {
   fetchUser,
   fetchFacilityData,
   fetchWards,
   saveWard,
+  updateFacilityDetails,
 };

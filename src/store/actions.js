@@ -23,6 +23,16 @@ const actions = {
     );
   },
 
+  fetchOnlyFacility({ state, commit }) {
+    API.fetchFacilityData(state.user.facilityId).then(
+      (success) => {
+        commit('setFacility', success.data);
+      }, (error) => {
+        console.log(error);
+      },
+    );
+  },
+
   fetchWards({ state, commit }) {
     API.fetchWards(state.user.facilityId, 'NEGATIVE', 'MILD').then(
       (success) => {
@@ -35,6 +45,10 @@ const actions = {
         console.log(error);
       },
     );
+  },
+
+  updateFacilityDetails({ commit }, key, data) {
+    commit('updateFacilityDetails', key, data);
   },
 };
 
