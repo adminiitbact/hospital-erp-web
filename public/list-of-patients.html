@@ -112,7 +112,12 @@
                                             <div class="legends">Sr No</div>
                                         </a>
                                     </div>
-                                    <div class="w-col w-col-4">
+                                    <div class="w-col w-col-1">
+                                        <a href="#" class="link-block-3 _1 w-inline-block">
+                                            <div class="legends">Patient Id</div>
+                                        </a>
+                                    </div>
+                                    <div class="w-col w-col-3">
                                         <a href="#" class="link-block-3 w-inline-block">
                                             <div class="legends">Name of patient</div>
                                         </a>
@@ -230,6 +235,7 @@
                     severity = severityMap[patient.severity];
                     test_status = testStatusMap[patient.testStatus];
                     patientId = patient.patientId;
+                    patientHospitalId = patient.patientHospitalId;
                     test_status_class = "";
                     patient["index"] = index + 1;
                     switch (patient.testStatus) {
@@ -252,7 +258,10 @@
                             <div class="w-col w-col-1">\
                                 <div class="pd-list">' + (index + 1) + '</div>\
                             </div>\
-                            <div class="w-col w-col-4">\
+                            <div class="w-col w-col-1">\
+                                <div class="pd-list">' + patientHospitalId + '</div>\
+                            </div>\
+                            <div class="w-col w-col-3">\
                                 <div class="pd-list">' + name + '</div>\
                             </div>\
                             <div class="w-col w-col-2">\
