@@ -80,10 +80,10 @@ function getDefaultWard() {
     buildingName: '',
     floor: '',
     totalBeds: 0,
-    gender: 'UNISEX',
+    gender: '',
     covidWard: 'true',
-    covidStatus: 'CONFIRMED',
-    severity: 'MILD',
+    covidStatus: '',
+    severity: '',
     ventilators: 0,
     ventilatorsOccupied: 0,
     extraFields: {},
@@ -102,9 +102,11 @@ const WardEditorProps = Vue.extend({
 @Component
 export default class WardEditor extends WardEditorProps {
   wardForm = [
-    ['Ward Name/Number', 'name', 'text'],
     ['Building Name/Number', 'buildingName', 'text'],
-    ['Floor', 'floor', 'text'],
+    ['Floor', 'floor', 'option', getOptionValueList(
+      ['G', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    )],
+    ['Ward Name/Number', 'name', 'text'],
     ['Total beds', 'totalBeds', 'number'],
     ['Gender', 'gender', 'option', getOptionValueList(['MALE', 'FEMALE', 'UNISEX'])],
     ['Is it COVID Ward?', 'covidWard', 'option', yesNoOptions],

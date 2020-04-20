@@ -14,27 +14,27 @@
       <div v-for="(ward, index) in wards" class="w-col w-col-6" :key="index">
         <div class="ward-card">
           <div class="w-row">
-            <h4>{{ ward.name }}</h4>
+            <h4>BL: {{ ward.buildingName }} | FL: {{ ward.floor }} | Ward: {{ ward.name }}</h4>
           </div>
           <div class="div-block-65">
             <div class="text-block-12">
-              Patients status: {{ ward.severity }}
+              {{ ward.severity }}
             </div>
             <div>{{ ward.covidStatus }}</div>
           </div>
           <div class="div-block-65">
-            <div>Available beds: {{ ward.availableBeds }}</div>
-            <div>Total beds: {{ ward.totalBeds }}</div>
+            <div>Unoccupied Beds: {{ ward.availableBeds }}</div>
+            <div>Total Beds: {{ ward.totalBeds }}</div>
           </div>
           <div class="div-block-65">
             <div>
-              Available ventilators:
+              Unoccupied Ventilators:
               <strong>
                 {{ ward.ventilators - ward.ventilatorsOccupied }}
               </strong>
             </div>
             <div>
-              Total ventilators: <strong>{{ ward.ventilators }}</strong>
+              Total Ventilators: <strong>{{ ward.ventilators }}</strong>
             </div>
           </div>
           <div class="w-row text-align-right" style="margin-top:10px;">
