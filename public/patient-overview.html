@@ -394,6 +394,8 @@
             selectedFacilityId = 0;
             selectedWardId = 0;
             wardOrFacility = true;
+            statusUpdated = false;
+            profileUpdated = false;
             dataAuthToken = {
                 "authToken": window.localStorage.getItem("authToken")
             };
@@ -642,9 +644,11 @@
                     headers: headers,
                     success: function(res) {
                         log("Update Patient Profile Response", res);
-                        if (res.error == null)
+                        if (res.error == null) {
                             alert("Profile updated");
-                        else
+                            profileUpdated = true;
+                            afterFormSubmit();
+                        } else
                             alert("Profile update error:" + res.error);
                     }, //success function ends
                     error: function(jqXHR, textStatus, error) {
@@ -673,9 +677,11 @@
                     headers: headers,
                     success: function(res) {
                         log("Update Patient Status Response", res);
-                        if (res.data.success)
+                        if (res.data.success) {
                             alert("Status updated");
-                        else
+                            statusUpdated = true;
+                            afterFormSubmit();
+                        } else
                             alert("Status update error:" + res.error);
                     }, //success function ends
                     error: function(jqXHR, textStatus, error) {
@@ -683,6 +689,14 @@
                     },
                 });
             } //updatePatientStatus
+
+            function afterFormSubmit() {
+                if (statusUpdated && profileUpdated) {
+                    window.location.replace("list-of-patients.html");
+                    statusUpdated = false;
+                    profileUpdated = false;
+                }
+            }
 
             function fetchFacility() {
                 data = {
