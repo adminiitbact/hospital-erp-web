@@ -151,7 +151,7 @@ export default class WardEditor extends WardEditorProps {
     this.updateWardWithModelFields();
     API.saveWard(this.$store.state.user.facilityId, this.ward).then(
       () => {
-        const action = this.ward.id === 0 ? 'added' : 'updated';
+        const action = this.wardToEditId === 0 ? 'added' : 'updated';
         alert(`Ward details ${action}`); // eslint-disable-line
         this.$store.dispatch('fetchWards');
       }, (error) => {
