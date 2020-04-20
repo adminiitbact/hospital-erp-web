@@ -40,6 +40,10 @@
           <div class="w-row text-align-right" style="margin-top:10px;">
             <a class="button-3 ward w-button"
               v-on:click="editWard(index)">
+              DUPLICATE
+            </a>
+            <a class="button-3 ward w-button"
+              v-on:click="editWard(index)">
               EDIT
             </a>
           </div>
