@@ -17,6 +17,8 @@
               <input
                 :type="wardField[2]" class="ward-text-field w-input"
                 v-model="wardModelFields[index]" required
+                min="0"
+                maxlength="256"
               />
             </template>
             <template v-else-if="wardField[2] == 'option'" >
@@ -71,24 +73,28 @@ const yesNoOptions = [
 ];
 
 
+function getDefaultWard() {
+  return ({
+    name: '',
+    id: 0,
+    buildingName: '',
+    floor: '',
+    totalBeds: 0,
+    gender: 'UNISEX',
+    covidWard: 'true',
+    covidStatus: 'CONFIRMED',
+    severity: 'MILD',
+    ventilators: 0,
+    ventilatorsOccupied: 0,
+    extraFields: {},
+  });
+}
+
+
 const WardEditorProps = Vue.extend({
   props: {
-    ward: {
+    wardToEdit: {
       required: false,
-      default: () => ({
-        name: '',
-        id: 0,
-        buildingName: '',
-        floor: '',
-        totalBeds: 0,
-        gender: 'UNISEX',
-        covidWard: 'true',
-        covidStatus: 'CONFIRMED',
-        severity: 'MILD',
-        ventilators: 0,
-        ventilatorsOccupied: 0,
-        extraFields: {},
-      }),
     },
   },
 });
@@ -135,7 +141,6 @@ export default class WardEditor extends WardEditorProps {
   submitChanges() {
     this.ward.wardId = this.ward.id;
     this.updateWardWithModelFields();
-    console.log(this.ward);
     API.saveWard(this.$store.state.user.facilityId, this.ward).then(
       () => {
         const action = this.ward.id === 0 ? 'added' : 'updated';
@@ -173,6 +178,13 @@ export default class WardEditor extends WardEditorProps {
       }
     }
     return wardModel;
+  }
+
+  get ward() {
+    if (!this.wardToEdit) {
+      return getDefaultWard();
+    }
+    return this.wardToEdit;
   }
 }
 </script>
