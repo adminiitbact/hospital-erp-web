@@ -2331,7 +2331,7 @@
 }
 
 .button-3 {
-  margin-left: 20px;
+  /* margin-left: 20px; */
   border-radius: 7px;
   background-color: #e64343;
   font-size: 13px;
@@ -2975,7 +2975,7 @@
     margin-right: 7px;
   }
   .button-3 {
-    margin-left: 20px;
+    /* margin-left: 20px; */
     border-radius: 7px;
     background-color: #d34f3a;
     font-size: 13px;

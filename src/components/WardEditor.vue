@@ -1,6 +1,8 @@
 <template>
   <div class="w-row ward-card">
-    <h4 style="text-align:center; margin-bottom: 10px;">Ward Information</h4>
+    <h4 style="text-align:center; margin-bottom: 10px;">
+      {{ wardToEditId === 0 ? 'Add' : 'Update' }} Ward Information
+    </h4>
     <form v-on:submit.prevent="submitChanges">
       <div class="w-row">
       <div
@@ -36,6 +38,9 @@
       </div>
       </div>
       <div class="w-row" style="margin-top: 20px;">
+        <div class="form-fail" v-show="error != ''">
+          <div><strong>{{ error }}</strong></div>
+        </div>
         <div class="w-col w-col-6">
           <input
             type="button" class="signup-button status-form clear-form w-button"
@@ -80,10 +85,10 @@ function getDefaultWard() {
     buildingName: '',
     floor: '',
     totalBeds: 0,
-    gender: 'UNISEX',
+    gender: '',
     covidWard: 'true',
-    covidStatus: 'CONFIRMED',
-    severity: 'MILD',
+    covidStatus: '',
+    severity: '',
     ventilators: 0,
     ventilatorsOccupied: 0,
     extraFields: {},
@@ -96,15 +101,21 @@ const WardEditorProps = Vue.extend({
     wardToEdit: {
       required: false,
     },
+    wardToEditId: {
+      required: true,
+      type: Number,
+    },
   },
 });
 
 @Component
 export default class WardEditor extends WardEditorProps {
   wardForm = [
-    ['Ward Name/Number', 'name', 'text'],
     ['Building Name/Number', 'buildingName', 'text'],
-    ['Floor', 'floor', 'text'],
+    ['Floor', 'floor', 'option', getOptionValueList(
+      ['G', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+    )],
+    ['Ward Name/Number', 'name', 'text'],
     ['Total beds', 'totalBeds', 'number'],
     ['Gender', 'gender', 'option', getOptionValueList(['MALE', 'FEMALE', 'UNISEX'])],
     ['Is it COVID Ward?', 'covidWard', 'option', yesNoOptions],
@@ -138,19 +149,22 @@ export default class WardEditor extends WardEditorProps {
     ['Number of infusion pumps available', 'extraFields.infusionPumps', 'number'],
   ];
 
+  error = '';
+
   submitChanges() {
-    this.ward.wardId = this.ward.id;
+    this.ward.wardId = this.wardToEditId;
     this.updateWardWithModelFields();
     API.saveWard(this.$store.state.user.facilityId, this.ward).then(
       () => {
-        const action = this.ward.id === 0 ? 'added' : 'updated';
+        const action = this.wardToEditId === 0 ? 'added' : 'updated';
         alert(`Ward details ${action}`); // eslint-disable-line
         this.$store.dispatch('fetchWards');
-      }, (error) => {
-        alert(`Error: ${error.message}`); // eslint-disable-line
+        this.$emit('edit-done');
+      }, () => {
+        // console.log(error);
+        this.error = 'Error: (building name, floor and ward name) should be unique.';
       },
     );
-    this.$emit('edit-done');
   }
 
   updateWardWithModelFields() {
