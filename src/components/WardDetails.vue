@@ -17,7 +17,12 @@
             <h4>BL: {{ ward.buildingName }} | FL: {{ ward.floor }} | Ward: {{ ward.name }}</h4>
           </div>
           <div class="div-block-65">
-            <div class="text-block-12">
+            <div :class="{
+              'text-block-12': true,
+              'mild-text': ward.severity === 'MILD',
+              'moderate-text': ward.severity === 'MODERATE',
+              'severe-text': ward.severity === 'SEVERE'
+            }">
               {{ ward.severity }}
             </div>
             <div>{{ ward.covidStatus }}</div>

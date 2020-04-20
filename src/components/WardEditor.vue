@@ -38,6 +38,9 @@
       </div>
       </div>
       <div class="w-row" style="margin-top: 20px;">
+        <div class="form-fail" v-show="error != ''">
+          <div><strong>{{ error }}</strong></div>
+        </div>
         <div class="w-col w-col-6">
           <input
             type="button" class="signup-button status-form clear-form w-button"
@@ -146,6 +149,8 @@ export default class WardEditor extends WardEditorProps {
     ['Number of infusion pumps available', 'extraFields.infusionPumps', 'number'],
   ];
 
+  error = '';
+
   submitChanges() {
     this.ward.wardId = this.wardToEditId;
     this.updateWardWithModelFields();
@@ -154,11 +159,12 @@ export default class WardEditor extends WardEditorProps {
         const action = this.wardToEditId === 0 ? 'added' : 'updated';
         alert(`Ward details ${action}`); // eslint-disable-line
         this.$store.dispatch('fetchWards');
-      }, (error) => {
-        alert(`Error: ${error.message}`); // eslint-disable-line
+        this.$emit('edit-done');
+      }, () => {
+        // console.log(error);
+        this.error = 'Error: (building name, floor and ward name) should be unique.';
       },
     );
-    this.$emit('edit-done');
   }
 
   updateWardWithModelFields() {

@@ -53,3 +53,21 @@
 .button-gray:hover {
   background-color: #747474;
 }
+
+.form-fail {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #ffdede;
+}
+
+.mild-text {
+    color: #ffbd69;
+}
+
+.moderate-text {
+    color: #ff5733;
+}
+
+.severe-text {
+    color: #c70039;
+}
