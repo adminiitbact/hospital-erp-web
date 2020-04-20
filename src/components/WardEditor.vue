@@ -113,7 +113,7 @@ export default class WardEditor extends WardEditorProps {
   wardForm = [
     ['Building Name/Number', 'buildingName', 'text'],
     ['Floor', 'floor', 'option', getOptionValueList(
-      ['G', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+      ['LG', 'G', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
     )],
     ['Ward Name/Number', 'name', 'text'],
     ['Total beds', 'totalBeds', 'number'],
