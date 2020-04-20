@@ -5,7 +5,7 @@
   >
     <div v-if="!wardEditing" class="w-row text-align-right">
       <div class="add-ward-button">
-        <a class="button-3 ward w-button" v-on:click="editWard(-1)">
+        <a class="button-3 ward w-button" v-on:click="editWard(-1, true)">
           + ADD A NEW WARD
         </a>
       </div>
@@ -38,19 +38,22 @@
             </div>
           </div>
           <div class="w-row text-align-right" style="margin-top:10px;">
-            <a class="button-3 ward w-button"
-              v-on:click="editWard(index)">
-              DUPLICATE
-            </a>
-            <a class="button-3 ward w-button"
-              v-on:click="editWard(index)">
-              EDIT
-            </a>
+            <div class="div-block-65">
+              <a class="button-gray ward w-button"
+                v-on:click="editWard(index, true)">
+                DUPLICATE
+              </a>
+              <a class="button-3 ward w-button"
+                v-on:click="editWard(index, false)">
+                EDIT
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <ward-editor v-if="wardEditing" :wardToEdit="wardToBeEdited"
+    <ward-editor v-if="wardEditing"
+      :wardToEdit="wardToBeEdited" :wardToEditId="wardToBeEditedId"
       v-on:edit-done="editDone"></ward-editor>
   </div>
 </template>
@@ -77,9 +80,12 @@ export default class WardDetails extends WardDetailsProps {
 
   wardToBeEdited = undefined;
 
-  editWard(index) {
+  wardToBeEditedId = 0;
+
+  editWard(index, newEntry) {
     this.wardEditing = true;
     this.wardToBeEdited = this.wards[index];
+    this.wardToBeEditedId = (this.wards[index] && !newEntry) ? this.wards[index].id : 0;
   }
 
   editDone() {

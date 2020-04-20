@@ -1,6 +1,8 @@
 <template>
   <div class="w-row ward-card">
-    <h4 style="text-align:center; margin-bottom: 10px;">Ward Information</h4>
+    <h4 style="text-align:center; margin-bottom: 10px;">
+      {{ wardToEditId === 0 ? 'Add' : 'Update' }} Ward Information
+    </h4>
     <form v-on:submit.prevent="submitChanges">
       <div class="w-row">
       <div
@@ -96,6 +98,10 @@ const WardEditorProps = Vue.extend({
     wardToEdit: {
       required: false,
     },
+    wardToEditId: {
+      required: true,
+      type: Number,
+    },
   },
 });
 
@@ -141,7 +147,7 @@ export default class WardEditor extends WardEditorProps {
   ];
 
   submitChanges() {
-    this.ward.wardId = this.ward.id;
+    this.ward.wardId = this.wardToEditId;
     this.updateWardWithModelFields();
     API.saveWard(this.$store.state.user.facilityId, this.ward).then(
       () => {
