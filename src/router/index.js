@@ -7,13 +7,16 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Login',
+    name: 'login',
     component: Login,
   },
   {
     path: '/status-form',
     name: 'status-form',
     component: () => import('../views/StatusForm.vue'),
+  },
+  {
+    path: '/index.html', redirect: { name: 'login' },
   },
 ];
 

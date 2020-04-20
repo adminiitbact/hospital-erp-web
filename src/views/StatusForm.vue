@@ -54,7 +54,7 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 import Sidebar from '../components/Sidebar.vue';
 import Sidelogo from '../components/Sidelogo.vue';
@@ -74,6 +74,8 @@ import WardDetails from '../components/WardDetails.vue';
   computed: {
     ...mapState([
       'user',
+    ]),
+    ...mapGetters([
       'facility',
       'wards',
     ]),

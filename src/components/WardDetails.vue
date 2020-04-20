@@ -28,10 +28,13 @@
           </div>
           <div class="div-block-65">
             <div>
-              ICU Beds: <strong>{{ ward.icuBeds }}</strong>
+              Available ventilators:
+              <strong>
+                {{ ward.ventilators - ward.ventilatorsOccupied }}
+              </strong>
             </div>
             <div>
-              Ventilators: <strong>{{ ward.ventilators }}</strong>
+              Total ventilators: <strong>{{ ward.ventilators }}</strong>
             </div>
           </div>
           <div class="w-row text-align-right" style="margin-top:10px;">
