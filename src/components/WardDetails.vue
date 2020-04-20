@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    <ward-editor v-if="wardEditing" :ward="wardToBeEdited"
+    <ward-editor v-if="wardEditing" :wardToEdit="wardToBeEdited"
       v-on:edit-done="editDone"></ward-editor>
   </div>
 </template>
