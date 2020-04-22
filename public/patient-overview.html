@@ -152,17 +152,17 @@
                                                             <input type="text" class="patient-db-text-field w-input" maxlength="256" name="last_name" data-name="Last Name" placeholder="Last Name" id="last_name" required>
                                                         </div> -->
                                                         <div class="patient-db-form">
-                                                            <label for="age" class="field-label patient">Age:</label>
-                                                            <input type="number" min=1 class="patient-db-text-field _1 w-input" maxlength="256" name="age" data-name="age" placeholder="age" id="age" required>
-                                                            <div class="patient-db-form">
-                                                                <label for="gender" class="field-label patient">Gender:</label>
-                                                                <select id="gender" name="gender" data-name="gender" class="patient-db-text-field w-select" required>
-                                                                    <option value="">Select one...</option>
-                                                                    <option value="Male">Male</option>
-                                                                    <option value="Female">Female</option>
-                                                                    <option value="Other">Other</option>
-                                                                </select>
-                                                            </div>
+                                                            <label for="dob" class="field-label patient">Date of birth:</label>
+                                                            <input type="date" class="patient-db-text-field  w-input" maxlength="256" name="dob" data-name="dob" placeholder="dob" id="dob" required>
+                                                        </div>
+                                                        <div class="patient-db-form">
+                                                            <label for="gender" class="field-label patient">Gender:</label>
+                                                            <select id="gender" name="gender" data-name="gender" class="patient-db-text-field w-select" required>
+                                                                <option value="">Select one...</option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -295,11 +295,6 @@
                                                     <div class="text-block-7">Available Wards in your facility</div>
                                                     <div class="div-block-64">
                                                         <div class="columns-6 w-row">
-                                                            <!-- <div class="w-col w-col-1">
-                                                                <a href="#" class="link-block-3 _1 w-inline-block">
-                                                                    <div class="legends">Sr No</div>
-                                                                </a>
-                                                            </div> -->
                                                             <div class="w-col w-col-3">
                                                                 <a href="#" class="link-block-3 w-inline-block">
                                                                     <div class="legends">Ward</div>
@@ -582,7 +577,7 @@
                     data = {
                         "authToken": window.localStorage.getItem("authToken"),
                         "address": $("#address").val(),
-                        "age": $("#age").val(),
+                        "dob": $("#dob").val(),
                         "contactNumber": $("#mobile_number").val(),
                         "gender": $("#gender").val(),
                         "name": $("#name").val(),
@@ -637,7 +632,7 @@
                 $("#mobile_number").val(patientProfileData.contactNumber);
                 $("#emergency_contact").val(patientProfileData.emergencyContact);
                 $("#gender").val(patientProfileData.gender);
-                $("#age").val(patientProfileData.age);
+                $("#dob").val(patientProfileData.dob);
                 $("#address").val(patientProfileData.address);
                 $("#pemc").val(patientProfileData.preExistingMedicalCondition[0]);
             }
@@ -646,7 +641,7 @@
                 data = {
                     "authToken": window.localStorage.getItem("authToken"),
                     "address": $("#address").val(),
-                    "age": $("#age").val(),
+                    "dob": $("#dob").val(),
                     "contactNumber": $("#mobile_number").val(),
                     "emergencyContact": $("#emergency_contact").val(),
                     "goiCovidId": $("#goi_covid_id").val(),
