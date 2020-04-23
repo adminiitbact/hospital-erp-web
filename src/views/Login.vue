@@ -88,7 +88,7 @@ export default @Component class Login extends Vue {
       () => {
         auth.onAuthStateChanged((user) => {
           if (user) {
-            auth.currentUser.getIdToken(/* forceRefresh */).then(
+            user.getIdToken(true).then(
               (authToken) => {
                 // Send token to your backend via HTTPS
                 window.localStorage.setItem('authToken', authToken);
