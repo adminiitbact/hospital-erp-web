@@ -7,12 +7,12 @@
       <div class="">Add New Patient +</div>
     </a>
     <a
-      href="list-of-referred-patients.html"
+      href="referred-patient-list"
       class="logout-button  w-inline-block"
     >
       <div class="">referred patients</div>
     </a>
-    <a href="list-of-patients.html" class="logout-button  w-inline-block">
+    <a href="patient-list" class="logout-button  w-inline-block">
       <div class="">Patients LIST</div>
     </a>
     <a href="profile-form.html" class="logout-button  w-inline-block">

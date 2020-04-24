@@ -8,15 +8,26 @@ const config = {
   userProfileFetchUrl: urljoin(apiUrl, '/hospital/user/profile'),
   fetchFacilityUrl: urljoin(apiUrl, 'facility/'),
   firebaseConfig,
-  severityMap: [
+  severityList: [
     'MILD',
     'MODERATE',
     'SEVERE',
   ],
-  testStatusMap: [
+  testStatusList: [
     'SUSPECTED',
     'CONFIRMED',
   ],
+  severityMap: {
+    MILD: 'Mild or Very Mild',
+    MODERATE: 'Moderate',
+    SEVERE: 'Severe',
+  },
+  testStatusMap: {
+    PENDING_TEST: 'Test Pending',
+    PENDING_RESULT: 'Test Result Pending',
+    POSITIVE: 'Positive',
+    NEGATIVE: 'Negative',
+  },
 };
 
 module.exports = config;

@@ -18,6 +18,16 @@ const routes = [
   {
     path: '/index.html', redirect: { name: 'login' },
   },
+  {
+    path: '/patient-list',
+    name: 'patient-list',
+    component: () => import('../views/PatientList.vue'),
+  },
+  {
+    path: '/referred-patient-list',
+    name: 'referred-patient-list',
+    component: () => import('../views/ReferredPatientList.vue'),
+  },
 ];
 
 const router = new VueRouter({

@@ -190,10 +190,10 @@ export default class FacilityOverview extends FacilityOverviewProps {
   getBeds(marker) {
     const total = [];
     const totalHelper = [];
-    for (let j = 0; j < config.testStatusMap.length; j += 1) {
-      const testStatus = config.testStatusMap[j];
-      for (let i = 0; i < config.severityMap.length; i += 1) {
-        const severity = config.severityMap[i];
+    for (let j = 0; j < config.testStatusList.length; j += 1) {
+      const testStatus = config.testStatusList[j];
+      for (let i = 0; i < config.severityList.length; i += 1) {
+        const severity = config.severityList[i];
         const hashedVal = utils.hashedSeverityTestStatus(
           severity, testStatus,
         );
