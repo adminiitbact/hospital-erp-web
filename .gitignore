@@ -24,4 +24,4 @@ yarn-error.log*
 *.sw?
 
 .env
-
+globalconf.js
