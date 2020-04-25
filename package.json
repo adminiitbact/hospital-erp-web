@@ -4,8 +4,9 @@
   "description": "Frontend for cov2.in",
   "scripts": {
     "start": "node prerun-prod.js && vue-cli-service build && node app.js",
-    "serve": "node prerun-prod.js && vue-cli-service serve",
+    "serve": "node prerun-dev.js && vue-cli-service serve",
     "build-dev": "node prerun-dev.js && vue-cli-service build",
+    "build-stage": "node prerun-stage.js && vue-cli-service build",
     "build-prod": "node prerun-prod.js && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
