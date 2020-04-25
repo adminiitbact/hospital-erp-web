@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Frontend for cov2.in",
   "scripts": {
-    "start": "node prerun.js && vue-cli-service build && node app.js",
-    "serve": "node prerun.js && vue-cli-service serve",
-    "build": "node prerun.js && vue-cli-service build",
+    "start": "node prerun-prod.js && vue-cli-service build && node app.js",
+    "serve": "node prerun-prod.js && vue-cli-service serve",
+    "build-dev": "node prerun-dev.js && vue-cli-service build",
+    "build-prod": "node prerun-prod.js && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "repository": {
