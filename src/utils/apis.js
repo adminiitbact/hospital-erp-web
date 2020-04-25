@@ -120,6 +120,16 @@ function fetchReferredPatients(facilityId) {
   );
 }
 
+function removeWard(facilityId, wardId) {
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'facilities', facilityId.toString(), 'wards',
+      wardId.toString(), 'remove',
+    ),
+    getAuthTokenData(), getHeaders(),
+  );
+}
+
 module.exports = {
   fetchUser,
   fetchFacilityData,
@@ -128,4 +138,5 @@ module.exports = {
   updateFacilityDetails,
   fetchPatients,
   fetchReferredPatients,
+  removeWard,
 };
