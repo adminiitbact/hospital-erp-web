@@ -2,7 +2,6 @@ const prod = true;
 
 apiURL = API_ENDPOINT;
 
-
 severityMap = {
   MILD: 'Mild or Very Mild',
   MODERATE: 'Moderate',

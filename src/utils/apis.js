@@ -92,10 +92,40 @@ function updateFacilityDetails(facilityId, detailId, updateData) {
   );
 }
 
+function fetchPatients(facilityId) {
+  const data = {
+    authToken: getAuthToken(),
+    wardAlloted: true,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'facilities', facilityId.toString(), 'patients',
+      'get',
+    ),
+    data, getHeaders(),
+  );
+}
+
+function fetchReferredPatients(facilityId) {
+  const data = {
+    authToken: getAuthToken(),
+    wardAlloted: false,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'facilities', facilityId.toString(), 'patients',
+      'get',
+    ),
+    data, getHeaders(),
+  );
+}
+
 module.exports = {
   fetchUser,
   fetchFacilityData,
   fetchWards,
   saveWard,
   updateFacilityDetails,
+  fetchPatients,
+  fetchReferredPatients,
 };
