@@ -5,8 +5,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>List of Referred Patients</title>
-    <meta content="List of Referred Patients" property="og:title">
+    <title>List of Patients</title>
+    <meta content="List of Patients" property="og:title">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
     <link href="css/normalize.css" rel="stylesheet" type="text/css">
@@ -78,10 +78,10 @@
                         <a href="patient-overview.html" class="logout-button  w-inline-block">
                             <div class="">Add New Patient +</div>
                         </a>
-                        <a href="list-of-referred-patients.html" class="logout-button  w-inline-block">
+                        <a href="referred-patient-list" class="logout-button  w-inline-block">
                             <div class="">referred patients</div>
                         </a>
-                        <a href="list-of-patients.html" class="logout-button  w-inline-block">
+                        <a href="patient-list" class="logout-button  w-inline-block">
                             <div class="">Patients LIST</div>
                         </a>
                         <a href="profile-form.html" class="logout-button  w-inline-block">
@@ -95,7 +95,7 @@
                 <div class="column w-col w-col-10">
                     <div class="div-block-44">
                         <div class="hospital-profile-header-div _1">
-                            <h1 class="heading-2 _3">Referred Patient List</h1>
+                            <h1 class="heading-2 _3">Patient List</h1>
                             <div class="div-block-53">
                                 <form id='search_form' class="search w-form">
                                     <input type="text" class="search-input w-input" autofocus="true" maxlength="256" name="search_query" placeholder="Search Patient Name" id="search_query">
@@ -107,27 +107,27 @@
                         <div class="div-block-36 _1 _2">
                             <div class="section-8 patient-list table">
                                 <div class="columns-6 w-row table-header">
-                                    <div class="header__item w-col w-col-2">
-                                        <a href="#" class="link-block-3 w-inline-block" id="l_goid_covid_id">
-                                            <div class="legends">GOI Covid ID</div>
+                                    <div class="w-col w-col-2 header__item">
+                                        <a href="#" class="link-block-3 _1 w-inline-block" id="l_patient_id">
+                                            <div class="legends">Patient Id</div>
                                         </a>
                                     </div>
-                                    <div class="header__item w-col w-col-3">
+                                    <div class="w-col w-col-3 header__item">
                                         <a href="#" class="link-block-3 w-inline-block" id="l_patient_name">
                                             <div class="legends">Name of patient</div>
                                         </a>
                                     </div>
-                                    <div class="header__item w-col w-col-2">
+                                    <div class="w-col w-col-2 header__item">
                                         <a href="#" class="link-block-3 w-inline-block" id="l_ward">
                                             <div class="legends">ward</div>
                                         </a>
                                     </div>
-                                    <div class="header__item w-col w-col-2">
+                                    <div class="w-col w-col-2 header__item">
                                         <a href="#" class="link-block-3 w-inline-block" id="l_severity">
                                             <div class="legends">severity</div>
                                         </a>
                                     </div>
-                                    <div class="header__item w-col w-col-2">
+                                    <div class="w-col w-col-2 header__item">
                                         <a href="#" class="link-block-3 w-inline-block" id="l_covid_test">
                                             <div class="legends">Covid-19 Test</div>
                                         </a>
@@ -147,15 +147,15 @@
             </div>
         </div>
     </div>
-    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89e56bbebe7d2e8604de36 " type="text/javascript " integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=" anonymous "></script>
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e89e56bbebe7d2e8604de36" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="js/globalconf.js" type="text/javascript"></script>
-    <script src="js/config.js " type="text/javascript "></script>
-    <script src="js/webflow.js " type="text/javascript "></script>
-    <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js "></script><![endif] -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js "></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js "></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js "></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js "></script>
+    <script src="js/config.js" type="text/javascript"></script>
+    <script src="js/webflow.js" type="text/javascript"></script>
+    <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
     <script>
         // Your web app's Firebase configuration
         firebase.initializeApp(firebaseConfig);
@@ -204,7 +204,7 @@
                 fetchPatientsURL = apiURL + "facilities/" + facilityId + "/patients/get";
                 data = {
                     "authToken": window.localStorage.getItem("authToken"),
-                    "wardAlloted": false,
+                    "wardAlloted": true,
                 }
                 $.ajax({
                     type: "POST",
@@ -230,7 +230,7 @@
                     severity = severityMap[patient.severity];
                     test_status = testStatusMap[patient.testStatus];
                     patientId = patient.patientId;
-                    goiCovidId = patient.goiCovidId;
+                    patientHospitalId = patient.patientHospitalId;
                     test_status_class = "";
                     patient["index"] = index + 1;
                     switch (patient.testStatus) {
@@ -251,7 +251,7 @@
                     }
                     row = '<div class="columns-7 w-row table-row">\
                             <div class="table-data w-col w-col-2">\
-                                <div class="pd-list">' + goiCovidId + '</div>\
+                                <div class="pd-list">' + patientHospitalId + '</div>\
                             </div>\
                             <div class="table-data w-col w-col-3">\
                                 <div class="pd-list">' + name + '</div>\
@@ -290,11 +290,12 @@
                 populatePatientList(newPatientList);
             }
 
+
         });
     </script>
     <script>
         var properties = [
-            "l_goi_covid_id",
+            "l_patient_id",
             "l_patient_name",
             "l_ward",
             "l_severity",

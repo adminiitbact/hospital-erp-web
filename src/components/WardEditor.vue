@@ -1,8 +1,19 @@
 <template>
   <div class="w-row ward-card">
-    <h4 style="text-align:center; margin-bottom: 10px;">
-      {{ wardToEditId === 0 ? 'Add' : 'Update' }} Ward Information
-    </h4>
+    <div class="w-col">
+      <h4 style="text-align:center; margin-bottom: 10px;">
+        {{ wardToEditId === 0 ? 'Add' : 'Update' }} Ward Information
+      </h4>
+    </div>
+    <div class="w-col">
+      <a v-if="wardToEditId !== 0"
+        href="#"
+        class="button-3 w-button"
+        style="float: right; margin-right: 10px;"
+        v-on:click="removeWard">
+        - REMOVE WARD
+      </a>
+    </div>
     <form v-on:submit.prevent="submitChanges">
       <div class="w-row">
       <div
@@ -44,7 +55,7 @@
         <div class="w-col w-col-6">
           <input
             type="button" class="signup-button status-form clear-form w-button"
-            value="GO BACK" v-on:click="$emit('edit-done');">
+            value="GO BACK" v-on:click="$emit('edit-done', 0);">
         </div>
         <div class="w-col w-col-6">
           <input
@@ -62,6 +73,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import API from '../utils/apis';
+import Utils from '../utils/utils';
 
 
 function getOptionValueList(options) {
@@ -158,13 +170,34 @@ export default class WardEditor extends WardEditorProps {
       () => {
         const action = this.wardToEditId === 0 ? 'added' : 'updated';
         alert(`Ward details ${action}`); // eslint-disable-line
-        this.$store.dispatch('fetchWards');
-        this.$emit('edit-done');
+        this.$emit('edit-done', 1);
       }, () => {
         // console.log(error);
         this.error = 'Error: (building name, floor and ward name) should be unique.';
       },
     );
+  }
+
+  removeWard() {
+    const confirmRes = confirm('Are you sure you want to remove this ward?'); // eslint-disable-line
+    if (confirmRes) {
+      API.removeWard(this.$store.state.user.facilityId, this.wardToEditId).then(
+        (success) => {
+          if (success.error) {
+            Utils.standardErrorHandler(success.error);
+            alert(`Error: ${success.error.errorMsg}`);
+          } else {
+            alert('Ward successfully removed');
+            this.$emit('edit-done', 1);
+          }
+        }, () => {
+          alert(
+            'Error in removal, please try again. '
+            + 'If problem persists then contact system administrator.',
+          );
+        },
+      );
+    }
   }
 
   updateWardWithModelFields() {

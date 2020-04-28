@@ -12,6 +12,8 @@ const state = {
   facility: {},
   user: {},
   wards: [],
+  patients: [],
+  referredPatients: [],
 };
 
 const store = new Vuex.Store({
