@@ -153,7 +153,7 @@
                                                         </div> -->
                                                         <div class="patient-db-form">
                                                             <label for="dob" class="field-label patient">Date of birth:</label>
-                                                            <input type="date" class="patient-db-text-field  w-input" maxlength="256" name="dob" data-name="dob" placeholder="dob" id="dob" required>
+                                                            <input type="date" class="patient-db-text-field  w-input" name="dob" data-name="dob" placeholder="dob" id="dob" required>
                                                         </div>
                                                         <div class="patient-db-form">
                                                             <label for="gender" class="field-label patient">Gender:</label>
@@ -161,6 +161,21 @@
                                                                 <option value="">Select one...</option>
                                                                 <option value="Male">Male</option>
                                                                 <option value="Female">Female</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="patient-db-form">
+                                                            <label for="pemc" class="field-label patient">Preexisting Medical Condition:</label>
+                                                            <select id="pemc" name="pemc" data-name="pemc" class="patient-db-text-field w-select" required>
+                                                                <option value="None">None</option>
+                                                                <option value="Diabetes">Diabetes</option>
+                                                                <option value="Chronic Lung Disease">Chronic Lung Disease</option>
+                                                                <option value="Moderate or Severe Asthma">Moderate or Severe Asthma</option>
+                                                                <option value="Hypertension">Hypertension</option>
+                                                                <option value="Immunocompromised">Immunocompromised</option>
+                                                                <option value="Chronic Liver Disease">Chronic Liver Disease</option>
+                                                                <option value="Kidney Disease">Kidney Disease</option>
+                                                                <option value="Severe Obesity">Severe Obesity</option>
                                                                 <option value="Other">Other</option>
                                                             </select>
                                                         </div>
@@ -184,26 +199,19 @@
                                                         </div>
                                                         <div class="patient-db-form">
                                                             <label for="address" class="field-label patient">Address:</label>
-                                                            <input type="text" class="patient-db-text-field w-input" maxlength="256" name="address" data-name="address" placeholder="address" id="address">
+                                                            <input type="text" class="patient-db-text-field w-input" maxlength="256" name="address" data-name="address" placeholder="Address" id="address">
+                                                        </div>
+                                                        <div class="patient-db-form">
+                                                            <label for="locality" class="field-label patient">Locality:</label>
+                                                            <input type="text" class="patient-db-text-field w-input" maxlength="256" name="locality" data-name="locality" placeholder="Locality" id="locality">
+                                                        </div>
+                                                        <div class="patient-db-form">
+                                                            <label for="pincode" class="field-label patient">Pin Code:</label>
+                                                            <input type="text" class="patient-db-text-field w-input" maxlength="256" name="pincode" data-name="pincode" placeholder="Pin Code" id="pincode">
                                                         </div>
                                                         <div class="patient-db-form">
                                                             <label for="emergency_contact" class="field-label patient">Emergency:</label>
                                                             <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="patient-db-text-field w-input" name="emergency_contact" data-name="Emergency COntact" placeholder="+91 " id="emergency_contact">
-                                                        </div>
-                                                        <div class="patient-db-form">
-                                                            <label for="pemc" class="field-label patient">Preexisting Medical Condition:</label>
-                                                            <select id="pemc" name="pemc" data-name="pemc" class="patient-db-text-field w-select" required>
-                                                                <option value="None">None</option>
-                                                                <option value="Diabetes">Diabetes</option>
-                                                                <option value="Chronic Lung Disease">Chronic Lung Disease</option>
-                                                                <option value="Moderate or Severe Asthma">Moderate or Severe Asthma</option>
-                                                                <option value="Hypertension">Hypertension</option>
-                                                                <option value="Immunocompromised">Immunocompromised</option>
-                                                                <option value="Chronic Liver Disease">Chronic Liver Disease</option>
-                                                                <option value="Kidney Disease">Kidney Disease</option>
-                                                                <option value="Severe Obesity">Severe Obesity</option>
-                                                                <option value="Other">Other</option>
-                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -578,6 +586,8 @@
                     data = {
                         "authToken": window.localStorage.getItem("authToken"),
                         "address": $("#address").val(),
+                        "locality": $("#locality").val(),
+                        "pincode": $("#pincode").val(),
                         "dob": $("#dob").val(),
                         "contactNumber": $("#mobile_number").val(),
                         "gender": $("#gender").val(),
@@ -598,11 +608,11 @@
                         data: JSON.stringify(data),
                         headers: headers,
                         success: function(res) {
-                            if (res.data.success) {
+                            if (res.data!=null && res.data.success) {
                                 alert("Patient Added");
                                 window.location.href = "patient-list";
                             } else {
-                                alert("Error in adding patient:" + res.error)
+                                alert("Error in adding patient:" + JSON.stringify(res.error));
                             }
                         }, //success function ends
                         error: function(jqXHR, textStatus, error) {
@@ -635,6 +645,8 @@
                 $("#gender").val(patientProfileData.gender);
                 $("#dob").val(patientProfileData.dob);
                 $("#address").val(patientProfileData.address);
+                $("#locality").val(patientProfileData.locality);
+                $("#pincode").val(patientProfileData.pincode);
                 $("#pemc").val(patientProfileData.preExistingMedicalCondition[0]);
             }
 
@@ -642,6 +654,8 @@
                 data = {
                     "authToken": window.localStorage.getItem("authToken"),
                     "address": $("#address").val(),
+                    "locality": $("#locality").val(),
+                    "pincode": $("#pincode").val(),
                     "dob": $("#dob").val(),
                     "contactNumber": $("#mobile_number").val(),
                     "emergencyContact": $("#emergency_contact").val(),
@@ -663,7 +677,7 @@
                             profileUpdated = true;
                             afterFormSubmit();
                         } else
-                            alert("Profile update error:" + res.error);
+                            alert("Profile update error:" + JSON.stringify(res.error));
                     }, //success function ends
                     error: function(jqXHR, textStatus, error) {
                         alert("Profile update request error: " + error);
