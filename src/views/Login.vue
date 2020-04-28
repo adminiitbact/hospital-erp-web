@@ -76,6 +76,9 @@ import Component from 'vue-class-component';
 import auth from '../firebaseConfig';
 
 
+const utils = require('../utils/utils');
+
+
 export default @Component class Login extends Vue {
   username = '';
 
@@ -91,9 +94,7 @@ export default @Component class Login extends Vue {
             user.getIdToken(true).then(
               (authToken) => {
                 // Send token to your backend via HTTPS
-                window.localStorage.setItem('authToken', authToken);
-                // window.location.href = '/status-form.html';
-                this.$store.dispatch('setAuthToken');
+                utils.setAuthTokenOnLocalStorage(authToken);
                 this.$router.push({ name: 'status-form' });
               },
             );
