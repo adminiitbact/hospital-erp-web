@@ -1,19 +1,17 @@
 <template>
   <div class="section">
-    <router-link :to="{ 'name': 'status-form' }" class="logout-button w-inline-block w--current">
-      <div class="">Home</div>
+    <router-link v-for="routeInfo in routeDetails"
+      :key="routeInfo[0]"
+      :to="{ 'name': routeInfo[0] }"
+      :class = "{
+        'logout-button w-inline-block': true,
+        'w--current': routeInfo[0] == currentRouteName
+      }"
+      >
+      <div>{{ routeInfo[1] }}</div>
     </router-link>
     <a href="patient-overview.html" class="logout-button  w-inline-block">
       <div class="">Add New Patient +</div>
-    </a>
-    <a
-      href="referred-patient-list"
-      class="logout-button  w-inline-block"
-    >
-      <div class="">referred patients</div>
-    </a>
-    <a href="patient-list" class="logout-button  w-inline-block">
-      <div class="">Patients LIST</div>
     </a>
     <a href="profile-form.html" class="logout-button  w-inline-block">
       <div class="">Edit Profile</div>
@@ -42,15 +40,25 @@ const SidebarProps = Vue.extend({
 
 @Component
 export default class Sidebar extends SidebarProps {
+  routeDetails = [
+    ['status-form', 'Home'],
+    ['referred-patient-list', 'Referred Patients List'],
+    ['patient-list', 'Patients List'],
+  ]
+
   logout() {
     const vm = this; // eslint-disable-line
     auth.signOut().then(() => {
       // Sign-out successful.
       window.localStorage.removeItem('authToken');
-      window.location.href = '/';
+      this.$router.push({ name: 'login' });
     }).catch((error) => {
       alert(`Error in Sign-out.${error}`); // eslint-disable-line
     });
+  }
+
+  get currentRouteName() {
+    return this.$route.name;
   }
 }
 </script>

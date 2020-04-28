@@ -3,13 +3,17 @@ import API from '../utils/apis';
 
 const actions = {
   setAuthToken({ commit, dispatch }) {
-    commit('setAuthToken', window.localStorage.authToken);
+    dispatch('setAuthTokenOnly');
     API.fetchUser().then((success) => {
       commit('setUser', success.data.profile);
       dispatch('fetchFacility');
     }, (error) => {
       console.log(error);
     });
+  },
+
+  setAuthTokenOnly({ commit }) {
+    commit('setAuthToken', window.localStorage.authToken);
   },
 
   fetchFacility({ state, commit, dispatch }) {
