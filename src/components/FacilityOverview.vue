@@ -129,6 +129,7 @@ const FacilityOverviewProps = Vue.extend({
 export default class FacilityOverview extends FacilityOverviewProps {
   assetsToShow = [
     ['total_beds', 'Total Beds'],
+    ['total_covid_beds', 'Total Covid Beds'],
     ['total_icu_beds', 'Total ICU Beds'],
     ['covid_icu_beds', 'COVID ICU Beds'],
     ['total_ventilators', 'Total Ventilators'],
@@ -161,6 +162,10 @@ export default class FacilityOverview extends FacilityOverviewProps {
 
   get assetsData() {
     if (this.facility.facilityAsset) {
+      this.facility.facilityAsset.data.total_covid_beds = 0;
+      this.getBeds('totalBeds').forEach((cb) => {
+        this.facility.facilityAsset.data.total_covid_beds += cb[2];
+      });
       return this.facility.facilityAsset.data;
     }
     return {};
