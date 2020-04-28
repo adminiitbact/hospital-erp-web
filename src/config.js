@@ -9,6 +9,7 @@ const config = {
   fetchFacilityUrl: urljoin(apiUrl, 'facility/'),
   firebaseConfig,
   severityList: [
+    // 'ASYMPTOMATIC',
     'MILD',
     'MODERATE',
     'SEVERE',
@@ -18,6 +19,7 @@ const config = {
     'CONFIRMED',
   ],
   severityMap: {
+    ASYMPTOMATIC: 'Asymptomatic',
     MILD: 'Mild or Very Mild',
     MODERATE: 'Moderate',
     SEVERE: 'Severe',
@@ -27,6 +29,12 @@ const config = {
     PENDING_RESULT: 'Test Result Pending',
     POSITIVE: 'Positive',
     NEGATIVE: 'Negative',
+  },
+  jurisdictionMap: {
+    PMC: 'PMC',
+    PCMC: 'PCMC',
+    CS: 'Civil Surgeon',
+    DHO: 'DHO',
   },
 };
 
