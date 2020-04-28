@@ -1,10 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Login from '../views/Login.vue';
-import auth from '../firebaseConfig';
-
-
-const utils = require('../utils/utils');
+import Utils from '../utils/utils';
 
 
 Vue.use(VueRouter);
@@ -41,15 +38,11 @@ const router = new VueRouter({
   routes,
 });
 
-router.beforeEach((to, _, next) => {
-  if (to.name !== 'login') {
-    auth.user.getIdToken().then(
-      (authToken) => {
-        utils.setAuthTokenOnLocalStorage(authToken);
-        next();
-      },
-    );
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'login' && from.name !== 'login') {
+    Utils.refreshFirebaseAuthToken();
   }
+  next();
 });
 
 export default router;

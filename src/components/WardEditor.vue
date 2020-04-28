@@ -73,6 +73,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import API from '../utils/apis';
+import Utils from '../utils/utils';
 
 
 function getOptionValueList(options) {
@@ -183,6 +184,7 @@ export default class WardEditor extends WardEditorProps {
       API.removeWard(this.$store.state.user.facilityId, this.wardToEditId).then(
         (success) => {
           if (success.error) {
+            Utils.standardErrorHandler(success.error);
             alert(`Error: ${success.error.errorMsg}`);
           } else {
             alert('Ward successfully removed');

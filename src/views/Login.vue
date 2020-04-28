@@ -73,10 +73,9 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import firebase from 'firebase/app';
 import auth from '../firebaseConfig';
-
-
-const utils = require('../utils/utils');
+import utils from '../utils/utils';
 
 
 export default @Component class Login extends Vue {
@@ -85,27 +84,35 @@ export default @Component class Login extends Vue {
   password = '';
 
   submit() {
-    auth.signInWithEmailAndPassword(
-      this.username, this.password,
-    ).then(
-      () => {
-        auth.onAuthStateChanged((user) => {
-          if (user) {
-            user.getIdToken(true).then(
-              (authToken) => {
-                // Send token to your backend via HTTPS
-                utils.setAuthTokenOnLocalStorage(authToken);
-                this.$router.push({ name: 'status-form' });
-              },
-            );
-          }
-        });
-      },
-      (error) => {
-        console.log(error.message);
-        alert(`Error in login: ${error.message}`); // disable-no-alert
-      },
-    );
+    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(
+        () => {
+          auth.signInWithEmailAndPassword(
+            this.username, this.password,
+          ).then(
+            () => {
+              auth.onAuthStateChanged((user) => {
+                if (user) {
+                  user.getIdToken(true).then(
+                    (authToken) => {
+                    // Send token to your backend via HTTPS
+                      utils.setAuthTokenOnLocalStorage(authToken);
+                      this.$router.push({ name: 'status-form' });
+                    },
+                  );
+                }
+              });
+            },
+            (error) => {
+              console.log(error.message);
+              alert(`Error in login: ${error.message}`); // disable-no-alert
+            },
+          );
+        },
+      )
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
 </script>

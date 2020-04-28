@@ -109,9 +109,10 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import utils from '../utils/utils';
+
 
 const config = require('../config');
-const utils = require('../utils/utils');
 
 
 const FacilityOverviewProps = Vue.extend({
