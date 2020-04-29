@@ -145,19 +145,25 @@
                                                             <input type="text" class="patient-db-text-field w-input" name="goi_covid_id" data-name="GOI Covid Id" placeholder="GOI Covid ID" id="goi_covid_id">
                                                         </div>
                                                         <div class="patient-db-form">
-                                                            <label for="name" class="field-label patient">Name:</label>
+                                                            <label for="name" class="field-label patient">Name:<span style="color:red">*</span></label>
                                                             <input type="text" class="patient-db-text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Name" id="name" required>
                                                         </div>
                                                         <!-- <div class="patient-db-form">
-                                                            <label for="last_name" class="field-label patient">Last Name:</label>
+                                                            <label for="last_name" class="field-label patient">Last Name:<span style="color:red">*</span></label>
                                                             <input type="text" class="patient-db-text-field w-input" maxlength="256" name="last_name" data-name="Last Name" placeholder="Last Name" id="last_name" required>
                                                         </div> -->
-                                                        <div class="patient-db-form">
+                                                        <!-- <div class="patient-db-form">
                                                             <label for="dob" class="field-label patient">Date of birth:</label>
                                                             <input type="date" class="patient-db-text-field  w-input" name="dob" data-name="dob" placeholder="dob" id="dob">
+                                                        </div> -->
+                                                        <div class="patient-db-form">
+                                                            <label for="age" class="field-label patient">Age:<span style="color:red">*</span></label>
+                                                            <input type="number" min=0 class="patient-db-text-field _1  w-input" name="age" data-name="age" placeholder="Age" id="age" required>
+                                                            <label for="month" class="field-label patient">Month:</label>
+                                                            <input type="number" min=0 class="patient-db-text-field _1 w-input"  name="month" data-name="month" placeholder="Month" id="month">
                                                         </div>
                                                         <div class="patient-db-form">
-                                                            <label for="gender" class="field-label patient">Gender:</label>
+                                                            <label for="gender" class="field-label patient">Gender:<span style="color:red">*</span></label>
                                                             <select id="gender" name="gender" data-name="gender" class="patient-db-text-field w-select" required>
                                                                 <option value="">Select one...</option>
                                                                 <option value="Male">Male</option>
@@ -166,7 +172,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="patient-db-form">
-                                                            <label for="pemc" class="field-label patient">Preexisting Medical Condition:</label>
+                                                            <label for="pemc" class="field-label patient">Preexisting Medical Condition:<span style="color:red">*</span></label>
                                                             <select id="pemc" name="pemc" data-name="pemc" class="patient-db-text-field w-select" required>
                                                                 <option value="None">None</option>
                                                                 <option value="Diabetes">Diabetes</option>
@@ -195,7 +201,7 @@
                                                 <div class="form-section-div _2">
                                                     <div class="div-block-8-copy">
                                                         <div class="patient-db-form">
-                                                            <label for="mobile_number" class="field-label patient">Mobile:</label>
+                                                            <label for="mobile_number" class="field-label patient">Mobile:<span style="color:red">*</span></label>
                                                             <input type="number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength=10 minlength=10 class="patient-db-text-field w-input" name="mobile_number" data-name="Mobile No" placeholder="+91" id="mobile_number" required>
                                                         </div>
                                                         <div class="patient-db-form">
@@ -246,8 +252,8 @@
                                                 <div class="form-section-div _23">
                                                     <div class="div-block-8-copy _1">
                                                         <div class="patient-db-form">
-                                                            <label for="severity" class="field-label patient white">Severity:</label>
-                                                            <select id="severity" name="severity" data-name="Field 4" class="patient-db-text-field w-select">
+                                                            <label for="severity" class="field-label patient white">Severity:<span style="color:red">*</span></label>
+                                                            <select id="severity" name="severity" data-name="Field 4" class="patient-db-text-field w-select" required>
                                                                 <option value="ASYMPTOMATIC">Asymptomatic</option>
                                                                 <option value="MILD">Mild or Very Mild</option>
                                                                 <option value="MODERATE">Moderate</option>
@@ -269,8 +275,8 @@
                                                 <div class="form-section-div _23 _1">
                                                     <div class="div-block-8-copy _1">
                                                         <div class="patient-db-form">
-                                                            <label for="test_status" class="field-label patient white">COVID-19 Test:</label>
-                                                            <select id="test_status" name="test_status" data-name="Field 4" class="patient-db-text-field w-select">
+                                                            <label for="test_status" class="field-label patient white">COVID-19 Test:<span style="color:red">*</span></label>
+                                                            <select id="test_status" name="test_status" data-name="Field 4" class="patient-db-text-field w-select" required>
                                                                 <option value="PENDING_TEST">Test Pending</option>
                                                                 <option value="PENDING_RESULT">Test Result Pending</option>
                                                                 <option value="POSITIVE">Positive</option>
@@ -590,6 +596,8 @@
                         "locality": $("#locality").val(),
                         "pincode": $("#pincode").val(),
                         "dob": $("#dob").val() !== '' ? $("#dob").val() : '1800-01-01',
+                        "age": $("#age").val(),
+                        "month": $("#month").val(),
                         "contactNumber": $("#mobile_number").val(),
                         "gender": $("#gender").val(),
                         "name": $("#name").val(),
@@ -645,6 +653,8 @@
                 $("#emergency_contact").val(patientProfileData.emergencyContact);
                 $("#gender").val(patientProfileData.gender);
                 $("#dob").val(patientProfileData.dob !== '1800-01-01' ? patientProfileData.dob : '');
+                $("#age").val(patientProfileData.age);
+                $("#month").val(patientProfileData.month);
                 $("#address").val(patientProfileData.address);
                 $("#locality").val(patientProfileData.locality);
                 $("#pincode").val(patientProfileData.pincode);
@@ -658,6 +668,8 @@
                     "locality": $("#locality").val(),
                     "pincode": $("#pincode").val(),
                     "dob": $("#dob").val() !== '' ? $("#dob").val() : '1800-01-01',
+                    "age": $("#age").val(),
+                    "month": $("#month").val(),
                     "contactNumber": $("#mobile_number").val(),
                     "emergencyContact": $("#emergency_contact").val(),
                     "goiCovidId": $("#goi_covid_id").val(),
