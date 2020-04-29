@@ -13,7 +13,7 @@
     <a href="patient-overview.html" class="logout-button  w-inline-block">
       <div class="">Add New Patient +</div>
     </a>
-    <a href="profile-form.html" class="logout-button  w-inline-block">
+    <a href="profile-form" class="logout-button  w-inline-block">
       <div class="">Edit Profile</div>
     </a>
     <a v-on:click="logout" class="logout-button w-inline-block">

@@ -130,6 +130,19 @@ function removeWard(facilityId, wardId) {
   );
 }
 
+function updateFacilityProfile(facilityId, facilityProfile) {
+  const data = {
+    authToken: getAuthToken(),
+    data: facilityProfile,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'add', 'facility', 'profile', facilityId.toString(),
+    ),
+    data, getHeaders(),
+  );
+}
+
 module.exports = {
   fetchUser,
   fetchFacilityData,
@@ -139,4 +152,5 @@ module.exports = {
   fetchPatients,
   fetchReferredPatients,
   removeWard,
+  updateFacilityProfile,
 };
