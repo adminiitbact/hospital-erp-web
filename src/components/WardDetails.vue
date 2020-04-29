@@ -93,7 +93,10 @@ export default class WardDetails extends WardDetailsProps {
     this.wardToBeEditedId = (this.wards[index] && !newEntry) ? this.wards[index].id : 0;
   }
 
-  editDone() {
+  editDone(editCode) {
+    if (editCode !== 0) {
+      this.$store.dispatch('fetchWards');
+    }
     this.wardEditing = false;
   }
 }

@@ -109,9 +109,10 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import utils from '../utils/utils';
+
 
 const config = require('../config');
-const utils = require('../utils/utils');
 
 
 const FacilityOverviewProps = Vue.extend({
@@ -129,6 +130,7 @@ const FacilityOverviewProps = Vue.extend({
 export default class FacilityOverview extends FacilityOverviewProps {
   assetsToShow = [
     ['total_beds', 'Total Beds'],
+    ['total_covid_beds', 'Total Covid Beds'],
     ['total_icu_beds', 'Total ICU Beds'],
     ['covid_icu_beds', 'COVID ICU Beds'],
     ['total_ventilators', 'Total Ventilators'],
@@ -161,6 +163,10 @@ export default class FacilityOverview extends FacilityOverviewProps {
 
   get assetsData() {
     if (this.facility.facilityAsset) {
+      this.facility.facilityAsset.data.total_covid_beds = 0;
+      this.getBeds('totalBeds').forEach((cb) => {
+        this.facility.facilityAsset.data.total_covid_beds += cb[2];
+      });
       return this.facility.facilityAsset.data;
     }
     return {};
@@ -190,10 +196,10 @@ export default class FacilityOverview extends FacilityOverviewProps {
   getBeds(marker) {
     const total = [];
     const totalHelper = [];
-    for (let j = 0; j < config.testStatusMap.length; j += 1) {
-      const testStatus = config.testStatusMap[j];
-      for (let i = 0; i < config.severityMap.length; i += 1) {
-        const severity = config.severityMap[i];
+    for (let j = 0; j < config.testStatusList.length; j += 1) {
+      const testStatus = config.testStatusList[j];
+      for (let i = 0; i < config.severityList.length; i += 1) {
+        const severity = config.severityList[i];
         const hashedVal = utils.hashedSeverityTestStatus(
           severity, testStatus,
         );

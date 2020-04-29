@@ -1,1 +1,0 @@
-API_ENDPOINT = "http://api.staging.cov2.in/api/";

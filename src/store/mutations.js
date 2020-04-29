@@ -14,6 +14,12 @@ const mutations = {
   updateFacilityDetails(state, key, data) {
     state.facility[key].data = data;
   },
+  setPatients(state, patients) {
+    state.patients = patients;
+  },
+  setReferredPatients(state, referredPatients) {
+    state.referredPatients = referredPatients;
+  },
 };
 
 export default mutations;

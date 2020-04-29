@@ -12,7 +12,7 @@
               {{ facility.name }}
             </h1>
             <div class="text-block-6 profile">
-              <span>{{ facility.area }} - {{ facility.jurisdiction }}</span>
+              <span>{{ facility.area }} - {{ jurisdictionMap[facility.jurisdiction] }}</span>
             </div>
           </div>
           <a href="profile-form.html" class="button w-button">Edit Profile</a>
@@ -62,6 +62,7 @@ import FacilityOverview from '../components/FacilityOverview.vue';
 import EditFacility from '../components/EditFacility.vue';
 import WardDetails from '../components/WardDetails.vue';
 
+const config = require('../config');
 
 @Component({
   components: {
@@ -87,6 +88,8 @@ export default class StatusForm extends Vue {
   tabsShort = ['overview', 'edit', 'wards'];
 
   currentTab = 'overview'
+
+  jurisdictionMap = config.jurisdictionMap;
 
   mounted() {
     if (!this.$store.authToken) {
