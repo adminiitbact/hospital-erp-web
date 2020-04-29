@@ -154,7 +154,7 @@
                                                         </div> -->
                                                         <div class="patient-db-form">
                                                             <label for="dob" class="field-label patient">Date of birth:</label>
-                                                            <input type="date" class="patient-db-text-field  w-input" name="dob" data-name="dob" placeholder="dob" id="dob" required>
+                                                            <input type="date" class="patient-db-text-field  w-input" name="dob" data-name="dob" placeholder="dob" id="dob">
                                                         </div>
                                                         <div class="patient-db-form">
                                                             <label for="gender" class="field-label patient">Gender:</label>
@@ -589,7 +589,7 @@
                         "address": $("#address").val(),
                         "locality": $("#locality").val(),
                         "pincode": $("#pincode").val(),
-                        "dob": $("#dob").val(),
+                        "dob": $("#dob").val() !== '' ? $("#dob").val() : '1800-01-01',
                         "contactNumber": $("#mobile_number").val(),
                         "gender": $("#gender").val(),
                         "name": $("#name").val(),
@@ -644,7 +644,7 @@
                 $("#mobile_number").val(patientProfileData.contactNumber);
                 $("#emergency_contact").val(patientProfileData.emergencyContact);
                 $("#gender").val(patientProfileData.gender);
-                $("#dob").val(patientProfileData.dob);
+                $("#dob").val(patientProfileData.dob !== '1800-01-01' ? patientProfileData.dob : '');
                 $("#address").val(patientProfileData.address);
                 $("#locality").val(patientProfileData.locality);
                 $("#pincode").val(patientProfileData.pincode);
@@ -657,7 +657,7 @@
                     "address": $("#address").val(),
                     "locality": $("#locality").val(),
                     "pincode": $("#pincode").val(),
-                    "dob": $("#dob").val(),
+                    "dob": $("#dob").val() !== '' ? $("#dob").val() : '1800-01-01',
                     "contactNumber": $("#mobile_number").val(),
                     "emergencyContact": $("#emergency_contact").val(),
                     "goiCovidId": $("#goi_covid_id").val(),
