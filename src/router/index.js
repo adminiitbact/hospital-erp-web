@@ -35,6 +35,11 @@ const routes = [
     name: 'add-patient',
     component: () => import('../views/AddNewPatient.vue'),
   },
+  {
+    path: '/edit-profile',
+    name: 'edit-profile',
+    component: () => import('../views/AddNewPatient.vue'),
+  },
 ];
 
 const router = new VueRouter({
