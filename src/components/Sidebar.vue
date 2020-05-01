@@ -45,7 +45,7 @@ export default class Sidebar extends SidebarProps {
     ['referred-patient-list', 'Referred Patients List'],
     ['patient-list', 'Patients List'],
     ['add-patient', 'Add New Patient +'],
-    ['add-patient', 'Edit Profile'],
+    ['edit-profile', 'Edit Profile'],
   ]
 
   logout() {
