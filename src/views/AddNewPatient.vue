@@ -9,6 +9,14 @@
       <div class="div-block-44">
         <div class="hospital-profile-header-div _1">
           <h1 class="heading-2 _1">Patient Details (A)</h1>
+          <!-- <button id="show-modal" @click="showModal = true">Show Modal</button> -->
+          <removepatient v-if="showModal" @close="showModal = false">
+        <!--
+      you can use custom content here to overwrite
+      default content
+    -->
+        <h3 slot="header">custom header</h3>
+      </removepatient>
           <a href="discharge-popup-forn.html" class="button-3 ward remove w-button">- Remove Patient</a>
         </div>
         <div class="div-block-76"></div>
@@ -22,7 +30,9 @@
             >
               <div class="faq-2 w-dropdown-toggle">
                 <img src="images/iconfinder_SEO-15_2588776.png" alt class="accordion_item-image" />
-                <div class="toggle-text">Personal Details</div>
+                <div class="toggle-text">
+                <strong>Personal Details</strong>
+                </div>
                 <div
                   data-w-id="1082e313-78b3-fcdc-4d02-77f0d1343eb5"
                   data-animation-type="lottie"
@@ -287,7 +297,9 @@
             >
               <div class="faq-2 w-dropdown-toggle">
                 <img src="images/iconfinder_lungs_5997835.png" alt class="accordion_item-image" />
-                <div class="toggle-text">Clinical History at Admission</div>
+                <div class="toggle-text">
+                  <strong>Clinical History at Admission</strong>
+                </div>
                 <div
                   data-w-id="5cdb72b9-e6a3-8be0-4237-6ebcdeddade2"
                   data-animation-type="lottie"
@@ -1481,12 +1493,14 @@ import { mapState, mapGetters } from 'vuex';
 
 import Sidebar from '../components/Sidebar.vue';
 import Sidelogo from '../components/Sidelogo.vue';
+import RemovePatient from '../components/RemovePatient.vue';
 
 
 @Component({
   components: {
     sidebar: Sidebar,
     sidelogo: Sidelogo,
+    removepatient: RemovePatient,
   },
   computed: {
     ...mapState(['user']),
@@ -1494,5 +1508,6 @@ import Sidelogo from '../components/Sidelogo.vue';
   },
 })
 export default class AddPatient extends Vue {
+  showModal = false;
 }
 </script>
