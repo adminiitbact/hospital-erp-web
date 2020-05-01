@@ -7,15 +7,15 @@ api_endpoint = process.env.API_ENDPOINT;
 port = process.env.PORT;
 firebase = process.env.firebase;
 
-console.log('API_ENDPOINT: ' + api_endpoint);
-console.log('PORT: ' + port);
-console.log('FIREBASE: ' + firebase);
+console.log(`API_ENDPOINT: ${api_endpoint}`);
+console.log(`PORT: ${port}`);
+console.log(`FIREBASE: ${firebase}`);
 
 
-var app = express();
+const app = express();
 app.use(history({
   // verbose: true
 }));
-app.use(express.static("dist"));
+app.use(express.static('dist'));
 
-var server = app.listen(port);
+const server = app.listen(port);

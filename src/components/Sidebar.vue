@@ -10,12 +10,12 @@
       >
       <div>{{ routeInfo[1] }}</div>
     </router-link>
-    <a href="patient-overview.html" class="logout-button  w-inline-block">
+    <!-- <a href="patient-overview.html" class="logout-button  w-inline-block">
       <div class="">Add New Patient +</div>
-    </a>
-    <a href="profile-form.html" class="logout-button  w-inline-block">
+    </a> -->
+    <!-- <a href="profile-form.html" class="logout-button  w-inline-block">
       <div class="">Edit Profile</div>
-    </a>
+    </a> -->
     <a v-on:click="logout" class="logout-button w-inline-block">
       <div>Logout</div>
     </a>
@@ -44,6 +44,8 @@ export default class Sidebar extends SidebarProps {
     ['status-form', 'Home'],
     ['referred-patient-list', 'Referred Patients List'],
     ['patient-list', 'Patients List'],
+    ['add-patient', 'Add New Patient +'],
+    ['add-patient', 'Edit Profile'],
   ]
 
   logout() {

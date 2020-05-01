@@ -30,6 +30,11 @@ const routes = [
     name: 'referred-patient-list',
     component: () => import('../views/ReferredPatientList.vue'),
   },
+  {
+    path: '/add-patient',
+    name: 'add-patient',
+    component: () => import('../views/AddNewPatient.vue'),
+  },
 ];
 
 const router = new VueRouter({
