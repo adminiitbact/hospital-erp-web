@@ -42,7 +42,7 @@ const SidebarProps = Vue.extend({
 export default class Sidebar extends SidebarProps {
   routeDetails = [
     ['status-form', 'Home'],
-    ['referred-patient-list', 'Referred Patients List'],
+    ['referred-patient-list', 'Referred Patients'],
     ['patient-list', 'Patients List'],
   ]
 
