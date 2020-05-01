@@ -57,7 +57,7 @@
                       <a href="#" class="field-label links">Forgot Password?</a>
                       <div class="field-label centered">
                         Not a member?
-                        <a href="profile-form.html"><strong>Signup</strong></a>
+                        <a href="profile-form"><strong>Signup</strong></a>
                         </div>
                     </div>-->
                 </form>
