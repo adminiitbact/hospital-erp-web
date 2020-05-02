@@ -130,6 +130,49 @@ function removeWard(facilityId, wardId) {
   );
 }
 
+
+function addPatient(patientData) {
+  const data = {
+    authToken: getAuthToken(),
+    data: patientData,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'patients/new',
+    ),
+    data, getHeaders(),
+  );
+}
+
+
+function addPatientClinicalData(patientData) {
+  const data = {
+    authToken: getAuthToken(),
+    data: patientData,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'patients-clinical-hist/new',
+    ),
+    data, getHeaders(),
+  );
+}
+
+
+function addPatientCovidTestResult(patientData) {
+  const data = {
+    authToken: getAuthToken(),
+    data: patientData,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'patients-covid-test-result/new',
+    ),
+    data, getHeaders(),
+  );
+}
+
+
 module.exports = {
   fetchUser,
   fetchFacilityData,
@@ -139,4 +182,7 @@ module.exports = {
   fetchPatients,
   fetchReferredPatients,
   removeWard,
+  addPatient,
+  addPatientClinicalData,
+  addPatientCovidTestResult,
 };
