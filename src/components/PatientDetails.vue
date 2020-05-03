@@ -1,17 +1,15 @@
 <template>
-  <div class="w-row ward-card">
+  <div class="w-row">
     <form v-on:submit.prevent="submitChanges">
       <div class="w-row">
         <div v-for="(patientField, index) in patientForm" class="w-col w-col-6" :key="index">
-          <div class="form-block-3 w-form">
-            <div class="subheading" style="border: 0px;">
-              <label class="field-label">
-                <strong>{{ patientField[0] }}</strong>
-              </label>
-              <template v-if="patientField[2] == 'text' || patientField[2] == 'number'">
+          <div class="div-block-74">
+          <label for="First-Name" class="field-label patient">{{ patientField[0] }}:</label>
+          <div class="new-db-form-div">
+            <template v-if="patientField[2] == 'text' || patientField[2] == 'number'">
                 <input
                   :type="patientField[2]"
-                  class="ward-text-field w-input"
+                  class="patient-db-field w-input"
                   v-model="patientField[3]"
                   required
                   min="0"
@@ -19,7 +17,7 @@
                 />
               </template>
               <template v-else-if="patientField[2] == 'option'">
-                <select class="ward-field-design w-input" v-model="patientField[4]">
+                <select class="patient-db-field w-select" v-model="patientField[4]">
                   <option
                     v-for="(val, index) in patientField[3]"
                     :value="val"
@@ -27,7 +25,7 @@
                   >{{ val }}</option>
                 </select>
               </template>
-            </div>
+          </div>
           </div>
         </div>
       </div>

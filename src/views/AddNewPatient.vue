@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 <template>
   <div class="columns-4 w-row">
     <div class="w-col w-col-2">
@@ -15,11 +13,13 @@
           <removepatient v-if="showModal" @close="showModal = false"></removepatient>
           <a @click="showModal = true" class="button-3 ward remove w-button">- Remove Patient</a>
         </div>
-
-        <div role="tablist">
-          <b-card no-body class="mb-1">
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.accordion-1 variant="info">Patient Details</b-button>
+<div class="div-block-76"></div>
+<div class="div-block-36 _1">
+<b-card no-body class="mb-1 accordion__item js-accordion-item active">
+            <b-card-header header-tag="header" class="p-1 faq-2 w-dropdown-toggle" role="tab" v-b-toggle.accordion-1>
+           <img src="images/iconfinder_SEO-15_2588776.png" alt="" class="accordion_item-image">
+                    <div class="toggle-text">Personal Details</div>
+                    <div class="faq-icon-2"></div>
             </b-card-header>
             <b-collapse id="accordion-1" accordion="my-accordion" role="tabpanel">
               <b-card-body>
@@ -28,9 +28,11 @@
             </b-collapse>
           </b-card>
 
-          <b-card no-body class="mb-1">
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.accordion-2 variant="info">Clinical History at Admission</b-button>
+          <b-card no-body class="mb-1 accordion__item js-accordion-item active">
+            <b-card-header header-tag="header" class="p-1 faq-2 w-dropdown-toggle" role="tab" v-b-toggle.accordion-2>
+            <img src="images/iconfinder_lungs_5997835.png" alt="" class="accordion_item-image">
+            <div class="toggle-text">Clinical History At Admission</div>
+            <div class="faq-icon-2"></div>
             </b-card-header>
             <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
               <b-card-body>
@@ -39,9 +41,11 @@
             </b-collapse>
           </b-card>
 
-          <b-card no-body class="mb-1">
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.accordion-3 variant="info">COVID-19 Test Details</b-button>
+          <b-card no-body class="mb-1 accordion__item js-accordion-item active">
+            <b-card-header header-tag="header" class="p-1 faq-2 w-dropdown-toggle" role="tab" v-b-toggle.accordion-3>
+            <img src="images/iconfinder_Corona_covid19_virus_disease_5973093.png" alt="" class="accordion_item-image">
+            <div class="toggle-text">COVID 19 Test Details</div>
+            <div class="faq-icon-2"></div>
             </b-card-header>
             <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
               <b-card-body>
@@ -50,9 +54,11 @@
             </b-collapse>
           </b-card>
 
-           <b-card no-body class="mb-1">
-            <b-card-header header-tag="header" class="p-1" role="tab">
-              <b-button block href="#" v-b-toggle.accordion-4 variant="info">Allocate Ward</b-button>
+           <b-card no-body class="mb-1 accordion__item js-accordion-item active">
+            <b-card-header header-tag="header" class="p-1 faq-2 w-dropdown-toggle" role="tab" v-b-toggle.accordion-4>
+            <img src="images/iconfinder_SEO-15_2588776.png" alt="" class="accordion_item-image">
+            <div class="toggle-text">Allocate Ward</div>
+            <div class="faq-icon-2"></div>
             </b-card-header>
             <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
               <b-card-body>
@@ -60,7 +66,7 @@
               </b-card-body>
             </b-collapse>
           </b-card>
-        </div>
+</div>
       </div>
     </div>
   </div>
@@ -71,39 +77,29 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { mapState, mapGetters } from 'vuex';
-<<<<<<< HEAD
-=======
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
->>>>>>> 21d136809df7a3da0c45a037321c53bbceb0763b
 import Sidebar from '../components/Sidebar.vue';
 import Sidelogo from '../components/Sidelogo.vue';
 import RemovePatient from '../components/RemovePatient.vue';
 import PatientDetails from '../components/PatientDetails.vue';
-<<<<<<< HEAD
-=======
 import PatientClinicalHistory from '../components/PatientClinicalHistory.vue';
 import PatientCovidTestDetails from '../components/PatientCovidTestDetails.vue';
 import PatientWardAllocation from '../components/PatientWardAllocation.vue';
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
->>>>>>> 21d136809df7a3da0c45a037321c53bbceb0763b
 
 @Component({
   components: {
     sidebar: Sidebar,
     sidelogo: Sidelogo,
     removepatient: RemovePatient,
-<<<<<<< HEAD
-    patientdetails: PatientDetails,
-=======
     patdetails: PatientDetails,
     patclinicalhist: PatientClinicalHistory,
     patcovidtest: PatientCovidTestDetails,
     patward: PatientWardAllocation,
->>>>>>> 21d136809df7a3da0c45a037321c53bbceb0763b
   },
 
   computed: {

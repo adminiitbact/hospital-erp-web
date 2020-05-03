@@ -1,31 +1,50 @@
 <template>
-  <div class="w-row ward-card">
+  <div class="w-form">
     <form v-on:submit.prevent="submitChanges">
       <div class="w-row">
-        <div v-for="(patientField, index) in patientForm" class="w-col w-col-6" :key="index">
-          <div class="form-block-3 w-form">
-            <div class="subheading" style="border: 0px;">
-              <label class="field-label">
-                <strong>{{ patientField[0] }}</strong>
-              </label>
-              <template v-if="patientField[2] == 'text' || patientField[2] == 'number'">
+        <div v-for="(patientField, index) in patientForm" class="w-col w-col-12" :key="index">
+          <div class="w-row">
+            <div class="w-col w-col-4">
+              <div class="new-db-form-div full">
+                <label for="First-Name-2" class="field-label patient">{{ patientField[0] }}:</label>
+              </div>
+            </div>
+            <div class="w-col w-col-8">
+              <div class="new-db-form-div full">
+                <template v-if="patientField[2] == 'text' || patientField[2] == 'number'">
                 <input
                   :type="patientField[2]"
-                  class="ward-text-field w-input"
-                  v-model="patientField[4]"
+                  class="patient-db-field w-input"
+                  v-model="patientField[3]"
                   required
                   min="0"
                   maxlength="256"
                 />
               </template>
               <template v-else-if="patientField[2] == 'option'">
-                <select class="ward-field-design w-input" v-model="patientField[4]">
+                <select class="patient-db-field w-select"
+                v-model="patientField[4]">
                   <option
                     v-for="(val, index) in patientField[3]"
                     :value="val"
                     :key="index"
                   >{{ val }}</option>
                 </select>
+              </template>
+              <template v-else-if="patientField[2] == 'checkbox'">
+                <div v-for="(val, index) in patientField[3]" :key="index">
+                  <label class="w-checkbox checkbox-field-2">
+                    <input
+                      type="checkbox"
+                      id="checkbox-8"
+                      :value="val[0]"
+                      name="checkbox-8"
+                      class="w-checkbox-input"
+                      v-model="val[1]"
+                    />
+                    <span class="checkbox-label-2 w-form-label">{{ val[0] }}</span>
+                  </label>
+                </div>
               </template>
               <template v-else-if="patientField[2] == 'radio'">
                 <label
@@ -35,14 +54,15 @@
                 >
                   <input
                     type="radio"
-                    id="one"
+                    :id="val[1]"
                     :value="val[0]"
                     v-model="patientField[4]"
                     class="w-form-formradioinput radio-button-2 w-radio-input"
                   />
-                  <span class="checkbox-label-2 w-form-label">{{ val[0] }}</span>
+                  <span class="checkbox-label-2 w-form-label">{{ val[1] }}</span>
                 </label>
               </template>
+              </div>
             </div>
           </div>
         </div>
@@ -80,9 +100,15 @@ import Component from 'vue-class-component';
 // import API from '../utils/apis';
 // import Utils from '../utils/utils';
 
+
 @Component
 export default class PatientWardAllocation extends Vue {
   error = '';
+
+yesNoOptions = [
+  [true, 'Yes'],
+  [false, 'No'],
+];
 
   patientForm = [
     [
@@ -97,8 +123,8 @@ export default class PatientWardAllocation extends Vue {
       'option',
       ['Test Pending', 'Result Awaited', 'Positive', 'Negative'],
     ],
-    ['On Oxygen Support', 'oxygen', 'radio', [['Yes'], ['No']]],
-    ['On Ventilator', 'ventilator', 'radio', [['Yes'], ['No']]],
+    ['On Oxygen Support', 'oxygen', 'radio', this.yesNoOptions, false],
+    ['On Ventilator', 'ventilator', 'radio', this.yesNoOptions, false],
   ];
 }
 </script>
