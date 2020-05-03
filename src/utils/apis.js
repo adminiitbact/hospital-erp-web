@@ -16,6 +16,7 @@ function getAuthTokenData() {
 function getHeaders() {
   return {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${getAuthTokenData().authToken}`,
   };
 }
 
@@ -146,32 +147,27 @@ function addPatient(patientData) {
 
 
 function addPatientClinicalData(patientData) {
-  const data = {
-    authToken: getAuthToken(),
-    data: patientData,
-  };
+  // eslint-disable-next-line no-param-reassign
+  patientData.authToken = getAuthToken();
   return getPromisifiedRequest(
     'POST', urljoin(
-      config.apiUrl, 'patients-clinical-hist/new',
+      config.apiUrl, 'patients-clinical-hist', 'post',
     ),
-    data, getHeaders(),
+    patientData, getHeaders(),
   );
 }
 
 
 function addPatientCovidTestResult(patientData) {
-  const data = {
-    authToken: getAuthToken(),
-    data: patientData,
-  };
+  // eslint-disable-next-line no-param-reassign
+  patientData.authToken = getAuthToken();
   return getPromisifiedRequest(
     'POST', urljoin(
-      config.apiUrl, 'patients-covid-test-result/new',
+      config.apiUrl, 'patients-covid-test-result', 'post',
     ),
-    data, getHeaders(),
+    patientData, getHeaders(),
   );
 }
-
 
 module.exports = {
   fetchUser,

@@ -12,7 +12,7 @@
                 <input
                   :type="patientField[2]"
                   class="ward-text-field w-input"
-                  v-model="patientField[4]"
+                  v-model="patientField[3]"
                   required
                   min="0"
                   maxlength="256"
@@ -51,12 +51,12 @@
                 >
                   <input
                     type="radio"
-                    :id="val"
-                    :value="val"
+                    :id="val[1]"
+                    :value="val[0]"
                     v-model="patientField[4]"
                     class="w-form-formradioinput radio-button-2 w-radio-input"
                   />
-                  <span class="checkbox-label-2 w-form-label">{{ val }}</span>
+                  <span class="checkbox-label-2 w-form-label">{{ val[1] }}</span>
                 </label>
               </template>
             </div>
@@ -93,8 +93,8 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-// import API from '../utils/apis';
-// import Utils from '../utils/utils';
+import API from '../utils/apis';
+import Utils from '../utils/utils';
 
 @Component
 export default class PatientClinicalHistory extends Vue {
@@ -125,95 +125,34 @@ export default class PatientClinicalHistory extends Vue {
   ];
 
   yesNoOptions = [
-    'Yes',
-    'No',
+    [true, 'Yes'],
+    [false, 'No'],
   ];
 
   patientForm = [
-    ['Symptoms at time of Admission', 'symptomAtTimeofAddmission', 'radio', this.yesNoOptions],
+    ['Symptoms at time of Admission', 'symptomAtTimeofAddmission', 'radio', this.yesNoOptions, false],
     ['Date of onset of Symptoms', 'onsetSymptoms', 'text'],
-    ['Primary Symptoms', 'primarySymptom', 'checkbox', this.primarySymptoms],
-    ['Secondary Symptoms', 'secondarySymptom', 'checkbox', this.secondarySymptoms],
-    ['Pre-existing Medical Conditions', 'preExistingConditions', 'checkbox', this.preExsMedConditions],
+    ['Primary Symptoms', 'primary_symptoms', 'checkbox', this.primarySymptoms],
+    ['Secondary Symptoms', 'secondary_symptoms', 'checkbox', this.secondarySymptoms],
+    ['Pre-existing Medical Conditions', 'pre_existing_conditions', 'checkbox', this.preExsMedConditions],
   ];
 
   error = '';
 
   submitChanges() {
-    console.log(this.patientForm);
-    // this.updatePatientWithModelFields();
-    // API.saveWard(this.$store.state.user.facilityId, this.ward).then(
-    //   () => {
-    //     // const action = this.wardToEditId === 0 ? 'added' : 'updated';
-    //     // alert(`Patient details ${action}`); // eslint-disable-line
-    //     // this.$emit('edit-done', 1);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     // this.error = 'Error: (building name, floor and ward name) should be unique.';
-    //   },
-    // );
+    const data = Utils.getFormValues(this.patientForm);
+    console.log(data);
+    API.addPatientClinicalData(data).then(
+      (res) => {
+        console.log(res);
+        alert('Clinical History Added'); // eslint-disable-line
+        this.$emit('edit-done', 1);
+      },
+      (error) => {
+        console.log(error);
+        // this.error = 'Error: (building name, floor and ward name) should be unique.';
+      },
+    );
   }
-
-  // removeWard() {
-  //   const confirmRes = confirm("Are you sure you want to remove this ward?"); // eslint-disable-line
-  //   if (confirmRes) {
-  //     API.removeWard(this.$store.state.user.facilityId, this.wardToEditId).then(
-  //       (success) => {
-  //         if (success.error) {
-  //           Utils.standardErrorHandler(success.error);
-  //           alert(`Error: ${success.error.errorMsg}`);
-  //         } else {
-  //           alert('Ward successfully removed');
-  //           this.$emit('edit-done', 1);
-  //         }
-  //       },
-  //       () => {
-  //         alert(
-  //           'Error in removal, please try again. '
-  //             + 'If problem persists then contact system administrator.',
-  //         );
-  //       },
-  //     );
-  //   }
-  // }
-
-  // updatePatientWithModelFields() {
-  //   for (let i = 0; i < this.patientForm.length; i += 1) {
-  //     // patientForm.push(this.patientForm[i]);
-  //     if (this.patientForm[i][1].startsWith('extraFields')) {
-  //       this.patient.extraFields[
-  //         this.patientForm[i][1].split('.')[1]
-  //       ] = this.patientModelFields[i];
-  //     } else {
-  //       this.patient[this.patientForm[i][1]] = this.patientModelFields[i];
-  //     }
-  //   }
-  // }
-
-  // get patientModelFields() {
-  //   const wardModel = [];
-  //   if (!this.ward.extraFields) {
-  //     this.ward.extraFields = {};
-  //   }
-  //   for (let i = 0; i < this.patientForm.length; i += 1) {
-  //     // patientForm.push(this.patientForm[i]);
-  //     if (this.patientForm[i][1].startsWith('extraFields')) {
-  //       wardModel.push(
-  //         this.ward.extraFields[this.patientForm[i][1].split('.')[1]],
-  //       );
-  //     } else {
-  //       wardModel.push(this.ward[this.patientForm[i][1]]);
-  //     }
-  //   }
-  //   return wardModel;
-  // }
-
-  // get ward() {
-  //   if (!this.wardToEdit) {
-  //     return getDefaultWard();
-  //   }
-  //   return this.wardToEdit;
-  // }
 }
 </script>

@@ -12,7 +12,7 @@
                 <input
                   :type="patientField[2]"
                   class="ward-text-field w-input"
-                  v-model="patientField[4]"
+                  v-model="patientField[3]"
                   required
                   min="0"
                   maxlength="256"
@@ -61,8 +61,8 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-// import API from '../utils/apis';
-// import Utils from '../utils/utils';
+import API from '../utils/apis';
+import Utils from '../utils/utils';
 
 
 @Component
@@ -200,18 +200,20 @@ export default class PatientDetails extends Vue {
   error = '';
 
   submitChanges() {
-    console.log(this.patientForm);
-    // API.saveWard(this.$store.state.user.facilityId, this.patient).then(
-    //   () => {
-    //     // const action = this.wardToEditId === 0 ? 'added' : 'updated';
-    //     // alert(`Patient details ${action}`); // eslint-disable-line
-    //     // this.$emit('edit-done', 1);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     // this.error = 'Error: (building name, floor and ward name) should be unique.';
-    //   },
-    // );
+    const data = Utils.getFormValues(this.patientForm);
+    console.log(data);
+    API.addPatient(data).then(
+      (res) => {
+        console.log(res);
+        // const action = this.wardToEditId === 0 ? 'added' : 'updated';
+        // alert(`Patient details ${action}`); // eslint-disable-line
+        // this.$emit('edit-done', 1);
+      },
+      (error) => {
+        console.log(error);
+        // this.error = 'Error: (building name, floor and ward name) should be unique.';
+      },
+    );
   }
 }
 </script>

@@ -16,7 +16,7 @@
                   <input
                     :type="patientField[2]"
                     class="ward-text-field w-input"
-                    v-model="patientField[4]"
+                    v-model="patientField[3]"
                     required
                     min="0"
                     maxlength="256"
@@ -61,7 +61,7 @@
                   >
                     <input
                       type="radio"
-                      id="one"
+                      :id="val[1]"
                       :value="val[0]"
                       v-model="patientField[4]"
                       class="w-form-formradioinput radio-button-2 w-radio-input"
@@ -103,7 +103,8 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-// import API from '../utils/apis';
+import API from '../utils/apis';
+import Utils from '../utils/utils';
 
 @Component
 export default class PatientCovidDetails extends Vue {
@@ -114,8 +115,8 @@ export default class PatientCovidDetails extends Vue {
   ];
 
   yesNoOptions = [
-    ['Yes'],
-    ['No'],
+    [true, 'Yes'],
+    [false, 'No'],
   ];
 
   collectionCenter = [
@@ -146,29 +147,31 @@ export default class PatientCovidDetails extends Vue {
   ];
 
   patientForm = [
-    ['Has Sample been Collected?', 'sampleCollected', 'radio', this.yesNoOptions],
+    ['Has Sample been Collected?', 'sampleCollected', 'radio', this.yesNoOptions, false],
     ['Date of Sample Collection', 'collectionDate', 'text'],
-    ['Sample Collection Center', 'collectionCenter', 'option', this.collectionCenter],
-    ['Sample Tested at', 'testedAt', 'option', this.testedAt],
-    ['Is Sample Result Available?', 'resultAvailable', 'radio', this.yesNoOptions],
-    ['Name of Lab that confirmed the result', 'lab', 'option', this.confirmedAt],
-    ['Result of the Sample', 'result', 'option', this.resultData],
+    ['Sample Collection Center', 'collectionCenter', 'option', this.collectionCenter, this.collectionCenter[0]],
+    ['Sample Tested at', 'testedAt', 'option', this.testedAt, this.testedAt[0]],
+    ['Is Sample Result Available?', 'resultAvailable', 'radio', this.yesNoOptions, false],
+    ['Name of Lab that confirmed the result', 'lab', 'option', this.confirmedAt, this.confirmedAt[0]],
+    ['Result of the Sample', 'result', 'option', this.resultData, this.resultData[0]],
   ];
 
   error = '';
 
   submitChanges() {
-    console.log(this.patientForm);
-    // API.saveWard(this.$store.state.user.facilityId, this.ward).then(
-    //   () => {
-    //     // const action = this.wardToEditId === 0 ? 'added' : 'updated';
-    //     // alert(`Patient details ${action}`); // eslint-disable-line
-    //     // this.$emit('edit-done', 1);
-    //   }, (error) => {
-    //     console.log(error);
-    //     // this.error = 'Error: (building name, floor and ward name) should be unique.';
-    //   },
-    // );
+    const data = Utils.getFormValues(this.patientForm);
+    console.log(data);
+    API.addPatientCovidTestResult(data).then(
+      (res) => {
+        console.log(res);
+        // const action = this.wardToEditId === 0 ? 'added' : 'updated';
+        // alert(`Patient details ${action}`); // eslint-disable-line
+        // this.$emit('edit-done', 1);
+      }, (error) => {
+        console.log(error);
+        // this.error = 'Error: (building name, floor and ward name) should be unique.';
+      },
+    );
   }
 }
 </script>
