@@ -9,26 +9,20 @@
       <div class="div-block-44">
         <div class="hospital-profile-header-div _1">
           <h1 class="heading-2 _1">Patient Details (A)</h1>
-          <!-- <button id="show-modal" @click="showModal = true">Show Modal</button> -->
           <removepatient v-if="showModal" @close="showModal = false">
-        <!--
-      you can use custom content here to overwrite
-      default content
-    -->
-        <h3 slot="header">custom header</h3>
       </removepatient>
-          <a href="discharge-popup-forn.html" class="button-3 ward remove w-button">- Remove Patient</a>
+          <a @click="showModal = true" class="button-3 ward remove w-button">- Remove Patient</a>
         </div>
         <div class="div-block-76"></div>
         <div class="div-block-36 _1">
           <div class="accordion__item js-accordion-item active">
-            <div
+            <div v-on:click="openAcc()"
               data-delay="0"
               data-w-id="1082e313-78b3-fcdc-4d02-77f0d1343eb0"
               style="height:60PX"
               class="faq-p w-dropdown"
             >
-              <div class="faq-2 w-dropdown-toggle">
+              <div class="faq-2 w-dropdown-toggle w--open">
                 <img src="images/iconfinder_SEO-15_2588776.png" alt class="accordion_item-image" />
                 <div class="toggle-text">
                 <strong>Personal Details</strong>
@@ -48,7 +42,7 @@
                   class="faq-icon-2"
                 ></div>
               </div>
-              <nav class="faq-body-2 w-dropdown-list">
+              <nav class="faq-body-2 w-dropdown-list w--open">
                 <div class="faq-body-cont-2">
                   <div class="patient-db-section">
                     <div class="w-form">
@@ -1485,22 +1479,22 @@
   </div>
 </template>
 
-
+<script type="module" src="../assets/webflow.js"></script>
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { mapState, mapGetters } from 'vuex';
-
 import Sidebar from '../components/Sidebar.vue';
 import Sidelogo from '../components/Sidelogo.vue';
 import RemovePatient from '../components/RemovePatient.vue';
-
+import PatientDetails from '../components/PatientDetails.vue';
 
 @Component({
   components: {
     sidebar: Sidebar,
     sidelogo: Sidelogo,
     removepatient: RemovePatient,
+    patientdetails: PatientDetails,
   },
   computed: {
     ...mapState(['user']),
@@ -1509,5 +1503,8 @@ import RemovePatient from '../components/RemovePatient.vue';
 })
 export default class AddPatient extends Vue {
   showModal = false;
+  openAcc() {
+    console.log('Hi')
+  }
 }
 </script>
