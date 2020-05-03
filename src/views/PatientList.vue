@@ -117,7 +117,7 @@ export default class PatientList extends Vue {
         ward,
         severity,
         `<span class=${testStatusClass}>${testStatus}</span>`,
-        `<a href="patient-overview.html?patient_id=${patientId}" class="button-2 w-button">update</a>`,
+        `<a href="/add-patient?patient_id=${patientId}" class="button-2 w-button">update</a>`,
       ]);
     });
     return rows;
