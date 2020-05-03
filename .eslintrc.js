@@ -16,7 +16,8 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    "prefer-destructuring": ["error", {"object": false, "array": false}],
     'max-len': 'off',
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': 0,
   },
 };

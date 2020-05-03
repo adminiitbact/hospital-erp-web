@@ -16,6 +16,7 @@ function getAuthTokenData() {
 function getHeaders() {
   return {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${getAuthTokenData().authToken}`,
   };
 }
 
@@ -130,6 +131,44 @@ function removeWard(facilityId, wardId) {
   );
 }
 
+
+function addPatient(patientData) {
+  const data = {
+    authToken: getAuthToken(),
+    data: patientData,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'patients/new',
+    ),
+    data, getHeaders(),
+  );
+}
+
+
+function addPatientClinicalData(patientData) {
+  // eslint-disable-next-line no-param-reassign
+  patientData.authToken = getAuthToken();
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'patients-clinical-hist', 'post',
+    ),
+    patientData, getHeaders(),
+  );
+}
+
+
+function addPatientCovidTestResult(patientData) {
+  // eslint-disable-next-line no-param-reassign
+  patientData.authToken = getAuthToken();
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'patients-covid-test-result', 'post',
+    ),
+    patientData, getHeaders(),
+  );
+}
+
 module.exports = {
   fetchUser,
   fetchFacilityData,
@@ -139,4 +178,7 @@ module.exports = {
   fetchPatients,
   fetchReferredPatients,
   removeWard,
+  addPatient,
+  addPatientClinicalData,
+  addPatientCovidTestResult,
 };
