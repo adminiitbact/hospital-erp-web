@@ -149,6 +149,9 @@ function addPatient(patientData) {
 function addPatientClinicalData(patientData) {
   // eslint-disable-next-line no-param-reassign
   patientData.authToken = getAuthToken();
+  // eslint-disable-next-line no-param-reassign
+  patientData.patientid = '';
+  // TODO:
   return getPromisifiedRequest(
     'POST', urljoin(
       config.apiUrl, 'patients-clinical-hist', 'post',
@@ -161,6 +164,9 @@ function addPatientClinicalData(patientData) {
 function addPatientCovidTestResult(patientData) {
   // eslint-disable-next-line no-param-reassign
   patientData.authToken = getAuthToken();
+  // eslint-disable-next-line no-param-reassign
+  patientData.patientid = '';
+  // TODO:
   return getPromisifiedRequest(
     'POST', urljoin(
       config.apiUrl, 'patients-covid-test-result', 'post',
