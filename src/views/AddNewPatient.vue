@@ -109,8 +109,5 @@ Vue.use(IconsPlugin);
 })
 export default class AddPatient extends Vue {
   showModal = false;
-  openAcc() {
-    console.log('Hi')
-  }
 }
 </script>

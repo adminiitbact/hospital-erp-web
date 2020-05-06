@@ -62,7 +62,6 @@ import FacilityOverview from '../components/FacilityOverview.vue';
 import EditFacility from '../components/EditFacility.vue';
 import WardDetails from '../components/WardDetails.vue';
 
-// const config = require('../config');
 
 @Component({
   components: {

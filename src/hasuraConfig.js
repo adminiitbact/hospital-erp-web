@@ -5,7 +5,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here
-  uri: process.env.GRAPHQL_ENDPOINT,
+  // TODO: add headers dynamically
+  uri: 'http://localhost:8080/v1/graphql',
+  headers: {
+    'x-hasura-admin-secret': 'myadminsecretkey',
+  },
 });
 
 // Cache implementation

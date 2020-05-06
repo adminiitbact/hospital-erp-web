@@ -59,10 +59,7 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import API from '../utils/apis';
 import Utils from '../utils/utils';
-
-
 @Component
 export default class PatientDetails extends Vue {
   locality = ['Akurdi',
@@ -179,8 +176,8 @@ export default class PatientDetails extends Vue {
     'Yerwada']
 
   patientForm = [
-    ['First Name', 'firstName', 'text'],
-    ['Last Name', 'lastName', 'text'],
+    ['First Name', 'first_name', 'text'],
+    ['Last Name', 'last_name', 'text'],
     ['Age', 'age', 'number'],
     ['Gender', 'gender', 'option', ['MALE', 'FEMALE', 'OTHERS']],
     ['Address', 'address', 'text'],
@@ -188,11 +185,11 @@ export default class PatientDetails extends Vue {
     ['District', 'district', 'text'],
     ['State', 'state', 'text'],
     ['Occupation', 'occupation', 'text'],
-    ['Contact', 'contactNumber', 'text'],
-    ['District Case Number', 'districtCaseId', 'text'],
-    ['Hospital Patient ID', 'hostpitalPatientId', 'text'],
-    ['GOI COVID ID', 'goiCovidId', 'text'],
-    ['COVID Uniue ID', 'covidUID', 'text'],
+    ['Contact', 'contact_number', 'text'],
+    ['District Case Number', 'district_case_id', 'text'],
+    ['Hospital Patient ID', 'hospital_patient_id', 'text'],
+    ['GOI COVID ID', 'goi_covid_id', 'text'],
+    ['COVID Uniue ID', 'covid_uid', 'text'],
   ];
 
   error = '';
@@ -200,18 +197,6 @@ export default class PatientDetails extends Vue {
   submitChanges() {
     const data = Utils.getFormValues(this.patientForm);
     console.log(data);
-    API.addPatient(data).then(
-      (res) => {
-        console.log(res);
-        // const action = this.wardToEditId === 0 ? 'added' : 'updated';
-        // alert(`Patient details ${action}`); // eslint-disable-line
-        // this.$emit('edit-done', 1);
-      },
-      (error) => {
-        console.log(error);
-        // this.error = 'Error: (building name, floor and ward name) should be unique.';
-      },
-    );
   }
 }
 </script>
