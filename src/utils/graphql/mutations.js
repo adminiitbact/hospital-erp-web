@@ -1,15 +1,18 @@
 import gql from 'graphql-tag';
 
-
-const createPatient = gql`
-mutation insert_patient($objects: [patient_insert_input!]!) {
-  insert_patient(objects: $objects) {
-    returning {
-      id
+async function createPatient(data) {
+  const query = gql`
+  mutation insert_patient($objects: [patient_insert_input!]!) {
+    insert_patient(objects: $objects) {
+      returning {
+        id
+      }
     }
-  }
-}`;
-
+  }`;
+  const response = await this.$apollo.mutation({ mutation: query, variables: { objects: data } });
+  console.log(response);
+  return response;
+}
 
 const updateFacility = gql`
 mutation update_facility($id: uuid!, $object: facility_set_input!) {
