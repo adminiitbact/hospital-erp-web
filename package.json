@@ -51,6 +51,7 @@
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "jquery": "^3.5.0",
+    "underscore": "^1.10.2",
     "url-join": "^4.0.1",
     "vue": "^2.6.11",
     "vue-apollo": "^3.0.3",

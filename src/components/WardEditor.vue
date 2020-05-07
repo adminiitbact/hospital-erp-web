@@ -2,11 +2,11 @@
   <div class="w-row ward-card">
     <div class="w-col">
       <h4 style="text-align:center; margin-bottom: 10px;">
-        {{ wardToEditId === 0 ? 'Add' : 'Update' }} Ward Information
+        {{ wardToEdit.id ? 'Update' : 'Add' }} Ward Information
       </h4>
     </div>
     <div class="w-col">
-      <a v-if="wardToEditId !== 0"
+      <a v-if="wardToEdit.id"
         href="#"
         class="button-3 w-button"
         style="float: right; margin-right: 10px;"
@@ -29,18 +29,18 @@
               v-if="wardField[2] == 'text' || wardField[2] == 'number'">
               <input
                 :type="wardField[2]" class="ward-text-field w-input"
-                v-model="wardModelFields[index]" required
+                v-model="wardField[3]" required
                 min="0"
                 maxlength="256"
               />
             </template>
             <template v-else-if="wardField[2] == 'option'" >
               <select class="ward-field-design w-input"
-                v-model="wardModelFields[index]">
+                v-model="wardField[4]">
                 <option
                   v-for="(val, index) in wardField[3]"
-                  :value="val[0]" :key="index">
-                  {{ val[1] }}
+                  :value="val" :key="index">
+                  {{ val }}
                 </option>
               </select>
             </template>
@@ -72,166 +72,96 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import API from '../utils/apis';
+// import API from '../utils/apis';
+import _ from 'underscore';
+import { mapState } from 'vuex';
 import Utils from '../utils/utils';
-
-
-function getOptionValueList(options) {
-  const optionValueList = [];
-  for (let i = 0; i < options.length; i += 1) {
-    optionValueList.push([options[i], options[i]]);
-  }
-  return optionValueList;
-}
-
-const yesNoOptions = [
-  ['true', 'Yes'],
-  ['false', 'No'],
-];
-
-
-function getDefaultWard() {
-  return ({
-    name: '',
-    id: 0,
-    buildingName: '',
-    floor: '',
-    totalBeds: 0,
-    gender: '',
-    covidWard: 'true',
-    covidStatus: '',
-    severity: '',
-    ventilators: 0,
-    ventilatorsOccupied: 0,
-    extraFields: {},
-  });
-}
 
 
 const WardEditorProps = Vue.extend({
   props: {
     wardToEdit: {
       required: false,
-    },
-    wardToEditId: {
-      required: true,
-      type: Number,
+      default() { return {}; },
     },
   },
 });
 
-@Component
+@Component({
+  computed: {
+    ...mapState(['facility']),
+  },
+})
 export default class WardEditor extends WardEditorProps {
   wardForm = [
-    ['Building Name/Number', 'buildingName', 'text'],
-    ['Floor', 'floor', 'option', getOptionValueList(
-      ['LG', 'G', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-    )],
-    ['Ward Name/Number', 'name', 'text'],
-    ['Total beds', 'totalBeds', 'number'],
-    ['Gender', 'gender', 'option', getOptionValueList(['MALE', 'FEMALE', 'UNISEX'])],
-    ['Is it COVID Ward?', 'covidWard', 'option', yesNoOptions],
-    [
-      'Patient COVID status',
-      'covidStatus',
-      'option',
-      getOptionValueList(['CONFIRMED', 'SUSPECTED']),
-    ],
-    ['Patient severity', 'severity', 'option', getOptionValueList(['MILD', 'MODERATE', 'SEVERE'])],
+    ['Building Name/Number', 'building_name', 'text'],
+    ['Floor', 'floor', 'option', ['LG', 'G', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], 'LG'],
+    ['Ward Name/Number', 'ward_name', 'text'],
+    ['Total beds', 'total_beds', 'number'],
+    ['Gender', 'gender', 'option', ['MALE', 'FEMALE', 'UNISEX'], 'MALE'],
+    ['Is it COVID Ward?', 'covid_ward', 'option', ['Yes', 'No'], 'Yes'],
+    ['Patient COVID status', 'covid_status', 'option', ['CONFIRMED', 'SUSPECTED'], 'CONFIRMED'],
+    ['Patient severity', 'severity', 'option', ['MILD', 'MODERATE', 'SEVERE'], 'MILD'],
     ['Total ventilators', 'ventilators', 'number'],
-    ['Ventilators occupied', 'ventilatorsOccupied', 'number'],
-    [
-      'Is distance between beds more than 6 feet?',
-      'extraFields.minDistanceBetBeds', 'option', yesNoOptions,
-    ],
-    [
-      'Number of independent single room beds with attached washroom',
-      'extraFields.independentBeds', 'number',
-    ],
-    ['Number of oxygen cylinders available', 'extraFields.oxygenCylinder', 'number'],
-    [
-      'Number of beds with wall oxygen supplies available',
-      'extraFields.wallOxygenSuppliedBeds', 'number',
-    ],
-    [
-      'Number of beds with Central Oxygen system',
-      'extraFields.centralOxygenSuppliedBeds', 'number',
-    ],
-    ['Number of pulse oximeters available', 'extraFields.pulseOximeters', 'number'],
-    ['Number of infusion pumps available', 'extraFields.infusionPumps', 'number'],
+    ['Is distance between beds more than 6 feet?', 'extra_fields.minDistanceBetBeds', 'option', ['Yes', 'No'], 'Yes'],
+    ['Number of independent single room beds with attached washroom', 'extra_fields.independentBeds', 'number'],
+    ['Number of oxygen cylinders available', 'extra_fields.oxygenCylinder', 'number'],
+    ['Number of beds with wall oxygen supplies available', 'extra_fields.wallOxygenSuppliedBeds', 'number'],
+    ['Number of beds with Central Oxygen system', 'extra_fields.centralOxygenSuppliedBeds', 'number'],
+    ['Number of pulse oximeters available', 'extra_fields.pulseOximeters', 'number'],
+    ['Number of infusion pumps available', 'extra_fields.infusionPumps', 'number'],
   ];
 
   error = '';
 
   submitChanges() {
-    this.ward.wardId = this.wardToEditId;
-    this.updateWardWithModelFields();
-    API.saveWard(this.$store.state.user.facilityId, this.ward).then(
-      () => {
-        const action = this.wardToEditId === 0 ? 'added' : 'updated';
-        alert(`Ward details ${action}`); // eslint-disable-line
-        this.$emit('edit-done', 1);
-      }, () => {
-        // console.log(error);
-        this.error = 'Error: (building name, floor and ward name) should be unique.';
-      },
-    );
+    let createData = Utils.getFormValues(this.wardForm);
+    const extraFieldsKeys = _.filter(_.keys(createData), (item) => item.includes('extra_fields'));
+    const extraFields = _.pick(createData, ...extraFieldsKeys);
+    createData = _.omit(createData, ...extraFieldsKeys);
+
+    createData.extra_fields = {};
+    for (let i = 0; i < extraFieldsKeys.length; i += 1) {
+      createData.extra_fields[extraFieldsKeys[i].split('.')[1]] = extraFields[extraFieldsKeys[i]];
+    }
+    createData.facility = this.facility.id;
+    this.$store.dispatch('createWard', createData);
+
+
+    // this.ward.wardId = this.wardToEditId;
+    // this.updateWardWithModelFields();
+    // API.saveWard(this.$store.state.user.facilityId, this.ward).then(
+    //   () => {
+    //     const action = this.wardToEditId === 0 ? 'added' : 'updated';
+    //     alert(`Ward details ${action}`); // eslint-disable-line
+    //     this.$emit('edit-done', 1);
+    //   }, () => {
+    //     // console.log(error);
+    //     this.error = 'Error: (building name, floor and ward name) should be unique.';
+    //   },
+    // );
   }
 
-  removeWard() {
-    const confirmRes = confirm('Are you sure you want to remove this ward?'); // eslint-disable-line
-    if (confirmRes) {
-      API.removeWard(this.$store.state.user.facilityId, this.wardToEditId).then(
-        (success) => {
-          if (success.error) {
-            Utils.standardErrorHandler(success.error);
-            alert(`Error: ${success.error.errorMsg}`);
-          } else {
-            alert('Ward successfully removed');
-            this.$emit('edit-done', 1);
-          }
-        }, () => {
-          alert(
-            'Error in removal, please try again. '
-            + 'If problem persists then contact system administrator.',
-          );
-        },
-      );
-    }
-  }
-
-  updateWardWithModelFields() {
-    for (let i = 0; i < this.wardForm.length; i += 1) {
-      // wardForm.push(this.wardForm[i]);
-      if (this.wardForm[i][1].startsWith('extraFields')) {
-        this.ward.extraFields[this.wardForm[i][1].split('.')[1]] = this.wardModelFields[i];
-      } else {
-        this.ward[this.wardForm[i][1]] = this.wardModelFields[i];
-      }
-    }
-  }
-
-  get wardModelFields() {
-    const wardModel = [];
-    if (!this.ward.extraFields) {
-      this.ward.extraFields = {};
-    }
-    for (let i = 0; i < this.wardForm.length; i += 1) {
-      // wardForm.push(this.wardForm[i]);
-      if (this.wardForm[i][1].startsWith('extraFields')) {
-        wardModel.push(this.ward.extraFields[this.wardForm[i][1].split('.')[1]]);
-      } else {
-        wardModel.push(this.ward[this.wardForm[i][1]]);
-      }
-    }
-    return wardModel;
-  }
-
-  get ward() {
-    if (!this.wardToEdit) {
-      return getDefaultWard();
-    }
-    return this.wardToEdit;
-  }
+  // removeWard() {
+  //   // const confirmRes = confirm('Are you sure you want to remove this ward?'); // eslint-disable-line
+  //   // if (confirmRes) {
+  //   //   API.removeWard(this.$store.state.user.facilityId, this.wardToEditId).then(
+  //   //     (success) => {
+  //   //       if (success.error) {
+  //   //         Utils.standardErrorHandler(success.error);
+  //   //         alert(`Error: ${success.error.errorMsg}`);
+  //   //       } else {
+  //   //         alert('Ward successfully removed');
+  //   //         this.$emit('edit-done', 1);
+  //   //       }
+  //   //     }, () => {
+  //   //       alert(
+  //   //         'Error in removal, please try again. '
+  //   //         + 'If problem persists then contact system administrator.',
+  //   //       );
+  //   //     },
+  //   //   );
+  //   // }
+  // }
 }
 </script>

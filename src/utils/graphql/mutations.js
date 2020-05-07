@@ -44,12 +44,21 @@ async function updateFacility(data, facilityID) {
   return response.data.update_facility.returning[0];
 }
 
-// const createWard = gql`
-// mutation insert_ward($objects: [ward_insert_input!]!) {
-//   insert_ward(objects: $objects) {
-//     affected_rows
-//   }
-// }`;
+async function createWard(data) {
+  const query = gql`
+  mutation insert_ward($objects: [ward_insert_input!]!) {
+    insert_ward(objects: $objects) {
+      returning {
+        id
+        active
+        covid_status
+      }
+    }
+  }`;
+
+  const response = await apolloClient.mutate({ mutation: query, variables: { objects: [data] } });
+  return response.data.insert_ward.returning[0];
+}
 
 // const updateWard = gql`
 // mutation update_ward($id: uuid!, $object: ward_set_input!) {
@@ -61,4 +70,5 @@ async function updateFacility(data, facilityID) {
 export default {
   createPatient,
   updateFacility,
+  createWard,
 };

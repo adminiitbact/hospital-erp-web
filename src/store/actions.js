@@ -36,6 +36,14 @@ const actions = {
     });
   },
 
+  createWard({ commit }, data) {
+    mutations.createWard(data).then((res) => {
+      commit('setWards', res);
+    }).catch((error) => {
+      console.log(error);
+    });
+  },
+
   fetchPatients({ state, commit }) {
     API.fetchUser().then((usuccess) => {
       commit('setUser', usuccess.data.profile);

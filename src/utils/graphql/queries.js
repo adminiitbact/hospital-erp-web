@@ -18,6 +18,7 @@ async function getFacility() {
       inventory
       checklist
       wards {
+        id
         active
         covid_status
       }
