@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import API from '../utils/apis';
 import queries from '../utils/graphql/queries';
 import mutations from '../utils/graphql/mutations';
@@ -36,9 +37,42 @@ const actions = {
     });
   },
 
-  createWard({ commit }, data) {
+  createWard({ state, commit }, data) {
     mutations.createWard(data).then((res) => {
-      commit('setWards', res);
+      if (res.id) {
+        commit('setWard', res);
+        if (state.wards) {
+          state.wards.push(res);
+          commit('setWards', state.wards);
+        } else {
+          commit('setWards', [res]);
+        }
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
+  },
+
+  updateWard({ state, commit }, data) {
+    mutations.updateWard(data).then((res) => {
+      if (res.id) {
+        commit('setWard', res);
+        state.wards = _.reject(state.wards, (item) => item.id === data.id);
+        state.wards.push(res);
+        commit('setWards', state.wards);
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
+  },
+
+  removeWard({ state, commit }, wardID) {
+    mutations.deleteWard(wardID).then((res) => {
+      if (res) {
+        commit('setWard', { deleted: true });
+        state.wards = _.reject(state.wards, (item) => item.id === wardID);
+        commit('setWards', state.wards);
+      }
     }).catch((error) => {
       console.log(error);
     });

@@ -50,14 +50,63 @@ async function createWard(data) {
     insert_ward(objects: $objects) {
       returning {
         id
-        active
+        building_name
+        floor
+        ward_name
+        total_beds
+        gender
+        covid_ward
         covid_status
+        severity
+        ventilators
+        extra_fields
+        available_beds
+        available_ventilators
       }
     }
   }`;
 
   const response = await apolloClient.mutate({ mutation: query, variables: { objects: [data] } });
   return response.data.insert_ward.returning[0];
+}
+
+
+async function updateWard(data) {
+  const query = gql`
+  mutation update_ward($object: ward_set_input!, $id: uuid!) {
+    update_ward(where: {id: {_eq: $id}}, _set: $object) {
+      returning {
+        id
+        building_name
+        floor
+        ward_name
+        total_beds
+        gender
+        covid_ward
+        covid_status
+        severity
+        ventilators
+        extra_fields
+        available_beds
+        available_ventilators
+      }
+    }
+  }`;
+
+  const response = await apolloClient.mutate({ mutation: query, variables: { object: data, id: data.id } });
+  return response.data.update_ward.returning[0];
+}
+
+async function deleteWard(wardID) {
+  const query = gql`
+  mutation delete_ward($id: uuid!) {
+    delete_ward(where: {id: {_eq: $id}}) {
+      affected_rows
+    }
+  }`;
+
+  const response = await apolloClient.mutate({ mutation: query, variables: { id: wardID } });
+  return response.data.delete_ward.affected_rows === 1;
 }
 
 // const updateWard = gql`
@@ -71,4 +120,6 @@ export default {
   createPatient,
   updateFacility,
   createWard,
+  deleteWard,
+  updateWard,
 };

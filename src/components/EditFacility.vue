@@ -274,9 +274,5 @@ export default class EditFacility extends EditFacilityProps {
     updateData[dataKey] = this.facility[dataKey];
     this.$store.dispatch('updateFacilityDetails', { data: updateData, id: this.facility.id });
   }
-
-  destroyed() {
-    this.$store.dispatch('fetchOnlyFacility');
-  }
 }
 </script>

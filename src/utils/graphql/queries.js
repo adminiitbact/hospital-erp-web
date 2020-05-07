@@ -19,8 +19,18 @@ async function getFacility() {
       checklist
       wards {
         id
-        active
+        building_name
+        floor
+        ward_name
+        total_beds
+        gender
+        covid_ward
         covid_status
+        severity
+        ventilators
+        extra_fields
+        available_beds
+        available_ventilators
       }
     }
   }`;

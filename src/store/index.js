@@ -12,6 +12,7 @@ const state = {
   facility: {},
   user: {},
   wards: [],
+  ward: {},
   patients: [],
   referredPatients: [],
 };
