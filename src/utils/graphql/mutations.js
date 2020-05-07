@@ -1,4 +1,6 @@
 import gql from 'graphql-tag';
+import apolloClient from '../../hasuraConfig';
+
 
 async function createPatient(data) {
   const query = gql`
@@ -9,35 +11,54 @@ async function createPatient(data) {
       }
     }
   }`;
-  const response = await this.$apollo.mutation({ mutation: query, variables: { objects: data } });
+  const response = await apolloClient.mutation({ mutation: query, variables: { objects: data } });
   console.log(response);
   return response;
 }
 
-const updateFacility = gql`
-mutation update_facility($id: uuid!, $object: facility_set_input!) {
-  update_facility(where: {id: {_eq: $id}}, _set: $object) {
-    affected_rows
-  }
-}`;
+async function updateFacility(data, facilityID) {
+  const query = gql`
+  mutation update_facility($id: uuid!, $object: facility_set_input!) {
+    update_facility(where: {id: {_eq: $id}}, _set: $object) {
+      returning {
+        id
+        address
+        area
+        agreement_status
+        covid_facility_type
+        created_at
+        email
+        facility_status
+        assets
+        staff
+        inventory
+        checklist
+        wards {
+          active
+          covid_status
+        }
+      }
+    }
+  }`;
+  const response = await apolloClient.mutate({ mutation: query, variables: { object: data, id: facilityID } });
+  return response.data.update_facility.returning[0];
+}
 
-const createWard = gql`
-mutation insert_ward($objects: [ward_insert_input!]!) {
-  insert_ward(objects: $objects) {
-    affected_rows
-  }
-}`;
+// const createWard = gql`
+// mutation insert_ward($objects: [ward_insert_input!]!) {
+//   insert_ward(objects: $objects) {
+//     affected_rows
+//   }
+// }`;
 
-const updateWard = gql`
-mutation update_ward($id: uuid!, $object: ward_set_input!) {
-  update_ward(where: {id: {_eq: $id}}, _set: $object) {
-    affected_rows
-  }
-}`;
+// const updateWard = gql`
+// mutation update_ward($id: uuid!, $object: ward_set_input!) {
+//   update_ward(where: {id: {_eq: $id}}, _set: $object) {
+//     affected_rows
+//   }
+// }`;
 
-module.exports = {
+export default {
   createPatient,
-  createWard,
   updateFacility,
-  updateWard,
 };

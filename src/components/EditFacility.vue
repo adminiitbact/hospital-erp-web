@@ -15,7 +15,7 @@
         </div>
         <div class="tabs-content-3 w-tab-content">
           <form v-if="currentTab == areasShort[0]"
-            v-on:submit.prevent="submitUpdates('asset', 'assets')">
+            v-on:submit.prevent="submitUpdates('assets')">
             <div class="div-block-6 profile">
               <div v-for="(assetGroup, index) in assetResources"
                 class="w-row" :key="index">
@@ -32,7 +32,7 @@
                           type="number"
                           class="text-field-design w-input"
                           maxlength="256"
-                          v-model="asset[assetDetail[0]]"
+                          v-model="facility.assets[assetDetail[0]]"
                         />
                       </div>
                     </div>
@@ -56,7 +56,7 @@
             </div>
           </form>
           <form v-else-if="currentTab == areasShort[1]"
-            v-on:submit.prevent="submitUpdates('staff', 'medstaff')">
+            v-on:submit.prevent="submitUpdates('staff')">
             <div class="div-block-6 profile">
               <div v-for="(staffGroup, index) in staffResources"
                 class="w-row" :key="index">
@@ -73,7 +73,7 @@
                           type="number"
                           class="text-field-design w-input"
                           maxlength="256"
-                          v-model="staff[staffDetail[0]]"
+                          v-model="facility.staff[staffDetail[0]]"
                         />
                       </div>
                     </div>
@@ -97,7 +97,7 @@
             </div>
           </form>
           <form v-else-if="currentTab == areasShort[2]"
-            v-on:submit.prevent="submitUpdates('inventory', 'inventory')">
+            v-on:submit.prevent="submitUpdates('inventory')">
             <div class="div-block-6 profile">
               <div v-for="(group, index) in inventoryResources"
                 class="w-row" :key="index">
@@ -114,7 +114,7 @@
                           type="number"
                           class="text-field-design w-input"
                           maxlength="256"
-                          v-model="inventory[detail[0]]"
+                          v-model="facility.inventory[detail[0]]"
                         />
                       </div>
                     </div>
@@ -138,7 +138,7 @@
             </div>
           </form>
           <form v-else-if="currentTab == areasShort[3]"
-            v-on:submit.prevent="submitUpdates('checklist', 'checklist')">
+            v-on:submit.prevent="submitUpdates('checklist')">
             <div class="w-row">
               <div class="w-form">
                 <div v-for="(group, index) in checklistResources"
@@ -149,7 +149,7 @@
                     </div>
                     <select
                       class="ward-text-field dropdown w-select"
-                      v-model="checklist[group[0]]"
+                      v-model="facility.checklist[group[0]]"
                       required>
                       <option v-for="(option, index) in checklistOptions"
                         :key="index" :value="option[0]">
@@ -185,8 +185,6 @@
 import Component from 'vue-class-component';
 import Vue from 'vue';
 
-const API = require('../utils/apis.js');
-
 
 const EditFacilityProps = Vue.extend({
   props: {
@@ -197,7 +195,7 @@ const EditFacilityProps = Vue.extend({
 });
 
 
-@Component
+@Component()
 export default class EditFacility extends EditFacilityProps {
   areas = ['A. Facility Assets', 'B. Staff Details', 'C. Inventory', 'D. Checklist'];
 
@@ -270,43 +268,11 @@ export default class EditFacility extends EditFacilityProps {
     this.currentTab = currentTab;
   }
 
-  get asset() {
-    if (this.facility.facilityAsset) {
-      return this.facility.facilityAsset.data;
-    }
-    return {};
-  }
-
-  get staff() {
-    if (this.facility.facilityMedstaff) {
-      return this.facility.facilityMedstaff.data;
-    }
-    return {};
-  }
-
-  get inventory() {
-    if (this.facility.facilityInventory) {
-      return this.facility.facilityInventory.data;
-    }
-    return {};
-  }
-
-  get checklist() {
-    if (this.facility.facilityChecklist) {
-      return this.facility.facilityChecklist.data;
-    }
-    return {};
-  }
-
-  submitUpdates(dataKey, urlKey) {
+  submitUpdates(dataKey) {
     this.dataChanged = true;
-    API.updateFacilityDetails(this.facility.facilityId, urlKey, this[dataKey]).then(
-      () => {
-        confirm('Update successful.'); // eslint-disable-line
-      }, (error) => {
-        alert(`Error in update: ${error.message}`); // eslint-disable-line
-      },
-    );
+    const updateData = {};
+    updateData[dataKey] = this.facility[dataKey];
+    this.$store.dispatch('updateFacilityDetails', { data: updateData, id: this.facility.id });
   }
 
   destroyed() {

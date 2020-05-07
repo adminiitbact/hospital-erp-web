@@ -1,5 +1,6 @@
 import API from '../utils/apis';
-
+import queries from '../utils/graphql/queries';
+import mutations from '../utils/graphql/mutations';
 
 const actions = {
   setAuthToken({ commit, dispatch }) {
@@ -16,43 +17,23 @@ const actions = {
     commit('setAuthToken', window.localStorage.authToken);
   },
 
-  fetchFacility({ state, commit, dispatch }) {
-    API.fetchFacilityData(state.user.facilityId).then(
-      (success) => {
-        commit('setFacility', success.data);
-        dispatch('fetchWards');
-      }, (error) => {
-        console.log(error);
-      },
-    );
+
+  fetchFacility({ commit }) {
+    queries.getFacility().then((res) => {
+      commit('setFacility', res);
+      commit('setWards', res.wards);
+    }).catch((error) => {
+      console.log(error);
+    });
   },
 
-  fetchOnlyFacility({ state, commit }) {
-    API.fetchFacilityData(state.user.facilityId).then(
-      (success) => {
-        commit('setFacility', success.data);
-      }, (error) => {
-        console.log(error);
-      },
-    );
-  },
 
-  fetchWards({ state, commit }) {
-    API.fetchWards(state.user.facilityId, 'NEGATIVE', 'MILD').then(
-      (success) => {
-        commit('setWards', success.data.list);
-      }, (error) => {
-        // eslint-disable-next-line no-alert
-        alert(
-          `Error in fetching ward information: ${error.responseJSON.status}`,
-        );
-        console.log(error);
-      },
-    );
-  },
-
-  updateFacilityDetails({ commit }, key, data) {
-    commit('updateFacilityDetails', key, data);
+  updateFacilityDetails({ commit }, data) {
+    mutations.updateFacility(data.data, data.id).then((res) => {
+      commit('setFacility', res);
+    }).catch((error) => {
+      console.log(error);
+    });
   },
 
   fetchPatients({ state, commit }) {

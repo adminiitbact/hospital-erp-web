@@ -44,27 +44,27 @@ function fetchUser() {
   );
 }
 
-function fetchFacilityData(facilityId) {
-  return getPromisifiedRequest(
-    'POST', urljoin(config.fetchFacilityUrl, facilityId.toString()),
-    getAuthTokenData(), getHeaders(),
-  );
-}
+// function fetchFacilityData(facilityId) {
+//   return getPromisifiedRequest(
+//     'POST', urljoin(config.fetchFacilityUrl, facilityId.toString()),
+//     getAuthTokenData(), getHeaders(),
+//   );
+// }
 
-function fetchWards(facilityId, testStatus, severity) {
-  const data = {
-    authToken: getAuthToken(),
-    testStatus,
-    severity,
-  };
-  return getPromisifiedRequest(
-    'POST', urljoin(
-      config.apiUrl, 'facilities', facilityId.toString(), 'wards',
-      'get',
-    ),
-    data, getHeaders(),
-  );
-}
+// function fetchWards(facilityId, testStatus, severity) {
+//   const data = {
+//     authToken: getAuthToken(),
+//     testStatus,
+//     severity,
+//   };
+//   return getPromisifiedRequest(
+//     'POST', urljoin(
+//       config.apiUrl, 'facilities', facilityId.toString(), 'wards',
+//       'get',
+//     ),
+//     data, getHeaders(),
+//   );
+// }
 
 function saveWard(facilityId, ward) {
   const data = {
@@ -177,8 +177,8 @@ function addPatientCovidTestResult(patientData) {
 
 module.exports = {
   fetchUser,
-  fetchFacilityData,
-  fetchWards,
+  // fetchFacilityData,
+  // fetchWards,
   saveWard,
   updateFacilityDetails,
   fetchPatients,
