@@ -16,6 +16,7 @@ function getAuthTokenData() {
 function getHeaders() {
   return {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${getAuthTokenData().authToken}`,
   };
 }
 
@@ -43,27 +44,27 @@ function fetchUser() {
   );
 }
 
-function fetchFacilityData(facilityId) {
-  return getPromisifiedRequest(
-    'POST', urljoin(config.fetchFacilityUrl, facilityId.toString()),
-    getAuthTokenData(), getHeaders(),
-  );
-}
+// function fetchFacilityData(facilityId) {
+//   return getPromisifiedRequest(
+//     'POST', urljoin(config.fetchFacilityUrl, facilityId.toString()),
+//     getAuthTokenData(), getHeaders(),
+//   );
+// }
 
-function fetchWards(facilityId, testStatus, severity) {
-  const data = {
-    authToken: getAuthToken(),
-    testStatus,
-    severity,
-  };
-  return getPromisifiedRequest(
-    'POST', urljoin(
-      config.apiUrl, 'facilities', facilityId.toString(), 'wards',
-      'get',
-    ),
-    data, getHeaders(),
-  );
-}
+// function fetchWards(facilityId, testStatus, severity) {
+//   const data = {
+//     authToken: getAuthToken(),
+//     testStatus,
+//     severity,
+//   };
+//   return getPromisifiedRequest(
+//     'POST', urljoin(
+//       config.apiUrl, 'facilities', facilityId.toString(), 'wards',
+//       'get',
+//     ),
+//     data, getHeaders(),
+//   );
+// }
 
 function saveWard(facilityId, ward) {
   const data = {
@@ -146,37 +147,38 @@ function addPatient(patientData) {
 
 
 function addPatientClinicalData(patientData) {
-  const data = {
-    authToken: getAuthToken(),
-    data: patientData,
-  };
+  // eslint-disable-next-line no-param-reassign
+  patientData.authToken = getAuthToken();
+  // eslint-disable-next-line no-param-reassign
+  patientData.patientid = '';
+  // TODO:
   return getPromisifiedRequest(
     'POST', urljoin(
-      config.apiUrl, 'patients-clinical-hist/new',
+      config.apiUrl, 'patients-clinical-hist', 'post',
     ),
-    data, getHeaders(),
+    patientData, getHeaders(),
   );
 }
 
 
 function addPatientCovidTestResult(patientData) {
-  const data = {
-    authToken: getAuthToken(),
-    data: patientData,
-  };
+  // eslint-disable-next-line no-param-reassign
+  patientData.authToken = getAuthToken();
+  // eslint-disable-next-line no-param-reassign
+  patientData.patientid = '';
+  // TODO:
   return getPromisifiedRequest(
     'POST', urljoin(
-      config.apiUrl, 'patients-covid-test-result/new',
+      config.apiUrl, 'patients-covid-test-result', 'post',
     ),
-    data, getHeaders(),
+    patientData, getHeaders(),
   );
 }
 
-
 module.exports = {
   fetchUser,
-  fetchFacilityData,
-  fetchWards,
+  // fetchFacilityData,
+  // fetchWards,
   saveWard,
   updateFacilityDetails,
   fetchPatients,
