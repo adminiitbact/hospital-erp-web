@@ -6,7 +6,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 const httpLink = createHttpLink({
   // You should use an absolute URL here
   // TODO: add headers dynamically
-  uri: 'http://localhost:8080/v1/graphql',
+  // TODO: remove ip addess and use domain name
+  uri: 'http://3.7.137.169:8080/v1/graphql',
   headers: {
     'x-hasura-admin-secret': 'myadminsecretkey',
   },
