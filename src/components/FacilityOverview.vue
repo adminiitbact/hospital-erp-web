@@ -162,26 +162,26 @@ export default class FacilityOverview extends FacilityOverviewProps {
   ]
 
   get assetsData() {
-    if (this.facility.facilityAsset) {
-      this.facility.facilityAsset.data.total_covid_beds = 0;
+    if (this.facility.assets) {
+      this.facility.assets.total_covid_beds = 0;
       this.getBeds('totalBeds').forEach((cb) => {
-        this.facility.facilityAsset.data.total_covid_beds += cb[2];
+        this.facility.assets.total_covid_beds += cb[2];
       });
-      return this.facility.facilityAsset.data;
+      return this.facility.assets;
     }
     return {};
   }
 
   get medicalStaffData() {
-    if (this.facility.facilityMedstaff) {
-      return this.facility.facilityMedstaff.data;
+    if (this.facility.staff) {
+      return this.facility.staff;
     }
     return {};
   }
 
   get inventoryData() {
-    if (this.facility.facilityInventory) {
-      return this.facility.facilityInventory.data;
+    if (this.facility.inventory) {
+      return this.facility.inventory;
     }
     return {};
   }
