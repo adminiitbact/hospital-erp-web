@@ -19,10 +19,10 @@
               <template v-else-if="patientField[2] == 'option'">
                 <select class="patient-db-field w-select" v-model="patientField[4]">
                   <option
-                    v-for="(val, index) in patientField[3]"
-                    :value="val"
-                    :key="index"
-                  >{{ val }}</option>
+                    v-for="val in patientField[3]"
+                    :value="val.key"
+                    :key="val.key"
+                  >{{ val.value }}</option>
                 </select>
               </template>
           </div>
@@ -60,143 +60,54 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import Utils from '../utils/utils';
+import queries from '../utils/graphql/queries';
+import mutations from '../utils/graphql/mutations';
+
+
 @Component
 export default class PatientDetails extends Vue {
-  locality = ['Akurdi',
-    'Alandi',
-    'Ambegaon',
-    'Ambi',
-    'Ambil Odha',
-    'Anand Nagar',
-    'Aundh',
-    'Balaji Nagar',
-    'Balewadi',
-    'Baner',
-    'Baramati',
-    'Bavdhan Budruk',
-    'Bavdhan Khurd',
-    'Bhandarkar Road',
-    'Bhawani Peth',
-    'Bhor',
-    'Bhosari',
-    'Bhugaon',
-    'Bhukum',
-    'Bibvewadi',
-    'Bijali Nagar',
-    'Bopkhel',
-    'Bopodi',
-    'Camp Pune',
-    'Chakan',
-    'Chandan Nagar',
-    'Chandoli',
-    'Charholi Budruk',
-    'Chikhali',
-    'Chimbali',
-    'Chinchwad',
-    'Chinchwad Station',
-    'Dapodi',
-    'Deccan Gymkhana',
-    'Dehu Road',
-    'Dhankawadi',
-    'Dhanori',
-    'Dhayari',
-    'Dighi',
-    'Dudulgaon',
-    'Duttawadi',
-    'Erandwane',
-    'Fursungi',
-    'Ghorpadi',
-    'Guruwar Peth',
-    'Hadapsar',
-    'Hingne Khurd',
-    'Hinjawadi',
-    'Kalas',
-    'Kalewadi',
-    'Kalyani Nagar',
-    'Karve Nagar',
-    'Kasarwadi',
-    'Katraj',
-    'Khadki',
-    'Kharadi',
-    'Kondhwa',
-    'Koregaon Park',
-    'Kothrud',
-    'Lavale',
-    'Maan',
-    'Mangalwar Peth',
-    'Manjri',
-    'Markal',
-    'Mohammed Wadi',
-    'Moshi',
-    'Mundhwa',
-    'Nanded',
-    'Nehrunagar',
-    'New Sangvi',
-    'Nigdi',
-    'Panmala',
-    'Parandwadi',
-    'Parvati',
-    'Pashan',
-    'Paud Road',
-    'Phugewadi',
-    'Pimple Gurav',
-    'Pimple Nilakh',
-    'Pimple Saudagar',
-    'Pimpri',
-    'Pimpri Camp',
-    'Pirangut',
-    'Rahatani',
-    'Rasta Peth',
-    'Ravet',
-    'Sadashiv Peth',
-    'Sangvi',
-    'Shivajinagar',
-    'Shivane',
-    'Shukrawar Peth',
-    'Somatne',
-    'Sus',
-    'Swargate',
-    'Talawade',
-    'Talegaon',
-    'Tathawade',
-    'Thergaon',
-    'Undri',
-    'Urse',
-    'Vadgaon Budruk',
-    'Vadgaon Khurd',
-    'Vadgaon Maval',
-    'Varale',
-    'Vishrantwadi',
-    'Vitthalwadi',
-    'Wadgaon Sheri',
-    'Wagholi',
-    'Wakad',
-    'Wanowrie',
-    'Warje',
-    'Yerwada']
+  area = [];
 
-  patientForm = [
-    ['First Name', 'first_name', 'text'],
-    ['Last Name', 'last_name', 'text'],
-    ['Age', 'age', 'number'],
-    ['Gender', 'gender', 'option', ['MALE', 'FEMALE', 'OTHERS']],
-    ['Address', 'address', 'text'],
-    ['Area (Locality)', 'locality', 'option', this.locality],
-    ['District', 'district', 'text'],
-    ['State', 'state', 'text'],
-    ['Occupation', 'occupation', 'text'],
-    ['Contact', 'contact_number', 'text'],
-    ['District Case Number', 'district_case_id', 'text'],
-    ['Hospital Patient ID', 'hospital_patient_id', 'text'],
-    ['GOI COVID ID', 'goi_covid_id', 'text'],
-    ['COVID Uniue ID', 'covid_uid', 'text'],
-  ];
+  gender = [];
+
+  patientForm = [];
+
+  patientID;
 
   error = '';
 
   submitChanges() {
     const data = Utils.getFormValues(this.patientForm);
     console.log(data);
+    mutations.createPatient(data).then((res) => {
+      this.patientID = res.id;
+    });
+  }
+
+  setFields() {
+    this.patientForm = [
+      ['First Name', 'first_name', 'text', 'f name'],
+      ['Last Name', 'last_name', 'text', 'l name'],
+      ['Age', 'age', 'number', 2],
+      ['Gender', 'gender', 'option', this.gender, this.gender[0][0]],
+      ['Address', 'address', 'text', 'baner'],
+      ['Area (Locality)', 'locality', 'option', this.area, this.area[0][0]],
+      ['District', 'district', 'text', 'pune'],
+      ['State', 'state', 'text', 'mh'],
+      ['Occupation', 'occupation', 'text', 'se'],
+      ['Contact', 'contact_number', 'text', '123'],
+      ['District Case Number', 'district_case_id', 'text', '123'],
+      ['Hospital Patient ID', 'hospital_patient_id', 'text', '123'],
+      ['GOI COVID ID', 'goi_covid_id', 'text', '123'],
+    ];
+  }
+
+  mounted() {
+    queries.getAreaAndGender().then((res) => {
+      this.area = res.area;
+      this.gender = res.gender;
+      this.setFields();
+    });
   }
 }
 </script>
