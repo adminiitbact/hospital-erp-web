@@ -40,7 +40,26 @@ async function getFacility() {
   return response.data.facility[0];
 }
 
+async function getAreaAndGender() {
+  const query = gql`
+  query {
+    area {
+      key
+      value
+    }
+    gender {
+      key
+      value
+    }
+  }`;
+
+
+  const response = await apolloClient.query({ query });
+  return response.data;
+}
+
 
 export default {
   getFacility,
+  getAreaAndGender,
 };

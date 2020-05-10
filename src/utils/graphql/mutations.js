@@ -2,20 +2,6 @@ import gql from 'graphql-tag';
 import apolloClient from '../../hasuraConfig';
 
 
-async function createPatient(data) {
-  const query = gql`
-  mutation insert_patient($objects: [patient_insert_input!]!) {
-    insert_patient(objects: $objects) {
-      returning {
-        id
-      }
-    }
-  }`;
-  const response = await apolloClient.mutation({ mutation: query, variables: { objects: data } });
-  console.log(response);
-  return response;
-}
-
 async function updateFacility(data, facilityID) {
   const query = gql`
   mutation update_facility($id: uuid!, $object: facility_set_input!) {
@@ -109,12 +95,20 @@ async function deleteWard(wardID) {
   return response.data.delete_ward.affected_rows === 1;
 }
 
-// const updateWard = gql`
-// mutation update_ward($id: uuid!, $object: ward_set_input!) {
-//   update_ward(where: {id: {_eq: $id}}, _set: $object) {
-//     affected_rows
-//   }
-// }`;
+async function createPatient(data) {
+  const query = gql`
+    mutation insert_patient($objects: [patient_insert_input!]!) {
+    insert_patient(objects: $objects) {
+      returning {
+        id
+      }
+    }
+  }`;
+
+  const response = await apolloClient.mutate({ mutation: query, variables: { objects: [data] } });
+  return response.data.insert_patient.returning[0];
+}
+
 
 export default {
   createPatient,
