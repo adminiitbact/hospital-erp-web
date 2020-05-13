@@ -10,12 +10,6 @@
       >
       <div>{{ routeInfo[1] }}</div>
     </router-link>
-    <!-- <a href="patient-overview.html" class="logout-button  w-inline-block">
-      <div class="">Add New Patient +</div>
-    </a> -->
-    <!-- <a href="profile-form.html" class="logout-button  w-inline-block">
-      <div class="">Edit Profile</div>
-    </a> -->
     <a v-on:click="logout" class="logout-button w-inline-block">
       <div>Logout</div>
     </a>
@@ -42,9 +36,10 @@ const SidebarProps = Vue.extend({
 export default class Sidebar extends SidebarProps {
   routeDetails = [
     ['status-form', 'Home'],
-    ['referred-patient-list', 'Referred Patients List'],
+    ['referred-patient-list', 'Referred Patients'],
     ['patient-list', 'Patients List'],
     ['add-patient', 'Add New Patient +'],
+    ['profile-form', 'Edit Profile'],
   ]
 
   logout() {

@@ -7,7 +7,13 @@
             <div class="div-block-27">
               <div class="logo-div"></div>
               <div class="heading-white side-panel">Welcome to</div>
-              <div class="heading-white side-panel bold">cov2 web portal</div>
+              <div class="heading-white side-panel bold"><strong>cov2 web portal</strong></div>
+            </div>
+            <div class="div-block-29">
+                <div class="div-block-73">
+                  <div class="text-block-14">The Cutting edge platform for managing
+                    Covid-19 for Healthcare organisations in India.</div>
+                </div>
             </div>
           </div>
         </div>
@@ -21,7 +27,7 @@
                   v-on:submit.prevent="submit"
                   class="form"
                 >
-                  <div class="form-section-div">
+                  <div class="">
                     <div class="title-div">
                       <div class="heading">Login</div>
                     </div>
@@ -57,7 +63,7 @@
                       <a href="#" class="field-label links">Forgot Password?</a>
                       <div class="field-label centered">
                         Not a member?
-                        <a href="profile-form.html"><strong>Signup</strong></a>
+                        <a href="profile-form"><strong>Signup</strong></a>
                         </div>
                     </div>-->
                 </form>

@@ -104,6 +104,7 @@ export default class PatientDetails extends Vue {
 
   mounted() {
     queries.getAreaAndGender().then((res) => {
+      console.log(res);
       this.area = res.area;
       this.gender = res.gender;
       this.setFields();

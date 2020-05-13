@@ -15,7 +15,7 @@
               <!-- <span>{{ facility.area }} - {{ jurisdictionMap[facility.jurisdiction] }}</span> -->
             </div>
           </div>
-          <a href="profile-form.html" class="button w-button">Edit Profile</a>
+          <a href="profile-form" class="button w-button">Edit Profile</a>
         </div>
         <div
           data-duration-in="400"

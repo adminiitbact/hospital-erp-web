@@ -145,6 +145,19 @@ function addPatient(patientData) {
   );
 }
 
+function updateFacilityProfile(facilityId, facilityProfile) {
+  const data = {
+    authToken: getAuthToken(),
+    data: facilityProfile,
+  };
+  return getPromisifiedRequest(
+    'POST', urljoin(
+      config.apiUrl, 'add', 'facility', 'profile', facilityId.toString(),
+    ),
+    data, getHeaders(),
+  );
+}
+
 
 function addPatientClinicalData(patientData) {
   // eslint-disable-next-line no-param-reassign
@@ -187,4 +200,5 @@ module.exports = {
   addPatient,
   addPatientClinicalData,
   addPatientCovidTestResult,
+  updateFacilityProfile,
 };

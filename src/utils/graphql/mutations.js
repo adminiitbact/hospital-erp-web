@@ -4,7 +4,7 @@ import apolloClient from '../../hasuraConfig';
 
 async function updateFacility(data, facilityID) {
   const query = gql`
-  mutation update_facility($id: uuid!, $object: facility_set_input!) {
+  mutation update_facility($id: Int!, $object: facility_set_input!) {
     update_facility(where: {id: {_eq: $id}}, _set: $object) {
       returning {
         id
@@ -59,7 +59,7 @@ async function createWard(data) {
 
 async function updateWard(data) {
   const query = gql`
-  mutation update_ward($object: ward_set_input!, $id: uuid!) {
+  mutation update_ward($object: ward_set_input!, $id: Int!) {
     update_ward(where: {id: {_eq: $id}}, _set: $object) {
       returning {
         id
@@ -85,7 +85,7 @@ async function updateWard(data) {
 
 async function deleteWard(wardID) {
   const query = gql`
-  mutation delete_ward($id: uuid!) {
+  mutation delete_ward($id: Int!) {
     delete_ward(where: {id: {_eq: $id}}) {
       affected_rows
     }
