@@ -236,7 +236,7 @@
                           data-name="primary_contact_person_name"
                           placeholder="First Name"
                           id="primary_contact_person_name"
-                          v-model="facility.facilityContact.data.primary_contact_person_name"
+                          v-model="facilityContactData.primary_contact_person_name"
                           required
                         />
                       </div>
@@ -253,7 +253,7 @@
                           data-name="primary_contact_person_mobile"
                           placeholder="+91"
                           id="primary_contact_person_mobile"
-                          v-model="facility.facilityContact.data.primary_contact_person_mobile"
+                          v-model="facilityContactData.primary_contact_person_mobile"
                           required
                         />
                       </div>
@@ -273,7 +273,7 @@
                             data-name="ambulance_incharge_name"
                             placeholder="First Name"
                             id="ambulance_incharge_name"
-                            v-model="facility.facilityContact.data.ambulance_incharge_name"
+                            v-model="facilityContactData.ambulance_incharge_name"
                           />
                         </div>
                         <div class="login-formfield-div">
@@ -288,7 +288,7 @@
                             data-name="ambulance_incharge_mobile"
                             placeholder="+91"
                             id="ambulance_incharge_mobile"
-                            v-model="facility.facilityContact.data.ambulance_incharge_mobile"
+                            v-model="facilityContactData.ambulance_incharge_mobile"
                           />
                         </div>
                       </div>
@@ -308,7 +308,7 @@
                             data-name="health_checkup_incharge_name"
                             placeholder="First Name"
                             id="health_checkup_incharge_name"
-                            v-model="facility.facilityContact.data.health_checkup_incharge_name"
+                            v-model="facilityContactData.health_checkup_incharge_name"
                           />
                         </div>
                         <div class="login-formfield-div">
@@ -324,7 +324,7 @@
                             data-name="health_checkup_incharge_mobile"
                             placeholder="+91"
                             id="health_checkup_incharge_mobile"
-                            v-model="facility.facilityContact.data.health_checkup_incharge_mobile"
+                            v-model="facilityContactData.health_checkup_incharge_mobile"
                           />
                         </div>
                       </div>
@@ -344,7 +344,7 @@
                             data-name="cleaning_incharge_name"
                             placeholder="First Name"
                             id="cleaning_incharge_name"
-                            v-model="facility.facilityContact.data.cleaning_incharge_name"
+                            v-model="facilityContactData.cleaning_incharge_name"
                           />
                         </div>
                         <div class="login-formfield-div">
@@ -359,7 +359,7 @@
                             data-name="cleaning_incharge_mobile"
                             placeholder="+91"
                             id="cleaning_incharge_mobile"
-                            v-model="facility.facilityContact.data.cleaning_incharge_mobile"
+                            v-model="facilityContactData.cleaning_incharge_mobile"
                           />
                         </div>
                       </div>
@@ -426,26 +426,16 @@ const API = require('../utils/apis.js');
   },
 })
 export default class FacilityProfileForm extends Vue {
+  get facilityContactData() {
+    if (this.facility.facilityContact && this.facility.facilityContact.data) {
+      return this.facility.facilityContact.data;
+    }
+    return {};
+  }
+
   submitProfile() {
     const data = {
-      contact_data: {
-        primary_contact_person_name:
-        this.facility.facilityContact.data.primary_contact_person_name,
-        primary_contact_person_mobile:
-        this.facility.facilityContact.data.primary_contact_person_mobile,
-        ambulance_incharge_name:
-        this.facility.facilityContact.data.ambulance_incharge_name,
-        ambulance_incharge_mobile:
-        this.facility.facilityContact.data.ambulance_incharge_mobile,
-        health_checkup_incharge_name:
-        this.facility.facilityContact.data.health_checkup_incharge_name,
-        health_checkup_incharge_mobile:
-        this.facility.facilityContact.data.health_checkup_incharge_mobile,
-        cleaning_incharge_name:
-        this.facility.facilityContact.data.cleaning_incharge_name,
-        cleaning_incharge_mobile:
-        this.facility.facilityContact.data.cleaning_incharge_mobile,
-      },
+      contact_data: this.facilityContactData,
       facility_data: {
         type_of_institution: this.facility.institutionType,
         facility_name: this.facility.name,

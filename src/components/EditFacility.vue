@@ -14,131 +14,55 @@
           </a>
         </div>
         <div class="tabs-content-3 w-tab-content">
-          <form v-if="currentTab == areasShort[0]"
-            v-on:submit.prevent="submitUpdates('assets')">
-            <div class="div-block-6 profile">
-              <div v-for="(assetGroup, index) in assetResources"
-                class="w-row" :key="index">
-                <div class="w-col">
-                  <div class="form-block-3 w-form">
-                    <div class="subheading">{{ assetGroup [0] }}</div>
-                    <div class="div-block-8">
-                      <div v-for="(assetDetail, index) in assetGroup[1]"
-                        class="status-form-2-col-div" :key="index">
-                        <label class="field-label"
-                          >{{ assetDetail[1] }}</label
-                        >
-                        <input
-                          type="number"
-                          class="text-field-design w-input"
-                          maxlength="256"
-                          v-model="facility.assets[assetDetail[0]]"
-                        />
+          <template
+            v-for="(resourceData, ix) in facilityData"
+            >
+            <form
+              v-if="currentTab == areasShort[ix]"
+              v-on:submit.prevent="submitUpdates(resourceData[0])"
+              :key="resourceData[0]">
+              <div class="div-block-6 profile">
+                <div v-for="(group, index) in resourceData[1]"
+                  class="w-row" :key="index">
+                  <div class="w-col">
+                    <div class="form-block-3 w-form">
+                      <div class="subheading">{{ group[0] }}</div>
+                      <div class="div-block-8">
+                        <div v-for="(detail, index) in group[1]"
+                          class="status-form-2-col-div" :key="index">
+                          <label class="field-label"
+                            >{{ detail[1] }}</label
+                          >
+                          <input
+                            type="number"
+                            class="text-field-design w-input"
+                            maxlength="256"
+                            v-model="facilityField(resourceData[0])[detail[0]]"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="w-row">
-                <div class="w-col w-col-6">
-                  <div class="div-block-57">
-                    <input type="reset" value="Cancel"
-                      class="signup-button status-form clear-form w-button"/>
+                <div class="w-row">
+                  <div class="w-col w-col-6">
+                    <div class="div-block-57">
+                      <input type="reset" value="Cancel"
+                        class="signup-button status-form clear-form w-button"/>
+                    </div>
                   </div>
-                </div>
-                <div class="w-col w-col-6">
-                  <div class="div-block-57">
-                    <input type="submit" value="update"
-                      class="signup-button status-form profile-pahe w-button"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-          <form v-else-if="currentTab == areasShort[1]"
-            v-on:submit.prevent="submitUpdates('staff')">
-            <div class="div-block-6 profile">
-              <div v-for="(staffGroup, index) in staffResources"
-                class="w-row" :key="index">
-                <div class="w-col">
-                  <div class="form-block-3 w-form">
-                    <div class="subheading">{{ staffGroup[0] }}</div>
-                    <div class="div-block-8">
-                      <div v-for="(staffDetail, index) in staffGroup[1]"
-                        class="status-form-2-col-div" :key="index">
-                        <label class="field-label"
-                          >{{ staffDetail[1] }}</label
-                        >
-                        <input
-                          type="number"
-                          class="text-field-design w-input"
-                          maxlength="256"
-                          v-model="facility.staff[staffDetail[0]]"
-                        />
-                      </div>
+                  <div class="w-col w-col-6">
+                    <div class="div-block-57">
+                      <input type="submit" value="update"
+                        class="signup-button status-form profile-pahe w-button"/>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="w-row">
-                <div class="w-col w-col-6">
-                  <div class="div-block-57">
-                    <input type="reset" value="Cancel"
-                      class="signup-button status-form clear-form w-button"/>
-                  </div>
-                </div>
-                <div class="w-col w-col-6">
-                  <div class="div-block-57">
-                    <input type="submit" value="update"
-                      class="signup-button status-form profile-pahe w-button"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-          <form v-else-if="currentTab == areasShort[2]"
-            v-on:submit.prevent="submitUpdates('inventory')">
-            <div class="div-block-6 profile">
-              <div v-for="(group, index) in inventoryResources"
-                class="w-row" :key="index">
-                <div class="w-col">
-                  <div class="form-block-3 w-form">
-                    <div class="subheading">{{ group[0] }}</div>
-                    <div class="div-block-8">
-                      <div v-for="(detail, index) in group[1]"
-                        class="status-form-2-col-div" :key="index">
-                        <label class="field-label"
-                          >{{ detail[1] }}</label
-                        >
-                        <input
-                          type="number"
-                          class="text-field-design w-input"
-                          maxlength="256"
-                          v-model="facility.inventory[detail[0]]"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="w-row">
-                <div class="w-col w-col-6">
-                  <div class="div-block-57">
-                    <input type="reset" value="Cancel"
-                      class="signup-button status-form clear-form w-button"/>
-                  </div>
-                </div>
-                <div class="w-col w-col-6">
-                  <div class="div-block-57">
-                    <input type="submit" value="update"
-                      class="signup-button status-form profile-pahe w-button"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-          <form v-else-if="currentTab == areasShort[3]"
-            v-on:submit.prevent="submitUpdates('checklist')">
+            </form>
+          </template>
+          <form v-if="currentTab == areasShort[3]"
+            v-on:submit.prevent="submitUpdates('checklist', 'checklist')">
             <div class="w-row">
               <div class="w-form">
                 <div v-for="(group, index) in checklistResources"
@@ -266,6 +190,21 @@ export default class EditFacility extends EditFacilityProps {
 
   changeCurrentTab(currentTab) {
     this.currentTab = currentTab;
+  }
+
+  get facilityData() {
+    return [
+      ['assets', this.assetResources],
+      ['staff', this.staffResources],
+      ['inventory', this.inventoryResources],
+    ];
+  }
+
+  facilityField(dataKey) {
+    if (!this.facility[dataKey]) {
+      this.facility[dataKey] = {};
+    }
+    return this.facility[dataKey];
   }
 
   submitUpdates(dataKey) {
