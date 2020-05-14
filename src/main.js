@@ -6,8 +6,6 @@ import router from './router';
 import store from './store';
 import apolloClient from './hasuraConfig';
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
 import './assets/css/custom.scss';
 
 Vue.config.productionTip = false;
