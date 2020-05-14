@@ -127,7 +127,6 @@
   -ms-flex-align: stretch;
   align-items: stretch;
   background-color: #e4e3e8;
-  font-family: Inter, sans-serif;
 }
 
 .div-block {
@@ -2846,7 +2845,6 @@
   -ms-flex-align: center;
   align-items: center;
   background-color: rgba(36, 36, 36, 0.63);
-  font-family: Inter, sans-serif;
 }
 
 .form-block-5 {
