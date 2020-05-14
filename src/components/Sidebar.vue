@@ -1,15 +1,12 @@
 <template>
   <div class="section">
-    <router-link v-for="routeInfo in routeDetails"
+    <nav-but v-for="routeInfo in routeDetails"
       :key="routeInfo[0]"
       :to="{ 'name': routeInfo[0] }"
-      :class = "{
-        'logout-button w-inline-block': true,
-        'w--current': routeInfo[0] == currentRouteName
-      }"
+      :is-active="routeInfo[0] == currentRouteName"
       >
       <div>{{ routeInfo[1] }}</div>
-    </router-link>
+    </nav-but>
     <a v-on:click="logout" class="logout-button w-inline-block">
       <div>Logout</div>
     </a>
@@ -20,6 +17,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import auth from '../firebaseConfig';
+import NavigationButton from './elements/buttons/NavigationButton.vue';
 
 
 const SidebarProps = Vue.extend({
@@ -32,7 +30,11 @@ const SidebarProps = Vue.extend({
 });
 
 
-@Component
+@Component({
+  components: {
+    'nav-but': NavigationButton,
+  },
+})
 export default class Sidebar extends SidebarProps {
   routeDetails = [
     ['status-form', 'Home'],
@@ -40,6 +42,7 @@ export default class Sidebar extends SidebarProps {
     ['patient-list', 'Patients List'],
     ['add-patient', 'Add New Patient +'],
     ['profile-form', 'Edit Profile'],
+    ['patient-details', 'Patient details'],
   ]
 
   logout() {

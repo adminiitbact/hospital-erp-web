@@ -45,6 +45,12 @@ const routes = [
     name: 'profile-form',
     component: () => import('../views/FacilityProfileForm.vue'),
   },
+  {
+    path: '/patient-details',
+    name: 'patient-details',
+    component: () => import('../views/PatientOps.vue'),
+  },
+
 ];
 
 const router = new VueRouter({
