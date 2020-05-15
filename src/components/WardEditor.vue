@@ -2,7 +2,7 @@
   <div class="w-row ward-card">
     <div class="w-col">
       <h4 style="text-align:center; margin-bottom: 10px;">
-        {{ ward !== undefined ? 'Update' : 'Add' }} Ward Information
+        {{ ward === undefined ? 'Add' : 'Update' }} Ward Information
       </h4>
     </div>
     <div class="w-col">
@@ -39,8 +39,8 @@
                 v-model="wardField[4]">
                 <option
                   v-for="(val, index) in wardField[3]"
-                  :value="val" :key="index">
-                  {{ val }}
+                  :value="val.key" :key="index">
+                  {{ val.value }}
                 </option>
               </select>
             </template>
@@ -88,9 +88,9 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-// import API from '../utils/apis';
 import _ from 'underscore';
 import { mapState, mapGetters } from 'vuex';
+import queries from '../utils/graphql/queries';
 import Utils from '../utils/utils';
 
 
@@ -106,26 +106,26 @@ export default class WardEditor extends Vue {
     [false, 'No'],
   ];
 
-  wardForm = [
-    ['Building Name/Number', 'building_name', 'text'],
-    ['Floor', 'floor', 'option', ['LG', 'G', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], 'LG'],
-    ['Ward Name/Number', 'ward_name', 'text'],
-    ['Total beds', 'total_beds', 'number'],
-    ['Available beds', 'available_beds', 'number'],
-    ['Gender', 'gender', 'option', ['MALE', 'FEMALE', 'UNISEX'], 'MALE'],
-    ['Is it COVID Ward?', 'covid_ward', 'radio', this.yesNoOptions, false],
-    ['Patient COVID status', 'covid_status', 'option', ['CONFIRMED', 'SUSPECTED'], 'CONFIRMED'],
-    ['Patient severity', 'severity', 'option', ['MILD', 'MODERATE', 'SEVERE'], 'MILD'],
-    ['Total ventilators', 'ventilators', 'number'],
-    ['Available ventilators', 'available_ventilators', 'number'],
-    ['Is distance between beds more than 6 feet?', 'extra_fields.minDistanceBetBeds', 'radio', this.yesNoOptions, false],
-    ['Number of independent single room beds with attached washroom', 'extra_fields.independentBeds', 'number'],
-    ['Number of oxygen cylinders available', 'extra_fields.oxygenCylinder', 'number'],
-    ['Number of beds with wall oxygen supplies available', 'extra_fields.wallOxygenSuppliedBeds', 'number'],
-    ['Number of beds with Central Oxygen system', 'extra_fields.centralOxygenSuppliedBeds', 'number'],
-    ['Number of pulse oximeters available', 'extra_fields.pulseOximeters', 'number'],
-    ['Number of infusion pumps available', 'extra_fields.infusionPumps', 'number'],
+  gender;
+
+  severity;
+
+  floor = [
+    { key: 'LG', value: 'LG' },
+    { key: 'G', value: 'G' },
+    { key: '1', value: '1' },
+    { key: '2', value: '2' },
+    { key: '3', value: '3' },
+    { key: '4', value: '4' },
+    { key: '5', value: '5' },
+    { key: '6', value: '6' },
+    { key: '7', value: '7' },
+    { key: '8', value: '8' },
+    { key: '9', value: '9' },
+    { key: '10', value: '10' },
   ];
+
+  wardForm = [];
 
   error = '';
 
@@ -140,21 +140,53 @@ export default class WardEditor extends Vue {
       }
     });
 
-    if (this.ward.id) {
-      for (let i = 0; i < this.wardForm.length; i += 1) {
-        if (this.wardForm[i][2] !== 'option') {
-          if (this.wardForm[i][1].includes('extra_fields')) {
-            this.wardForm[i].push(this.ward.extra_fields[this.wardForm[i][1].split('.')[1]]);
-          } else {
-            this.wardForm[i].push(this.ward[this.wardForm[i][1]]);
-          }
-        } else if (this.wardForm[i][1].includes('extra_fields')) {
-          this.wardForm[i][4] = this.ward.extra_fields[this.wardForm[i][1].split('.')[1]];
+    queries.getWardCreateDetails().then((res) => {
+      this.gender = res.gender;
+      this.severity = res.severity;
+      this.createForm();
+      if (this.ward) {
+        this.updateForm();
+      }
+    });
+  }
+
+  updateForm() {
+    for (let i = 0; i < this.wardForm.length; i += 1) {
+      if (this.wardForm[i][2] !== 'option') {
+        if (this.wardForm[i][1].includes('extra_fields')) {
+          this.wardForm[i].push(this.ward.extra_fields[this.wardForm[i][1].split('.')[1]]);
         } else {
-          this.wardForm[i][4] = this.ward[this.wardForm[i][1]];
+          this.wardForm[i].push(this.ward[this.wardForm[i][1]]);
         }
+      } else if (this.wardForm[i][1].includes('extra_fields')) {
+        this.wardForm[i][4] = this.ward.extra_fields[this.wardForm[i][1].split('.')[1]];
+      } else {
+        this.wardForm[i][4] = this.ward[this.wardForm[i][1]];
       }
     }
+  }
+
+  createForm() {
+    this.wardForm = [
+      ['Building Name/Number', 'building_name', 'text'],
+      ['Floor', 'floor', 'option', this.floor, this.floor[0].key],
+      ['Ward Name/Number', 'ward_name', 'text'],
+      ['Total beds', 'total_beds', 'number'],
+      ['Available beds', 'available_beds', 'number'],
+      ['Gender', 'gender', 'option', this.gender, this.gender[0].key],
+      ['Is it COVID Ward?', 'covid_ward', 'radio', this.yesNoOptions, false],
+      ['Patient COVID status', 'covid_status', 'option', [{ key: 'CONFIRMED', value: 'CONFIRMED' }, { key: 'SUSPECTED', value: 'SUSPECTED' }], 'CONFIRMED'],
+      ['Patient severity', 'severity', 'option', this.severity, this.severity[0].key],
+      ['Total ventilators', 'ventilators', 'number'],
+      ['Available ventilators', 'ventilators_occupied', 'number'],
+      ['Is distance between beds more than 6 feet?', 'extra_fields.minDistanceBetBeds', 'radio', this.yesNoOptions, false],
+      ['Number of independent single room beds with attached washroom', 'extra_fields.independentBeds', 'number'],
+      ['Number of oxygen cylinders available', 'extra_fields.oxygenCylinder', 'number'],
+      ['Number of beds with wall oxygen supplies available', 'extra_fields.wallOxygenSuppliedBeds', 'number'],
+      ['Number of beds with Central Oxygen system', 'extra_fields.centralOxygenSuppliedBeds', 'number'],
+      ['Number of pulse oximeters available', 'extra_fields.pulseOximeters', 'number'],
+      ['Number of infusion pumps available', 'extra_fields.infusionPumps', 'number'],
+    ];
   }
 
   submitChanges() {
@@ -170,11 +202,11 @@ export default class WardEditor extends Vue {
 
     createData.facility = this.facility.id;
 
-    if (!this.ward.id) {
-      this.$store.dispatch('createWard', createData);
-    } else {
+    if (this.ward && !this.ward.duplicate) {
       createData.id = this.ward.id;
       this.$store.dispatch('updateWard', createData);
+    } else {
+      this.$store.dispatch('createWard', createData);
     }
   }
 

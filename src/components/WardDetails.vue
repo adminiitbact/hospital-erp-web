@@ -35,7 +35,7 @@
             <div>
               Unoccupied Ventilators:
               <strong>
-                {{ ward.available_ventilators }}
+                {{ ward.ventilators_occupied }}
               </strong>
             </div>
             <div>
@@ -45,7 +45,7 @@
           <div class="w-row text-align-right" style="margin-top:10px;">
             <div class="div-block-65">
               <a class="button-gray ward w-button"
-                v-on:click="editWard(index)">
+                v-on:click="editWard(index, true)">
                 DUPLICATE
               </a>
               <a class="button-3 ward w-button"
@@ -79,10 +79,11 @@ import WardEditor from './WardEditor.vue';
 export default class WardDetails extends Vue {
   wardEditing = false;
 
-  editWard(index) {
+  editWard(index, duplicate = false) {
     if (index === -1) {
-      this.$store.commit('setWard', {});
+      this.$store.commit('setWard', undefined);
     } else {
+      this.wards[index].duplicate = duplicate;
       this.$store.commit('setWard', this.wards[index]);
     }
     this.wardEditing = true;
