@@ -47,7 +47,7 @@ async function createWard(data) {
         ventilators
         extra_fields
         available_beds
-        available_ventilators
+        ventilators_occupied
       }
     }
   }`;
@@ -74,7 +74,7 @@ async function updateWard(data) {
         ventilators
         extra_fields
         available_beds
-        available_ventilators
+        ventilators_occupied
       }
     }
   }`;

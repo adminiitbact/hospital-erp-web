@@ -30,13 +30,13 @@ async function getFacility() {
         ventilators
         extra_fields
         available_beds
-        available_ventilators
+        ventilators_occupied
       }
     }
   }`;
 
   const response = await apolloClient.query({ query });
-  console.log(response);
+  // TODO: check this once rbac is in place
   return response.data.facility[0];
 }
 
@@ -45,15 +45,30 @@ async function getAreaAndGender() {
   query {
     area {
       key
-      value
+      region
     }
     gender {
       key
       value
     }
   }`;
+  const response = await apolloClient.query({ query });
+  return response.data;
+}
 
 
+async function getWardCreateDetails() {
+  const query = gql`
+  query {
+    gender {
+      key
+      value
+    }
+    severity {
+      key
+      value
+    }
+  }`;
   const response = await apolloClient.query({ query });
   return response.data;
 }
@@ -62,4 +77,5 @@ async function getAreaAndGender() {
 export default {
   getFacility,
   getAreaAndGender,
+  getWardCreateDetails,
 };
