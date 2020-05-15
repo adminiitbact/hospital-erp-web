@@ -78,3 +78,12 @@ body {
   @extend .border-standard;
   background-color: #ffffff;
 }
+
+.input {
+  height: 33px;
+  margin-bottom: 0px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  color: #3b3f4c;
+  font-size: 13px;
+}
