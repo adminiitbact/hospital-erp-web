@@ -46,6 +46,7 @@ import Sidelogo from '../components/Sidelogo.vue';
 import Heading from '../components/elements/text/Heading.vue';
 import NavigationTab from '../components/elements/tabs/NavigationTab.vue';
 import PatientOverview from '../components/patients/PatientOverview.vue';
+import FacilityDetails from '../components/facility/FacilityDetails.vue';
 
 
 @Component({
@@ -55,6 +56,7 @@ import PatientOverview from '../components/patients/PatientOverview.vue';
     heading: Heading,
     'nav-tab': NavigationTab,
     overview: PatientOverview,
+    'facility-details': FacilityDetails,
   },
   computed: {
     ...mapState(['user']),
@@ -65,6 +67,7 @@ export default class PatientDetails extends Vue {
   tabs = [
     ['Overview', 'overview'],
     ['Add New Patient', 'add-new-patient'],
+    ['Facility Details', 'facility-details'],
   ];
 
   currentTab = 'overview';
