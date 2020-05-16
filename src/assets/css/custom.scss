@@ -1,5 +1,5 @@
-@import 'node_modules/bootstrap/scss/bootstrap';
-@import 'node_modules/bootstrap-vue/src/index.scss';
+@import './webflow.css';
+@import './bootstrap.scss';
 
 #app {
   margin: 10px;
@@ -59,10 +59,21 @@
 body {
   height: 100vh;
   padding: 16px;
-  background-color: #2c49ac;
   font-family: Manrope, sans-serif;
   color: #3f3f3f;
   line-height: 140%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  background-color: #e4e3e8;
 }
 
 .border-standard {
@@ -86,4 +97,9 @@ body {
   border-radius: 7px;
   color: #3b3f4c;
   font-size: 13px;
+}
+
+.heading {
+  color: #3b3f4c;
+  letter-spacing: -0.25px;
 }
