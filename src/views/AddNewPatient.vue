@@ -112,6 +112,7 @@ import PatientCovidTestDetails from '../components/PatientCovidTestDetails.vue';
 import PatientWardAllocation from '../components/PatientWardAllocation.vue';
 import mutations from '../utils/graphql/mutations';
 
+
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
