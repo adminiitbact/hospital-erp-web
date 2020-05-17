@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100 p-2">
+  <div class="h-100">
     <div class="h-100 row">
       <b-col cols="2" align-self="center">
         <sidelogo></sidelogo>
@@ -9,7 +9,7 @@
         <div class="d-flex flex-column h-100">
           <div class="row m-0 p-0 pl-2 pr-2">
             <b-col cols="3">
-              <c-heading>Patient Details</c-heading>
+              <c-title>Patient Details</c-title>
             </b-col>
             <b-col offset="3" cols="6" align-self="end">
               <b-row align-self="end">
@@ -43,7 +43,7 @@ import { mapState, mapGetters } from 'vuex';
 
 import Sidebar from '../components/Sidebar.vue';
 import Sidelogo from '../components/Sidelogo.vue';
-import Heading from '../components/elements/text/Heading.vue';
+import Title from '../components/elements/text/Title.vue';
 import NavigationTab from '../components/elements/tabs/NavigationTab.vue';
 import PatientOverview from '../components/patients/PatientOverview.vue';
 import AddNewPatient from '../components/patients/AddNewPatient.vue';
@@ -53,7 +53,7 @@ import AddNewPatient from '../components/patients/AddNewPatient.vue';
   components: {
     sidebar: Sidebar,
     sidelogo: Sidelogo,
-    'c-heading': Heading,
+    'c-title': Title,
     'nav-tab': NavigationTab,
     overview: PatientOverview,
     'add-new-patient': AddNewPatient,

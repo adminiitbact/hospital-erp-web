@@ -1,5 +1,11 @@
 <template>
-  <form-group v-bind:label="'Alpher'"></form-group>
+  <div>
+    <form-group v-bind:label="'Label'" :type="'text'"></form-group>
+    <form-group v-bind:label="'Label large'" :size="'large'" :type="'number'" v-model="text"></form-group>
+    <form-group v-bind:label="'Label small'" :size="'small'" :type="'number'" :placeholder="'Add data'"></form-group>
+    <form-group v-bind:label="'Label'" :type="'text'" :disabled="true"></form-group>
+    {{ text }}
+  </div>
 </template>
 <script>
 import Vue from 'vue';
@@ -15,6 +21,6 @@ const AddNewPatientProps = Vue.extend({});
   },
 })
 export default class AddNewPatient extends AddNewPatientProps {
-
+  text = '';
 }
 </script>
