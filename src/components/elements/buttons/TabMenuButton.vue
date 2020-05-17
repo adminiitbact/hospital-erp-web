@@ -1,18 +1,18 @@
 <template>
   <a
-  v-on:click="$emit('click')"
-  :class="{
-    'form-tab-links icons w-inline-block w-tab-link':true,
-    'w--current':isActive,
-  }"
-   role="tab" aria-controls="w-tabs-0-data-w-pane-0" aria-selected="false">
-    <img :src="iconImagePath" alt="" class="icons-45px">
-    <div>{{text}}</div>
+    v-on:click="$emit('click')"
+    :class="{
+      'form-tab-links w-inline-block w-tab-link':true,
+      'w--current':isActive,
+      'icons': iconImagePath,
+    }"
+    role="tab" aria-controls="w-tabs-0-data-w-pane-0" aria-selected="false">
+    <img :src="iconImagePath" alt="" class="icons-45px" v-if="iconImagePath">
+    <div class="form-number-link" v-if="number">{{ number }}.</div>
+    <div>{{ text }}</div>
   </a>
 </template>
 <style scoped>
-
-
 .form-tab-links {
   display: -webkit-box;
   display: -webkit-flex;
@@ -66,6 +66,10 @@
   text-align: center;
 }
 
+.form-number-link {
+  padding-right: 7px;
+}
+
 .icons-45px {
   width: 35px;
   margin-bottom: 10px;
@@ -99,12 +103,15 @@ const TabMenuButProps = Vue.extend({
       required: true,
     },
     iconImagePath: {
-      required: true,
+      required: false,
     },
     isActive: {
       type: Boolean,
       required: false,
       default: false,
+    },
+    number: {
+      required: false,
     },
   },
 });
