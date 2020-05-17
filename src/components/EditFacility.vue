@@ -106,21 +106,20 @@
 </template>
 
 <script>
-import Component from 'vue-class-component';
 import Vue from 'vue';
+import Component from 'vue-class-component';
+import { mapGetters } from 'vuex';
 
 
-const EditFacilityProps = Vue.extend({
-  props: {
-    facility: {
-      required: true,
-    },
+@Component({
+  computed: {
+    ...mapGetters([
+      'facility',
+      'wards',
+    ]),
   },
-});
-
-
-@Component()
-export default class EditFacility extends EditFacilityProps {
+})
+export default class EditFacility extends Vue {
   areas = ['A. Facility Assets', 'B. Staff Details', 'C. Inventory', 'D. Checklist'];
 
   areasShort = ['assets', 'staff', 'inventory', 'checklist'];

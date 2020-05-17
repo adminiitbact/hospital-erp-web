@@ -1,37 +1,5 @@
 <template>
-  <div class="h-100">
-    <div class="h-100 row">
-      <b-col cols="2" align-self="center">
-        <sidelogo></sidelogo>
-        <sidebar></sidebar>
-      </b-col>
-      <div class="col-10 content-header p-0">
-        <div class="d-flex flex-column h-100">
-          <div class="row m-0 p-0 pl-2 pr-2">
-            <b-col cols="3">
-              <c-title>Patient Details</c-title>
-            </b-col>
-            <b-col offset="3" cols="6" align-self="end">
-              <b-row align-self="end">
-                <nav-tab
-                  v-for="tab in tabs"
-                  :key="tab[1]"
-                  v-on:click="changeTab(tab[1])"
-                  :is-active="currentTab == tab[1]">
-                  {{ tab[0] }}
-                </nav-tab>
-              </b-row>
-            </b-col>
-          </div>
-          <div class="row content flex-grow-1 m-0 pl-2 pr-2">
-            <b-col>
-              <component v-bind:is="currentTab"></component>
-            </b-col>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <basic-frame :title="title" :navtabs="tabs"></basic-frame>
 </template>
 <style scoped>
 
@@ -39,12 +7,8 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { mapState, mapGetters } from 'vuex';
 
-import Sidebar from '../components/Sidebar.vue';
-import Sidelogo from '../components/Sidelogo.vue';
-import Title from '../components/elements/text/Title.vue';
-import NavigationTab from '../components/elements/tabs/NavigationTab.vue';
+import BasicFrame from '../components/BasicFrame.vue';
 import PatientOverview from '../components/patients/PatientOverview.vue';
 import AddNewPatient from '../components/patients/AddNewPatient.vue';
 import FacilityDetails from '../components/facility/FacilityDetails.vue';
@@ -52,30 +16,19 @@ import FacilityDetails from '../components/facility/FacilityDetails.vue';
 
 @Component({
   components: {
-    sidebar: Sidebar,
-    sidelogo: Sidelogo,
-    'c-title': Title,
-    'nav-tab': NavigationTab,
+    'basic-frame': BasicFrame,
     overview: PatientOverview,
     'add-new-patient': AddNewPatient,
     'facility-details': FacilityDetails,
   },
-  computed: {
-    ...mapState(['user']),
-    ...mapGetters(['facility']),
-  },
 })
 export default class PatientDetails extends Vue {
+  title = 'Patient Details';
+
   tabs = [
-    ['Overview', 'overview'],
-    ['Add New Patient', 'add-new-patient'],
-    ['Facility Details', 'facility-details'],
+    ['Overview', PatientOverview],
+    ['Add New Patient', AddNewPatient],
+    ['Facility Details', FacilityDetails],
   ];
-
-  currentTab = 'overview';
-
-  changeTab(tab) {
-    this.currentTab = tab;
-  }
 }
 </script>
