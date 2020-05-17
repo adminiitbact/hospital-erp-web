@@ -34,29 +34,26 @@ async function getFacility() {
       }
       patient_live_statuses {
         patientByPatient {
-          dob
-          first_name
-          address
-          age
-          contact_number
-          covid_uid
-          created_at
-          district
-          district_case_id
-          emergency_contact
-          genderByGender {
-            key
-            value
-          }
-          goi_covid_id
-          hospital_patient_id
           id
+          first_name
           last_name
-          locality
-          middle_name
-          month
-          name
-          occupation
+          patient_test_details(order_by: {created_at: desc}, limit: 1) {
+            test_result_status {
+              key
+              value
+            }
+          }
+          patient_live_statuses(limit: 1, order_by: {created_at: desc}) {
+            hospital_patient_id
+            wardByWard {
+              building_name
+              ward_name
+            }
+            severityBySeverity {
+              key
+              value
+            }
+          }
         }
       }
     }
