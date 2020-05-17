@@ -16,60 +16,17 @@
       </b-row>
     </b-col>
     <b-col cols="10">
-      <div class="form-container-icons .w-tab-content d-flex flex-column h-100">
-        <div class="form-wrapper flex-grow-1">
+      <form-container>
         <component v-bind:is="currentTab"></component>
-        </div>
-      </div>
+      </form-container>
     </b-col>
   </b-row>
 </template>
 <style scoped>
-.form-wrapper {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: scroll;
-  padding-right: 20px;
-  padding-bottom: 15px;
-  padding-left: 40px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
 .w-tab-content {
     position: relative;
     display: block;
     overflow: hidden;
-}
-.form-container-icons {
-    padding-top: 10px;
-    padding-right: 10px;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    border-radius: 15px;
-    background-color: #fff;
-    box-shadow: 0 0 5px 1px #d3d3d3;
-}
-.main-white-div {
-    position: absolute;
-    left: 0%;
-    top: 45px;
-    right: 0%;
-    bottom: 0%;
-    border-radius: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 5px 1px hsla(0, 0%, 52%, 0.25);
 }
 
 .icon-button {
@@ -109,6 +66,7 @@ import StaffDetails from './StaffDetails.vue';
 import Checklist from './Checklist.vue';
 import KeyContacts from './KeyContacts.vue';
 import FacilityProfile from './FacilityProfile.vue';
+import FormContainer from '../elements/form/FormContainer.vue';
 
 @Component({
   components: {
@@ -118,6 +76,7 @@ import FacilityProfile from './FacilityProfile.vue';
     checklist: Checklist,
     'key-contacts': KeyContacts,
     'facility-profile': FacilityProfile,
+    'form-container': FormContainer,
   },
 })
 export default class FacilityDetails extends Vue {
