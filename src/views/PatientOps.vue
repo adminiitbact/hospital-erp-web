@@ -47,6 +47,7 @@ import Title from '../components/elements/text/Title.vue';
 import NavigationTab from '../components/elements/tabs/NavigationTab.vue';
 import PatientOverview from '../components/patients/PatientOverview.vue';
 import AddNewPatient from '../components/patients/AddNewPatient.vue';
+import FacilityDetails from '../components/facility/FacilityDetails.vue';
 
 
 @Component({
@@ -57,6 +58,7 @@ import AddNewPatient from '../components/patients/AddNewPatient.vue';
     'nav-tab': NavigationTab,
     overview: PatientOverview,
     'add-new-patient': AddNewPatient,
+    'facility-details': FacilityDetails,
   },
   computed: {
     ...mapState(['user']),
@@ -67,6 +69,7 @@ export default class PatientDetails extends Vue {
   tabs = [
     ['Overview', 'overview'],
     ['Add New Patient', 'add-new-patient'],
+    ['Facility Details', 'facility-details'],
   ];
 
   currentTab = 'overview';
