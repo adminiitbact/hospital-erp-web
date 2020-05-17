@@ -21,8 +21,10 @@ const actions = {
 
   fetchFacility({ commit }) {
     queries.getFacility().then((res) => {
+      // console.log(res);
       commit('setFacility', res);
       commit('setWards', res.wards);
+      commit('setPatients', _.pluck(res.patient_live_statuses, 'patientByPatient'));
     }).catch((error) => {
       console.log(error);
     });
@@ -74,25 +76,6 @@ const actions = {
         commit('setWards', state.wards);
       }
     }).catch((error) => {
-      console.log(error);
-    });
-  },
-
-  fetchPatients({ state, commit }) {
-    API.fetchUser().then((usuccess) => {
-      commit('setUser', usuccess.data.profile);
-      API.fetchPatients(state.user.facilityId).then(
-        (success) => {
-          commit('setPatients', success.data.list);
-        }, (error) => {
-          // eslint-disable-next-line no-alert
-          alert(
-            `Error in fetching ward information: ${error.responseJSON.status}`,
-          );
-          console.log(error);
-        },
-      );
-    }, (error) => {
       console.log(error);
     });
   },

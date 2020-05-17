@@ -97,7 +97,6 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import API from '../utils/apis';
 import Utils from '../utils/utils';
 
 @Component
@@ -134,8 +133,8 @@ export default class PatientClinicalHistory extends Vue {
   ];
 
   patientForm = [
-    ['Symptoms at time of Admission', 'symptomAtTimeofAddmission', 'radio', this.yesNoOptions, false],
-    ['Date of onset of Symptoms', 'onsetSymptoms', 'text'],
+    ['Symptoms at time of Admission', 'symptoms_at_time_of_admission', 'radio', this.yesNoOptions, false],
+    ['Date of onset of Symptoms', 'onset_symptoms', 'text'],
     ['Primary Symptoms', 'primary_symptoms', 'checkbox', this.primarySymptoms],
     ['Secondary Symptoms', 'secondary_symptoms', 'checkbox', this.secondarySymptoms],
     ['Pre-existing Medical Conditions', 'pre_existing_conditions', 'checkbox', this.preExsMedConditions],
@@ -145,18 +144,7 @@ export default class PatientClinicalHistory extends Vue {
 
   submitChanges() {
     const data = Utils.getFormValues(this.patientForm);
-    console.log(data);
-    API.addPatientClinicalData(data).then(
-      (res) => {
-        console.log(res);
-        alert('Clinical History Added'); // eslint-disable-line
-        this.$emit('edit-done', 1);
-      },
-      (error) => {
-        console.log(error);
-        // this.error = 'Error: (building name, floor and ward name) should be unique.';
-      },
-    );
+    this.$root.$emit('clinical-hist', data);
   }
 }
 </script>

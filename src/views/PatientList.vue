@@ -79,18 +79,15 @@ export default class PatientList extends Vue {
     },
   ];
 
-  mounted() {
-    this.$store.dispatch('fetchPatients');
-  }
-
   get allPatients() {
     const rows = [];
     this.patients.forEach((patient) => {
+      console.log(patient);
       const name = patient.patientName;
       const ward = patient.wardName == null ? 'not alloted' : patient.wardName;
       const severity = config.severityMap[patient.severity];
       let testStatus = config.testStatusMap[patient.testStatus];
-      const { patientId } = patient;
+      const { patientId } = patient.id;
       const { patientHospitalId } = patient;
       let testStatusClass = '';
       switch (patient.testStatus) {

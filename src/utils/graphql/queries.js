@@ -32,6 +32,33 @@ async function getFacility() {
         available_beds
         ventilators_occupied
       }
+      patient_live_statuses {
+        patientByPatient {
+          dob
+          first_name
+          address
+          age
+          contact_number
+          covid_uid
+          created_at
+          district
+          district_case_id
+          emergency_contact
+          genderByGender {
+            key
+            value
+          }
+          goi_covid_id
+          hospital_patient_id
+          id
+          last_name
+          locality
+          middle_name
+          month
+          name
+          occupation
+        }
+      }
     }
   }`;
 
@@ -45,7 +72,7 @@ async function getAreaAndGender() {
   query {
     area {
       key
-      region
+      value
     }
     gender {
       key
@@ -74,8 +101,30 @@ async function getWardCreateDetails() {
 }
 
 
+async function getTestDetailFields() {
+  const query = gql`
+  query {
+    collection_center {
+      key
+      value
+    }
+    lab {
+      key
+      value
+    }
+    test_result_status {
+      key
+      value
+    }
+  }`;
+  const response = await apolloClient.query({ query });
+  return response.data;
+}
+
+
 export default {
   getFacility,
   getAreaAndGender,
   getWardCreateDetails,
+  getTestDetailFields,
 };
