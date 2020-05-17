@@ -20,6 +20,9 @@ const mutations = {
   setPatients(state, patients) {
     state.patients = patients;
   },
+  addPatient(state, patient) {
+    state.patients.push(patient);
+  },
   setReferredPatients(state, referredPatients) {
     state.referredPatients = referredPatients;
   },

@@ -27,9 +27,9 @@
                 v-model="patientField[4]">
                   <option
                     v-for="(val, index) in patientField[3]"
-                    :value="val"
+                    :value="val.key"
                     :key="index"
-                  >{{ val }}</option>
+                  >{{ val.value }}</option>
                 </select>
               </template>
               <template v-else-if="patientField[2] == 'checkbox'">
@@ -97,75 +97,60 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import API from '../utils/apis';
 import Utils from '../utils/utils';
+import queries from '../utils/graphql/queries';
 
 @Component
 export default class PatientCovidDetails extends Vue {
-  resultData = [
-    'Positive',
-    'Negative',
-    'Result Pending',
-  ];
-
   yesNoOptions = [
     [true, 'Yes'],
     [false, 'No'],
   ];
 
-  collectionCenter = [
-    'NIV Pune',
-    'AG Diagnostic',
-    'Suburban Labs',
-    'Thyrocare Labs',
-    'Home Sample',
-    'Metropolis Lab',
-  ];
+  // eslint-disable-next-line camelcase
+  collection_center;
 
-  testedAt = [
-    'NIV Pune',
-    'AG Diagnostic',
-    'Suburban Labs',
-    'Thyrocare Labs',
-    'Home Sample',
-    'Metropolis Lab',
-  ];
+  // eslint-disable-next-line camelcase
+  sent_to;
 
-  confirmedAt = [
-    'NIV Pune',
-    'AG Diagnostic',
-    'Suburban Labs',
-    'Thyrocare Labs',
-    'Home Sample',
-    'Metropolis Lab',
-  ];
+  // eslint-disable-next-line camelcase
+  lab_confirming;
 
-  patientForm = [
-    ['Has Sample been Collected?', 'sampleCollected', 'radio', this.yesNoOptions, false],
-    ['Date of Sample Collection', 'collectionDate', 'text'],
-    ['Sample Collection Center', 'collectionCenter', 'option', this.collectionCenter, this.collectionCenter[0]],
-    ['Sample Tested at', 'testedAt', 'option', this.testedAt, this.testedAt[0]],
-    ['Is Sample Result Available?', 'resultAvailable', 'radio', this.yesNoOptions, false],
-    ['Name of Lab that confirmed the result', 'lab', 'option', this.confirmedAt, this.confirmedAt[0]],
-    ['Result of the Sample', 'result', 'option', this.resultData, this.resultData[0]],
-  ];
+  result;
+
+  patientForm = [];
 
   error = '';
+  // collection_center
+  // sent_to
+  // lab_confirming
+  // result
 
   submitChanges() {
     const data = Utils.getFormValues(this.patientForm);
-    console.log(data);
-    API.addPatientCovidTestResult(data).then(
-      (res) => {
-        console.log(res);
-        // const action = this.wardToEditId === 0 ? 'added' : 'updated';
-        // alert(`Patient details ${action}`); // eslint-disable-line
-        // this.$emit('edit-done', 1);
-      }, (error) => {
-        console.log(error);
-        // this.error = 'Error: (building name, floor and ward name) should be unique.';
-      },
-    );
+    this.$root.$emit('test-details', data);
+  }
+
+  mounted() {
+    queries.getTestDetailFields().then((res) => {
+      this.collection_center = res.collection_center;
+      this.sent_to = res.lab;
+      this.lab_confirming = res.lab;
+      this.result = res.test_result_status;
+      this.setFields();
+    });
+  }
+
+  setFields() {
+    this.patientForm = [
+      ['Has Sample been Collected?', 'sample_collected', 'radio', this.yesNoOptions, false],
+      ['Date of Sample Collection', 'collection_date', 'text'],
+      ['Sample Collection Center', 'collection_center', 'option', this.collection_center, this.collection_center[0].key],
+      ['Sample Tested at', 'sent_to', 'option', this.sent_to, this.sent_to[0].key],
+      ['Is Sample Result Available?', 'result_available', 'radio', this.yesNoOptions, false],
+      ['Name of Lab that confirmed the result', 'lab_confirming', 'option', this.lab_confirming, this.lab_confirming[0].key],
+      ['Result of the Sample', 'result', 'option', this.result, this.result[0].key],
+    ];
   }
 }
 </script>

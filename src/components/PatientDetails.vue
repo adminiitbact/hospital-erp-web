@@ -61,7 +61,6 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import Utils from '../utils/utils';
 import queries from '../utils/graphql/queries';
-import mutations from '../utils/graphql/mutations';
 
 
 @Component
@@ -72,16 +71,11 @@ export default class PatientDetails extends Vue {
 
   patientForm = [];
 
-  patientID;
-
   error = '';
 
   submitChanges() {
     const data = Utils.getFormValues(this.patientForm);
-    console.log(data);
-    mutations.createPatient(data).then((res) => {
-      this.patientID = res.id;
-    });
+    this.$root.$emit('personal-details', data);
   }
 
   setFields() {
@@ -89,9 +83,9 @@ export default class PatientDetails extends Vue {
       ['First Name', 'first_name', 'text', 'f name'],
       ['Last Name', 'last_name', 'text', 'l name'],
       ['Age', 'age', 'number', 2],
-      ['Gender', 'gender', 'option', this.gender, this.gender[0][0]],
+      ['Gender', 'gender', 'option', this.gender, this.gender[0].key],
       ['Address', 'address', 'text', 'baner'],
-      ['Area (Locality)', 'locality', 'option', this.area, this.area[0][0]],
+      ['Area (Locality)', 'locality', 'option', this.area, this.area[0].key],
       ['District', 'district', 'text', 'pune'],
       ['State', 'state', 'text', 'mh'],
       ['Occupation', 'occupation', 'text', 'se'],
@@ -104,7 +98,6 @@ export default class PatientDetails extends Vue {
 
   mounted() {
     queries.getAreaAndGender().then((res) => {
-      console.log(res);
       this.area = res.area;
       this.gender = res.gender;
       this.setFields();

@@ -56,7 +56,6 @@ async function createWard(data) {
   return response.data.insert_ward.returning[0];
 }
 
-
 async function updateWard(data) {
   const query = gql`
   mutation update_ward($object: ward_set_input!, $id: Int!) {
@@ -101,6 +100,25 @@ async function createPatient(data) {
     insert_patient(objects: $objects) {
       returning {
         id
+        first_name
+        last_name
+        patient_test_details(order_by: {created_at: desc}, limit: 1) {
+          test_result_status {
+            key
+            value
+          }
+        }
+        patient_live_statuses(limit: 1, order_by: {created_at: desc}) {
+          hospital_patient_id
+          wardByWard {
+            building_name
+            ward_name
+          }
+          severityBySeverity {
+            key
+            value
+          }
+        }
       }
     }
   }`;
