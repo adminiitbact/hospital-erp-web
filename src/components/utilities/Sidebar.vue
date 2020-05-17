@@ -16,8 +16,8 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import auth from '../firebaseConfig';
-import NavigationButton from './elements/buttons/NavigationButton.vue';
+import auth from '../../firebaseConfig';
+import NavigationButton from '../elements/buttons/NavigationButton.vue';
 
 
 const SidebarProps = Vue.extend({
