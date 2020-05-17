@@ -12,7 +12,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-    .form-heading {
+  .form-heading {
     margin-top: 20px;
     margin-bottom: 15px;
     font-size: 20px;
@@ -22,6 +22,8 @@
 </style>
 <script>
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
+@Component
 export default class FormHeading extends Vue {}
 </script>
