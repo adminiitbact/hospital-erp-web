@@ -109,25 +109,23 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { mapGetters } from 'vuex';
+
 import utils from '../utils/utils';
 
 
 const config = require('../config');
 
 
-const FacilityOverviewProps = Vue.extend({
-  props: {
-    facility: {
-      required: true,
-    },
-    wards: {
-      required: true,
-    },
+@Component({
+  computed: {
+    ...mapGetters([
+      'facility',
+      'wards',
+    ]),
   },
-});
-
-@Component
-export default class FacilityOverview extends FacilityOverviewProps {
+})
+export default class FacilityOverview extends Vue {
   assetsToShow = [
     ['total_beds', 'Total Beds'],
     ['total_covid_beds', 'Total Covid Beds'],

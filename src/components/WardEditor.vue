@@ -96,7 +96,7 @@ import Utils from '../utils/utils';
 
 @Component({
   computed: {
-    ...mapState(['facility', 'ward']),
+    ...mapState(['facility']),
     ...mapGetters(['ward']),
   },
 })

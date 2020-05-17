@@ -1,30 +1,28 @@
 <template>
-  <div class="main-white-div">
-    <b-row class="p-3">
-      <b-col cols="2" >
-        <b-row class="m-2">
-          <h6 class="page-heading">Update Facility</h6>
-        </b-row>
-        <b-row class="m-2"
-          v-for="tab in tabs"
-          :key="tab['component']">
-          <tabMenuButton
-            :text="tab['text']"
-            v-on:click="changeTab(tab['component'])"
-            :iconImagePath="tab['iconImagePath']"
-            :isActive="currentTab == tab['component']"
-          ></tabMenuButton>
-        </b-row>
-      </b-col>
-      <b-col cols="10">
-        <div class="form-container-icons .w-tab-content">
-          <div class="form-wrapper">
-          <component v-bind:is="currentTab"></component>
-          </div>
+  <b-row class="p-3 h-100">
+    <b-col cols="2" >
+      <b-row class="m-2">
+        <h6 class="page-heading">Update Facility</h6>
+      </b-row>
+      <b-row class="m-2"
+        v-for="tab in tabs"
+        :key="tab['component']">
+        <tabMenuButton
+          :text="tab['text']"
+          v-on:click="changeTab(tab['component'])"
+          :iconImagePath="tab['iconImagePath']"
+          :isActive="currentTab == tab['component']"
+        ></tabMenuButton>
+      </b-row>
+    </b-col>
+    <b-col cols="10">
+      <div class="form-container-icons .w-tab-content d-flex flex-column h-100">
+        <div class="form-wrapper flex-grow-1">
+        <component v-bind:is="currentTab"></component>
         </div>
-      </b-col>
-    </b-row>
-    </div>
+      </div>
+    </b-col>
+  </b-row>
 </template>
 <style scoped>
 .form-wrapper {
@@ -33,7 +31,6 @@
   display: -ms-flexbox;
   display: flex;
   overflow: scroll;
-  height: 60vh;
   padding-right: 20px;
   padding-bottom: 15px;
   padding-left: 40px;

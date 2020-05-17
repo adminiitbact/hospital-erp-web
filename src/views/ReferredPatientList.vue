@@ -23,8 +23,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { mapState, mapGetters } from 'vuex';
 
-import Sidebar from '../components/Sidebar.vue';
-import Sidelogo from '../components/Sidelogo.vue';
+import Sidebar from '../components/utilities/Sidebar.vue';
+import Sidelogo from '../components/utilities/Sidelogo.vue';
 import List from '../components/List.vue';
 import SearchComponent from '../components/SearchComponent.vue';
 
