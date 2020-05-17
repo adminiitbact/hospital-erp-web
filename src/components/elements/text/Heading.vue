@@ -5,7 +5,7 @@
 </template>
 
 <style scoped>
-.heading.blue {
+.blue {
   color: #2c49ac;
   font-size: 28px;
   font-weight: 600;
@@ -14,6 +14,10 @@
 </style>
 <script>
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
-export default class Heading extends Vue {}
+const HeadingProps = Vue.extend({});
+
+@Component
+export default class Heading extends HeadingProps {}
 </script>

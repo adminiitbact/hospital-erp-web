@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100 p-2">
+  <div class="h-100">
     <div class="h-100 row">
       <b-col cols="2" align-self="center">
         <sidelogo></sidelogo>
@@ -8,8 +8,8 @@
       <div class="col-10 content-header p-0">
         <div class="d-flex flex-column h-100">
           <div class="row m-0 p-0 pl-2 pr-2">
-            <b-col cols="3" class="pt-2">
-              <heading>Patient Details</heading>
+            <b-col cols="3">
+              <c-title>Patient Details</c-title>
             </b-col>
             <b-col offset="3" cols="6" align-self="end">
               <b-row align-self="end">
@@ -43,9 +43,10 @@ import { mapState, mapGetters } from 'vuex';
 
 import Sidebar from '../components/Sidebar.vue';
 import Sidelogo from '../components/Sidelogo.vue';
-import Heading from '../components/elements/text/Heading.vue';
+import Title from '../components/elements/text/Title.vue';
 import NavigationTab from '../components/elements/tabs/NavigationTab.vue';
 import PatientOverview from '../components/patients/PatientOverview.vue';
+import AddNewPatient from '../components/patients/AddNewPatient.vue';
 import FacilityDetails from '../components/facility/FacilityDetails.vue';
 
 
@@ -53,9 +54,10 @@ import FacilityDetails from '../components/facility/FacilityDetails.vue';
   components: {
     sidebar: Sidebar,
     sidelogo: Sidelogo,
-    heading: Heading,
+    'c-title': Title,
     'nav-tab': NavigationTab,
     overview: PatientOverview,
+    'add-new-patient': AddNewPatient,
     'facility-details': FacilityDetails,
   },
   computed: {

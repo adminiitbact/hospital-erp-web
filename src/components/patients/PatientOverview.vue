@@ -1,7 +1,7 @@
 <template>
   <div class="tab-pane-facility-profile w-tab-pane w--tab-active">
     <multibuttons :buttons="mbuttons"></multibuttons>
-    <sbar :id="sbar" :name="sbar"></sbar>
+    <sbar></sbar>
     <tag :color="'red'" :text="'Moderate'"></tag>
     <tag :color="'green'" :text="'Moderate'"></tag>
     <tag :color="'black'" :text="'Moderate'"></tag>

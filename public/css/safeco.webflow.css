@@ -113,7 +113,7 @@
   box-shadow: 0px 0px 3px 1px #3898ec;
 }
 
-.body {
+/* .body {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -127,7 +127,7 @@
   -ms-flex-align: stretch;
   align-items: stretch;
   background-color: #e4e3e8;
-}
+} */
 
 .div-block {
   display: -webkit-box;
@@ -351,20 +351,6 @@
   margin-left: 5px;
   padding-right: 0px;
   padding-left: 6px;
-}
-
-.field-label {
-  margin-bottom: 5px;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  color: #838383;
-  font-size: 12px;
-  line-height: 135%;
-  font-weight: 400;
-  text-align: left;
-  text-decoration: none;
 }
 
 .field-label.links {
@@ -723,13 +709,13 @@
   background-color: #2c3f80;
 }
 
-.heading {
+/* .heading {
   color: #2c49ac;
   font-size: 28px;
   line-height: 145%;
   font-weight: 300;
   text-align: left;
-}
+} */
 
 .login-formfield-div {
   margin-bottom: 10px;
@@ -3553,9 +3539,6 @@
   .text-field-design {
     height: 40px;
     font-size: 15px;
-  }
-  .field-label {
-    font-size: 14px;
   }
   .status-form-2-col-div {
     padding-top: 10px;
