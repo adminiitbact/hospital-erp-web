@@ -1720,7 +1720,7 @@
   padding-right: 20px;
 }
 
-.button {
+/* .button {
   position: absolute;
   left: auto;
   top: 10px;
@@ -1737,7 +1737,7 @@
 .button:hover {
   border-radius: 0px 0px 10px 10px;
   background-color: #f0f0f0;
-}
+} */
 
 .div-block-41 {
   display: -webkit-box;

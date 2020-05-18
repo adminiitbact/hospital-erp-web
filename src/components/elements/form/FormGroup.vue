@@ -14,11 +14,13 @@
       v-on:input="$emit('input', $event.target.value)"
       :disabled="disabled"
       v-if="['text', 'number'].includes(type)"
+      required
     />
     <select class="input form-dropdown w-select" v-if="type == 'options'"
       :placeholder="placeholder"
       v-bind:value="value"
-      v-on:input="$emit('input', $event.target.value)">
+      v-on:input="$emit('input', $event.target.value)"
+      required>
       <option v-for="option in options" :key="option.key" :value="option.key">
         {{ option.value }}
       </option>
