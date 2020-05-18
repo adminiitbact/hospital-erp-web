@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <label class="field-label">{{ label }}</label>
+  <div class="mt-2">
+    <label class="pl-1 field-label">{{ label }}</label>
     <input
       :type="type"
       :class="{
@@ -13,7 +13,7 @@
       v-bind:value="value"
       v-on:input="$emit('input', $event.target.value)"
       :disabled="disabled"
-      v-if="['text', 'number'].includes(type)"
+      v-if="['text', 'number','email'].includes(type)"
       required
     />
     <select class="input form-dropdown w-select" v-if="type == 'options'"
@@ -70,6 +70,7 @@
   font-family: Lato, sans-serif;
   line-height: 130%;
   font-weight: 700;
+  font-size: 11px;
 }
 
 .input.form-dropdown {
