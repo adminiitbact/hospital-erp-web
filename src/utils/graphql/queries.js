@@ -44,7 +44,7 @@ async function getFacility() {
             }
           }
           patient_live_statuses(limit: 1, order_by: {created_at: desc}) {
-            hospital_patient_id
+            patient_hospital_id
             wardByWard {
               building_name
               ward_name
@@ -119,9 +119,27 @@ async function getTestDetailFields() {
 }
 
 
+async function checkPatientExists(vars) {
+  const query = gql`
+  query patient($contact_number: numeric!, $gender: String!, $ageMinus: Int!, $agePlus: Int!) {
+    patient(where: {
+      contact_number: {_eq: $contact_number}, 
+      gender: {_eq: $gender}, 
+      _and: {age: {_gte: $ageMinus}, _and: {age: {_lte: $agePlus}}}}
+    ) {
+      id
+      name
+    }
+  }`;
+  const response = await apolloClient.query({ query, variables: vars });
+  return response.data.patient;
+}
+
+
 export default {
   getFacility,
   getAreaAndGender,
   getWardCreateDetails,
   getTestDetailFields,
+  checkPatientExists,
 };
