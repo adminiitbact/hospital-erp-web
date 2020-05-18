@@ -121,10 +121,6 @@ export default class PatientCovidDetails extends Vue {
   patientForm = [];
 
   error = '';
-  // collection_center
-  // sent_to
-  // lab_confirming
-  // result
 
   submitChanges() {
     const data = Utils.getFormValues(this.patientForm);

@@ -54,7 +54,6 @@ import FormSubSectionHeading from '../elements/form/FormSubSectionHeading.vue';
 import FormGroup from '../elements/form/FormGroup.vue';
 import FormHeading from '../elements/form/FormHeading.vue';
 import FormContainer from '../elements/form/FormContainer.vue';
-
 import queries from '../../utils/graphql/queries';
 import Button from '../elements/buttons/Button.vue';
 
@@ -82,17 +81,17 @@ export default class PersonalDetails extends PersonalDetailsProps {
 
   areaOpts = [];
 
-  contactNum = ['Contact number', 'number', 'Enter Primary Contact No.', ''];
+  contactNum = ['Contact number', 'number', 'Enter Primary Contact No.', '123'];
 
-  firstName = ['First name', 'text', 'Enter first name', ''];
+  firstName = ['First name', 'text', 'Enter first name', 'f name'];
 
-  lastName = ['Last name', 'text', 'Enter last name', ''];
+  lastName = ['Last name', 'text', 'Enter last name', 'l name'];
 
   gender = [];
 
-  ageYears = ['Age', 'number', 'Enter age in years', ''];
+  ageYears = ['Age', 'number', 'Enter age in years', '25'];
 
-  ageMonths = ['Age in months', 'number', 'Enter age in months', '']
+  ageMonths = ['Age in months', 'number', 'Enter age in months', '3']
 
   occupation = ['Occupation', 'text', 'Enter occupation', ''];
 
@@ -155,9 +154,10 @@ export default class PersonalDetails extends PersonalDetailsProps {
   }
 
   setFields() {
-    this.gender = ['Gender', 'options', '', '', this.genderOpts];
-    this.area = ['Locality', 'options', '', '', this.areaOpts];
+    this.gender = ['Gender', 'options', '', this.genderOpts[0].key, this.genderOpts];
+    this.area = ['Locality', 'options', '', this.areaOpts[0].key, this.areaOpts];
   }
+
 
   mounted() {
     queries.getAreaAndGender().then((res) => {
@@ -168,8 +168,14 @@ export default class PersonalDetails extends PersonalDetailsProps {
   }
 
   check() {
-    // TODO: API call to check for availability.
-    this.checkAvailability = !this.checkAvailability;
+    console.log(this.contactNum[3]);
+    queries.checkPatientExists({
+      contact_number: this.contactNum[3], gender: this.gender[3], ageMinus: this.ageYears[3] - 5, agePlus: this.ageYears[3] + 5,
+    }).then((res) => {
+      console.log(res);
+      // TODO: check list length and proceed
+    // this.checkAvailability = !this.checkAvailability;
+    });
   }
 }
 </script>
