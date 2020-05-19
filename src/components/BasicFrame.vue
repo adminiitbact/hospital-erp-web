@@ -66,6 +66,7 @@ const BasicFrameProps = Vue.extend({
 export default class BasicFrame extends BasicFrameProps {
   currentTab = 0;
 
+
   changeTab(tab) {
     this.currentTab = tab;
   }
