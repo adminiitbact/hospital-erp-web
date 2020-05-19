@@ -1,28 +1,116 @@
 <template>
-  <div>facilty assets</div>
+  <div>
+    <form-heading>Facility Assets</form-heading>
+    <form-subheading>Available Beds</form-subheading>
+    <form-subsub :heading="'Total Available Beds'">
+      <b-row>
+        <b-col cols="2" >
+          <form-group
+          :label="'Total Beds'"
+          :type="'number'"
+          :size="'small'"
+          :value="''"
+          :placeholder="'Number'"
+          ></form-group>
+        </b-col>
+        <b-col cols="2" >
+          <form-group
+          :label="'Non COVID Beds'"
+          :type="'number'"
+          :size="'small'"
+          :value="''"
+          :placeholder="'Number'"
+          ></form-group>
+        </b-col>
+      </b-row>
+    </form-subsub>
+    <form-subsub :heading="'Available Ventilator Beds'">
+      <b-row>
+        <b-col cols="2" >
+          <form-group
+          :label="'Total Ventilators'"
+          :type="'number'"
+          :size="'small'"
+          :value="''"
+          :placeholder="'Number'"
+          ></form-group>
+        </b-col>
+        <b-col cols="2" >
+          <form-group
+          :label="'COVID Ventilators'"
+          :type="'number'"
+          :size="'small'"
+          :value="''"
+          :placeholder="'Number'"
+          ></form-group>
+        </b-col>
+      </b-row>
+    </form-subsub>
+    <form-subsub :heading="'Available ICU Beds'">
+      <b-row>
+        <b-col cols="2" >
+          <form-group
+          :label="'Total ICU Beds'"
+          :type="'number'"
+          :size="'small'"
+          :value="''"
+          :placeholder="'Number'"
+          ></form-group>
+        </b-col>
+        <b-col cols="2" >
+          <form-group
+          :label="'COVID ICU Beds'"
+          :type="'number'"
+          :size="'small'"
+          :value="''"
+          :placeholder="'Number'"
+          ></form-group>
+        </b-col>
+      </b-row>
+    </form-subsub>
+    <form-buttons
+    :cancel_button_text="'Cancel'"
+    v-on:cancel="cancel()"
+    :save_button_text="'Save & Next'"
+    v-on:save="save()"
+    ></form-buttons>
+  </div>
 </template>
 <style scoped>
-.form-container-icons {
-    padding-top: 10px;
-    padding-right: 10px;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    border-radius: 15px;
-    background-color: #fff;
-    box-shadow: 0 0 5px 1px #d3d3d3;
-}
+
 </style>
 
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import FormHeading from '../elements/form/FormHeading.vue';
+import FormSubSectionHeading from '../elements/form/FormSubSectionHeading.vue';
+import FormSubSubSection from '../elements/form/FormSubSubSection.vue';
+import FormGroup from '../elements/form/FormGroup.vue';
+import FormButtons from '../elements/form/FormButtons.vue';
 
 @Component({
   components: {
+    'form-heading': FormHeading,
+    'form-subheading': FormSubSectionHeading,
+    'form-subsub': FormSubSubSection,
+    'form-group': FormGroup,
+    'form-buttons': FormButtons,
   },
 })
 export default class FacilityAssets extends Vue {
+  message='';
+  // TODO change this cancel and save function to interact with api.
+  // Also fetch data and show in above form.
+
+  cancel() {
+    this.message = '';
+    console.log('cancel');
+  }
+
+  save() {
+    this.message = '';
+    console.log('save');
+  }
 }
 </script>
