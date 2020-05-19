@@ -1,27 +1,29 @@
 import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloLink } from 'apollo-link';
 
-// HTTP connection to the API
-const httpLink = createHttpLink({
-  // You should use an absolute URL here
-  // TODO: add headers dynamically
-  // TODO: remove ip addess and use domain name
-  // TODO: do not use admin secret key
-  // uri: 'http://localhost:8080/v1/graphql',
-  uri: 'http://3.7.137.169:8080/v1/graphql',
-  headers: {
-    'x-hasura-admin-secret': 'myadminsecretkey',
-  },
+
+// TODO: remove ip addess and use domain name
+const url = 'http://3.7.137.169:8080/v1/graphql';
+const httpLink = createHttpLink({ uri: url });
+
+const authLink = new ApolloLink((operation, forward) => {
+  const token = localStorage.getItem('authToken');
+
+  operation.setContext({
+    headers: {
+      Authorization: token ? `Bearer ${token}` : '',
+    },
+  });
+
+  return forward(operation);
 });
 
-// Cache implementation
-const cache = new InMemoryCache();
 
-// Create the apollo client
 const apolloClient = new ApolloClient({
-  link: httpLink,
-  cache,
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
 });
 
 export default apolloClient;
