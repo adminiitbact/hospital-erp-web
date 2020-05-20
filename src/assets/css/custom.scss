@@ -1,0 +1,99 @@
+@import './webflow.css';
+@import './bootstrap.scss';
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/Manrope-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+  height: 100vh;
+  font-family: Manrope, sans-serif;
+  color: #3f3f3f;
+  line-height: 140%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  background-color: #2c49ac;
+  font-size: 13.5px;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  margin: 10px;
+}
+
+.border-standard {
+  border-radius: 20px;
+}
+
+.content-header {
+  @extend .border-standard;
+  background-color: #f3f3f3;
+}
+
+.content {
+  @extend .border-standard;
+  background-color: #ffffff;
+}
+
+.input {
+  height: 33px;
+  margin-bottom: 0px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  color: #3b3f4c;
+  font-size: 13px;
+}
+
+.heading {
+  color: #3b3f4c;
+  letter-spacing: -0.25px;
+}

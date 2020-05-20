@@ -3,19 +3,18 @@ const express = require('express');
 const history = require('connect-history-api-fallback');
 
 
-api_endpoint = process.env.API_ENDPOINT;
-port = process.env.PORT;
-firebase = process.env.firebase;
+const apiEndpoint = process.env.API_ENDPOINT;
+const port = process.env.PORT;
+const firebase = process.env.firebase;
 
-console.log('API_ENDPOINT: ' + api_endpoint);
-console.log('PORT: ' + port);
-console.log('FIREBASE: ' + firebase);
+console.log(`API_ENDPOINT: ${apiEndpoint}`);
+console.log(`PORT: ${port}`);
+console.log(`FIREBASE: ${firebase}`);
 
 
-var app = express();
+const app = express();
 app.use(history({
   // verbose: true
 }));
-app.use(express.static("dist"));
-
-var server = app.listen(port);
+app.use(express.static('dist'));
+app.listen(port);

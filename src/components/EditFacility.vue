@@ -19,10 +19,10 @@
             >
             <form
               v-if="currentTab == areasShort[ix]"
-              v-on:submit.prevent="submitUpdates(resourceData[0], resourceData[1])"
+              v-on:submit.prevent="submitUpdates(resourceData[0])"
               :key="resourceData[0]">
               <div class="div-block-6 profile">
-                <div v-for="(group, index) in resourceData[2]"
+                <div v-for="(group, index) in resourceData[1]"
                   class="w-row" :key="index">
                   <div class="w-col">
                     <div class="form-block-3 w-form">
@@ -37,7 +37,7 @@
                             type="number"
                             class="text-field-design w-input"
                             maxlength="256"
-                            v-model="resourceData[3][detail[0]]"
+                            v-model="facilityField(resourceData[0])[detail[0]]"
                           />
                         </div>
                       </div>
@@ -73,7 +73,7 @@
                     </div>
                     <select
                       class="ward-text-field dropdown w-select"
-                      v-model="checklist[group[0]]"
+                      v-model="facility.checklist[group[0]]"
                       required>
                       <option v-for="(option, index) in checklistOptions"
                         :key="index" :value="option[0]">
@@ -106,23 +106,20 @@
 </template>
 
 <script>
-import Component from 'vue-class-component';
 import Vue from 'vue';
+import Component from 'vue-class-component';
+import { mapGetters } from 'vuex';
 
-const API = require('../utils/apis.js');
 
-
-const EditFacilityProps = Vue.extend({
-  props: {
-    facility: {
-      required: true,
-    },
+@Component({
+  computed: {
+    ...mapGetters([
+      'facility',
+      'wards',
+    ]),
   },
-});
-
-
-@Component
-export default class EditFacility extends EditFacilityProps {
+})
+export default class EditFacility extends Vue {
   areas = ['A. Facility Assets', 'B. Staff Details', 'C. Inventory', 'D. Checklist'];
 
   areasShort = ['assets', 'staff', 'inventory', 'checklist'];
@@ -194,55 +191,26 @@ export default class EditFacility extends EditFacilityProps {
     this.currentTab = currentTab;
   }
 
-  get asset() {
-    if (this.facility.facilityAsset) {
-      return this.facility.facilityAsset.data;
-    }
-    return {};
-  }
-
-  get staff() {
-    if (this.facility.facilityMedstaff) {
-      return this.facility.facilityMedstaff.data;
-    }
-    return {};
-  }
-
-  get inventory() {
-    if (this.facility.facilityInventory) {
-      return this.facility.facilityInventory.data;
-    }
-    return {};
-  }
-
-  get checklist() {
-    if (this.facility.facilityChecklist) {
-      return this.facility.facilityChecklist.data;
-    }
-    return {};
-  }
-
   get facilityData() {
     return [
-      ['asset', 'assets', this.assetResources, this.asset],
-      ['staff', 'medstaff', this.staffResources, this.staff],
-      ['inventory', 'inventory', this.inventoryResources, this.inventory],
+      ['assets', this.assetResources],
+      ['staff', this.staffResources],
+      ['inventory', this.inventoryResources],
     ];
   }
 
-  submitUpdates(dataKey, urlKey) {
-    this.dataChanged = true;
-    API.updateFacilityDetails(this.facility.facilityId, urlKey, this[dataKey]).then(
-      () => {
-        confirm('Update successful.'); // eslint-disable-line
-      }, (error) => {
-        alert(`Error in update: ${error.message}`); // eslint-disable-line
-      },
-    );
+  facilityField(dataKey) {
+    if (!this.facility[dataKey]) {
+      this.facility[dataKey] = {};
+    }
+    return this.facility[dataKey];
   }
 
-  destroyed() {
-    this.$store.dispatch('fetchOnlyFacility');
+  submitUpdates(dataKey) {
+    this.dataChanged = true;
+    const updateData = {};
+    updateData[dataKey] = this.facility[dataKey];
+    this.$store.dispatch('updateFacilityDetails', { data: updateData, id: this.facility.id });
   }
 }
 </script>

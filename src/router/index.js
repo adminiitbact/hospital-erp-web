@@ -31,10 +31,26 @@ const routes = [
     component: () => import('../views/ReferredPatientList.vue'),
   },
   {
+    path: '/add-patient',
+    name: 'add-patient',
+    component: () => import('../views/AddNewPatient.vue'),
+  },
+  {
+    path: '/edit-profile',
+    name: 'edit-profile',
+    component: () => import('../views/AddNewPatient.vue'),
+  },
+  {
     path: '/profile-form',
     name: 'profile-form',
     component: () => import('../views/FacilityProfileForm.vue'),
   },
+  {
+    path: '/patient-details',
+    name: 'patient-details',
+    component: () => import('../views/PatientOps.vue'),
+  },
+
 ];
 
 const router = new VueRouter({

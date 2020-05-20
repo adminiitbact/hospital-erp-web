@@ -11,11 +11,17 @@ const mutations = {
   setWards(state, wards) {
     state.wards = wards;
   },
+  setWard(state, ward) {
+    state.ward = ward;
+  },
   updateFacilityDetails(state, key, data) {
     state.facility[key].data = data;
   },
   setPatients(state, patients) {
     state.patients = patients;
+  },
+  addPatient(state, patient) {
+    state.patients.push(patient);
   },
   setReferredPatients(state, referredPatients) {
     state.referredPatients = referredPatients;

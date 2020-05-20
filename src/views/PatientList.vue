@@ -24,12 +24,12 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { mapState, mapGetters } from 'vuex';
 
-import Sidebar from '../components/Sidebar.vue';
-import Sidelogo from '../components/Sidelogo.vue';
+import Sidebar from '../components/utilities/Sidebar.vue';
+import Sidelogo from '../components/utilities/Sidelogo.vue';
 import List from '../components/List.vue';
 import SearchComponent from '../components/SearchComponent.vue';
 
-const config = require('../config');
+// const config = require('../config');
 @Component({
   components: {
     sidebar: Sidebar,
@@ -79,45 +79,20 @@ export default class PatientList extends Vue {
     },
   ];
 
-  mounted() {
-    this.$store.dispatch('fetchPatients');
-  }
-
   get allPatients() {
     const rows = [];
     this.patients.forEach((patient) => {
-      const name = patient.patientName;
-      const ward = patient.wardName == null ? 'not alloted' : patient.wardName;
-      const severity = config.severityMap[patient.severity];
-      let testStatus = config.testStatusMap[patient.testStatus];
-      const { patientId } = patient;
-      const { patientHospitalId } = patient;
-      let testStatusClass = '';
-      switch (patient.testStatus) {
-        case 'POSITIVE':
-          testStatus = 'POSITIVE';
-          testStatusClass = 'positive';
-          break;
-        case 'NEGATIVE':
-          testStatus = 'NEGATIVE';
-          testStatusClass = 'negative';
-          break;
-        case 'PENDING_TEST':
-          testStatus = 'TEST PENDING';
-          break;
-        case 'PENDING_RESULT':
-          testStatus = 'TEST RESULT PENDING';
-          break;
-        default:
-          break;
-      }
+      const name = `${patient.first_name} ${patient.last_name}`;
+      const ward = `${patient.patient_live_statuses[0].wardByWard.building_name} ${patient.patient_live_statuses[0].wardByWard.ward_name}`;
+      const severity = patient.patient_live_statuses[0].severityBySeverity.key;
+      const testStatusClass = patient.patient_test_details[0].test_result_status.key;
       rows.push([
-        patientHospitalId,
+        patient.patient_live_statuses[0].hospital_patient_id,
         name,
         ward,
         severity,
-        `<span class=${testStatusClass}>${testStatus}</span>`,
-        `<a href="patient-overview.html?patient_id=${patientId}" class="button-2 w-button">update</a>`,
+        `<span class=${testStatusClass}>${testStatusClass}</span>`,
+        `<a href="/add-patient?patient_id=${patient.id}" class="button-2 w-button">update</a>`,
       ]);
     });
     return rows;

@@ -16,6 +16,7 @@ function getAuthTokenData() {
 function getHeaders() {
   return {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${getAuthTokenData().authToken}`,
   };
 }
 
@@ -43,68 +44,6 @@ function fetchUser() {
   );
 }
 
-function fetchFacilityData(facilityId) {
-  return getPromisifiedRequest(
-    'POST', urljoin(config.fetchFacilityUrl, facilityId.toString()),
-    getAuthTokenData(), getHeaders(),
-  );
-}
-
-function fetchWards(facilityId, testStatus, severity) {
-  const data = {
-    authToken: getAuthToken(),
-    testStatus,
-    severity,
-  };
-  return getPromisifiedRequest(
-    'POST', urljoin(
-      config.apiUrl, 'facilities', facilityId.toString(), 'wards',
-      'get',
-    ),
-    data, getHeaders(),
-  );
-}
-
-function saveWard(facilityId, ward) {
-  const data = {
-    authToken: getAuthToken(),
-    ...ward,
-  };
-  return getPromisifiedRequest(
-    'POST', urljoin(
-      config.apiUrl, 'facilities', facilityId.toString(), 'wards',
-      'post',
-    ),
-    data, getHeaders(),
-  );
-}
-
-function updateFacilityDetails(facilityId, detailId, updateData) {
-  const data = {
-    authToken: getAuthToken(),
-    data: updateData,
-  };
-  return getPromisifiedRequest(
-    'POST', urljoin(
-      config.apiUrl, 'facility', facilityId.toString(), detailId,
-    ),
-    data, getHeaders(),
-  );
-}
-
-function fetchPatients(facilityId) {
-  const data = {
-    authToken: getAuthToken(),
-    wardAlloted: true,
-  };
-  return getPromisifiedRequest(
-    'POST', urljoin(
-      config.apiUrl, 'facilities', facilityId.toString(), 'patients',
-      'get',
-    ),
-    data, getHeaders(),
-  );
-}
 
 function fetchReferredPatients(facilityId) {
   const data = {
@@ -120,37 +59,7 @@ function fetchReferredPatients(facilityId) {
   );
 }
 
-function removeWard(facilityId, wardId) {
-  return getPromisifiedRequest(
-    'POST', urljoin(
-      config.apiUrl, 'facilities', facilityId.toString(), 'wards',
-      wardId.toString(), 'remove',
-    ),
-    getAuthTokenData(), getHeaders(),
-  );
-}
-
-function updateFacilityProfile(facilityId, facilityProfile) {
-  const data = {
-    authToken: getAuthToken(),
-    data: facilityProfile,
-  };
-  return getPromisifiedRequest(
-    'POST', urljoin(
-      config.apiUrl, 'add', 'facility', 'profile', facilityId.toString(),
-    ),
-    data, getHeaders(),
-  );
-}
-
 module.exports = {
   fetchUser,
-  fetchFacilityData,
-  fetchWards,
-  saveWard,
-  updateFacilityDetails,
-  fetchPatients,
   fetchReferredPatients,
-  removeWard,
-  updateFacilityProfile,
 };

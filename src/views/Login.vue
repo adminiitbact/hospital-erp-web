@@ -83,8 +83,8 @@ import firebase from 'firebase/app';
 import auth from '../firebaseConfig';
 import utils from '../utils/utils';
 
-
-export default @Component class Login extends Vue {
+@Component
+export default class Login extends Vue {
   username = '';
 
   password = '';
