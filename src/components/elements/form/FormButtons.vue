@@ -2,13 +2,13 @@
   <div class="pt-3 form-buttons-border">
     <b-row>
       <b-col offset="3" cols="3">
-        <mybutton class="button width-full cancel" @click="$emit('cancel')">
+        <mybutton class="button width-full cancel" @click="$emit('cancel')" type="reset">
           {{cancel_button_text}}
         </mybutton>
       </b-col>
       <b-col cols="6">
-        <mybutton class="button width-full arrow-icon" @click="$emit('save')">
-          {{save_button_text}}
+        <mybutton class="button width-full arrow-icon" @click="$emit('save')" type="submit">
+          {{ save_button_text }}
         </mybutton>
       </b-col>
     </b-row>

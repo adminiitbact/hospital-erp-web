@@ -13,7 +13,7 @@
       v-bind:value="value"
       v-on:input="$emit('input', $event.target.value)"
       :disabled="disabled"
-      v-if="['text', 'number','email'].includes(type)"
+      v-if="['text', 'number','email', 'date'].includes(type)"
       required
     />
     <select class="input form-dropdown w-select" v-if="type == 'options'"
@@ -111,6 +111,10 @@
     padding-left: 12px;
     border-radius: 7px;
     font-size: 14px;
+  }
+
+  .field-label {
+    font-size: 13px;
   }
 }
 </style>

@@ -28,7 +28,6 @@ export default class PatientDetails extends Vue {
   tabs = [
     ['Overview', PatientOverview],
     ['Add New Patient', AddNewPatient],
-    ['Facility Details', FacilityDetails],
   ];
 }
 </script>

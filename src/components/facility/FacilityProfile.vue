@@ -8,7 +8,7 @@
           <form-group
             :label="'Institution Type'"
             :type="'options'"
-            :size="'small'"
+
             :value="''"
             :options="institutionTypeOptions"
           ></form-group>
@@ -17,7 +17,7 @@
           <form-group
             :label="'Your Area'"
             :type="'text'"
-            :size="'small'"
+
             :value="''"
             :placeholder="'Area'"
           ></form-group>
@@ -26,7 +26,7 @@
           <form-group
             :label="'Jurisdiction'"
             :type="'options'"
-            :size="'small'"
+
             :value="''"
             :options="jurisdictionOptions"
           ></form-group>
@@ -37,7 +37,7 @@
           <form-group
             :label="'Name of your Facility'"
             :type="'text'"
-            :size="'small'"
+
             :value="''"
             :placeholder="'Name of Facility'"
           ></form-group>
@@ -46,7 +46,7 @@
           <form-group
             :label="'Are you a Government Facility?'"
             :type="'options'"
-            :size="'small'"
+
             :value="''"
             :options="yesNoOptions"
           ></form-group>
@@ -57,7 +57,7 @@
           <form-group
             :label="'Organisation\'s Telephone'"
             :type="'number'"
-            :size="'small'"
+
             :value="''"
             :placeholder="'Telephone'"
           ></form-group>
@@ -66,7 +66,7 @@
           <form-group
             :label="'Secondary Telephone (Optional)'"
             :type="'number'"
-            :size="'small'"
+
             :value="''"
             :placeholder="'Telephone'"
           ></form-group>
@@ -75,7 +75,7 @@
           <form-group
             :label="'Organisation\'s Email'"
             :type="'email'"
-            :size="'small'"
+
             :value="''"
             :placeholder="'Email'"
           ></form-group>
@@ -86,7 +86,6 @@
           <form-group
             :label="'Separate entry/exit to the facility'"
             :type="'options'"
-            :size="'small'"
             :value="''"
             :options="yesNoOptions"
           ></form-group>
@@ -95,7 +94,7 @@
           <form-group
             :label="'Is Fever Clinic Available?'"
             :type="'options'"
-            :size="'small'"
+
             :value="''"
             :options="yesNoOptions"
           ></form-group>

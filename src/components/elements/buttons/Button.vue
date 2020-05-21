@@ -1,5 +1,13 @@
 <template>
-  <button class="button w-button" @click="$emit('click')">
+  <button
+    :class="{
+      'button w-button': true,
+      'small': size === 'small',
+      'large': size === 'large',
+      'secondary': type === 'secondary',
+      'selected': selected,
+    }" @click="$emit('click')"
+    type="button">
     <slot></slot>
   </button>
 </template>
@@ -103,12 +111,50 @@
   background-repeat: no-repeat;
 }
 
+
+.button.secondary {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #2c49ac;
+  background-color: transparent;
+  color: #2c49ac;
+}
+
+.button.secondary:hover {
+  background-color: #b9c3e4;
+  color: #2c49ac;
+}
+
+.button.secondary:focus, .button.secondary.selected {
+  border-color: #0055d6;
+  background-color: #0055d6;
+  color: #fff;
+}
+
 </style>
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
 
+const ButtonProps = Vue.extend({
+  props: {
+    size: {
+      required: false,
+      default: 'normal',
+    },
+    type: {
+      required: false,
+      default: 'primary',
+    },
+    secondary: {
+      type: Boolean,
+      default: false,
+    },
+  },
+});
+
+
 @Component
-export default class Button extends Vue {}
+export default class Button extends ButtonProps {}
 </script>

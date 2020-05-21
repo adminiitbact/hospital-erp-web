@@ -1,7 +1,7 @@
 <template>
   <form-container>
     <form-heading>{{ pageTitle }}</form-heading>
-    <form @submit.prevent="check">
+    <form @submit.prevent="submitForm">
       <form-sub-section-heading>Basic Details</form-sub-section-heading>
       <b-row class="mb-2" v-for="(row, index) in basicFormStructure" :key="index">
         <b-col v-for="fieldDet in row" :cols="fieldDet[0]" :key="fieldDet[1][0]">
@@ -14,13 +14,13 @@
           </form-group>
         </b-col>
       </b-row>
-      <b-row class="mt-3 mb-2" v-show="checkAvailability">
-        <b-col cols="6">
-          <c-button type="submit">Check for availability</c-button>
-        </b-col>
-      </b-row>
-      <template v-if="!checkAvailability">
-        <b-row class="mb-2" v-for="(row, index) in extraFormStructure" :key="index">
+      <form-buttons
+        :cancel_button_text="'Cancel'"
+        :save_button_text="'Check availability'"
+        v-if="checkAvailability"
+      ></form-buttons>
+      <template v-else>
+        <b-row class="mb-2" v-for="(row, index) in extraFormStructure" :key="index + 10">
           <b-col v-for="fieldDet in row" :cols="fieldDet[0]" :key="fieldDet[1][0]">
             <form-group
               v-bind:label="fieldDet[1][0]"
@@ -32,7 +32,7 @@
           </b-col>
         </b-row>
         <form-sub-section-heading class="mt-4">Case Details</form-sub-section-heading>
-        <b-row class="mb-2" v-for="(row, index) in caseFormStructure" :key="index">
+        <b-row class="mb-2" v-for="(row, index) in caseFormStructure" :key="index + 20">
           <b-col v-for="fieldDet in row" :cols="fieldDet[0]" :key="fieldDet[1][0]">
             <form-group
               v-bind:label="fieldDet[1][0]"
@@ -43,6 +43,10 @@
             </form-group>
           </b-col>
         </b-row>
+        <form-buttons
+          :cancel_button_text="'Cancel'"
+          :save_button_text="'Save and Proceed'"
+        ></form-buttons>
       </template>
     </form>
   </form-container>
@@ -56,6 +60,7 @@ import FormHeading from '../elements/form/FormHeading.vue';
 import FormContainer from '../elements/form/FormContainer.vue';
 import queries from '../../utils/graphql/queries';
 import Button from '../elements/buttons/Button.vue';
+import FormButtons from '../elements/form/FormButtons.vue';
 
 
 const PersonalDetailsProps = Vue.extend({
@@ -74,6 +79,7 @@ const PersonalDetailsProps = Vue.extend({
     'form-group': FormGroup,
     'form-heading': FormHeading,
     'c-button': Button,
+    'form-buttons': FormButtons,
   },
 })
 export default class PersonalDetails extends PersonalDetailsProps {
@@ -81,17 +87,17 @@ export default class PersonalDetails extends PersonalDetailsProps {
 
   areaOpts = [];
 
-  contactNum = ['Contact number', 'number', 'Enter Primary Contact No.', '123'];
+  contactNum = ['Contact number', 'number', 'Enter Primary Contact No.', ''];
 
-  firstName = ['First name', 'text', 'Enter first name', 'f name'];
+  firstName = ['First name', 'text', 'Enter first name', ''];
 
-  lastName = ['Last name', 'text', 'Enter last name', 'l name'];
+  lastName = ['Last name', 'text', 'Enter last name', ''];
 
   gender = [];
 
-  ageYears = ['Age', 'number', 'Enter age in years', '25'];
+  ageYears = ['Age', 'number', 'Enter age in years', ''];
 
-  ageMonths = ['Age in months', 'number', 'Enter age in months', '3']
+  ageMonths = ['Age in months', 'number', 'Enter age in months', '']
 
   occupation = ['Occupation', 'text', 'Enter occupation', ''];
 
@@ -103,14 +109,11 @@ export default class PersonalDetails extends PersonalDetailsProps {
 
   state = ['State', 'text', 'Enter state', 'Maharashtra'];
 
-  // eslint-disable-next-line camelcase
-  district_case_id = ['District Case Number', 'text', 'Enter district case ID', ''];
+  districtCaseId = ['District Case Number', 'text', 'Enter district case ID', ''];
 
-  // eslint-disable-next-line camelcase
-  hospital_case_id = ['Hospital Patient ID', 'text', 'Enter hospital case ID', ''];
+  hospitalCaseId = ['Hospital Patient ID', 'text', 'Enter hospital case ID', ''];
 
-  // eslint-disable-next-line camelcase
-  goi_covid_id = ['GOI COVID ID', 'text', 'Enter GOI COVID ID', ''];
+  goiCovidId = ['GOI COVID ID', 'text', 'Enter GOI COVID ID', ''];
 
   checkAvailability = true;
 
@@ -146,9 +149,9 @@ export default class PersonalDetails extends PersonalDetailsProps {
   get caseFormStructure() {
     return [
       [
-        [4, this.hospital_case_id],
-        [4, this.district_case_id],
-        [4, this.goi_covid_id],
+        [4, this.hospitalCaseId],
+        [4, this.districtCaseId],
+        [4, this.goiCovidId],
       ],
     ];
   }
@@ -167,14 +170,45 @@ export default class PersonalDetails extends PersonalDetailsProps {
     });
   }
 
+  submitForm(e) {
+    if (this.checkAvailability) {
+      this.check(e);
+    } else {
+      this.saveAndProceed();
+    }
+  }
+
+  saveAndProceed() {
+    const patientData = {
+      first_name: this.firstName[3],
+      last_name: this.lastName[3],
+      age: this.ageYears[3],
+      gender: this.gender[3],
+      locality: this.area[3],
+      district: this.district[3],
+      state: this.state[3],
+      occupation: this.occupation[3],
+      contact_number: this.contactNum[3],
+      district_case_id: this.districtCaseId[3],
+      hospital_case_id: this.hospitalCaseId[3],
+      goi_covid_id: this.goiCovidId[3],
+    };
+    this.$emit('save', patientData);
+  }
+
   check() {
-    console.log(this.contactNum[3]);
+    // TODO: check for duplicate only in the same facility.
     queries.checkPatientExists({
-      contact_number: this.contactNum[3], gender: this.gender[3], ageMinus: this.ageYears[3] - 5, agePlus: this.ageYears[3] + 5,
+      contact_number: this.contactNum[3],
+      gender: this.gender[3],
+      ageMinus: this.ageYears[3] - 5,
+      agePlus: this.ageYears[3] + 5,
     }).then((res) => {
-      console.log(res);
-      // TODO: check list length and proceed
-    // this.checkAvailability = !this.checkAvailability;
+      if (res.length === 0) {
+        this.checkAvailability = false;
+      } else {
+        // TODO: Display error message that patient exists in the database.
+      }
     });
   }
 }

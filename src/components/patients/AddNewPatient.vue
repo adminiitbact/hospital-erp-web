@@ -16,7 +16,10 @@
       </b-row>
     </b-col>
     <b-col cols="7">
-      <component v-bind:is="tabs[currentTab][1]" :page-title="pageTitle"></component>
+      <keep-alive>
+        <component v-bind:is="tabs[currentTab][1]" :page-title="pageTitle"
+          v-on:save="saveAndProceed"></component>
+      </keep-alive>
     </b-col>
   </b-row>
 </template>
@@ -30,6 +33,7 @@ import FormContainer from '../elements/form/FormContainer.vue';
 import FormHeading from '../elements/form/FormHeading.vue';
 import FormSubSectionHeading from '../elements/form/FormSubSectionHeading.vue';
 import PersonalDetails from './PersonalDetails.vue';
+import Symptoms from './Symptoms.vue';
 
 
 const AddNewPatientProps = Vue.extend({});
@@ -43,18 +47,47 @@ const AddNewPatientProps = Vue.extend({});
     'form-sub-section-heading': FormSubSectionHeading,
     tabMenuButton: TabMenuButton,
     'personal-details': PersonalDetails,
+    symptoms: Symptoms,
   },
 })
 export default class AddNewPatient extends AddNewPatientProps {
   tabs = [
     ['Personal Details', 'personal-details'],
-    ['Symptoms', null],
+    ['Symptoms', 'symptoms'],
+    ['COVID-19 Test Details', null],
+    ['Comorbidity', null],
+    ['Allocate Ward', null],
   ];
+
+  doneTabs = 10;
+
+  patientData = {};
 
   currentTab = 0;
 
   get pageTitle() {
     return `${this.currentTab + 1}. ${this.tabs[this.currentTab][0]}`;
+  }
+
+  saveAndProceed(updateData) {
+    Object.assign(this.patientData, updateData);
+    this.nextTab();
+  }
+
+  nextTab() {
+    if (this.currentTab >= this.tabs.length - 1) {
+      // TODO: submitPatientData
+      console.log(this.patientData);
+    } else {
+      this.currentTab += 1;
+      this.doneTabs = this.currentTab;
+    }
+  }
+
+  changeTab(index) {
+    if (index <= this.doneTabs) {
+      this.currentTab = index;
+    }
   }
 }
 </script>

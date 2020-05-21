@@ -8,8 +8,8 @@
             <b-col cols="3">
               <c-title>{{ title }}</c-title>
             </b-col>
-            <b-col offset="3" cols="6" align-self="end">
-              <b-row align-self="end">
+            <b-col offset="1" cols="8" align-self="end">
+              <b-row align-h="end">
                 <nav-tab
                   v-for="(tab, index) in navtabs"
                   :key="index"

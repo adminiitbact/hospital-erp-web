@@ -10,7 +10,6 @@
               <form-group
                 :label="'Name'"
                 :type="'text'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'First Name'"
               ></form-group>
@@ -19,7 +18,6 @@
               <form-group
                 :label="'Mobile'"
                 :type="'number'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'+91'"
               ></form-group>
@@ -34,7 +32,6 @@
               <form-group
                 :label="'Name'"
                 :type="'text'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'First Name'"
               ></form-group>
@@ -43,7 +40,6 @@
               <form-group
                 :label="'Mobile'"
                 :type="'number'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'+91'"
               ></form-group>
@@ -61,7 +57,6 @@
               <form-group
                 :label="'Name'"
                 :type="'text'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'First Name'"
               ></form-group>
@@ -70,7 +65,6 @@
               <form-group
                 :label="'Mobile'"
                 :type="'number'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'+91'"
               ></form-group>
@@ -85,7 +79,6 @@
               <form-group
                 :label="'Name'"
                 :type="'text'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'First Name'"
               ></form-group>
@@ -94,7 +87,6 @@
               <form-group
                 :label="'Mobile'"
                 :type="'number'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'+91'"
               ></form-group>
@@ -111,7 +103,6 @@
               <form-group
                 :label="'Name'"
                 :type="'text'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'First Name'"
               ></form-group>
@@ -120,7 +111,6 @@
               <form-group
                 :label="'Mobile'"
                 :type="'number'"
-                :size="'small'"
                 :value="''"
                 :placeholder="'+91'"
               ></form-group>

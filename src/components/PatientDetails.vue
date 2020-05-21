@@ -7,24 +7,24 @@
           <label for="First-Name" class="field-label patient">{{ patientField[0] }}:</label>
           <div class="new-db-form-div">
             <template v-if="patientField[2] == 'text' || patientField[2] == 'number'">
-                <input
-                  :type="patientField[2]"
-                  class="patient-db-field w-input"
-                  v-model="patientField[3]"
-                  required
-                  min="0"
-                  maxlength="256"
-                />
-              </template>
-              <template v-else-if="patientField[2] == 'option'">
-                <select class="patient-db-field w-select" v-model="patientField[4]">
-                  <option
-                    v-for="val in patientField[3]"
-                    :value="val.key"
-                    :key="val.key"
-                  >{{ val.value }}</option>
-                </select>
-              </template>
+              <input
+                :type="patientField[2]"
+                class="patient-db-field w-input"
+                v-model="patientField[3]"
+                required
+                min="0"
+                maxlength="256"
+              />
+            </template>
+            <template v-else-if="patientField[2] == 'option'">
+              <select class="patient-db-field w-select" v-model="patientField[4]">
+                <option
+                  v-for="val in patientField[3]"
+                  :value="val.key"
+                  :key="val.key"
+                >{{ val.value }}</option>
+              </select>
+            </template>
           </div>
           </div>
         </div>
