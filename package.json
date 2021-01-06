@@ -35,7 +35,7 @@
     "apollo-client": "^2.6.8",
     "apollo-link": "^1.2.14",
     "apollo-link-http": "^1.5.17",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.13.0",
