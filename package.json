@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node prerun-prod.js && vue-cli-service build && node app.js",
     "serve": "node prerun-dev.js && vue-cli-service serve --port 8081",
-    "build-dev": "sh ./.ci-ori1h8.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi; node prerun-dev.js && vue-cli-service build",
+    "build-dev": "node prerun-dev.js && vue-cli-service build",
     "build-stage": "node prerun-stage.js && vue-cli-service build",
     "build-prod": "node prerun-prod.js && vue-cli-service build",
     "lint": "vue-cli-service lint",
